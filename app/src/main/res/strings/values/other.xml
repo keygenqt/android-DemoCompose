@@ -1,0 +1,7 @@
+<resources>
+    <!-- Login -->
+    <string name="login_title">Login</string>
+
+    <!-- Welcome -->
+    <string name="welcome_title">Welcome</string>
+</resources>

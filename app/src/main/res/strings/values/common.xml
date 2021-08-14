@@ -1,0 +1,28 @@
+<resources>
+    <!-- Main -->
+    <string name="app_name">Demo Rive Gauche</string>
+
+    <!-- Errors -->
+    <string name="error_field_min_length">Minimum length %s characters</string>
+    <string name="error_field_max_length">Maximum length %s characters</string>
+    <string name="is_incorrect">Is incorrect</string>
+    <string name="is_required">Is required</string>
+    <string name="is_exist">Is exist</string>
+
+    <!-- Form-->
+    <string name="form_edit_text">Edit Text</string>
+    <string name="form_name">Name</string>
+    <string name="form_email">Email</string>
+    <string name="form_password">Password</string>
+    <string name="form_button_submit">Submit</string>
+
+    <!-- Common-->
+    <string name="common_search">Search…</string>
+    <string name="common_not_available">Not Available</string>
+    <string name="common_coming_soon">Coming soon…</string>
+    <string name="common_navigate_up">Navigate up</string>
+    <string name="common_btn_confirm">Confirm</string>
+    <string name="common_btn_cancel">Cancel</string>
+    <string name="common_exit">Please click back again to exit</string>
+
+</resources>
