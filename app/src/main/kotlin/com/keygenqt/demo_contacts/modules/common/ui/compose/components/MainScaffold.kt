@@ -17,6 +17,7 @@
 package com.keygenqt.demo_contacts.modules.common.ui.compose.components
 
 import android.content.res.Configuration
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -127,7 +128,11 @@ fun MainScaffold(
                                     )
                                 }
                             } ?: run {
-                                Column {
+                                Column(
+                                    modifier = Modifier
+                                        .padding(end = 12.dp)
+                                        .fillMaxWidth(),
+                                ) {
 
                                     Text(
                                         modifier = Modifier.fillMaxWidth(),
