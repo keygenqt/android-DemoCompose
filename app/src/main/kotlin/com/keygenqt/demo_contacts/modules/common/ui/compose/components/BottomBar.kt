@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.common.ui.compose.components
 
 import android.content.res.Configuration
@@ -22,7 +22,7 @@ import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,16 +33,19 @@ import com.google.accompanist.insets.navigationBarsHeight
 import com.google.accompanist.insets.navigationBarsPadding
 import com.keygenqt.demo_contacts.modules.common.navigation.HomeTab
 import com.keygenqt.demo_contacts.modules.common.navigation.NavActions
-import com.keygenqt.demo_contacts.modules.common.navigation.NavScreen
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 import com.keygenqt.demo_contacts.theme.MyTheme
 
 @Composable
 fun BottomBar(
     navActions: NavActions,
-    currentRoute: String = NavScreen.BrandsScreen.route,
+    currentRoute: HomeTab = HomeTab.BRANDS,
+    doubleClick: (HomeTab) -> Unit = {},
 ) {
-    if (HomeTab.values().any { it.route == currentRoute }) {
+
+    var currentRouteSavable: HomeTab? by remember { mutableStateOf(null) }
+
+    if (HomeTab.values().any { it.route == currentRoute.route }) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             BottomNavigation(
                 modifier = Modifier.navigationBarsHeight(56.dp)
@@ -53,18 +56,26 @@ fun BottomBar(
                             Icon(
                                 imageVector = tab.icon,
                                 contentDescription = null,
-                                tint = with(MaterialThemeCustom.colors) { if (tab.route == currentRoute) tabEnable else tabDisable }
+                                tint = with(MaterialThemeCustom.colors) { if (tab.route == currentRoute.route) tabEnable else tabDisable }
                             )
                         },
-                        selected = tab.route == currentRoute,
+                        selected = tab.route == currentRoute.route,
                         onClick = {
-                            when (tab) {
-                                HomeTab.BRANDS -> navActions.navigateToBrands.invoke()
-                                HomeTab.CATALOG -> navActions.navigateToCatalog.invoke()
-                                HomeTab.PROFILE -> navActions.navigateToProfile.invoke()
-                                HomeTab.FAVORITE -> navActions.navigateToFavorite.invoke()
-                                HomeTab.CART -> navActions.navigateToCart.invoke()
+                            currentRouteSavable?.let {
+                                if (currentRouteSavable == tab) {
+                                    doubleClick.invoke(it)
+                                }
                             }
+                            if (currentRouteSavable != tab) {
+                                when (tab) {
+                                    HomeTab.BRANDS -> navActions.navigateToBrands.invoke()
+                                    HomeTab.CATALOG -> navActions.navigateToCatalog.invoke()
+                                    HomeTab.PROFILE -> navActions.navigateToProfile.invoke()
+                                    HomeTab.FAVORITE -> navActions.navigateToFavorite.invoke()
+                                    HomeTab.CART -> navActions.navigateToCart.invoke()
+                                }
+                            }
+                            currentRouteSavable = tab
                         },
                         selectedContentColor = Color.White,
                         unselectedContentColor = Color.White,

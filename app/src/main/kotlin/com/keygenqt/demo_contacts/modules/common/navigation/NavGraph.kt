@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.common.navigation
 
 import androidx.compose.material.Scaffold
@@ -38,6 +38,7 @@ import com.keygenqt.demo_contacts.modules.cart.ui.events.CartEvents
 import com.keygenqt.demo_contacts.modules.cart.ui.screens.CartScreen
 import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
 import com.keygenqt.demo_contacts.modules.catalog.ui.screens.CatalogScreen
+import com.keygenqt.demo_contacts.modules.common.navigation.HomeTab.Companion.findByRoute
 import com.keygenqt.demo_contacts.modules.common.ui.compose.components.BottomBar
 import com.keygenqt.demo_contacts.modules.favorite.ui.events.FavoriteEvents
 import com.keygenqt.demo_contacts.modules.favorite.ui.screens.FavoriteScreen
@@ -70,9 +71,11 @@ fun GuestNavGraph(navController: NavHostController) {
             scaffoldState = scaffoldState,
             bottomBar = {
                 BottomBar(
-                    currentRoute = currentRoute,
+                    currentRoute = currentRoute.findByRoute(),
                     navActions = navActions
-                )
+                ) {
+                    localBaseViewModel.listRefresh()
+                }
             },
         ) {
             NavHost(navController = navController, startDestination = localBaseViewModel.getStartRoute()) {

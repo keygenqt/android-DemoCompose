@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.common.ui.compose.components
 
 import androidx.compose.foundation.layout.*
@@ -23,6 +23,9 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
@@ -34,6 +37,7 @@ import com.google.accompanist.insets.statusBarsPadding
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
 import com.google.accompanist.swiperefresh.SwipeRefreshState
+import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.visible
 import timber.log.Timber
 
@@ -46,6 +50,15 @@ fun <T : Any> CommonList(
     state: SwipeRefreshState,
     content: @Composable (Int, T) -> Unit,
 ) {
+    // Update after the second click on the active bottom navigator
+    val localBaseViewModel = LocalBaseViewModel.current
+    val refresh by localBaseViewModel.toggleRefresh.collectAsState()
+    LaunchedEffect(refresh) {
+        if (refresh) {
+            items.refresh()
+        }
+    }
+
     SwipeRefresh(
         state = state,
         onRefresh = {

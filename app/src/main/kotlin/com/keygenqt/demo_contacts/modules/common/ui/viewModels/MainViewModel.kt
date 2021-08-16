@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.common.ui.viewModels
 
 import android.os.Bundle
@@ -36,6 +36,9 @@ class MainViewModel @Inject constructor(
     private val analytics: FirebaseAnalytics,
     private val preferences: AppPreferences,
 ) : ViewModel() {
+
+    private val _toggleRefresh: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    val toggleRefresh: StateFlow<Boolean> get() = _toggleRefresh.asStateFlow()
 
     private val _isReady: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val isReady: StateFlow<Boolean> get() = _isReady.asStateFlow()
@@ -67,6 +70,14 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             delay(1500) // Loading second click
             _showSnackBar.value = false
+        }
+    }
+
+    fun listRefresh() {
+        _toggleRefresh.value = true
+        viewModelScope.launch {
+            delay(1000)
+            _toggleRefresh.value = false
         }
     }
 
