@@ -20,7 +20,22 @@ import androidx.navigation.NavHostController
 import com.keygenqt.demo_contacts.base.NavActions
 
 class NavActions(controller: NavHostController) : NavActions(controller) {
-    val navigateToLogin: () -> Unit = {
-        controller.navigate(NavScreen.Login.route)
+    val navigateToStart: () -> Unit = {
+        controller.navigate(NavScreen.StartScreen.route)
+    }
+    val navigateToBrands: () -> Unit = {
+        controller.navigate(NavScreen.BrandsScreen.route)
+    }
+    val navigateToCatalog: () -> Unit = {
+        controller.navigate(NavScreen.CatalogScreen.route)
+    }
+    val navigateToProfile: () -> Unit = {
+        controller.navigate(NavScreen.ProfileScreen.route)
+    }
+    val navigateToFavorite: () -> Unit = {
+        controller.navigate(NavScreen.FavoriteScreen.route)
+    }
+    val navigateToCart: () -> Unit = {
+        controller.navigate(NavScreen.CartScreen.route)
     }
 }

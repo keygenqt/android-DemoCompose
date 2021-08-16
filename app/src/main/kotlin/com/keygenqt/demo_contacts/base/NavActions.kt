@@ -19,7 +19,7 @@ package com.keygenqt.demo_contacts.base
 import androidx.navigation.NavHostController
 
 open class NavActions(controller: NavHostController) {
-    val upPress: () -> Unit = {
+    val navigateToUp: () -> Unit = {
         controller.navigateUp()
     }
 }

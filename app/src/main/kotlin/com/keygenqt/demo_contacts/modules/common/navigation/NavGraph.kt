@@ -13,33 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.modules.common.navigation
 
-import android.widget.Toast
-import androidx.compose.runtime.*
+import androidx.compose.material.Scaffold
+import androidx.compose.material.rememberScaffoldState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.insets.ProvideWindowInsets
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.AddChangeRouteListener
-import com.keygenqt.demo_contacts.modules.other.ui.compose.LoginScreen
-import com.keygenqt.demo_contacts.modules.other.ui.compose.WelcomeScreen
-import com.keygenqt.demo_contacts.modules.other.ui.events.LoginEvents
-import com.keygenqt.demo_contacts.modules.other.ui.events.WelcomeEvents
-import com.keygenqt.demo_contacts.modules.other.ui.viewModels.OtherViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
+import com.keygenqt.demo_contacts.modules.brands.ui.screens.BrandsScreen
+import com.keygenqt.demo_contacts.modules.cart.ui.events.CartEvents
+import com.keygenqt.demo_contacts.modules.cart.ui.screens.CartScreen
+import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
+import com.keygenqt.demo_contacts.modules.catalog.ui.screens.CatalogScreen
+import com.keygenqt.demo_contacts.modules.common.ui.compose.components.BottomBar
+import com.keygenqt.demo_contacts.modules.favorite.ui.events.FavoriteEvents
+import com.keygenqt.demo_contacts.modules.favorite.ui.screens.FavoriteScreen
+import com.keygenqt.demo_contacts.modules.other.ui.events.StartEvents
+import com.keygenqt.demo_contacts.modules.other.ui.screens.StartScreen
+import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
+import com.keygenqt.demo_contacts.modules.profile.ui.screens.ProfileScreen
 
+@ExperimentalPagerApi
 @ExperimentalComposeUiApi
-@ExperimentalCoroutinesApi
 @Composable
 fun GuestNavGraph(navController: NavHostController) {
-
-    val context = LocalContext.current
 
     val localBaseViewModel = LocalBaseViewModel.current
 
@@ -49,21 +58,65 @@ fun GuestNavGraph(navController: NavHostController) {
         NavActions(navController)
     }
 
-    val viewModel: OtherViewModel = hiltViewModel()
-
     ProvideWindowInsets {
-        NavHost(navController = navController, startDestination = NavScreen.Welcome.route) {
-            composable(NavScreen.Welcome.route) {
-                WelcomeScreen { event ->
-                    when (event) {
-                        is WelcomeEvents.ToMainScreen -> navActions.navigateToLogin.invoke()
+
+        val scaffoldState = rememberScaffoldState()
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = navBackStackEntry?.destination?.route ?: NavScreen.BrandsScreen.route
+
+        Scaffold(
+            scaffoldState = scaffoldState,
+            bottomBar = {
+                BottomBar(
+                    currentRoute = currentRoute,
+                    navActions = navActions
+                )
+            },
+        ) {
+            NavHost(navController = navController, startDestination = localBaseViewModel.getStartRoute()) {
+                composable(NavScreen.StartScreen.route) {
+                    StartScreen(viewModel = hiltViewModel()) { event ->
+                        when (event) {
+                            is StartEvents.NavigateToBrands -> {
+                                localBaseViewModel.startPageCompleted()
+                                navActions.navigateToBrands.invoke()
+                            }
+                        }
                     }
                 }
-            }
-            composable(NavScreen.Login.route) {
-                LoginScreen(viewModel) { event ->
-                    when (event) {
-                        is LoginEvents.NavigateBack -> navActions.upPress.invoke()
+                composable(NavScreen.BrandsScreen.route) {
+                    BrandsScreen(viewModel = hiltViewModel()) { event ->
+                        when (event) {
+                            is BrandsEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                        }
+                    }
+                }
+                composable(NavScreen.CatalogScreen.route) {
+                    CatalogScreen(viewModel = hiltViewModel()) { event ->
+                        when (event) {
+                            is CatalogEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                        }
+                    }
+                }
+                composable(NavScreen.ProfileScreen.route) {
+                    ProfileScreen(viewModel = hiltViewModel()) { event ->
+                        when (event) {
+                            is ProfileEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                        }
+                    }
+                }
+                composable(NavScreen.FavoriteScreen.route) {
+                    FavoriteScreen(viewModel = hiltViewModel()) { event ->
+                        when (event) {
+                            is FavoriteEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                        }
+                    }
+                }
+                composable(NavScreen.CartScreen.route) {
+                    CartScreen(viewModel = hiltViewModel()) { event ->
+                        when (event) {
+                            is CartEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                        }
                     }
                 }
             }

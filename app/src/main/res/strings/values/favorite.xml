@@ -1,4 +1,4 @@
 <resources>
-    <!-- List Favorite -->
-    <string name="list_favorite_title">Welcome!</string>
+    <!-- Favorite -->
+    <string name="favorite_title">Welcome!</string>
 </resources>

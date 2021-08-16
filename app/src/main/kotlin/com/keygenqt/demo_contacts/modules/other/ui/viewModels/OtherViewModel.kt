@@ -13,27 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.modules.other.ui.viewModels
 
 import androidx.lifecycle.ViewModel
-import com.keygenqt.demo_contacts.base.AppSharedPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-@ExperimentalCoroutinesApi
-class OtherViewModel @Inject constructor(
-    private val preferences: AppSharedPreferences,
-) : ViewModel() {
-
-    private val _commonError: MutableStateFlow<String?> = MutableStateFlow(null)
-    val commonError: StateFlow<String?> get() = _commonError.asStateFlow()
-
-    private val _loading: MutableStateFlow<Boolean> = MutableStateFlow(false)
-    val loading: StateFlow<Boolean> get() = _loading.asStateFlow()
-}
+class OtherViewModel @Inject constructor() : ViewModel()

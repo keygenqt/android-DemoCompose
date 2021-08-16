@@ -17,6 +17,10 @@
 package com.keygenqt.demo_contacts.modules.common.navigation
 
 sealed class NavScreen(val route: String) {
-    object Welcome : NavScreen("Welcome")
-    object Login : NavScreen("Login")
+    object StartScreen : NavScreen("StartScreen")
+    object BrandsScreen : NavScreen("BrandsScreen")
+    object CatalogScreen : NavScreen("CatalogScreen")
+    object ProfileScreen : NavScreen("ProfileScreen")
+    object FavoriteScreen : NavScreen("FavoriteScreen")
+    object CartScreen : NavScreen("CartScreen")
 }

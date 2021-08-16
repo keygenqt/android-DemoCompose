@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts
 
 import android.graphics.Color
@@ -29,24 +29,23 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.toArgb
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import androidx.paging.ExperimentalPagingApi
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.modules.common.navigation.GuestNavGraph
-import com.keygenqt.demo_contacts.modules.common.ui.viewModels.ViewModelMain
+import com.keygenqt.demo_contacts.modules.common.navigation.NavScreen.BrandsScreen
+import com.keygenqt.demo_contacts.modules.common.ui.viewModels.MainViewModel
 import com.keygenqt.demo_contacts.theme.MyTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val viewModel: ViewModelMain by viewModels()
+    private val viewModel: MainViewModel by viewModels()
 
     private lateinit var navController: NavHostController
 
-    @ExperimentalPagingApi
+    @ExperimentalPagerApi
     @ExperimentalComposeUiApi
-    @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -82,9 +81,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onBackPressed() {
         when (navController.currentDestination?.route) {
-            // Show snackBar before exit
-            // @todo
-//            ListChats.route -> viewModel.apply { if (showSnackBar.value) finishAffinity() else toggleSnackBar() }
+            BrandsScreen.route -> viewModel.apply { if (showSnackBar.value) finishAffinity() else toggleSnackBar() }
             else -> super.onBackPressed()
         }
     }

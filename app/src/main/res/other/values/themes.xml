@@ -3,5 +3,6 @@
     <style name="Theme.AndroidMyTheme" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/splash</item>
         <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

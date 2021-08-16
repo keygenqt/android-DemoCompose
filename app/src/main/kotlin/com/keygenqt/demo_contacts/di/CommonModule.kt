@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.di
 
 import android.app.Application
@@ -21,8 +21,8 @@ import android.content.Context
 import androidx.room.Room
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import com.keygenqt.demo_contacts.base.AppSharedPreferences
-import com.keygenqt.demo_contacts.data.AppDatabase
+import com.keygenqt.demo_contacts.base.AppDatabase
+import com.keygenqt.demo_contacts.base.preferences.AppPreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,8 +34,8 @@ import dagger.hilt.components.SingletonComponent
 object CommonModule {
 
     @Provides
-    fun provideSharedPreferences(@ApplicationContext context: Context): AppSharedPreferences {
-        return AppSharedPreferences(
+    fun provideSharedPreferences(@ApplicationContext context: Context): AppPreferences {
+        return AppPreferences(
             EncryptedSharedPreferences.create(
                 context,
                 "sharedPrefsFile",

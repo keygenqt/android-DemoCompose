@@ -17,26 +17,26 @@
 package com.keygenqt.demo_contacts.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ReadOnlyComposable
 
 // system palette colors
-val DarkColorPalette by lazy {
-    parseRemoteConfigPalette(false)
+val DarkColorPalette: @Composable () -> Colors by lazy {
+    { parseConfigPalette(false) }
 }
 
-val LightColorPalette by lazy {
-    parseRemoteConfigPalette(true)
+val LightColorPalette: @Composable () -> Colors by lazy {
+    { parseConfigPalette(true) }
 }
 
 @Composable
-fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+fun MyTheme(content: @Composable () -> Unit) {
 
-    val colors = if (darkTheme) {
-        DarkColorPalette
+    val colors = if (isSystemInDarkTheme()) {
+        DarkColorPalette()
     } else {
-        LightColorPalette
+        LightColorPalette()
     }
 
     MaterialTheme(
@@ -48,23 +48,22 @@ fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () 
 }
 
 // custom palette colors
-val DarkColorCustomPalette by lazy {
-    parseRemoteConfigCustomPalette(false)
+val DarkColorCustomPalette: @Composable () -> CustomColors by lazy {
+    { parseConfigCustomPalette(false) }
 }
 
-val LightColorCustomPalette by lazy {
-    parseRemoteConfigCustomPalette(true)
+val LightColorCustomPalette: @Composable () -> CustomColors by lazy {
+    { parseConfigCustomPalette(true) }
 }
 
 object MaterialThemeCustom {
     val colors: CustomColors
         @Composable
-        @ReadOnlyComposable
         get() {
             return if (isSystemInDarkTheme()) {
-                DarkColorCustomPalette
+                DarkColorCustomPalette()
             } else {
-                LightColorCustomPalette
+                LightColorCustomPalette()
             }
         }
 }

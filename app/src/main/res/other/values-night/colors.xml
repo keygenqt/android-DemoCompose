@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- custom colors-->
+    <color name="splash">#000000</color>
+    <color name="customTitle">#0069D3</color>
+    <color name="tabEnable">#f01c00</color>
+    <color name="tabDisable">#C8C8C8</color>
+    <color name="textColorSecondary">#9495A0</color>
+
+    <!-- default colors-->
+    <color name="primary">#1c1c1c</color>
+    <color name="primaryVariant">#505050</color>
+    <color name="secondary">#FFFFFF</color>
+    <color name="secondaryVariant">#f01c00</color>
+    <color name="background">#1c1c1c</color>
+    <color name="surface">#505050</color>
+    <color name="error">#CF6679</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="onSecondary">#000000</color>
+    <color name="onBackground">#FFFFFF</color>
+    <color name="onSurface">#BCBCBC</color>
+    <color name="onError">#000000</color>
+</resources>

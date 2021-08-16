@@ -1,0 +1,7 @@
+<resources>
+    <!-- Profile -->
+    <string name="profile_title">My Rive Gauche</string>
+
+    <!-- Contacts -->
+    <string name="contacts_title">Contacts</string>
+</resources>

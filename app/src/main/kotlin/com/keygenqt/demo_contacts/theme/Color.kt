@@ -13,38 +13,51 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.theme
 
 import androidx.compose.material.Colors
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import com.keygenqt.demo_contacts.R
 
 class CustomColors(
     val splash: Color,
+    val customTitle: Color,
+    val tabEnable: Color,
+    val tabDisable: Color,
+    val textColorSecondary: Color,
     val isLight: Boolean,
 )
 
-fun parseRemoteConfigCustomPalette(isLight: Boolean): CustomColors {
+@Composable
+fun parseConfigCustomPalette(isLight: Boolean): CustomColors {
     return CustomColors(
-        splash = Color(0xFF2D2F31),
+        splash = colorResource(R.color.splash),
+        customTitle = colorResource(R.color.customTitle),
+        tabEnable = colorResource(R.color.tabEnable),
+        tabDisable = colorResource(R.color.tabDisable),
+        textColorSecondary = colorResource(R.color.textColorSecondary),
         isLight = isLight,
     )
 }
 
-fun parseRemoteConfigPalette(isLight: Boolean): Colors {
+@Composable
+fun parseConfigPalette(isLight: Boolean): Colors {
     return Colors(
-        primary = Color(0xFFBB86FC),
-        primaryVariant = Color(0xFF3700B3),
-        secondary = Color(0xFF03DAC6),
-        secondaryVariant = Color(0xFF03DAC6),
-        background = Color(0xFF121212),
-        surface = Color(0xFF121212),
-        error = Color(0xFFCF6679),
-        onPrimary = Color(0xFF000000),
-        onSecondary = Color(0xFF000000),
-        onBackground = Color(0xFFFFFFFF),
-        onSurface = Color(0xFFFFFFFF),
-        onError = Color(0xFF000000),
+        primary = colorResource(R.color.primary),
+        primaryVariant = colorResource(R.color.primaryVariant),
+        secondary = colorResource(R.color.secondary),
+        secondaryVariant = colorResource(R.color.secondaryVariant),
+        background = colorResource(R.color.background),
+        surface = colorResource(R.color.surface),
+        error = colorResource(R.color.error),
+        onPrimary = colorResource(R.color.onPrimary),
+        onSecondary = colorResource(R.color.onSecondary),
+        onBackground = colorResource(R.color.onBackground),
+        onSurface = colorResource(R.color.onSurface),
+        onError = colorResource(R.color.onError),
         isLight = isLight,
     )
 }
