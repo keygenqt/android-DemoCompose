@@ -7,4 +7,6 @@
         <item quantity="many">%d товаров</item>
         <item quantity="other">%d товаров</item>
     </plurals>
+    <string name="favorite_empty_list">Нажимай на ︎♡ и твои любимые товары будут всегда под рукой</string>
+    <string name="favorite_guest_list">Чтобы добавлять и просматривать список избранных товаров необходимо авторизоваться или зарегистрироваться</string>
 </resources>

@@ -18,6 +18,6 @@
     <color name="onPrimary">#000000</color>
     <color name="onSecondary">#FFFFFF</color>
     <color name="onBackground">#000000</color>
-    <color name="onSurface">#222222</color>
+    <color name="onSurface">#7C7C7C</color>
     <color name="onError">#000000</color>
 </resources>

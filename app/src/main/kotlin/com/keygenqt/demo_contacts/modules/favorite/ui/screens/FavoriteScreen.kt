@@ -26,10 +26,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,8 +43,11 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keygenqt.demo_contacts.R
+import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.modules.common.ui.compose.components.CommonList
 import com.keygenqt.demo_contacts.modules.common.ui.compose.components.MainScaffold
+import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.EmptyListScreen
+import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.GuestListScreen
 import com.keygenqt.demo_contacts.modules.favorite.data.mock.mockFavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.ui.events.FavoriteEvents
@@ -55,11 +61,15 @@ fun FavoriteScreen(
     viewModel: FavoriteViewModel,
     onNavigationEvent: (FavoriteEvents) -> Unit = {},
 ) {
+    val localBaseViewModel = LocalBaseViewModel.current
+
+    val isLogin by localBaseViewModel.isLogin.collectAsState()
 
     val items: LazyPagingItems<FavoriteModel> = viewModel.listFavorite.collectAsLazyPagingItems()
 
     FavoriteBody(
         items = items,
+        isLogin = isLogin,
         onNavigationEvent = onNavigationEvent,
     )
 }
@@ -67,6 +77,7 @@ fun FavoriteScreen(
 @ExperimentalComposeUiApi
 @Composable
 fun FavoriteBody(
+    isLogin: Boolean = false,
     items: LazyPagingItems<FavoriteModel>,
     onNavigationEvent: (FavoriteEvents) -> Unit = {},
 ) {
@@ -74,15 +85,33 @@ fun FavoriteBody(
 
     MainScaffold(
         title = stringResource(id = R.string.favorite_title).uppercase(),
-        subTitle = resources.getQuantityString(R.plurals.favorite_subtitle, 2, 2)
+        subTitle = items.itemCount.let { count ->
+            if (count == 0) {
+                null
+            } else {
+                resources.getQuantityString(R.plurals.favorite_subtitle, count, count)
+            }
+        }
     ) {
-        CommonList(
-            modifier = Modifier,
-            items = items,
-            state = rememberSwipeRefreshState(items.loadState.refresh is LoadState.Loading
+        if (isLogin) {
+            CommonList(
+                modifier = Modifier,
+                items = items,
+                state = rememberSwipeRefreshState(items.loadState.refresh is LoadState.Loading),
+                contentEmpty = {
+                    EmptyListScreen(
+                        text = stringResource(id = R.string.favorite_empty_list),
+                        painter = painterResource(id = R.drawable.ic_favorite_placeholder)
+                    )
+                }
+            ) { _, model ->
+                ItemList(model = model)
+            }
+        } else {
+            GuestListScreen(
+                text = stringResource(id = R.string.favorite_guest_list),
+                painter = painterResource(id = R.drawable.ic_favorite_placeholder)
             )
-        ) { _, model ->
-            ItemList(model = model)
         }
     }
 }

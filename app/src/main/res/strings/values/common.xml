@@ -1,6 +1,6 @@
 <resources>
     <!-- Main -->
-    <string name="app_name">Demo Rive Gauche</string>
+    <string name="app_name">Rive Gauche</string>
 
     <!-- Errors -->
     <string name="error_field_min_length">Minimum length %s characters</string>
@@ -17,6 +17,9 @@
     <string name="form_button_submit">Submit</string>
 
     <!-- Common-->
+    <string name="common_go_to_catalog">Go to catalog</string>
+    <string name="common_sign_in">Sign In</string>
+    <string name="common_sign_up">Sign Up</string>
     <string name="common_search">Search…</string>
     <string name="common_not_available">Not Available</string>
     <string name="common_coming_soon">Coming soon…</string>

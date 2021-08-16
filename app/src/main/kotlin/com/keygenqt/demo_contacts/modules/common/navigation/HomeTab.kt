@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.modules.common.navigation
 
 import androidx.compose.material.icons.Icons
@@ -32,14 +32,14 @@ enum class HomeTab(
     CART(NavScreen.CartScreen.route, Icons.Filled.ShoppingCart);
 
     companion object {
-        fun String.findByRoute(): HomeTab {
+        fun String.findByRoute(): HomeTab? {
             return when (this) {
                 BRANDS.route -> BRANDS
                 CATALOG.route -> CATALOG
                 PROFILE.route -> PROFILE
                 FAVORITE.route -> FAVORITE
                 CART.route -> CART
-                else -> BRANDS
+                else -> null
             }
         }
     }

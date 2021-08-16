@@ -5,4 +5,6 @@
         <item quantity="one">%d product</item>
         <item quantity="other">%d products</item>
     </plurals>
+    <string name="favorite_empty_list">Click on ♡ and your favorite products will always be at hand</string>
+    <string name="favorite_guest_list">To add and view the list of favorite products, you need to log in or register</string>
 </resources>

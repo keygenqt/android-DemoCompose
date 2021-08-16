@@ -40,6 +40,7 @@ extra["hiltComposeNavigationVersion"] = "1.0.0-alpha03"
 extra["roomVersion"] = "2.3.0-beta02"
 
 // other
+extra["lottieVersions"] = "4.0.0"
 extra["timberVersion"] = "4.7.1"
 extra["startupVersion"] = "1.0.0"
 extra["spotlessVersion"] = "5.12.5"

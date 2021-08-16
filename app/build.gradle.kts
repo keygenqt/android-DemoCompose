@@ -118,6 +118,10 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:${ex["composeVersion"]}")
     implementation("androidx.paging:paging-compose:${ex["pagingComposeVersion"]}")
 
+    // lottie
+    implementation("com.airbnb.android:lottie:${ex["lottieVersions"]}")
+    implementation("com.airbnb.android:lottie-compose:${ex["lottieVersions"]}")
+
     // other
     implementation("com.jakewharton.timber:timber:${ex["timberVersion"]}")
     implementation("androidx.startup:startup-runtime:${ex["startupVersion"]}")

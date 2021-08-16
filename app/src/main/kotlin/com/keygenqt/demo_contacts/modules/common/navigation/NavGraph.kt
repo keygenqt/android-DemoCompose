@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.modules.common.navigation
 
 import androidx.compose.material.Scaffold
@@ -69,14 +69,16 @@ fun GuestNavGraph(navController: NavHostController) {
 
         Scaffold(
             scaffoldState = scaffoldState,
-            bottomBar = {
-                BottomBar(
-                    currentRoute = currentRoute.findByRoute(),
-                    navActions = navActions
-                ) {
-                    localBaseViewModel.listRefresh()
+            bottomBar = currentRoute.findByRoute()?.let { homeTab ->
+                {
+                    BottomBar(
+                        currentRoute = homeTab,
+                        navActions = navActions
+                    ) {
+                        localBaseViewModel.listRefresh()
+                    }
                 }
-            },
+            } ?: run { {} },
         ) {
             NavHost(navController = navController, startDestination = localBaseViewModel.getStartRoute()) {
                 composable(NavScreen.StartScreen.route) {

@@ -1,0 +1,9 @@
+<resources>
+    <!-- Main -->
+    <string name="app_name">РИВ ГОШ</string>
+
+    <!-- Common-->
+    <string name="common_go_to_catalog">Перейти в каталог</string>
+    <string name="common_sign_in">Войти</string>
+    <string name="common_sign_up">Зарегистрироваться</string>
+</resources>

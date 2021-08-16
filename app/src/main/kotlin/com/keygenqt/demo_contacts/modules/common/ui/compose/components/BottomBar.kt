@@ -13,15 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.modules.common.ui.compose.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Surface
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -77,8 +74,8 @@ fun BottomBar(
                             }
                             currentRouteSavable = tab
                         },
-                        selectedContentColor = Color.White,
-                        unselectedContentColor = Color.White,
+                        selectedContentColor = MaterialTheme.colors.onSurface,
+                        unselectedContentColor = MaterialTheme.colors.onSurface,
                         modifier = Modifier.navigationBarsPadding()
                     )
                 }

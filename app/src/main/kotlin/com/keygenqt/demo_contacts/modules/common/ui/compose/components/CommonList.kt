@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.modules.common.ui.compose.components
 
 import androidx.compose.foundation.layout.*
@@ -48,6 +48,7 @@ fun <T : Any> CommonList(
     paddingBottom: Dp = 0.dp,
     items: LazyPagingItems<T>,
     state: SwipeRefreshState,
+    contentEmpty: @Composable () -> Unit = {},
     content: @Composable (Int, T) -> Unit,
 ) {
     // Update after the second click on the active bottom navigator
@@ -119,10 +120,12 @@ fun <T : Any> CommonList(
             ) { }
         }
     }
-    CommonEmpty(
-        items.itemCount == 0
-                && items.loadState.refresh !is LoadState.Loading && items.loadState.prepend !is LoadState.Loading
-    )
+    if (items.itemCount == 0
+        && items.loadState.refresh !is LoadState.Loading
+        && items.loadState.prepend !is LoadState.Loading
+    ) {
+        contentEmpty.invoke()
+    }
     CommonLoading(items.loadState.refresh is LoadState.Loading)
 }
 

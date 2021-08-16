@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.modules.common.ui.compose.components
 
 import android.content.res.Configuration
@@ -90,7 +90,7 @@ fun MainScaffold(
                                         Text(
                                             fontSize = TextUnit.Unspecified,
                                             text = stringResource(id = R.string.common_search),
-                                            color = Color.White
+                                            color = MaterialTheme.colors.onPrimary
                                         )
                                     }
                                     BasicTextField(
@@ -105,7 +105,7 @@ fun MainScaffold(
                                                     state.positionToEnd()
                                                 }
                                             },
-                                        textStyle = MaterialTheme.typography.h6.merge(TextStyle(color = Color.White)),
+                                        textStyle = MaterialTheme.typography.h6.merge(TextStyle(color = MaterialTheme.colors.onPrimary)),
                                         keyboardOptions = KeyboardOptions.Default.copy(
                                             capitalization = KeyboardCapitalization.Sentences,
                                             imeAction = ImeAction.Search
@@ -115,7 +115,7 @@ fun MainScaffold(
                                             searchListener(state.getValue())
                                             softwareKeyboardController?.hide()
                                         }),
-                                        cursorBrush = SolidColor(Color.White)
+                                        cursorBrush = SolidColor(MaterialTheme.colors.onPrimary)
                                     )
                                     LaunchedEffect(isShowSearch) {
                                         requester.requestFocus()
@@ -124,7 +124,7 @@ fun MainScaffold(
                                     Text(
                                         fontSize = TextUnit.Unspecified,
                                         text = title,
-                                        color = Color.White
+                                        color = MaterialTheme.colors.onPrimary
                                     )
                                 }
                             } ?: run {
@@ -165,7 +165,7 @@ fun MainScaffold(
                                 Icon(
                                     imageVector = icon,
                                     contentDescription = contentDescription,
-                                    tint = Color.White
+                                    tint = MaterialTheme.colors.onPrimary
                                 )
                             }
                         }
@@ -185,13 +185,13 @@ fun MainScaffold(
                                     Icon(
                                         imageVector = Icons.Default.Close,
                                         contentDescription = "Search",
-                                        tint = Color.White
+                                        tint = MaterialTheme.colors.onPrimary
                                     )
                                 } else {
                                     Icon(
                                         imageVector = Icons.Default.Search,
                                         contentDescription = "Search",
-                                        tint = Color.White
+                                        tint = MaterialTheme.colors.onPrimary
                                     )
                                 }
                             }
@@ -228,8 +228,8 @@ fun MainScaffold(
 @Composable
 fun PreviewMainScaffold() {
     MyTheme {
-        Surface {
-            MainScaffold {}
-        }
+        MainScaffold(
+            title = "Title"
+        ) {}
     }
 }
