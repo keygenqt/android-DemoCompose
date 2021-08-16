@@ -13,16 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-package com.keygenqt.demo_contacts.modules.favorite.data.models
+
+package com.keygenqt.demo_contacts.modules.favorite.data.responses
 
 import androidx.compose.runtime.Immutable
 
 @Immutable
-data class ProductPriceImageModel(
-    val format: String,
-    val width: Int,
-    val height: Int,
-    val imageType: String,
-    val url: String,
+data class FavoritesResponse(
+    val entries: List<FavoriteResponse>,
+)
+
+@Immutable
+data class FavoriteResponse(
+    val code: String?,
+    val name: String?,
+    val description: String?,
+    val price: FavoritePriceResponse,
+)
+
+@Immutable
+class FavoritePriceResponse(
+    val value: Double?,
+    val priceGroupCode: String?,
+    val icon: FavoriteImageResponse?,
+)
+
+@Immutable
+class FavoriteImageResponse(
+    val format: String?,
+    val width: Int?,
+    val height: Int?,
+    val imageType: String?,
+    val url: String?,
 )

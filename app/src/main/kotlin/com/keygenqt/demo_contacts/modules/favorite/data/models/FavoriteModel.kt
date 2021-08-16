@@ -14,12 +14,19 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.other.services.data.impl
+package com.keygenqt.demo_contacts.modules.favorite.data.models
 
-import com.keygenqt.demo_contacts.base.AppDatabase
-import com.keygenqt.demo_contacts.base.preferences.AppPreferences
+import androidx.compose.runtime.Immutable
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.keygenqt.demo_contacts.base.interfaces.IModel
 
-interface DataBrandModel {
-    val db: AppDatabase
-    val preferences: AppPreferences
-}
+@Entity
+@Immutable
+data class FavoriteModel(
+    @PrimaryKey override val id: String,
+    val name: String,
+    val description: String?,
+    @Embedded val price: FavoritePriceModel,
+) : IModel

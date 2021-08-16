@@ -81,7 +81,7 @@ fun StartScreen2(onNext: () -> Unit = {}) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                text = stringResource(id = R.string.start_2_title).uppercase(Locale.getDefault()),
+                text = stringResource(id = R.string.start_2_title).uppercase(),
                 style = MaterialTheme.typography.h6,
             )
 

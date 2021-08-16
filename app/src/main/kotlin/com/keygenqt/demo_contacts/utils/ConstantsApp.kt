@@ -13,9 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.utils
 
+import com.keygenqt.demo_contacts.BuildConfig
+
 object ConstantsApp {
-    const val API_URL = ""
+    val API_URL
+        get() =
+            if (BuildConfig.DEBUG)
+                "https://api.c5ia1s20aa-aromaluxe1-s1-public.model-t.cc.commerce.ondemand.com/rg/v1/newRG/"
+            else
+                "https://api.c5ia1s20aa-aromaluxe1-p1-public.model-t.cc.commerce.ondemand.com/rg/v1/newRG/"
 }

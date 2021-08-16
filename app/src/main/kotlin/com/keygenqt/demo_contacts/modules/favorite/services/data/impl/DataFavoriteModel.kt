@@ -13,13 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.favorite.services.data.impl
 
+import androidx.paging.PagingSource
 import com.keygenqt.demo_contacts.base.AppDatabase
 import com.keygenqt.demo_contacts.base.preferences.AppPreferences
+import com.keygenqt.demo_contacts.modules.favorite.data.dao.DaoFavoriteModel
+import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 
-interface DataBrandModel {
+interface DataFavoriteModel {
     val db: AppDatabase
     val preferences: AppPreferences
+
+    private val dao: DaoFavoriteModel get() = db.daoFavorite()
+
+    fun pagingList(): PagingSource<Int, FavoriteModel> {
+        return dao.pagingSource()
+    }
+
+    suspend fun insert(models: List<FavoriteModel>) {
+        dao.insertModels(models)
+    }
+
+    suspend fun clear() {
+        dao.clear()
+    }
+
+    suspend fun count(): Int {
+        return dao.count()
+    }
 }

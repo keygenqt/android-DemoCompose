@@ -1,0 +1,10 @@
+<resources>
+    <!-- Favorite -->
+    <string name="favorite_title">Избранное</string>
+    <plurals name="favorite_subtitle">
+        <item quantity="one">%d товар</item>
+        <item quantity="few">%d товара</item>
+        <item quantity="many">%d товаров</item>
+        <item quantity="other">%d товаров</item>
+    </plurals>
+</resources>

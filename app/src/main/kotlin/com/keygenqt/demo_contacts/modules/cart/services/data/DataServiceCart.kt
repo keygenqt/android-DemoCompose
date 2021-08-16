@@ -14,15 +14,15 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.catalog.services.data
+package com.keygenqt.demo_contacts.modules.cart.services.data
 
 import com.keygenqt.demo_contacts.base.AppDatabase
 import com.keygenqt.demo_contacts.base.BaseDataService
 import com.keygenqt.demo_contacts.base.preferences.AppPreferences
-import com.keygenqt.demo_contacts.modules.catalog.services.data.impl.DataBrandModel
+import com.keygenqt.demo_contacts.modules.cart.services.data.impl.DataCartModel
 
-class DataServiceCatalog(
+class DataServiceCart(
     override val db: AppDatabase,
     override val preferences: AppPreferences,
-) : BaseDataService<DataServiceCatalog>,
-    DataBrandModel
+) : BaseDataService<DataServiceCart>,
+    DataCartModel

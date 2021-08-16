@@ -25,5 +25,5 @@ object ConstantsPaging {
 
     // const for api query
     const val MAX_PAGE_SIZE = 100
-    const val PAGE_LIMIT = 5
+    const val PER_PAGE = 5
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.favorite.data.dao
 
 import androidx.paging.PagingSource
@@ -21,20 +21,23 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.keygenqt.demo_contacts.modules.favorite.data.models.ProductModel
+import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface DaoProductModel {
-    @Query("SELECT * FROM ProductModel")
-    fun pagingSource(): PagingSource<Int, ProductModel>
+interface DaoFavoriteModel {
+    @Query("SELECT * FROM FavoriteModel")
+    fun pagingSource(): PagingSource<Int, FavoriteModel>
 
-    @Query("SELECT * FROM ProductModel WHERE id = :id")
-    fun getModel(id: Int): Flow<ProductModel>
+    @Query("SELECT * FROM FavoriteModel WHERE id = :id")
+    fun getModel(id: Int): Flow<FavoriteModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertModels(models: List<ProductModel>)
+    suspend fun insertModels(models: List<FavoriteModel>)
 
-    @Query("DELETE FROM ProductModel")
+    @Query("DELETE FROM FavoriteModel")
     suspend fun clear()
+
+    @Query("SELECT COUNT(*) FROM FavoriteModel")
+    suspend fun count(): Int
 }

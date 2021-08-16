@@ -14,12 +14,15 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.catalog.services.data.impl
+package com.keygenqt.demo_contacts.modules.profile.services.data
 
 import com.keygenqt.demo_contacts.base.AppDatabase
+import com.keygenqt.demo_contacts.base.BaseDataService
 import com.keygenqt.demo_contacts.base.preferences.AppPreferences
+import com.keygenqt.demo_contacts.modules.profile.services.data.impl.DataProfileModel
 
-interface DataBrandModel {
-    val db: AppDatabase
-    val preferences: AppPreferences
-}
+class DataServiceProfile(
+    override val db: AppDatabase,
+    override val preferences: AppPreferences,
+) : BaseDataService<DataServiceProfile>,
+    DataProfileModel

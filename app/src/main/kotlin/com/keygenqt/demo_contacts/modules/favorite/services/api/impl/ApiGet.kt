@@ -13,7 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.favorite.services.api.impl
 
-interface ApiGet
+import androidx.annotation.IntRange
+import com.keygenqt.demo_contacts.modules.favorite.data.responses.FavoritesResponse
+import com.keygenqt.demo_contacts.utils.ConstantsPaging
+import retrofit2.Response
+import retrofit2.http.GET
+import retrofit2.http.Query
+
+interface ApiGet {
+    @GET("customers/current/wishlist/rgWishlist/favorites")
+    suspend fun getListFavorites(
+        @Query("page")
+        page: Int = 1,
+        @IntRange(from = 1, to = ConstantsPaging.MAX_PAGE_SIZE.toLong())
+        @Query("per-page")
+        perPage: Int = ConstantsPaging.PER_PAGE,
+    ): Response<FavoritesResponse>
+}

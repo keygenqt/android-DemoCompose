@@ -14,14 +14,12 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.favorite.data.models
+package com.keygenqt.demo_contacts.modules.other.services.data.impl
 
-import androidx.compose.runtime.Immutable
-import androidx.room.Embedded
+import com.keygenqt.demo_contacts.base.AppDatabase
+import com.keygenqt.demo_contacts.base.preferences.AppPreferences
 
-@Immutable
-data class ProductPriceModel(
-    val value: Double = 0.0,
-    val priceGroupCode: String = "",
-    @Embedded val icon: ProductPriceImageModel? = null,
-)
+interface DataOtherModel {
+    val db: AppDatabase
+    val preferences: AppPreferences
+}

@@ -14,19 +14,12 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.favorite.data.models
+package com.keygenqt.demo_contacts.modules.cart.services.data.impl
 
-import androidx.compose.runtime.Immutable
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.keygenqt.demo_contacts.base.interfaces.IModel
+import com.keygenqt.demo_contacts.base.AppDatabase
+import com.keygenqt.demo_contacts.base.preferences.AppPreferences
 
-@Entity
-@Immutable
-data class ProductModel(
-    @PrimaryKey override val id: String,
-    val name: String,
-    val description: String?,
-    @Embedded val price: ProductPriceModel,
-) : IModel
+interface DataCartModel {
+    val db: AppDatabase
+    val preferences: AppPreferences
+}

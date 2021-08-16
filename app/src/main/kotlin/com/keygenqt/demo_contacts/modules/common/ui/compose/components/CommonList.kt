@@ -55,7 +55,7 @@ fun <T : Any> CommonList(
             SwipeRefreshIndicator(
                 state = st,
                 refreshTriggerDistance = tr,
-                contentColor = MaterialTheme.colors.primary,
+                contentColor = MaterialTheme.colors.onPrimary,
             )
         },
         modifier = modifier

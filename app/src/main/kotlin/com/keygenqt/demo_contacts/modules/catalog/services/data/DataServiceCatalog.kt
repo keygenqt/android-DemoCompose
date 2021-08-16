@@ -14,31 +14,15 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.favorite.data.responses
+package com.keygenqt.demo_contacts.modules.catalog.services.data
 
-import androidx.compose.runtime.Immutable
+import com.keygenqt.demo_contacts.base.AppDatabase
+import com.keygenqt.demo_contacts.base.BaseDataService
+import com.keygenqt.demo_contacts.base.preferences.AppPreferences
+import com.keygenqt.demo_contacts.modules.catalog.services.data.impl.DataCatalogModel
 
-@Immutable
-data class ProductResponse(
-    val code: String?,
-    val name: String?,
-    val description: String?,
-    val price: ProductPriceResponse,
-)
-
-
-@Immutable
-class ProductPriceResponse(
-    val value: Double?,
-    val priceGroupCode: String?,
-    val icon: ProductImageResponse?,
-)
-
-@Immutable
-class ProductImageResponse(
-    val format: String?,
-    val width: Int?,
-    val height: Int?,
-    val imageType: String?,
-    val url: String?,
-)
+class DataServiceCatalog(
+    override val db: AppDatabase,
+    override val preferences: AppPreferences,
+) : BaseDataService<DataServiceCatalog>,
+    DataCatalogModel

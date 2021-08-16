@@ -18,16 +18,16 @@ package com.keygenqt.demo_contacts.base
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.keygenqt.demo_contacts.modules.favorite.data.dao.DaoProductModel
-import com.keygenqt.demo_contacts.modules.favorite.data.models.ProductModel
+import com.keygenqt.demo_contacts.modules.favorite.data.dao.DaoFavoriteModel
+import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 
 @Database(
     entities = [
-        ProductModel::class,
+        FavoriteModel::class,
     ],
     version = 1,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun daoFavorite(): DaoProductModel
+    abstract fun daoFavorite(): DaoFavoriteModel
 }

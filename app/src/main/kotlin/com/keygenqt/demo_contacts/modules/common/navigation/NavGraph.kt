@@ -27,6 +27,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.paging.ExperimentalPagingApi
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
@@ -45,6 +46,7 @@ import com.keygenqt.demo_contacts.modules.other.ui.screens.StartScreen
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.screens.ProfileScreen
 
+@ExperimentalPagingApi
 @ExperimentalPagerApi
 @ExperimentalComposeUiApi
 @Composable

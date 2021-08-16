@@ -13,11 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.favorite.services.apiService.impl
 
+import com.keygenqt.demo_contacts.BuildConfig
+import com.keygenqt.demo_contacts.base.ResponseResult
+import com.keygenqt.demo_contacts.base.executeWithResponse
+import com.keygenqt.demo_contacts.modules.favorite.data.mappers.toModels
+import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.services.api.ApiFavorite
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 
 interface ApiServiceGet {
     val api: ApiFavorite
+
+    suspend fun getListFavorites(page: Int): ResponseResult<List<FavoriteModel>> {
+        return withContext(Dispatchers.IO) {
+            if (BuildConfig.DEBUG) delay(1000L) // Simulate slow internet
+            executeWithResponse {
+                api.getListFavorites(page)
+                    .body()
+                    ?.toModels()
+                    ?: emptyList()
+            }
+        }
+    }
 }

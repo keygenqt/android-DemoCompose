@@ -1,4 +1,8 @@
 <resources>
     <!-- Favorite -->
-    <string name="favorite_title">Welcome!</string>
+    <string name="favorite_title">Favorite</string>
+    <plurals name="favorite_subtitle">
+        <item quantity="one">%d product</item>
+        <item quantity="other">%d products</item>
+    </plurals>
 </resources>

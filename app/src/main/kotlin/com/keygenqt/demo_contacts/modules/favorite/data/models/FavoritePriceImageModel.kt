@@ -14,15 +14,15 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.services.data
+package com.keygenqt.demo_contacts.modules.favorite.data.models
 
-import com.keygenqt.demo_contacts.base.AppDatabase
-import com.keygenqt.demo_contacts.base.BaseDataService
-import com.keygenqt.demo_contacts.base.preferences.AppPreferences
-import com.keygenqt.demo_contacts.modules.profile.services.data.impl.DataBrandModel
+import androidx.compose.runtime.Immutable
 
-class DataServiceProfile(
-    override val db: AppDatabase,
-    override val preferences: AppPreferences,
-) : BaseDataService<DataServiceProfile>,
-    DataBrandModel
+@Immutable
+data class FavoritePriceImageModel(
+    val format: String,
+    val width: Int,
+    val height: Int,
+    val imageType: String,
+    val url: String,
+)

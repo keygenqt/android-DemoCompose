@@ -14,12 +14,12 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.cart.services.data.impl
+package com.keygenqt.demo_contacts.modules.profile.services.data.impl
 
 import com.keygenqt.demo_contacts.base.AppDatabase
 import com.keygenqt.demo_contacts.base.preferences.AppPreferences
 
-interface DataBrandModel {
+interface DataProfileModel {
     val db: AppDatabase
     val preferences: AppPreferences
 }

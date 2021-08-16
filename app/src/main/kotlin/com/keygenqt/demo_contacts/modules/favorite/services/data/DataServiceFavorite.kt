@@ -14,15 +14,15 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.other.services.data
+package com.keygenqt.demo_contacts.modules.favorite.services.data
 
 import com.keygenqt.demo_contacts.base.AppDatabase
 import com.keygenqt.demo_contacts.base.BaseDataService
 import com.keygenqt.demo_contacts.base.preferences.AppPreferences
-import com.keygenqt.demo_contacts.modules.other.services.data.impl.DataBrandModel
+import com.keygenqt.demo_contacts.modules.favorite.services.data.impl.DataFavoriteModel
 
-class DataServiceOther(
+class DataServiceFavorite(
     override val db: AppDatabase,
     override val preferences: AppPreferences,
-) : BaseDataService<DataServiceOther>,
-    DataBrandModel
+) : BaseDataService<DataServiceFavorite>,
+    DataFavoriteModel

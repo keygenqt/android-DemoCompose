@@ -31,7 +31,7 @@ import dagger.hilt.android.components.ViewModelComponent
 object ModuleViewModel {
 
     @Provides
-    fun provideDataServiceProfile(db: AppDatabase, preferences: AppPreferences) =
+    fun provideDataServiceCart(db: AppDatabase, preferences: AppPreferences) =
         DataServiceCart(db, preferences)
 
     @Provides
