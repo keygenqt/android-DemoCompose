@@ -14,13 +14,19 @@
  * limitations under the License.
  */
 
-package com.keygenqt.demo_contacts.modules.brands.services.api.impl
+package com.keygenqt.demo_contacts.modules.brands.data.models
 
-import com.keygenqt.demo_contacts.modules.brands.data.responses.FeedResponse
-import retrofit2.Response
-import retrofit2.http.GET
+import androidx.compose.runtime.Immutable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.keygenqt.demo_contacts.base.interfaces.IModelRelation
+import com.keygenqt.demo_contacts.modules.brands.data.responses.BannerImageResponse
 
-interface ApiGet {
-    @GET("feed")
-    suspend fun getFeed(): Response<FeedResponse>
-}
+@Immutable
+data class FeedBannerImageModel(
+    val format: String,
+    val width: Int,
+    val height: Int,
+    val imageType: String,
+    val url: String,
+)

@@ -33,13 +33,13 @@ import javax.inject.Inject
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(
     private val data: DataServiceFavorite,
-    repository: ApiServiceFavorite,
+    apiService: ApiServiceFavorite,
 ) : ViewModel() {
 
     @ExperimentalPagingApi
     val listFavorite: Flow<PagingData<FavoriteModel>> = Pager(
         config = PagingConfig(pageSize = ConstantsPaging.PER_PAGE),
-        remoteMediator = RemoteMediatorFavorite(data, repository)
+        remoteMediator = RemoteMediatorFavorite(data, apiService)
     ) {
         data.pagingList()
     }.flow

@@ -13,13 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-package com.keygenqt.demo_contacts.modules.brands.services.data.impl
 
-import com.keygenqt.demo_contacts.base.AppDatabase
-import com.keygenqt.demo_contacts.base.preferences.AppPreferences
+package com.keygenqt.demo_contacts.modules.brands.data.models
 
-interface DataBrandModel {
-    val db: AppDatabase
-    val preferences: AppPreferences
-}
+import androidx.compose.runtime.Immutable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.keygenqt.demo_contacts.base.interfaces.IModelRelation
+
+@Entity
+@Immutable
+data class FeedBrandModel(
+    @PrimaryKey
+    override val id: String,
+    override val ownerId: String,
+    val description: String,
+    val name: String,
+    val url: String,
+) : IModelRelation

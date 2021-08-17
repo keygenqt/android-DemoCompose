@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.favorite.services.data.impl
 
 import androidx.paging.PagingSource
@@ -32,8 +32,8 @@ interface DataFavoriteModel {
         return dao.pagingSource()
     }
 
-    suspend fun insert(models: List<FavoriteModel>) {
-        dao.insertModels(models)
+    suspend fun insert(vararg models: FavoriteModel) {
+        dao.insertModels(*models)
     }
 
     suspend fun clear() {

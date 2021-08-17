@@ -19,10 +19,10 @@ package com.keygenqt.demo_contacts.modules.brands.services.data
 import com.keygenqt.demo_contacts.base.AppDatabase
 import com.keygenqt.demo_contacts.base.BaseDataService
 import com.keygenqt.demo_contacts.base.preferences.AppPreferences
-import com.keygenqt.demo_contacts.modules.brands.services.data.impl.DataBrandModel
+import com.keygenqt.demo_contacts.modules.brands.services.data.impl.DataFeedModel
 
 class DataServiceBrands(
     override val db: AppDatabase,
     override val preferences: AppPreferences,
 ) : BaseDataService<DataServiceBrands>,
-    DataBrandModel
+    DataFeedModel

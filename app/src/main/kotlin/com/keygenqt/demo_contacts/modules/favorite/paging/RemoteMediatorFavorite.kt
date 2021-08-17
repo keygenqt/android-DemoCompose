@@ -69,7 +69,7 @@ class RemoteMediatorFavorite(
                         preferences.lastUpdateListFavorite = System.currentTimeMillis()
                         clear()
                     }
-                    insert(models)
+                    insert(*models.toTypedArray())
                 }
             }.error {
                 Timber.e(it)

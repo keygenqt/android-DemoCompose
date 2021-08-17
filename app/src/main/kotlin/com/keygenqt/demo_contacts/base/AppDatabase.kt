@@ -13,21 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.base
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.keygenqt.demo_contacts.modules.brands.data.dao.DaoFeedBannerModel
+import com.keygenqt.demo_contacts.modules.brands.data.dao.DaoFeedBrandModel
+import com.keygenqt.demo_contacts.modules.brands.data.dao.DaoFeedModel
+import com.keygenqt.demo_contacts.modules.brands.data.models.FeedBannerModel
+import com.keygenqt.demo_contacts.modules.brands.data.models.FeedBrandModel
+import com.keygenqt.demo_contacts.modules.brands.data.models.FeedModel
 import com.keygenqt.demo_contacts.modules.favorite.data.dao.DaoFavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 
 @Database(
     entities = [
         FavoriteModel::class,
+        FeedModel::class,
+        FeedBrandModel::class,
+        FeedBannerModel::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun daoFavorite(): DaoFavoriteModel
+    abstract fun daoFeed(): DaoFeedModel
+    abstract fun daoFeedBrandModel(): DaoFeedBrandModel
+    abstract fun daoFeedBannerModel(): DaoFeedBannerModel
 }

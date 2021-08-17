@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.favorite.data.mappers
 
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoritePriceImageModel
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoritePriceModel
 import com.keygenqt.demo_contacts.modules.favorite.data.responses.FavoritesResponse
+import com.keygenqt.demo_contacts.utils.ConstantsApp.API_URL
 
 fun FavoritesResponse.toModels(): List<FavoriteModel> {
     return entries.map {
@@ -37,7 +38,7 @@ fun FavoritesResponse.toModels(): List<FavoriteModel> {
                             width = icon.width ?: 0,
                             height = icon.height ?: 0,
                             imageType = icon.imageType ?: "",
-                            url = icon.url ?: "",
+                            url = icon.url?.let { link -> "${API_URL}$link" } ?: "",
                         )
                     },
                 )

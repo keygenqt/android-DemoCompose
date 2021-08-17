@@ -13,31 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-package com.keygenqt.demo_contacts.modules.favorite.data.dao
 
-import androidx.paging.PagingSource
+package com.keygenqt.demo_contacts.modules.brands.data.dao
+
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
+import com.keygenqt.demo_contacts.modules.brands.data.models.FeedModel
+import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface DaoFavoriteModel {
-    @Query("SELECT * FROM FavoriteModel")
-    fun pagingSource(): PagingSource<Int, FavoriteModel>
+interface DaoFeedModel {
 
-    @Query("SELECT * FROM FavoriteModel WHERE id = :id")
-    fun getModel(id: Int): Flow<FavoriteModel>
+    @Query("SELECT * FROM FeedModel LIMIT 1")
+    fun getModel(): Flow<FeedRelation?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertModels(vararg models: FavoriteModel)
+    suspend fun insertModels(vararg models: FeedModel)
 
-    @Query("DELETE FROM FavoriteModel")
+    @Query("DELETE FROM FeedModel")
     suspend fun clear()
-
-    @Query("SELECT COUNT(*) FROM FavoriteModel")
-    suspend fun count(): Int
 }

@@ -27,6 +27,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 interface ApiServiceGet {
+
     val api: ApiFavorite
 
     suspend fun getListFavorites(page: Int): ResponseResult<List<FavoriteModel>> {

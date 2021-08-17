@@ -14,13 +14,19 @@
  * limitations under the License.
  */
 
-package com.keygenqt.demo_contacts.modules.brands.services.api.impl
+package com.keygenqt.demo_contacts.modules.brands.data.dao
 
-import com.keygenqt.demo_contacts.modules.brands.data.responses.FeedResponse
-import retrofit2.Response
-import retrofit2.http.GET
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.keygenqt.demo_contacts.modules.brands.data.models.FeedBrandModel
 
-interface ApiGet {
-    @GET("feed")
-    suspend fun getFeed(): Response<FeedResponse>
+@Dao
+interface DaoFeedBrandModel {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertModels(vararg models: FeedBrandModel)
+
+    @Query("DELETE FROM FeedBrandModel")
+    suspend fun clear()
 }
