@@ -39,17 +39,17 @@ import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 @Composable
 fun CartScreen(
     viewModel: CartViewModel,
-    onNavigationEvent: (CartEvents) -> Unit = {},
+    onEvent: (CartEvents) -> Unit = {},
 ) {
     CartBody(
-        onNavigationEvent = onNavigationEvent,
+        onEvent = onEvent,
     )
 }
 
 @ExperimentalComposeUiApi
 @Composable
 fun CartBody(
-    onNavigationEvent: (CartEvents) -> Unit = {},
+    onEvent: (CartEvents) -> Unit = {},
 ) {
     MainScaffold {
         Column(

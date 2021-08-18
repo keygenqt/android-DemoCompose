@@ -27,8 +27,27 @@ import com.keygenqt.demo_contacts.base.interfaces.IModel
 data class FeedModel(
     @PrimaryKey override val id: String,
     val brandName: String,
-    @Ignore val banners: List<FeedBannerModel>,
-    @Ignore val brands: List<FeedBrandModel>,
+    @Ignore private val banners: List<FeedBannerModel>,
+    @Ignore private val brands: List<FeedBrandModel>,
 ) : IModel {
+
     constructor(id: String, brandName: String) : this(id, brandName, listOf(), listOf())
+
+    companion object {
+        fun List<FeedModel>.getBannersArray(): Array<FeedBannerModel> {
+            return this
+                .map { it.banners.toList() }
+                .reduce { acc, tags -> acc + tags }
+                .toTypedArray()
+        }
+
+        fun List<FeedModel>.getBrandsArray(): Array<FeedBrandModel> {
+            return this
+                .map { it.brands.toList() }
+                .reduce { acc, tags -> acc + tags }
+                .toTypedArray()
+        }
+    }
 }
+
+

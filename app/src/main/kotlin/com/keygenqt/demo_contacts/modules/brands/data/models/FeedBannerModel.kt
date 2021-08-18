@@ -27,6 +27,7 @@ import com.keygenqt.demo_contacts.base.interfaces.IModelRelation
 data class FeedBannerModel(
     @PrimaryKey override val id: String,
     override val ownerId: String,
-    @Embedded val image: FeedBannerImageModel?,
+    @Embedded val image: FeedBannerImageModel,
+    @Embedded val expandData: FeedBannerDataModel,
     val title: String,
 ) : IModelRelation

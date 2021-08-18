@@ -20,7 +20,7 @@ extra["constraintLayoutComposeVersion"] = "1.0.0-beta02"
 extra["pagingComposeVersion"] = "1.0.0-alpha12"
 
 // accompanist
-extra["accompanistVersion"] = "0.16.0"
+extra["accompanistVersion"] = "0.16.1"
 
 // network
 extra["retrofitVersion"] = "2.9.0"
@@ -42,9 +42,11 @@ extra["roomVersion"] = "2.3.0-beta02"
 // other
 extra["lottieVersions"] = "4.0.0"
 extra["timberVersion"] = "4.7.1"
-extra["startupVersion"] = "1.0.0"
+extra["startupVersion"] = "1.1.0"
 extra["spotlessVersion"] = "5.12.5"
 extra["gsonVersion"] = "2.8.7"
 extra["securityCryptoVersion"] = "1.1.0-alpha03"
 extra["coroutinesPlayServicesVersion"] = "1.3.5"
-extra["lottie"] = "4.0.0"
+extra["lottie"] = "4.1.0"
+extra["coilVersion"] = "1.3.2"
+extra["appcompatVersion"] = "1.3.1"

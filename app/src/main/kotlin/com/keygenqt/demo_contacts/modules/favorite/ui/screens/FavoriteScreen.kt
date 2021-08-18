@@ -59,7 +59,7 @@ import com.keygenqt.demo_contacts.theme.MyTheme
 @Composable
 fun FavoriteScreen(
     viewModel: FavoriteViewModel,
-    onNavigationEvent: (FavoriteEvents) -> Unit = {},
+    onEvent: (FavoriteEvents) -> Unit = {},
 ) {
     val localBaseViewModel = LocalBaseViewModel.current
 
@@ -70,7 +70,7 @@ fun FavoriteScreen(
     FavoriteBody(
         items = items,
         isLogin = isLogin,
-        onNavigationEvent = onNavigationEvent,
+        onEvent = onEvent,
     )
 }
 
@@ -79,7 +79,7 @@ fun FavoriteScreen(
 fun FavoriteBody(
     isLogin: Boolean = false,
     items: LazyPagingItems<FavoriteModel>,
-    onNavigationEvent: (FavoriteEvents) -> Unit = {},
+    onEvent: (FavoriteEvents) -> Unit = {},
 ) {
     val resources = LocalContext.current.resources
 

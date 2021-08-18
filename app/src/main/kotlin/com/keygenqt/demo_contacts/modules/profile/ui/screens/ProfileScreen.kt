@@ -39,17 +39,17 @@ import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 @Composable
 fun ProfileScreen(
     viewModel: ProfileViewModel,
-    onNavigationEvent: (ProfileEvents) -> Unit = {},
+    onEvent: (ProfileEvents) -> Unit = {},
 ) {
     ProfileBody(
-        onNavigationEvent = onNavigationEvent,
+        onEvent = onEvent,
     )
 }
 
 @ExperimentalComposeUiApi
 @Composable
 fun ProfileBody(
-    onNavigationEvent: (ProfileEvents) -> Unit = {},
+    onEvent: (ProfileEvents) -> Unit = {},
 ) {
     MainScaffold {
         Column(

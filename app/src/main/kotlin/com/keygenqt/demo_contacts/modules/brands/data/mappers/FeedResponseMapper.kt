@@ -16,13 +16,9 @@
 
 package com.keygenqt.demo_contacts.modules.brands.data.mappers
 
-import com.keygenqt.demo_contacts.modules.brands.data.models.FeedBannerImageModel
-import com.keygenqt.demo_contacts.modules.brands.data.models.FeedBannerModel
-import com.keygenqt.demo_contacts.modules.brands.data.models.FeedBrandModel
-import com.keygenqt.demo_contacts.modules.brands.data.models.FeedModel
+import com.keygenqt.demo_contacts.modules.brands.data.models.*
 import com.keygenqt.demo_contacts.modules.brands.data.responses.FeedResponse
-import com.keygenqt.demo_contacts.utils.ConstantsApp
-import com.keygenqt.demo_contacts.utils.ConstantsApp.API_URL
+import com.keygenqt.demo_contacts.utils.ConstantsApp.API_URL_BASE
 import java.util.*
 
 fun FeedResponse.toModel(): FeedModel {
@@ -35,15 +31,26 @@ fun FeedResponse.toModel(): FeedModel {
                 id = banner.id ?: UUID.randomUUID().toString(),
                 ownerId = rootId,
                 title = banner.title ?: "",
+                expandData = banner.expandData?.let { data ->
+                    FeedBannerDataModel(
+                        productCode = data.productCode ?: "",
+                        name = data.name ?: "",
+                        categoryCode = data.categoryCode ?: "",
+                        landingUrl = data.landingUrl ?: "",
+                        brandCode = data.brandCode ?: "",
+                        brandCategoryCode = data.brandCategoryCode ?: "",
+                        promotionCode = data.promotionCode ?: "",
+                    )
+                } ?: FeedBannerDataModel(),
                 image = banner.image?.let { icon ->
                     FeedBannerImageModel(
                         format = icon.format ?: "",
                         width = icon.width ?: 0,
                         height = icon.height ?: 0,
                         imageType = icon.imageType ?: "",
-                        url = icon.url?.let { link -> "$API_URL$link" } ?: "",
+                        url = icon.url?.let { link -> "$API_URL_BASE/$link" } ?: "",
                     )
-                },
+                } ?: FeedBannerImageModel(),
             )
         } ?: listOf(),
         brands = brands?.brands?.map { brand ->

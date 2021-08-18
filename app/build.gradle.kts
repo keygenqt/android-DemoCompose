@@ -18,6 +18,8 @@ plugins {
     id("com.google.gms.google-services")
     // https://firebase.google.com/products/crashlytics
     id("com.google.firebase.crashlytics")
+    // https://github.com/ben-manes/gradle-versions-plugin
+    id("com.github.ben-manes.versions") version "0.39.0"
 }
 
 spotless {
@@ -52,7 +54,6 @@ android {
             useSupportLibrary = true
         }
     }
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -79,6 +80,7 @@ android {
 dependencies {
 
     // base
+    implementation("androidx.appcompat:appcompat:${ex["appcompatVersion"]}")
     implementation("androidx.core:core-ktx:${ex["coreKtxVersion"]}")
 
     // retrofit
@@ -105,6 +107,7 @@ dependencies {
     // accompanist
     implementation("com.google.accompanist:accompanist-insets:${ex["accompanistVersion"]}")
     implementation("com.google.accompanist:accompanist-pager:${ex["accompanistVersion"]}")
+    implementation("com.google.accompanist:accompanist-pager-indicators:${ex["accompanistVersion"]}")
     implementation("com.google.accompanist:accompanist-swiperefresh:${ex["accompanistVersion"]}")
 
     // compose
@@ -123,6 +126,7 @@ dependencies {
     implementation("com.airbnb.android:lottie-compose:${ex["lottieVersions"]}")
 
     // other
+    implementation("io.coil-kt:coil-compose:${ex["coilVersion"]}")
     implementation("com.jakewharton.timber:timber:${ex["timberVersion"]}")
     implementation("androidx.startup:startup-runtime:${ex["startupVersion"]}")
     implementation("com.google.code.gson:gson:${ex["gsonVersion"]}")

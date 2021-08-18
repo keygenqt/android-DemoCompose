@@ -14,6 +14,6 @@ _(in progress)_
 
 ### Preview
 <p>
-<img src="data/vokoscreen-2021-08-16_15-39-59.gif" width="40%"/>
-<img src="data/vokoscreen-2021-08-16_15-41-03.gif" width="40%"/>
+<img src="data/vokoscreen-2021-08-18_13-54-45.gif" width="40%"/>
+<img src="data/vokoscreen-2021-08-18_13-55-32.gif" width="40%"/>
 </p>

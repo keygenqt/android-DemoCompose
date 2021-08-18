@@ -17,5 +17,5 @@
 package com.keygenqt.demo_contacts.modules.brands.ui.events
 
 sealed class BrandsEvents {
-    object NavigateBack : BrandsEvents()
+    object RefreshFeed : BrandsEvents()
 }

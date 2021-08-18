@@ -14,18 +14,16 @@
  * limitations under the License.
  */
 
-package com.keygenqt.demo_contacts.utils
+package com.keygenqt.demo_contacts.modules.brands.data.mock
 
-import com.keygenqt.demo_contacts.BuildConfig
+import com.keygenqt.demo_contacts.modules.brands.data.models.FeedModel
+import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
 
-object ConstantsApp {
-
-    val API_URL_BASE
-        get() =
-            if (BuildConfig.DEBUG)
-                "https://api.c5ia1s20aa-aromaluxe1-s1-public.model-t.cc.commerce.ondemand.com"
-            else
-                "https://api.c5ia1s20aa-aromaluxe1-p1-public.model-t.cc.commerce.ondemand.com"
-
-    val API_URL get() = "$API_URL_BASE/rg/v1/newRG/"
-}
+fun mockFeedModel() = FeedRelation(
+    owner = FeedModel(
+        id = "id",
+        brandName = "",
+    ),
+    banners = listOf(),
+    brands = listOf(),
+)

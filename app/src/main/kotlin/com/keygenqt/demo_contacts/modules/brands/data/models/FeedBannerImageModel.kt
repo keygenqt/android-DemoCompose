@@ -24,9 +24,9 @@ import com.keygenqt.demo_contacts.modules.brands.data.responses.BannerImageRespo
 
 @Immutable
 data class FeedBannerImageModel(
-    val format: String,
-    val width: Int,
-    val height: Int,
-    val imageType: String,
-    val url: String,
+    val format: String = "",
+    val width: Int = 0,
+    val height: Int = 0,
+    val imageType: String = "",
+    val url: String = "",
 )

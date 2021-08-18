@@ -16,10 +16,7 @@
 
 package com.keygenqt.demo_contacts.modules.brands.data.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.keygenqt.demo_contacts.modules.brands.data.models.FeedModel
 import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
 import kotlinx.coroutines.flow.Flow
@@ -27,8 +24,9 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface DaoFeedModel {
 
-    @Query("SELECT * FROM FeedModel LIMIT 1")
-    fun getModel(): Flow<FeedRelation?>
+    @Transaction
+    @Query("SELECT * FROM FeedModel")
+    fun getFeedRelation(): Flow<FeedRelation>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertModels(vararg models: FeedModel)

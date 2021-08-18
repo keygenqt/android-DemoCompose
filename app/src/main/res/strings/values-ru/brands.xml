@@ -1,0 +1,5 @@
+<resources>
+    <!-- Brands -->
+    <string name="brands_title">Бренды</string>
+    <string name="brands_empty_feed">Странно, ничего не найдено, попробуйте обновить страницу позже</string>
+</resources>

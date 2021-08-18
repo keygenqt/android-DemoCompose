@@ -1,4 +1,5 @@
 <resources>
     <!-- Brands -->
     <string name="brands_title">Brands</string>
+    <string name="brands_empty_feed">Strange, nothing was found, please try refreshing the page later</string>
 </resources>

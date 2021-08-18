@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.common.navigation
 
 import androidx.compose.material.Scaffold
@@ -28,12 +28,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.paging.ExperimentalPagingApi
+import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.AddChangeRouteListener
 import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
 import com.keygenqt.demo_contacts.modules.brands.ui.screens.BrandsScreen
+import com.keygenqt.demo_contacts.modules.brands.ui.viewModels.BrandsViewModel
 import com.keygenqt.demo_contacts.modules.cart.ui.events.CartEvents
 import com.keygenqt.demo_contacts.modules.cart.ui.screens.CartScreen
 import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
@@ -47,6 +49,7 @@ import com.keygenqt.demo_contacts.modules.other.ui.screens.StartScreen
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.screens.ProfileScreen
 
+@ExperimentalCoilApi
 @ExperimentalPagingApi
 @ExperimentalPagerApi
 @ExperimentalComposeUiApi
@@ -92,9 +95,10 @@ fun GuestNavGraph(navController: NavHostController) {
                     }
                 }
                 composable(NavScreen.BrandsScreen.route) {
-                    BrandsScreen(viewModel = hiltViewModel()) { event ->
+                    val viewModel: BrandsViewModel = hiltViewModel()
+                    BrandsScreen(viewModel = viewModel) { event ->
                         when (event) {
-                            is BrandsEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                            is BrandsEvents.RefreshFeed -> viewModel.updateFeed()
                         }
                     }
                 }

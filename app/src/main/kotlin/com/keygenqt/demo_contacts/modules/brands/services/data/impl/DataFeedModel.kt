@@ -22,6 +22,8 @@ import com.keygenqt.demo_contacts.modules.brands.data.dao.DaoFeedBannerModel
 import com.keygenqt.demo_contacts.modules.brands.data.dao.DaoFeedBrandModel
 import com.keygenqt.demo_contacts.modules.brands.data.dao.DaoFeedModel
 import com.keygenqt.demo_contacts.modules.brands.data.models.FeedModel
+import com.keygenqt.demo_contacts.modules.brands.data.models.FeedModel.Companion.getBannersArray
+import com.keygenqt.demo_contacts.modules.brands.data.models.FeedModel.Companion.getBrandsArray
 import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
 import kotlinx.coroutines.flow.Flow
 
@@ -35,27 +37,23 @@ interface DataFeedModel {
     private val daoBanner: DaoFeedBannerModel get() = db.daoFeedBannerModel()
 
     suspend fun insert(vararg models: FeedModel) {
-        // save brands
-        daoBrand.insertModels(*models
-            .map { it.brands.toList() }
-            .reduce { acc, tags -> acc + tags }
-            .toTypedArray())
-
-        // save brands
-        daoBanner.insertModels(*models
-            .map { it.banners.toList() }
-            .reduce { acc, tags -> acc + tags }
-            .toTypedArray())
-
-        // save model
-        dao.insertModels(*models)
+        models.toList().let {
+            // save brands
+            daoBrand.insertModels(*it.getBrandsArray())
+            // save banners
+            daoBanner.insertModels(*it.getBannersArray())
+            // save model
+            dao.insertModels(*models)
+        }
     }
 
     suspend fun clear() {
+        daoBrand.clear()
+        daoBanner.clear()
         dao.clear()
     }
 
     fun getFeedRelation(): Flow<FeedRelation?> {
-        return dao.getModel()
+        return dao.getFeedRelation()
     }
 }

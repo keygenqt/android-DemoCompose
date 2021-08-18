@@ -13,24 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.common.ui.compose.components
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.Box
-import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.airbnb.lottie.compose.*
 import com.keygenqt.demo_contacts.R
-import com.keygenqt.demo_contacts.theme.MyTheme
 
 @Composable
 fun CommonLoading(
     visibility: Boolean,
+    modifier: Modifier = Modifier,
 ) {
     val composition by rememberLottieComposition(
         spec = LottieCompositionSpec.RawRes(R.raw.loading_animation),
@@ -42,23 +39,12 @@ fun CommonLoading(
     )
 
     if (visibility) {
-        Box {
+        Box(modifier = modifier) {
             LottieAnimation(
                 composition = composition,
                 progress = progress,
                 modifier = Modifier.align(Alignment.Center)
             )
-        }
-    }
-}
-
-@Preview("Light")
-@Preview("Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Composable
-fun PreviewCommonLoading() {
-    MyTheme {
-        Surface {
-            CommonLoading(true)
         }
     }
 }

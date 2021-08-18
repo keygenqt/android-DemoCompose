@@ -20,7 +20,7 @@ import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoritePriceImageModel
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoritePriceModel
 import com.keygenqt.demo_contacts.modules.favorite.data.responses.FavoritesResponse
-import com.keygenqt.demo_contacts.utils.ConstantsApp.API_URL
+import com.keygenqt.demo_contacts.utils.ConstantsApp.API_URL_BASE
 
 fun FavoritesResponse.toModels(): List<FavoriteModel> {
     return entries.map {
@@ -38,7 +38,7 @@ fun FavoritesResponse.toModels(): List<FavoriteModel> {
                             width = icon.width ?: 0,
                             height = icon.height ?: 0,
                             imageType = icon.imageType ?: "",
-                            url = icon.url?.let { link -> "${API_URL}$link" } ?: "",
+                            url = icon.url?.let { link -> "${API_URL_BASE}/$link" } ?: "",
                         )
                     },
                 )

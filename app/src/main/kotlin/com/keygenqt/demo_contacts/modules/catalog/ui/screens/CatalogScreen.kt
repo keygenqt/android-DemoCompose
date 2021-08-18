@@ -39,17 +39,17 @@ import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 @Composable
 fun CatalogScreen(
     viewModel: CatalogViewModel,
-    onNavigationEvent: (CatalogEvents) -> Unit = {},
+    onEvent: (CatalogEvents) -> Unit = {},
 ) {
     CatalogBody(
-        onNavigationEvent = onNavigationEvent,
+        onEvent = onEvent,
     )
 }
 
 @ExperimentalComposeUiApi
 @Composable
 fun CatalogBody(
-    onNavigationEvent: (CatalogEvents) -> Unit = {},
+    onEvent: (CatalogEvents) -> Unit = {},
 ) {
     MainScaffold {
         Column(

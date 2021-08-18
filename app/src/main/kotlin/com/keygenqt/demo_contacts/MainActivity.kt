@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.paging.ExperimentalPagingApi
+import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.modules.common.navigation.GuestNavGraph
@@ -45,6 +46,7 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController
 
+    @ExperimentalCoilApi
     @ExperimentalPagingApi
     @ExperimentalPagerApi
     @ExperimentalComposeUiApi

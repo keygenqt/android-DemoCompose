@@ -14,18 +14,17 @@
  * limitations under the License.
  */
 
-package com.keygenqt.demo_contacts.utils
+package com.keygenqt.demo_contacts.modules.brands.data.models
 
-import com.keygenqt.demo_contacts.BuildConfig
+import androidx.compose.runtime.Immutable
 
-object ConstantsApp {
-
-    val API_URL_BASE
-        get() =
-            if (BuildConfig.DEBUG)
-                "https://api.c5ia1s20aa-aromaluxe1-s1-public.model-t.cc.commerce.ondemand.com"
-            else
-                "https://api.c5ia1s20aa-aromaluxe1-p1-public.model-t.cc.commerce.ondemand.com"
-
-    val API_URL get() = "$API_URL_BASE/rg/v1/newRG/"
-}
+@Immutable
+data class FeedBannerDataModel(
+    val productCode: String = "",
+    val name: String = "",
+    val categoryCode: String = "",
+    val landingUrl: String = "",
+    val brandCode: String = "",
+    val brandCategoryCode: String = "",
+    val promotionCode: String = "",
+)

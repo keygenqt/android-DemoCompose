@@ -36,11 +36,11 @@ import kotlinx.coroutines.launch
 @Composable
 fun StartScreen(
     viewModel: OtherViewModel,
-    onNavigationEvent: (StartEvents) -> Unit = {},
+    onEvent: (StartEvents) -> Unit = {},
 ) {
     // Here variable initialization -> viewModel
     StartBody(
-        onNavigationEvent = onNavigationEvent,
+        onEvent = onEvent,
     )
 }
 
@@ -48,7 +48,7 @@ fun StartScreen(
 @ExperimentalPagerApi
 @Composable
 fun StartBody(
-    onNavigationEvent: (StartEvents) -> Unit = {},
+    onEvent: (StartEvents) -> Unit = {},
 ) {
     val scope = rememberCoroutineScope()
     val pagerState = rememberPagerState(pageCount = 4)
@@ -65,7 +65,7 @@ fun StartBody(
                     }
                 }
                 1 -> StartScreen2 {
-                    onNavigationEvent(StartEvents.NavigateToBrands)
+                    onEvent(StartEvents.NavigateToBrands)
                 }
             }
         }
