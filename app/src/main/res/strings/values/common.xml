@@ -17,6 +17,7 @@
     <string name="form_button_submit">Submit</string>
 
     <!-- Common-->
+    <string name="common_state_empty_title">Nothing found</string>
     <string name="common_go_to_catalog">Go to catalog</string>
     <string name="common_sign_in">Sign In</string>
     <string name="common_sign_up">Sign Up</string>

@@ -17,6 +17,7 @@
 package com.keygenqt.demo_contacts.base
 
 import androidx.paging.PagingSource
+import com.keygenqt.demo_contacts.base.interfaces.IModel
 
 sealed class ResponseResult<out R> {
     data class Success<out T>(val data: T) : ResponseResult<T>()
@@ -86,3 +87,10 @@ inline infix fun <T> ResponseResult<T>.done(predicate: () -> Unit): ResponseResu
     predicate.invoke()
     return this
 }
+
+fun ResponseResult<*>?.isEndDouble(lastStateId: String?) = this != null
+        && this is ResponseResult.Success
+        && data is List<*>
+        && data.isNotEmpty()
+        && data.last() is IModel
+        && (data.last() as IModel).id == lastStateId

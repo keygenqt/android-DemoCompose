@@ -33,7 +33,7 @@ fun FeedScreen(
     viewModel: BrandsViewModel,
     onEvent: (BrandsEvents) -> Unit = {},
 ) {
-    val feed by viewModel.getFeed().collectAsState(null)
+    val feed by viewModel.getFeed().collectAsState(false)
     val commonError: String? by viewModel.commonError.collectAsState()
     val loading: Boolean by viewModel.loading.collectAsState()
 

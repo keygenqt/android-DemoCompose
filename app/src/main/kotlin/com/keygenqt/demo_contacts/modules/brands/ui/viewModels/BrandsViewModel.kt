@@ -25,6 +25,7 @@ import com.keygenqt.demo_contacts.base.success
 import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
 import com.keygenqt.demo_contacts.modules.brands.services.apiService.ApiServiceBrands
 import com.keygenqt.demo_contacts.modules.brands.services.data.DataServiceBrands
+import com.keygenqt.demo_contacts.utils.ConstantsPaging
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
@@ -46,10 +47,13 @@ class BrandsViewModel @Inject constructor(
     val loading: StateFlow<Boolean> get() = _loading.asStateFlow()
 
     init {
-        updateFeed()
+        if (System.currentTimeMillis() - data.preferences.lastUpdateFeed >= ConstantsPaging.CACHE_TIMEOUT) {
+            updateFeed()
+        }
     }
 
     fun updateFeed() {
+        data.preferences.lastUpdateFeed = System.currentTimeMillis()
         // start update
         _commonError.value = null
         _loading.value = true

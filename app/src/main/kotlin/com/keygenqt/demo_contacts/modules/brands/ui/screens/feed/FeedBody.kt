@@ -26,6 +26,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -46,16 +47,18 @@ import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.ListenRefresh
 import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
 import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
+import com.keygenqt.demo_contacts.modules.common.navigation.NavScreen
 import com.keygenqt.demo_contacts.modules.common.ui.compose.components.MainScaffold
-import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.EmptyScreen
+import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.EmptyListScreen
 import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.LoadingScreen
+import timber.log.Timber
 
 @ExperimentalCoilApi
 @ExperimentalPagerApi
 @ExperimentalComposeUiApi
 @Composable
 fun FeedBody(
-    feed: FeedRelation?,
+    feed: Any?,
     commonError: String? = null,
     loading: Boolean = true,
     onEvent: (BrandsEvents) -> Unit = {},
@@ -66,9 +69,11 @@ fun FeedBody(
 
         }
     ) {
-
         LocalBaseViewModel.current.ListenRefresh {
-            onEvent(BrandsEvents.RefreshFeed)
+            Timber.e("--------------------------")
+            Timber.e(it)
+            Timber.e(NavScreen.BrandsScreen.route)
+            if (it == NavScreen.BrandsScreen.route) onEvent(BrandsEvents.RefreshFeed)
         }
 
         SwipeRefresh(
@@ -85,92 +90,100 @@ fun FeedBody(
                 .fillMaxSize()
                 .statusBarsPadding()
         ) {
-            feed?.let { model ->
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxSize()
-                ) {
-                    item {
-                        FeedItemBanners(
-                            banners = model.banners,
-                            onEvent = onEvent
-                        )
-                    }
-                    item {
-                        FeedItemBrands(
-                            name = model.owner.brandName,
-                            brands = model.brands,
-                            onEvent = onEvent
-                        )
-                    }
-                    item {
-                        Card(
-                            shape = MaterialTheme.shapes.medium,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp)
-                                .clickable(onClick = {
-
-                                })
-                        ) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
+            when (feed) {
+                is FeedRelation -> {
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxSize()
+                    ) {
+                        item {
+                            FeedItemBanners(
+                                banners = feed.banners,
+                                onEvent = onEvent
+                            )
+                        }
+                        item {
+                            FeedItemBrands(
+                                name = feed.owner.brandName,
+                                brands = feed.brands,
+                                onEvent = onEvent
+                            )
+                        }
+                        item {
+                            Card(
+                                shape = MaterialTheme.shapes.medium,
                                 modifier = Modifier
+                                    .fillMaxWidth()
                                     .padding(16.dp)
+                                    .clickable(onClick = {
+
+                                    })
                             ) {
-                                Box(
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier
-                                        .clip(RoundedCornerShape(4.dp))
-                                        .size(48.dp)
-                                        .background(Color.Black)
+                                        .padding(16.dp)
                                 ) {
-                                    Image(
-                                        painter = painterResource(R.drawable.ic_brands_city_pin),
-                                        contentDescription = null,
+                                    Box(
                                         modifier = Modifier
-                                            .size(30.dp)
-                                            .align(Alignment.Center)
-                                    )
-                                }
-                                Column {
-                                    Text(
-                                        color = MaterialTheme.colors.onBackground,
-                                        text = stringResource(id = R.string.brands_btn_shops),
-                                        modifier = Modifier
-                                            .padding(start = 16.dp, end = 16.dp)
-                                    )
+                                            .clip(RoundedCornerShape(4.dp))
+                                            .size(48.dp)
+                                            .background(Color.Black)
+                                    ) {
+                                        Image(
+                                            painter = painterResource(R.drawable.ic_brands_city_pin),
+                                            contentDescription = null,
+                                            modifier = Modifier
+                                                .size(30.dp)
+                                                .align(Alignment.Center)
+                                        )
+                                    }
+                                    Column {
+                                        Text(
+                                            color = MaterialTheme.colors.onBackground,
+                                            text = stringResource(id = R.string.brands_btn_shops),
+                                            modifier = Modifier
+                                                .padding(start = 16.dp, end = 16.dp)
+                                        )
+                                    }
                                 }
                             }
                         }
-                    }
-                    item {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable(onClick = {
-
-                                })
-                        ) {
-                            Image(
-                                contentScale = ContentScale.FillWidth,
-                                painter = painterResource(R.drawable.ic_new_items),
-                                contentDescription = stringResource(id = R.string.brands_new_items),
+                        item {
+                            Column(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                            )
+                                    .clickable(onClick = {
 
-                            Spacer(modifier = Modifier.size(16.dp))
+                                    })
+                            ) {
+                                Image(
+                                    contentScale = ContentScale.FillWidth,
+                                    painter = painterResource(R.drawable.ic_new_items),
+                                    contentDescription = stringResource(id = R.string.brands_new_items),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                )
+
+                                Spacer(modifier = Modifier.size(16.dp))
+                            }
                         }
                     }
                 }
-            } ?: run {
-                if (!loading) {
-                    EmptyScreen(
-                        text = stringResource(id = R.string.brands_empty_feed),
-                        painter = painterResource(id = R.drawable.ic_common_not_found)
-                    )
-                } else {
-                    LoadingScreen(loading)
+                is Boolean -> {
+                    LaunchedEffect(feed) {
+                        Timber.e("Initial data")
+                    }
+                }
+                else -> {
+                    if (!loading) {
+                        EmptyListScreen(
+                            text = stringResource(id = R.string.brands_empty_feed),
+                            painter = painterResource(id = R.drawable.ic_common_not_found)
+                        )
+                    } else {
+                        LoadingScreen(loading)
+                    }
                 }
             }
         }

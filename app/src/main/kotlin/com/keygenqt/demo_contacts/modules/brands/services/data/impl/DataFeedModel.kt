@@ -56,4 +56,8 @@ interface DataFeedModel {
     fun getFeedRelation(): Flow<FeedRelation?> {
         return dao.getFeedRelation()
     }
+
+    suspend fun count(): Int {
+        return dao.count()
+    }
 }

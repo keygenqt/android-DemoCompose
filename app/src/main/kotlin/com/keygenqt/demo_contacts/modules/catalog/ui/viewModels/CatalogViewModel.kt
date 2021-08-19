@@ -17,8 +17,41 @@
 package com.keygenqt.demo_contacts.modules.catalog.ui.viewModels
 
 import androidx.lifecycle.ViewModel
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.keygenqt.demo_contacts.modules.catalog.data.models.BrandModel
+import com.keygenqt.demo_contacts.modules.catalog.data.relations.CategoryRelation
+import com.keygenqt.demo_contacts.modules.catalog.paging.BrandsRemoteMediator
+import com.keygenqt.demo_contacts.modules.catalog.paging.CategoriesRemoteMediator
+import com.keygenqt.demo_contacts.modules.catalog.services.apiService.ApiServiceCatalog
+import com.keygenqt.demo_contacts.modules.catalog.services.data.DataServiceCatalog
+import com.keygenqt.demo_contacts.utils.ConstantsPaging
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
-class CatalogViewModel @Inject constructor() : ViewModel()
+class CatalogViewModel @Inject constructor(
+    private val data: DataServiceCatalog,
+    apiService: ApiServiceCatalog,
+) : ViewModel() {
+
+    @ExperimentalPagingApi
+    val listBrands: Flow<PagingData<BrandModel>> = Pager(
+        config = PagingConfig(pageSize = ConstantsPaging.PER_PAGE),
+        remoteMediator = BrandsRemoteMediator(data, apiService)
+    ) {
+        data.pagingListBrandModel()
+    }.flow
+
+    @ExperimentalPagingApi
+    val listCategories: Flow<PagingData<CategoryRelation>> = Pager(
+        config = PagingConfig(pageSize = ConstantsPaging.PER_PAGE),
+        remoteMediator = CategoriesRemoteMediator(data, apiService)
+    ) {
+        data.pagingListCategoryModel()
+    }.flow
+
+}

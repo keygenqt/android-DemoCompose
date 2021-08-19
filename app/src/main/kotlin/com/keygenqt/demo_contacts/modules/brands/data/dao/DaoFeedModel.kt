@@ -33,4 +33,7 @@ interface DaoFeedModel {
 
     @Query("DELETE FROM FeedModel")
     suspend fun clear()
+
+    @Query("SELECT COUNT(*) FROM FeedModel")
+    suspend fun count(): Int
 }

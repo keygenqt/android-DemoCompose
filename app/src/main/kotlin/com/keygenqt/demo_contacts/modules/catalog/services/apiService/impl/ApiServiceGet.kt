@@ -13,11 +13,46 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.catalog.services.apiService.impl
 
+import com.keygenqt.demo_contacts.BuildConfig
+import com.keygenqt.demo_contacts.base.ResponseResult
+import com.keygenqt.demo_contacts.base.executeWithResponse
+import com.keygenqt.demo_contacts.modules.catalog.data.mappers.toModels
+import com.keygenqt.demo_contacts.modules.catalog.data.models.BrandModel
+import com.keygenqt.demo_contacts.modules.catalog.data.models.CategoryModel
 import com.keygenqt.demo_contacts.modules.catalog.services.api.ApiCatalog
+import com.keygenqt.demo_contacts.utils.ConstantsApp
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 
 interface ApiServiceGet {
+
     val api: ApiCatalog
+
+    suspend fun getListCatalog(page: Int): ResponseResult<List<CategoryModel>> {
+        return withContext(Dispatchers.IO) {
+            if (BuildConfig.DEBUG) delay(ConstantsApp.DEBUG_DELAY) // Simulate slow internet
+            executeWithResponse {
+                api.getListCatalog(page)
+                    .body()
+                    ?.toModels()
+                    ?: emptyList()
+            }
+        }
+    }
+
+    suspend fun getListBrands(page: Int): ResponseResult<List<BrandModel>> {
+        return withContext(Dispatchers.IO) {
+            if (BuildConfig.DEBUG) delay(ConstantsApp.DEBUG_DELAY) // Simulate slow internet
+            executeWithResponse {
+                api.getListBrands(page)
+                    .body()
+                    ?.toModels()
+                    ?: emptyList()
+            }
+        }
+    }
 }

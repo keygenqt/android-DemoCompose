@@ -22,7 +22,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
-import com.keygenqt.demo_contacts.modules.favorite.paging.RemoteMediatorFavorite
+import com.keygenqt.demo_contacts.modules.favorite.paging.FavoriteRemoteMediator
 import com.keygenqt.demo_contacts.modules.favorite.services.apiService.ApiServiceFavorite
 import com.keygenqt.demo_contacts.modules.favorite.services.data.DataServiceFavorite
 import com.keygenqt.demo_contacts.utils.ConstantsPaging
@@ -39,7 +39,7 @@ class FavoriteViewModel @Inject constructor(
     @ExperimentalPagingApi
     val listFavorite: Flow<PagingData<FavoriteModel>> = Pager(
         config = PagingConfig(pageSize = ConstantsPaging.PER_PAGE),
-        remoteMediator = RemoteMediatorFavorite(data, apiService)
+        remoteMediator = FavoriteRemoteMediator(data, apiService)
     ) {
         data.pagingList()
     }.flow

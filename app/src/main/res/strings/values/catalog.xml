@@ -1,4 +1,9 @@
 <resources>
     <!-- Catalog -->
     <string name="catalog_title">Catalog</string>
+    <string name="catalog_tab_1">Categories</string>
+    <string name="catalog_tab_2">Brands</string>
+    <string name="catalog_list_item_subcategories">Number of sub categories: %s</string>
+    <string name="catalog_state_empty_text_categories">No categories available</string>
+    <string name="catalog_state_empty_text_brands">No brands available</string>
 </resources>

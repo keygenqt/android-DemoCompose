@@ -41,7 +41,7 @@ import com.keygenqt.demo_contacts.modules.common.ui.compose.components.PlugBlock
 import com.keygenqt.demo_contacts.theme.MyTheme
 
 @Composable
-fun EmptyScreen(
+fun EmptyListScreen(
     title: String? = null,
     text: String? = null,
     painter: Painter = painterResource(id = R.drawable.ic_common_empty),
@@ -82,7 +82,7 @@ fun EmptyScreen(
 fun EmptyListScreenPreview() {
     MyTheme {
         Scaffold {
-            EmptyScreen(
+            EmptyListScreen(
                 text = "Long text for preview"
             )
         }

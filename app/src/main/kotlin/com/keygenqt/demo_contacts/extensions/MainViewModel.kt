@@ -24,11 +24,11 @@ import com.keygenqt.demo_contacts.modules.common.ui.viewModels.MainViewModel
 
 // Update after the second click on the active bottom navigator
 @Composable
-fun MainViewModel.ListenRefresh(listener: () -> Unit) {
+fun MainViewModel.ListenRefresh(listener: (route: String) -> Unit) {
     val refresh by toggleRefresh.collectAsState()
     LaunchedEffect(refresh) {
         if (refresh) {
-            listener.invoke()
+            listener.invoke(route.value)
         }
     }
 }

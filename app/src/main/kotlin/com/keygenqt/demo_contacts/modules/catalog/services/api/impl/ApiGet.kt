@@ -16,4 +16,33 @@
  
 package com.keygenqt.demo_contacts.modules.catalog.services.api.impl
 
-interface ApiGet
+import androidx.annotation.IntRange
+import com.keygenqt.demo_contacts.modules.catalog.data.responses.BrandsResponse
+import com.keygenqt.demo_contacts.modules.catalog.data.responses.CategoryResponse
+import com.keygenqt.demo_contacts.utils.ConstantsPaging
+import retrofit2.Response
+import retrofit2.http.GET
+import retrofit2.http.Query
+
+interface ApiGet {
+
+    @GET("catalog")
+    suspend fun getListCatalog(
+        @Query("page")
+        page: Int = 1,
+        @IntRange(from = 1, to = ConstantsPaging.MAX_PAGE_SIZE.toLong())
+        @Query("per-page")
+        perPage: Int = ConstantsPaging.PER_PAGE,
+    ): Response<List<CategoryResponse>>
+
+    @GET("brands")
+    suspend fun getListBrands(
+        @Query("page")
+        page: Int = 1,
+        @IntRange(from = 1, to = ConstantsPaging.MAX_PAGE_SIZE.toLong())
+        @Query("per-page")
+        perPage: Int = ConstantsPaging.PER_PAGE,
+    ): Response<List<BrandsResponse>>
+}
+
+

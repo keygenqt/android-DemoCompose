@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.common.ui.compose.components
 
 import android.content.res.Configuration
@@ -22,7 +22,6 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
@@ -62,14 +61,18 @@ fun BottomBar(
                                 if (currentRouteSavable == tab) {
                                     doubleClick.invoke(it)
                                 }
-                            }
-                            if (currentRouteSavable != tab) {
-                                when (tab) {
-                                    HomeTab.BRANDS -> navActions.navigateToBrands.invoke()
-                                    HomeTab.CATALOG -> navActions.navigateToCatalog.invoke()
-                                    HomeTab.PROFILE -> navActions.navigateToProfile.invoke()
-                                    HomeTab.FAVORITE -> navActions.navigateToFavorite.invoke()
-                                    HomeTab.CART -> navActions.navigateToCart.invoke()
+                                if (currentRouteSavable != tab) {
+                                    when (tab) {
+                                        HomeTab.BRANDS -> navActions.navigateToBrands.invoke()
+                                        HomeTab.CATALOG -> navActions.navigateToCatalog.invoke()
+                                        HomeTab.PROFILE -> navActions.navigateToProfile.invoke()
+                                        HomeTab.FAVORITE -> navActions.navigateToFavorite.invoke()
+                                        HomeTab.CART -> navActions.navigateToCart.invoke()
+                                    }
+                                }
+                            } ?: run {
+                                if (HomeTab.BRANDS == tab) {
+                                    doubleClick.invoke(HomeTab.BRANDS)
                                 }
                             }
                             currentRouteSavable = tab

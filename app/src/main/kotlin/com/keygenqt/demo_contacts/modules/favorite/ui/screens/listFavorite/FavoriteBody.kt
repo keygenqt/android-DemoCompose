@@ -28,7 +28,7 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules.common.ui.compose.components.CommonList
 import com.keygenqt.demo_contacts.modules.common.ui.compose.components.MainScaffold
-import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.EmptyScreen
+import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.EmptyListScreen
 import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.GuestListScreen
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.ui.events.FavoriteEvents
@@ -58,7 +58,7 @@ fun FavoriteBody(
                 items = items,
                 state = rememberSwipeRefreshState(items.loadState.refresh is LoadState.Loading),
                 contentEmpty = {
-                    EmptyScreen(
+                    EmptyListScreen(
                         text = stringResource(id = R.string.favorite_empty_list),
                         painter = painterResource(id = R.drawable.ic_favorite_placeholder)
                     )

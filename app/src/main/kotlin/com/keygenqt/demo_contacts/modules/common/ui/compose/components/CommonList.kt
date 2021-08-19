@@ -16,21 +16,19 @@
  
 package com.keygenqt.demo_contacts.modules.common.ui.compose.components
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
+import androidx.paging.LoadStates
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.itemsIndexed
 import com.google.accompanist.insets.statusBarsPadding
@@ -41,7 +39,6 @@ import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.ListenRefresh
 import com.keygenqt.demo_contacts.extensions.visible
 import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.LoadingScreen
-import com.keygenqt.demo_contacts.modules.common.ui.viewModels.MainViewModel
 import timber.log.Timber
 
 @Composable
@@ -51,12 +48,13 @@ fun <T : Any> CommonList(
     paddingBottom: Dp = 0.dp,
     items: LazyPagingItems<T>,
     state: SwipeRefreshState,
+    refreshRoute: String = "",
     contentEmpty: @Composable () -> Unit = {},
     content: @Composable (Int, T) -> Unit,
 ) {
 
     LocalBaseViewModel.current.ListenRefresh {
-        items.refresh()
+        if (it == refreshRoute) items.refresh()
     }
 
     SwipeRefresh(
@@ -90,7 +88,7 @@ fun <T : Any> CommonList(
                 items.apply {
                     when {
                         loadState.append is LoadState.Loading -> {
-                            item { LoadingItem() }
+                            item { Loader() }
                         }
                         loadState.refresh is LoadState.Error -> {
                             val error = items.loadState.refresh as? LoadState.Error
@@ -119,22 +117,14 @@ fun <T : Any> CommonList(
             ) { }
         }
     }
-    if (items.itemCount == 0
-        && items.loadState.refresh !is LoadState.Loading
-        && items.loadState.prepend !is LoadState.Loading
-    ) {
-        contentEmpty.invoke()
+
+    if (items.loadState.mediator != null) {
+        if (items.itemCount == 0
+            && items.loadState.refresh !is LoadState.Loading
+            && items.loadState.prepend !is LoadState.Loading
+        ) {
+            contentEmpty.invoke()
+        }
+        LoadingScreen(items.loadState.refresh is LoadState.Loading)
     }
-    LoadingScreen(items.loadState.refresh is LoadState.Loading)
-}
-
-
-@Composable
-fun LoadingItem() {
-    CircularProgressIndicator(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-            .wrapContentWidth(Alignment.CenterHorizontally)
-    )
 }

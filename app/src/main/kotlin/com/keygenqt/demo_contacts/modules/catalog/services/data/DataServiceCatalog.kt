@@ -19,10 +19,12 @@ package com.keygenqt.demo_contacts.modules.catalog.services.data
 import com.keygenqt.demo_contacts.base.AppDatabase
 import com.keygenqt.demo_contacts.base.BaseDataService
 import com.keygenqt.demo_contacts.base.preferences.AppPreferences
-import com.keygenqt.demo_contacts.modules.catalog.services.data.impl.DataCatalogModel
+import com.keygenqt.demo_contacts.modules.catalog.services.data.impl.DataBrandModel
+import com.keygenqt.demo_contacts.modules.catalog.services.data.impl.DataCategoryModel
 
 class DataServiceCatalog(
     override val db: AppDatabase,
     override val preferences: AppPreferences,
 ) : BaseDataService<DataServiceCatalog>,
-    DataCatalogModel
+    DataCategoryModel,
+    DataBrandModel

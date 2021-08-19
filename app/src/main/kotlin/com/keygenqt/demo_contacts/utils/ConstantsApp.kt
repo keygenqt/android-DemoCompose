@@ -28,4 +28,6 @@ object ConstantsApp {
                 "https://api.c5ia1s20aa-aromaluxe1-p1-public.model-t.cc.commerce.ondemand.com"
 
     val API_URL get() = "$API_URL_BASE/rg/v1/newRG/"
+
+    const val DEBUG_DELAY = 2000L
 }

@@ -24,6 +24,12 @@ import com.keygenqt.demo_contacts.modules.brands.data.dao.DaoFeedModel
 import com.keygenqt.demo_contacts.modules.brands.data.models.FeedBannerModel
 import com.keygenqt.demo_contacts.modules.brands.data.models.FeedBrandModel
 import com.keygenqt.demo_contacts.modules.brands.data.models.FeedModel
+import com.keygenqt.demo_contacts.modules.catalog.data.dao.DaoBrandModel
+import com.keygenqt.demo_contacts.modules.catalog.data.dao.DaoCategoryModel
+import com.keygenqt.demo_contacts.modules.catalog.data.dao.DaoSubCategoryModel
+import com.keygenqt.demo_contacts.modules.catalog.data.models.BrandModel
+import com.keygenqt.demo_contacts.modules.catalog.data.models.CategoryModel
+import com.keygenqt.demo_contacts.modules.catalog.data.models.SubCategoryModel
 import com.keygenqt.demo_contacts.modules.favorite.data.dao.DaoFavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 
@@ -33,6 +39,9 @@ import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
         FeedModel::class,
         FeedBrandModel::class,
         FeedBannerModel::class,
+        BrandModel::class,
+        CategoryModel::class,
+        SubCategoryModel::class,
     ],
     version = 2,
     exportSchema = false
@@ -42,4 +51,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun daoFeed(): DaoFeedModel
     abstract fun daoFeedBrandModel(): DaoFeedBrandModel
     abstract fun daoFeedBannerModel(): DaoFeedBannerModel
+    abstract fun daoBrandModel(): DaoBrandModel
+    abstract fun daoCategoryModel(): DaoCategoryModel
+    abstract fun daoSubCategoryModel(): DaoSubCategoryModel
 }

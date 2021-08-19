@@ -27,7 +27,7 @@ import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules.cart.ui.events.CartEvents
 import com.keygenqt.demo_contacts.modules.cart.ui.viewModels.CartViewModel
 import com.keygenqt.demo_contacts.modules.common.ui.compose.components.MainScaffold
-import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.EmptyScreen
+import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.EmptyListScreen
 import com.keygenqt.demo_contacts.theme.MyTheme
 
 @ExperimentalComposeUiApi
@@ -50,7 +50,7 @@ fun CartBody(
         title = stringResource(id = R.string.cart_title).uppercase(),
         subTitle = stringResource(id = R.string.cart_subtitle, (12345678..87654321).random()),
     ) {
-        EmptyScreen(
+        EmptyListScreen(
             title = stringResource(id = R.string.cart_empty_title),
             text = stringResource(id = R.string.cart_empty_text),
             painter = painterResource(id = R.drawable.ic_cart_empty_state)

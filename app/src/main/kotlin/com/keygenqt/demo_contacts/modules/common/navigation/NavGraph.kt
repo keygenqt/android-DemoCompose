@@ -42,7 +42,7 @@ import com.keygenqt.demo_contacts.modules.brands.ui.viewModels.BrandsViewModel
 import com.keygenqt.demo_contacts.modules.cart.ui.events.CartEvents
 import com.keygenqt.demo_contacts.modules.cart.ui.screens.CartScreen
 import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
-import com.keygenqt.demo_contacts.modules.catalog.ui.screens.CatalogScreen
+import com.keygenqt.demo_contacts.modules.catalog.ui.screens.catalogScreen.CatalogScreen
 import com.keygenqt.demo_contacts.modules.common.navigation.HomeTab.Companion.findByRoute
 import com.keygenqt.demo_contacts.modules.common.ui.compose.components.BottomBar
 import com.keygenqt.demo_contacts.modules.favorite.ui.events.FavoriteEvents

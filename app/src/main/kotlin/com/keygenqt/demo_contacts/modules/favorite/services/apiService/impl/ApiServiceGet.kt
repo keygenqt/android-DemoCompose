@@ -22,6 +22,7 @@ import com.keygenqt.demo_contacts.base.executeWithResponse
 import com.keygenqt.demo_contacts.modules.favorite.data.mappers.toModels
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.services.api.ApiFavorite
+import com.keygenqt.demo_contacts.utils.ConstantsApp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
@@ -32,7 +33,7 @@ interface ApiServiceGet {
 
     suspend fun getListFavorites(page: Int): ResponseResult<List<FavoriteModel>> {
         return withContext(Dispatchers.IO) {
-            if (BuildConfig.DEBUG) delay(1000L) // Simulate slow internet
+            if (BuildConfig.DEBUG) delay(ConstantsApp.DEBUG_DELAY) // Simulate slow internet
             executeWithResponse {
                 api.getListFavorites(page)
                     .body()

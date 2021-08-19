@@ -1,0 +1,9 @@
+<resources>
+    <!-- Catalog -->
+    <string name="catalog_title">Каталог</string>
+    <string name="catalog_tab_1">Категории</string>
+    <string name="catalog_tab_2">Бренды</string>
+    <string name="catalog_list_item_subcategories">Количество суб категорий: %s</string>
+    <string name="catalog_state_empty_text_categories">Нет доступных категорий</string>
+    <string name="catalog_state_empty_text_brands">Нет брендов категорий</string>
+</resources>
