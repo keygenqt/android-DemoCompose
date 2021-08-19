@@ -18,12 +18,14 @@ package com.keygenqt.demo_contacts.modules.common.ui.compose.screens
 
 import android.content.res.Configuration
 import android.widget.Toast
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -39,13 +41,15 @@ import com.keygenqt.demo_contacts.modules.common.ui.compose.components.PlugBlock
 import com.keygenqt.demo_contacts.theme.MyTheme
 
 @Composable
-fun EmptyListScreen(
-    text: String = "Long text for preview",
-    painter: Painter = painterResource(id = R.drawable.ic_favorite_placeholder),
+fun EmptyScreen(
+    title: String? = null,
+    text: String? = null,
+    painter: Painter = painterResource(id = R.drawable.ic_common_empty),
 ) {
     val context = LocalContext.current
 
     PlugBlock(
+        title = title,
         text = text,
         painter = painter
     ) {
@@ -78,7 +82,9 @@ fun EmptyListScreen(
 fun EmptyListScreenPreview() {
     MyTheme {
         Scaffold {
-            EmptyListScreen()
+            EmptyScreen(
+                text = "Long text for preview"
+            )
         }
     }
 }

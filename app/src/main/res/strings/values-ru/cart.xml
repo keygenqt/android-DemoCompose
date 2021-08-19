@@ -1,0 +1,7 @@
+<resources>
+    <!-- Cart -->
+    <string name="cart_title">Корзина</string>
+    <string name="cart_subtitle">Номер корзины: %s</string>
+    <string name="cart_empty_title">Ваша корзина пуста</string>
+    <string name="cart_empty_text">Попробуйте найти интересующий вас товар через поиск или каталог</string>
+</resources>

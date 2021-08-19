@@ -1,4 +1,7 @@
 <resources>
     <!-- Cart -->
     <string name="cart_title">Shopping cart</string>
+    <string name="cart_subtitle">Cart number: %s</string>
+    <string name="cart_empty_title">Your basket is empty</string>
+    <string name="cart_empty_text">Try to find the product you are interested in through the search or catalog</string>
 </resources>

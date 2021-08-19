@@ -50,11 +50,9 @@ fun PlugBlock(
             .padding(16.dp)
             .fillMaxSize()
     ) {
-
         Column(
             modifier = Modifier
                 .fillMaxWidth(0.8F)
-                .padding(bottom = 64.dp)
                 .align(Alignment.Center),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally

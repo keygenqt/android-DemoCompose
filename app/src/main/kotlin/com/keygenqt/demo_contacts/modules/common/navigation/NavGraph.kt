@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.modules.common.navigation
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
@@ -47,7 +46,7 @@ import com.keygenqt.demo_contacts.modules.catalog.ui.screens.CatalogScreen
 import com.keygenqt.demo_contacts.modules.common.navigation.HomeTab.Companion.findByRoute
 import com.keygenqt.demo_contacts.modules.common.ui.compose.components.BottomBar
 import com.keygenqt.demo_contacts.modules.favorite.ui.events.FavoriteEvents
-import com.keygenqt.demo_contacts.modules.favorite.ui.screens.FavoriteScreen
+import com.keygenqt.demo_contacts.modules.favorite.ui.screens.listFavorite.FavoriteScreen
 import com.keygenqt.demo_contacts.modules.other.ui.events.StartEvents
 import com.keygenqt.demo_contacts.modules.other.ui.screens.onboarding.OnboardingScreen
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents

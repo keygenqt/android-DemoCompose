@@ -205,7 +205,10 @@ fun MainScaffold(
             }
         } ?: {},
         content = {
-            Box {
+            Box(
+                modifier = Modifier
+                    .padding(it)
+            ) {
                 content.invoke(it)
                 contentFloatingActionButton?.let {
                     FloatingActionButton(

@@ -16,24 +16,19 @@
  
 package com.keygenqt.demo_contacts.modules.cart.ui.screens
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import android.content.res.Configuration
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules.cart.ui.events.CartEvents
 import com.keygenqt.demo_contacts.modules.cart.ui.viewModels.CartViewModel
 import com.keygenqt.demo_contacts.modules.common.ui.compose.components.MainScaffold
-import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
+import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.EmptyScreen
+import com.keygenqt.demo_contacts.theme.MyTheme
 
 @ExperimentalComposeUiApi
 @Composable
@@ -51,24 +46,26 @@ fun CartScreen(
 fun CartBody(
     onEvent: (CartEvents) -> Unit = {},
 ) {
-    MainScaffold {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-                .background(MaterialTheme.colors.background)
-        ) {
-            Text(
-                style = MaterialTheme.typography.h5,
-                text = stringResource(id = R.string.common_coming_soon),
-            )
-            Text(
-                color = MaterialThemeCustom.colors.customTitle,
-                style = MaterialTheme.typography.subtitle1,
-                text = stringResource(id = R.string.cart_title),
-            )
+    MainScaffold(
+        title = stringResource(id = R.string.cart_title).uppercase(),
+        subTitle = stringResource(id = R.string.cart_subtitle, (12345678..87654321).random()),
+    ) {
+        EmptyScreen(
+            title = stringResource(id = R.string.cart_empty_title),
+            text = stringResource(id = R.string.cart_empty_text),
+            painter = painterResource(id = R.drawable.ic_cart_empty_state)
+        )
+    }
+}
+
+@ExperimentalComposeUiApi
+@Preview("Light")
+@Preview("Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun EmptyListScreenPreview() {
+    MyTheme {
+        Scaffold {
+            CartBody()
         }
     }
 }
