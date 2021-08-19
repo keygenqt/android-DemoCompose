@@ -60,6 +60,11 @@ fun FeedResponse.toModel(): FeedModel {
                 description = brand.description ?: "",
                 name = brand.name ?: "",
                 url = brand.url ?: "",
+                logo = brand.brandForMobile?.let { icon ->
+                    FeedBrandLogoModel(
+                        logoUrl = icon.url?.let { link -> "$API_URL_BASE/$link" } ?: "",
+                    )
+                } ?: FeedBrandLogoModel(),
             )
         } ?: listOf(),
     )

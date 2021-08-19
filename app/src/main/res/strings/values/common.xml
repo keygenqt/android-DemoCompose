@@ -1,6 +1,6 @@
 <resources>
     <!-- Main -->
-    <string name="app_name">Rive Gauche</string>
+    <string name="app_name">RIVE GAUCHE</string>
 
     <!-- Errors -->
     <string name="error_field_min_length">Minimum length %s characters</string>

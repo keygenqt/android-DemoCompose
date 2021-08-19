@@ -1,20 +1,4 @@
-/*
- * Copyright 2021 Vitaliy Zarubin
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
- 
-package com.keygenqt.demo_contacts.modules.other.ui.screens
+package com.keygenqt.demo_contacts.modules.other.ui.screens.onboarding
 
 import android.content.res.Configuration
 import androidx.compose.material.Surface
@@ -27,27 +11,13 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.keygenqt.demo_contacts.modules.common.ui.compose.components.MainScaffold
 import com.keygenqt.demo_contacts.modules.other.ui.events.StartEvents
-import com.keygenqt.demo_contacts.modules.other.ui.viewModels.OtherViewModel
 import com.keygenqt.demo_contacts.theme.MyTheme
 import kotlinx.coroutines.launch
 
 @ExperimentalComposeUiApi
 @ExperimentalPagerApi
 @Composable
-fun StartScreen(
-    viewModel: OtherViewModel,
-    onEvent: (StartEvents) -> Unit = {},
-) {
-    // Here variable initialization -> viewModel
-    StartBody(
-        onEvent = onEvent,
-    )
-}
-
-@ExperimentalComposeUiApi
-@ExperimentalPagerApi
-@Composable
-fun StartBody(
+fun OnboardingBody(
     onEvent: (StartEvents) -> Unit = {},
 ) {
     val scope = rememberCoroutineScope()
@@ -59,12 +29,12 @@ fun StartBody(
             state = pagerState,
         ) { page ->
             when (page) {
-                0 -> StartScreen1 {
+                0 -> OnboardingItem1 {
                     scope.launch {
                         pagerState.animateScrollToPage(1)
                     }
                 }
-                1 -> StartScreen2 {
+                1 -> OnboardingItem2 {
                     onEvent(StartEvents.NavigateToBrands)
                 }
             }
@@ -80,7 +50,7 @@ fun StartBody(
 fun StartBodyPreview() {
     MyTheme {
         Surface {
-            StartBody()
+            OnboardingBody()
         }
     }
 }

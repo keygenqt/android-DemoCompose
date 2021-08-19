@@ -2,4 +2,7 @@
     <!-- Brands -->
     <string name="brands_title">Brands</string>
     <string name="brands_empty_feed">Strange, nothing was found, please try refreshing the page later</string>
+    <string name="brands_btn_all">All</string>
+    <string name="brands_btn_shops">Shops RIVE GAUCHE</string>
+    <string name="brands_new_items">New items</string>
 </resources>

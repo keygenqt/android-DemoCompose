@@ -2,4 +2,7 @@
     <!-- Brands -->
     <string name="brands_title">Бренды</string>
     <string name="brands_empty_feed">Странно, ничего не найдено, попробуйте обновить страницу позже</string>
+    <string name="brands_btn_all">Все</string>
+    <string name="brands_btn_shops">Магазины РИВ ГОШ</string>
+    <string name="brands_new_items">Новинки</string>
 </resources>

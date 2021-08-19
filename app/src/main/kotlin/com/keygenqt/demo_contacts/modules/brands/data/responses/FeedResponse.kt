@@ -64,4 +64,10 @@ data class BrandResponse(
     val name: String?,
     val description: String?,
     val url: String?,
+    val brandForMobile: BannerLogoResponse?,
+)
+
+@Immutable
+class BannerLogoResponse(
+    val url: String?,
 )

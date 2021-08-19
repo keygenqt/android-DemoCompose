@@ -17,6 +17,7 @@
 package com.keygenqt.demo_contacts.modules.brands.data.models
 
 import androidx.compose.runtime.Immutable
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.keygenqt.demo_contacts.base.interfaces.IModelRelation
@@ -30,4 +31,5 @@ data class FeedBrandModel(
     val description: String,
     val name: String,
     val url: String,
+    @Embedded val logo: FeedBrandLogoModel,
 ) : IModelRelation

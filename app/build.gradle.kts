@@ -80,7 +80,6 @@ android {
 dependencies {
 
     // base
-    implementation("androidx.appcompat:appcompat:${ex["appcompatVersion"]}")
     implementation("androidx.core:core-ktx:${ex["coreKtxVersion"]}")
 
     // retrofit
@@ -125,8 +124,11 @@ dependencies {
     implementation("com.airbnb.android:lottie:${ex["lottieVersions"]}")
     implementation("com.airbnb.android:lottie-compose:${ex["lottieVersions"]}")
 
-    // other
+    // coil
+    implementation("androidx.appcompat:appcompat:${ex["appcompatVersion"]}")
     implementation("io.coil-kt:coil-compose:${ex["coilVersion"]}")
+
+    // other
     implementation("com.jakewharton.timber:timber:${ex["timberVersion"]}")
     implementation("androidx.startup:startup-runtime:${ex["startupVersion"]}")
     implementation("com.google.code.gson:gson:${ex["gsonVersion"]}")

@@ -9,7 +9,7 @@ extra["targetSdk"] = 31
 
 // base
 extra["kotlinVersion"] = "1.5.10"
-extra["gradleVersion"] = "7.0.0"
+extra["gradleVersion"] = "7.0.1"
 extra["coreKtxVersion"] = "1.6.0"
 extra["kspVersion"] = "1.5.10-1.0.0-beta02"
 
@@ -39,6 +39,10 @@ extra["hiltComposeNavigationVersion"] = "1.0.0-alpha03"
 // room
 extra["roomVersion"] = "2.3.0-beta02"
 
+// coil
+extra["coilVersion"] = "1.3.2"
+extra["appcompatVersion"] = "1.3.1"
+
 // other
 extra["lottieVersions"] = "4.0.0"
 extra["timberVersion"] = "4.7.1"
@@ -48,5 +52,3 @@ extra["gsonVersion"] = "2.8.7"
 extra["securityCryptoVersion"] = "1.1.0-alpha03"
 extra["coroutinesPlayServicesVersion"] = "1.3.5"
 extra["lottie"] = "4.1.0"
-extra["coilVersion"] = "1.3.2"
-extra["appcompatVersion"] = "1.3.1"

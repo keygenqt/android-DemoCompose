@@ -16,12 +16,16 @@
 
 package com.keygenqt.demo_contacts.modules.common.navigation
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -34,7 +38,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.AddChangeRouteListener
 import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
-import com.keygenqt.demo_contacts.modules.brands.ui.screens.BrandsScreen
+import com.keygenqt.demo_contacts.modules.brands.ui.screens.feed.FeedScreen
 import com.keygenqt.demo_contacts.modules.brands.ui.viewModels.BrandsViewModel
 import com.keygenqt.demo_contacts.modules.cart.ui.events.CartEvents
 import com.keygenqt.demo_contacts.modules.cart.ui.screens.CartScreen
@@ -45,7 +49,7 @@ import com.keygenqt.demo_contacts.modules.common.ui.compose.components.BottomBar
 import com.keygenqt.demo_contacts.modules.favorite.ui.events.FavoriteEvents
 import com.keygenqt.demo_contacts.modules.favorite.ui.screens.FavoriteScreen
 import com.keygenqt.demo_contacts.modules.other.ui.events.StartEvents
-import com.keygenqt.demo_contacts.modules.other.ui.screens.StartScreen
+import com.keygenqt.demo_contacts.modules.other.ui.screens.onboarding.OnboardingScreen
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.screens.ProfileScreen
 
@@ -83,50 +87,54 @@ fun GuestNavGraph(navController: NavHostController) {
                 }
             } ?: run { {} },
         ) {
-            NavHost(navController = navController, startDestination = localBaseViewModel.getStartRoute()) {
-                composable(NavScreen.StartScreen.route) {
-                    StartScreen(viewModel = hiltViewModel()) { event ->
-                        when (event) {
-                            is StartEvents.NavigateToBrands -> {
-                                localBaseViewModel.startPageCompleted()
-                                navActions.navigateToBrands.invoke()
+            Box(
+                modifier = Modifier.padding(it)
+            ) {
+                NavHost(navController = navController, startDestination = localBaseViewModel.getStartRoute()) {
+                    composable(NavScreen.StartScreen.route) {
+                        OnboardingScreen(viewModel = hiltViewModel()) { event ->
+                            when (event) {
+                                is StartEvents.NavigateToBrands -> {
+                                    localBaseViewModel.startPageCompleted()
+                                    navActions.navigateToBrands.invoke()
+                                }
                             }
                         }
                     }
-                }
-                composable(NavScreen.BrandsScreen.route) {
-                    val viewModel: BrandsViewModel = hiltViewModel()
-                    BrandsScreen(viewModel = viewModel) { event ->
-                        when (event) {
-                            is BrandsEvents.RefreshFeed -> viewModel.updateFeed()
+                    composable(NavScreen.BrandsScreen.route) {
+                        val viewModel: BrandsViewModel = hiltViewModel()
+                        FeedScreen(viewModel = viewModel) { event ->
+                            when (event) {
+                                is BrandsEvents.RefreshFeed -> viewModel.updateFeed()
+                            }
                         }
                     }
-                }
-                composable(NavScreen.CatalogScreen.route) {
-                    CatalogScreen(viewModel = hiltViewModel()) { event ->
-                        when (event) {
-                            is CatalogEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                    composable(NavScreen.CatalogScreen.route) {
+                        CatalogScreen(viewModel = hiltViewModel()) { event ->
+                            when (event) {
+                                is CatalogEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                            }
                         }
                     }
-                }
-                composable(NavScreen.ProfileScreen.route) {
-                    ProfileScreen(viewModel = hiltViewModel()) { event ->
-                        when (event) {
-                            is ProfileEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                    composable(NavScreen.ProfileScreen.route) {
+                        ProfileScreen(viewModel = hiltViewModel()) { event ->
+                            when (event) {
+                                is ProfileEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                            }
                         }
                     }
-                }
-                composable(NavScreen.FavoriteScreen.route) {
-                    FavoriteScreen(viewModel = hiltViewModel()) { event ->
-                        when (event) {
-                            is FavoriteEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                    composable(NavScreen.FavoriteScreen.route) {
+                        FavoriteScreen(viewModel = hiltViewModel()) { event ->
+                            when (event) {
+                                is FavoriteEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                            }
                         }
                     }
-                }
-                composable(NavScreen.CartScreen.route) {
-                    CartScreen(viewModel = hiltViewModel()) { event ->
-                        when (event) {
-                            is CartEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                    composable(NavScreen.CartScreen.route) {
+                        CartScreen(viewModel = hiltViewModel()) { event ->
+                            when (event) {
+                                is CartEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                            }
                         }
                     }
                 }
