@@ -23,4 +23,5 @@ sealed class NavScreen(val route: String) {
     object ProfileScreen : NavScreen("ProfileScreen")
     object FavoriteScreen : NavScreen("FavoriteScreen")
     object CartScreen : NavScreen("CartScreen")
+    object SignInScreen : NavScreen("SignInScreen")
 }

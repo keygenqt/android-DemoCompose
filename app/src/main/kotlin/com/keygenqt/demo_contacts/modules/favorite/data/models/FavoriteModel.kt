@@ -28,5 +28,5 @@ data class FavoriteModel(
     @PrimaryKey override val id: String,
     val name: String,
     val description: String?,
-    @Embedded val price: FavoritePriceModel,
+    @Embedded val price: FavoritePriceModel?,
 ) : IModel

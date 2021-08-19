@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.common.ui.form.fields
 
 import android.content.res.Configuration
@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import com.keygenqt.demo_contacts.R
@@ -38,6 +39,8 @@ import com.keygenqt.demo_contacts.modules.common.ui.compose.components.TextField
 import com.keygenqt.demo_contacts.modules.common.ui.form.base.FormFieldState
 import com.keygenqt.demo_contacts.modules.common.ui.form.states.EmailStateRequired
 import com.keygenqt.demo_contacts.theme.MyTheme
+import com.keygenqt.demo_contacts.theme.customTextFieldColors
+
 
 @ExperimentalComposeUiApi
 @Composable
@@ -54,6 +57,7 @@ fun FieldEmail(
         singleLine = true,
         enabled = enabled,
         value = state.text,
+        textStyle = MaterialTheme.typography.body2.merge(TextStyle(color = MaterialTheme.colors.onPrimary)),
         onValueChange = { state.text = it },
         label = { Text(labelText) },
         modifier = modifier
@@ -63,10 +67,10 @@ fun FieldEmail(
                     state.positionToEnd()
                 }
             },
-        textStyle = MaterialTheme.typography.body2,
         isError = state.hasErrors,
         keyboardOptions = KeyboardOptions.Default.copy(imeAction = imeAction),
-        keyboardActions = keyboardActions
+        keyboardActions = keyboardActions,
+        colors = customTextFieldColors()
     )
 
     state.getError(LocalContext.current)?.let { error ->

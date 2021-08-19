@@ -16,7 +16,7 @@
  
 package com.keygenqt.demo_contacts.theme
 
-import androidx.compose.material.Colors
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
@@ -61,3 +61,51 @@ fun parseConfigPalette(isLight: Boolean): Colors {
         isLight = isLight,
     )
 }
+
+@Composable
+fun customTextFieldColors(
+    textColor: Color = LocalContentColor.current.copy(LocalContentAlpha.current),
+    disabledTextColor: Color = textColor.copy(ContentAlpha.disabled),
+    backgroundColor: Color = MaterialTheme.colors.onSurface.copy(alpha = TextFieldDefaults.BackgroundOpacity),
+    cursorColor: Color = MaterialTheme.colors.onPrimary,
+    errorCursorColor: Color = MaterialTheme.colors.error,
+    focusedIndicatorColor: Color = MaterialTheme.colors.onPrimary.copy(alpha = ContentAlpha.high),
+    unfocusedIndicatorColor: Color = MaterialTheme.colors.onSurface.copy(alpha = TextFieldDefaults.UnfocusedIndicatorLineOpacity),
+    disabledIndicatorColor: Color = unfocusedIndicatorColor.copy(alpha = ContentAlpha.disabled),
+    errorIndicatorColor: Color = MaterialTheme.colors.error,
+    leadingIconColor: Color = MaterialTheme.colors.onSurface.copy(alpha = TextFieldDefaults.IconOpacity),
+    disabledLeadingIconColor: Color = leadingIconColor.copy(alpha = ContentAlpha.disabled),
+    errorLeadingIconColor: Color = leadingIconColor,
+    trailingIconColor: Color = MaterialTheme.colors.onSurface.copy(alpha = TextFieldDefaults.IconOpacity),
+    disabledTrailingIconColor: Color = trailingIconColor.copy(alpha = ContentAlpha.disabled),
+    errorTrailingIconColor: Color = MaterialTheme.colors.error,
+    focusedLabelColor: Color = MaterialTheme.colors.onPrimary.copy(alpha = ContentAlpha.high),
+    unfocusedLabelColor: Color = MaterialTheme.colors.onSurface.copy(ContentAlpha.medium),
+    disabledLabelColor: Color = unfocusedLabelColor.copy(ContentAlpha.disabled),
+    errorLabelColor: Color = MaterialTheme.colors.error,
+    placeholderColor: Color = MaterialTheme.colors.onSurface.copy(ContentAlpha.medium),
+    disabledPlaceholderColor: Color = placeholderColor.copy(ContentAlpha.disabled),
+): TextFieldColors =
+    TextFieldDefaults.textFieldColors(
+        textColor = textColor,
+        disabledTextColor = disabledTextColor,
+        cursorColor = cursorColor,
+        errorCursorColor = errorCursorColor,
+        focusedIndicatorColor = focusedIndicatorColor,
+        unfocusedIndicatorColor = unfocusedIndicatorColor,
+        errorIndicatorColor = errorIndicatorColor,
+        disabledIndicatorColor = disabledIndicatorColor,
+        leadingIconColor = leadingIconColor,
+        disabledLeadingIconColor = disabledLeadingIconColor,
+        errorLeadingIconColor = errorLeadingIconColor,
+        trailingIconColor = trailingIconColor,
+        disabledTrailingIconColor = disabledTrailingIconColor,
+        errorTrailingIconColor = errorTrailingIconColor,
+        backgroundColor = backgroundColor,
+        focusedLabelColor = focusedLabelColor,
+        unfocusedLabelColor = unfocusedLabelColor,
+        disabledLabelColor = disabledLabelColor,
+        errorLabelColor = errorLabelColor,
+        placeholderColor = placeholderColor,
+        disabledPlaceholderColor = disabledPlaceholderColor
+    )

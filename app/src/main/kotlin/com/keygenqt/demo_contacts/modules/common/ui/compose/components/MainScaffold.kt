@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.common.ui.compose.components
 
 import android.content.res.Configuration
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -33,7 +32,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalFocusManager
@@ -130,13 +128,13 @@ fun MainScaffold(
                             } ?: run {
                                 Column(
                                     modifier = Modifier
-                                        .padding(end = 12.dp)
+                                        .padding(end = if (icon == null) 12.dp else 0.dp)
                                         .fillMaxWidth(),
                                 ) {
 
                                     Text(
                                         modifier = Modifier.fillMaxWidth(),
-                                        textAlign = TextAlign.Center,
+                                        textAlign = if (icon == null) TextAlign.Center else TextAlign.Start,
                                         text = title,
                                         style = MaterialTheme.typography.h6,
                                     )
@@ -198,7 +196,10 @@ fun MainScaffold(
                         }
                         actions?.invoke(this)
                         if (isLoaderShow) {
-                            Loader()
+                            Loader(
+                                modifier = Modifier
+                                    .width(56.dp)
+                            )
                         }
                     }
                 )

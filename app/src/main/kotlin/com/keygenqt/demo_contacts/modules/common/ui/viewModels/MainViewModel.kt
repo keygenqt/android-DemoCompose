@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.common.ui.viewModels
 
 import android.os.Bundle
@@ -43,7 +43,7 @@ class MainViewModel @Inject constructor(
     private val _isReady: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val isReady: StateFlow<Boolean> get() = _isReady.asStateFlow()
 
-    private val _isLogin: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    private val _isLogin: MutableStateFlow<Boolean> = MutableStateFlow(preferences.accessToken.isNotBlank())
     val isLogin: StateFlow<Boolean> get() = _isLogin.asStateFlow()
 
     private val _showSnackBar: MutableStateFlow<Boolean> = MutableStateFlow(false)
@@ -58,7 +58,7 @@ class MainViewModel @Inject constructor(
             delay(500)
 
             // Show token
-            Timber.d("User token -> ${preferences.token}")
+            Timber.d("User token -> ${preferences.accessToken}")
 
             // Start app
             _isReady.value = true
@@ -104,11 +104,17 @@ class MainViewModel @Inject constructor(
         preferences.isStartPage = false
     }
 
-    fun startUser() {
+    fun startUser(accessToken: String, refreshToken: String) {
         _isLogin.value = true
+        // save credentials
+        preferences.accessToken = accessToken
+        preferences.refreshToken = refreshToken
     }
 
     fun logout() {
         _isLogin.value = false
+        // clear credentials
+        preferences.accessToken = ""
+        preferences.refreshToken = ""
     }
 }

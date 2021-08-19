@@ -36,8 +36,8 @@ import com.keygenqt.demo_contacts.theme.MyTheme
 @Composable
 fun OnboardingItem1(onNext: () -> Unit = {}) {
     PlugBlock(
-        title = stringResource(id = R.string.start_1_title),
-        text = stringResource(id = R.string.start_1_text),
+        title = stringResource(id = R.string.onboarding_1_title),
+        text = stringResource(id = R.string.onboarding_1_text),
         painter = painterResource(R.drawable.ic_other_start),
         contentBoxScope = {
             Button(
@@ -50,7 +50,7 @@ fun OnboardingItem1(onNext: () -> Unit = {}) {
             ) {
                 Text(
                     color = MaterialTheme.colors.onSecondary,
-                    text = stringResource(id = R.string.start_1_btn),
+                    text = stringResource(id = R.string.onboarding_1_btn),
                 )
             }
 

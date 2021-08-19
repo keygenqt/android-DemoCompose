@@ -1,12 +1,15 @@
 <resources>
-    <!-- Start 1 -->
-    <string name="start_1_title">Мы обновились!</string>
-    <string name="start_1_text">Удобное приложение — быстрый доступ к каталогу, избранному и новый личный кабинет с картой лояльности</string>
-    <string name="start_1_btn">Далее</string>
+    <!-- Onboarding 1 -->
+    <string name="onboarding_1_title">Мы обновились!</string>
+    <string name="onboarding_1_text">Удобное приложение — быстрый доступ к каталогу, избранному и новый личный кабинет с картой лояльности</string>
+    <string name="onboarding_1_btn">Далее</string>
 
-    <!-- Start 1 -->
-    <string name="start_2_title">Местоположение</string>
-    <string name="start_2_text">Разреши доступ с своему местоположению, чтобы мы смогли показать магазины поблизости, а также наличие товаров в ближайшем магазине</string>
-    <string name="start_2_btn_permissions">Далее</string>
-    <string name="start_2_btn_select">Выбрать город</string>
+    <!-- Onboarding 2 -->
+    <string name="onboarding_2_title">Местоположение</string>
+    <string name="onboarding_2_text">Разреши доступ с своему местоположению, чтобы мы смогли показать магазины поблизости, а также наличие товаров в ближайшем магазине</string>
+    <string name="onboarding_2_btn_permissions">Далее</string>
+    <string name="onboarding_2_btn_select">Выбрать город</string>
+
+    <!-- Sign In -->
+    <string name="sign_in_title">Вход</string>
 </resources>

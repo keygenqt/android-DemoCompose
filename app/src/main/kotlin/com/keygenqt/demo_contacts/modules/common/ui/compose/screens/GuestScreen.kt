@@ -40,6 +40,8 @@ import com.keygenqt.demo_contacts.theme.MyTheme
 fun GuestListScreen(
     text: String = "Long text for preview",
     painter: Painter = painterResource(id = R.drawable.ic_favorite_placeholder),
+    onSignIn: () -> Unit = {},
+    onSignUp: () -> Unit = {},
 ) {
     val context = LocalContext.current
 
@@ -52,9 +54,7 @@ fun GuestListScreen(
         Button(
             shape = MaterialTheme.shapes.large,
             colors = ButtonDefaults.textButtonColors(backgroundColor = MaterialTheme.colors.secondary),
-            onClick = {
-                Toast.makeText(context, R.string.common_coming_soon, Toast.LENGTH_SHORT).show()
-            },
+            onClick = onSignIn,
             modifier = Modifier
                 .fillMaxWidth()
         ) {
@@ -67,10 +67,9 @@ fun GuestListScreen(
         Spacer(modifier = Modifier.size(24.dp))
 
         ClickableTextAnimation(
-            text = stringResource(id = R.string.common_sign_up)
-        ) {
-            Toast.makeText(context, R.string.common_coming_soon, Toast.LENGTH_SHORT).show()
-        }
+            text = stringResource(id = R.string.common_sign_up),
+            onClick = onSignUp
+        )
     }
 }
 

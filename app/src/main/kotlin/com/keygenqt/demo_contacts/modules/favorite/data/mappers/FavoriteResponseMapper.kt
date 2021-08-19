@@ -28,7 +28,7 @@ fun FavoritesResponse.toModels(): List<FavoriteModel> {
             id = it.code ?: "",
             name = it.name ?: "",
             description = it.description ?: "",
-            price = it.price.let { price ->
+            price = it.price?.let { price ->
                 FavoritePriceModel(
                     value = price.value ?: 0.0,
                     priceGroupCode = price.priceGroupCode ?: "",

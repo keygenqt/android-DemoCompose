@@ -13,11 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.other.services.apiService.impl
 
+import com.keygenqt.demo_contacts.base.ResponseResult
+import com.keygenqt.demo_contacts.base.executeWithResponse
+import com.keygenqt.demo_contacts.modules.other.data.requests.SignInRequest
+import com.keygenqt.demo_contacts.modules.other.data.responses.SignInResponse
 import com.keygenqt.demo_contacts.modules.other.services.api.ApiOther
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 interface ApiServicePost {
+
     val api: ApiOther
+
+    // 403
+    // {"errors":[{"type":"AccountDoesNotExistError","message":"Введены неверные данные"}]}
+
+    // 200
+    // {tokenPair={accessToken={value=sdfsdfsdfsdfsdf, maxAgeSeconds=11999.0}, refreshToken={value=sdfsdfsdfsdfsdf, maxAgeSeconds=2592000.0}}}
+
+    suspend fun signIn(login: String, passw: String): ResponseResult<SignInResponse> {
+        return withContext(Dispatchers.IO) {
+            executeWithResponse {
+                api.signIn(SignInRequest(
+                    username = login,
+                    password = passw,
+                )).body()!!
+            }
+        }
+    }
 }

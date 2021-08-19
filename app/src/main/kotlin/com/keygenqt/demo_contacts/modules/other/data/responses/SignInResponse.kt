@@ -13,16 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ 
+package com.keygenqt.demo_contacts.modules.other.data.responses
 
-package com.keygenqt.demo_contacts.modules.other.services.api.impl
+import androidx.compose.runtime.Immutable
 
-import com.keygenqt.demo_contacts.modules.other.data.requests.SignInRequest
-import com.keygenqt.demo_contacts.modules.other.data.responses.SignInResponse
-import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.POST
+@Immutable
+data class SignInResponse(
+    val tokenPair: SignInTokenPairResponse,
+)
 
-interface ApiPost {
-    @POST("customers/oauth2/acquire-token")
-    suspend fun signIn(@Body request: SignInRequest): Response<SignInResponse>
-}
+@Immutable
+data class SignInTokenPairResponse(
+    val accessToken: SignInTokenPairAccessResponse,
+    val refreshToken: SignInTokenPairRefreshResponse,
+)
+
+@Immutable
+class SignInTokenPairAccessResponse(
+    val value: String,
+    val maxAgeSeconds: Double,
+)
+
+@Immutable
+class SignInTokenPairRefreshResponse(
+    val value: String,
+    val maxAgeSeconds: Double,
+)

@@ -28,7 +28,7 @@ data class FavoriteResponse(
     val code: String?,
     val name: String?,
     val description: String?,
-    val price: FavoritePriceResponse,
+    val price: FavoritePriceResponse?,
 )
 
 @Immutable

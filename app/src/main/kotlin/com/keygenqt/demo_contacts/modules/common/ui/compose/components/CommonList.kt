@@ -16,9 +16,7 @@
  
 package com.keygenqt.demo_contacts.modules.common.ui.compose.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -88,7 +86,10 @@ fun <T : Any> CommonList(
                 items.apply {
                     when {
                         loadState.append is LoadState.Loading -> {
-                            item { Loader() }
+                            item { Loader(
+                                modifier = Modifier
+                                    .padding(bottom = 16.dp)
+                            ) }
                         }
                         loadState.refresh is LoadState.Error -> {
                             val error = items.loadState.refresh as? LoadState.Error

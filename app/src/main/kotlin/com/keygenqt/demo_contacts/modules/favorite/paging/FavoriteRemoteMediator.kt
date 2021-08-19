@@ -13,17 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.favorite.paging
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import com.keygenqt.demo_contacts.base.error
-import com.keygenqt.demo_contacts.base.isEmpty
-import com.keygenqt.demo_contacts.base.isError
-import com.keygenqt.demo_contacts.base.success
+import com.keygenqt.demo_contacts.base.*
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.services.apiService.ApiServiceFavorite
 import com.keygenqt.demo_contacts.modules.favorite.services.data.DataServiceFavorite
@@ -69,14 +66,18 @@ class FavoriteRemoteMediator(
                         preferences.lastUpdateListFavorite = System.currentTimeMillis()
                         clear()
                     }
-                    insert(*models.toTypedArray())
+                    if (!response.isEndDouble(state.lastItemOrNull()?.id) || loadType != LoadType.APPEND) {
+                        insert(*models.toTypedArray())
+                    }
                 }
             }.error {
                 Timber.e(it)
             }
 
             MediatorResult.Success(
-                endOfPaginationReached = response.isError || response.isEmpty
+                endOfPaginationReached = response.isError
+                        || response.isEmpty
+                        || response.isEndDouble(state.lastItemOrNull()?.id)
             )
 
         } catch (e: Exception) {

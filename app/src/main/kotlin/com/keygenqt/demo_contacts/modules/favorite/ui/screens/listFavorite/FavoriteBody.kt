@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.favorite.ui.screens.listFavorite
 
 import androidx.compose.runtime.Composable
@@ -69,7 +69,8 @@ fun FavoriteBody(
         } else {
             GuestListScreen(
                 text = stringResource(id = R.string.favorite_guest_list),
-                painter = painterResource(id = R.drawable.ic_favorite_placeholder)
+                painter = painterResource(id = R.drawable.ic_favorite_placeholder),
+                onSignIn = { onEvent(FavoriteEvents.NavigateToSignIn) }
             )
         }
     }

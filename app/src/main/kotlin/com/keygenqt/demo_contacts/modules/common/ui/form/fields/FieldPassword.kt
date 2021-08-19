@@ -39,6 +39,7 @@ import com.keygenqt.demo_contacts.modules.common.ui.compose.components.TextField
 import com.keygenqt.demo_contacts.modules.common.ui.form.base.FormFieldState
 import com.keygenqt.demo_contacts.modules.common.ui.form.states.PasswordState
 import com.keygenqt.demo_contacts.theme.MyTheme
+import com.keygenqt.demo_contacts.theme.customTextFieldColors
 
 @Composable
 fun FieldPassword(
@@ -73,7 +74,8 @@ fun FieldPassword(
         textStyle = MaterialTheme.typography.body2,
         isError = state.hasErrors,
         keyboardOptions = KeyboardOptions.Default.copy(imeAction = imeAction),
-        keyboardActions = keyboardActions
+        keyboardActions = keyboardActions,
+        colors = customTextFieldColors()
     )
 
     state.getError(LocalContext.current)?.let { error ->

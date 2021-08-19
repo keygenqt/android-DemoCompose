@@ -35,7 +35,7 @@ fun ClickableTextAnimation(
     overflow: TextOverflow = TextOverflow.Clip,
     maxLines: Int = Int.MAX_VALUE,
     onTextLayout: (TextLayoutResult) -> Unit = {},
-    onClick: (Int) -> Unit,
+    onClick: () -> Unit,
 ) {
     val scope = rememberCoroutineScope()
     var click: Boolean by remember { mutableStateOf(false) }
@@ -65,7 +65,7 @@ fun ClickableTextAnimation(
             delay(500)
             click = false
         }
-        onClick.invoke(it)
+        onClick.invoke()
     }
 
     LaunchedEffect(click) {

@@ -39,8 +39,8 @@ fun OnboardingItem2(onNext: () -> Unit = {}) {
     val context = LocalContext.current
 
     PlugBlock(
-        title = stringResource(id = R.string.start_1_title),
-        text = stringResource(id = R.string.start_1_text),
+        title = stringResource(id = R.string.onboarding_1_title),
+        text = stringResource(id = R.string.onboarding_1_text),
         painter = painterResource(R.drawable.ic_other_start),
         contentBoxScope = {
             Column(
@@ -59,14 +59,14 @@ fun OnboardingItem2(onNext: () -> Unit = {}) {
                 ) {
                     Text(
                         color = MaterialTheme.colors.onSecondary,
-                        text = stringResource(id = R.string.start_2_btn_permissions),
+                        text = stringResource(id = R.string.onboarding_2_btn_permissions),
                     )
                 }
 
                 Spacer(modifier = Modifier.size(16.dp))
 
                 ClickableTextAnimation(
-                    text = stringResource(id = R.string.start_2_btn_select)
+                    text = stringResource(id = R.string.onboarding_2_btn_select)
                 ) {
                     Toast.makeText(context, R.string.common_coming_soon, Toast.LENGTH_SHORT).show()
                 }

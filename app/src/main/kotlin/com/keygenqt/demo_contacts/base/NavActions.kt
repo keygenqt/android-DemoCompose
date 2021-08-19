@@ -13,13 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.base
 
 import androidx.navigation.NavHostController
+import com.keygenqt.demo_contacts.modules.common.navigation.NavScreen
 
 open class NavActions(controller: NavHostController) {
     val navigateToUp: () -> Unit = {
         controller.navigateUp()
+    }
+    val navigateToSignIn: () -> Unit = {
+        controller.navigate(NavScreen.SignInScreen.route)
     }
 }

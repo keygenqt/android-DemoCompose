@@ -13,11 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.common.ui.compose.components
 
 import android.content.res.Configuration
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,18 +29,19 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.theme.MyTheme
 
 @Composable
-fun Loader(modifier: Modifier = Modifier) {
-    Column(
+fun Loader(
+    modifier: Modifier = Modifier,
+) {
+    Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(bottom = 16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         CommonLoading(
             visibility = true,
             modifier = Modifier
-                .size(60.dp)
+                .fillMaxWidth()
+                .height(56.dp)
+                .align(Alignment.Center)
         )
     }
 }

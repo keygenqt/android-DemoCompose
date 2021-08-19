@@ -13,12 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.utils
 
 import com.keygenqt.demo_contacts.BuildConfig
 
 object ConstantsApp {
+
+    const val DEBUG_DELAY = 2000L
 
     val API_URL_BASE
         get() =
@@ -29,5 +31,7 @@ object ConstantsApp {
 
     val API_URL get() = "$API_URL_BASE/rg/v1/newRG/"
 
-    const val DEBUG_DELAY = 2000L
+
+    val DEBUG_CREDENTIAL_LOGIN get() = if (BuildConfig.DEBUG) "zarubin@surfstudio.ru" else ""
+    val DEBUG_CREDENTIAL_PASSW get() = if (BuildConfig.DEBUG) "" else ""
 }

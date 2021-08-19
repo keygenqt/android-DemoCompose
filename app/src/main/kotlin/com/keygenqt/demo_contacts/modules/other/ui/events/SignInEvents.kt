@@ -14,15 +14,9 @@
  * limitations under the License.
  */
 
-package com.keygenqt.demo_contacts.modules.other.services.api.impl
+package com.keygenqt.demo_contacts.modules.other.ui.events
 
-import com.keygenqt.demo_contacts.modules.other.data.requests.SignInRequest
-import com.keygenqt.demo_contacts.modules.other.data.responses.SignInResponse
-import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.POST
-
-interface ApiPost {
-    @POST("customers/oauth2/acquire-token")
-    suspend fun signIn(@Body request: SignInRequest): Response<SignInResponse>
+sealed class SignInEvents {
+    object NavigateBack : SignInEvents()
+    data class SignIn(val login: String, val passw: String) : SignInEvents()
 }

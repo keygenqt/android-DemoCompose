@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.base.preferences
 
 import android.content.SharedPreferences
@@ -23,13 +23,18 @@ interface AppPreferencesBase {
     val p: SharedPreferences
 
     enum class KEYS {
-        TOKEN,
+        ACCESS_TOKEN,
+        REFRESH_TOKEN,
         IS_START_PAGE,
     }
 
-    var token: String
-        get() = p.getString(KEYS.TOKEN.name, null) ?: ""
-        set(value) = p.edit().putString(KEYS.TOKEN.name, value).apply()
+    var accessToken: String
+        get() = p.getString(KEYS.ACCESS_TOKEN.name, null) ?: ""
+        set(value) = p.edit().putString(KEYS.ACCESS_TOKEN.name, value).apply()
+
+    var refreshToken: String
+        get() = p.getString(KEYS.REFRESH_TOKEN.name, null) ?: ""
+        set(value) = p.edit().putString(KEYS.REFRESH_TOKEN.name, value).apply()
 
     var isStartPage: Boolean
         get() = p.getBoolean(KEYS.IS_START_PAGE.name, true)

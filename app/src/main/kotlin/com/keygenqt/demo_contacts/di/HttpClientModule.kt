@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.di
 
-import com.keygenqt.demo_contacts.BuildConfig
+import com.keygenqt.demo_contacts.base.preferences.AppPreferences
 import com.keygenqt.demo_contacts.utils.ConstantsApp.API_URL
 import dagger.Module
 import dagger.Provides
@@ -33,7 +33,7 @@ import timber.log.Timber
 object HttpClientModule {
 
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(preferences: AppPreferences): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor { message -> Timber.i(message) }.apply {
                 level = HttpLoggingInterceptor.Level.BODY
@@ -41,7 +41,9 @@ object HttpClientModule {
             .addInterceptor {
                 val original = it.request()
                 val request = original.newBuilder().apply {
-                    header("Authorization", "token ${BuildConfig.AUTHORIZATION_TOKEN}")
+                    if (preferences.accessToken.isNotEmpty()) {
+                        header("Authorization", "Bearer ${preferences.accessToken}")
+                    }
                 }
                     .method(original.method, original.body)
                     .build()

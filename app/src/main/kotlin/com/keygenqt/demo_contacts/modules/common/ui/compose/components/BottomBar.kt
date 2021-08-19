@@ -57,24 +57,27 @@ fun BottomBar(
                         },
                         selected = tab.route == currentRoute.route,
                         onClick = {
+
                             currentRouteSavable?.let {
                                 if (currentRouteSavable == tab) {
                                     doubleClick.invoke(it)
-                                }
-                                if (currentRouteSavable != tab) {
-                                    when (tab) {
-                                        HomeTab.BRANDS -> navActions.navigateToBrands.invoke()
-                                        HomeTab.CATALOG -> navActions.navigateToCatalog.invoke()
-                                        HomeTab.PROFILE -> navActions.navigateToProfile.invoke()
-                                        HomeTab.FAVORITE -> navActions.navigateToFavorite.invoke()
-                                        HomeTab.CART -> navActions.navigateToCart.invoke()
-                                    }
                                 }
                             } ?: run {
                                 if (HomeTab.BRANDS == tab) {
                                     doubleClick.invoke(HomeTab.BRANDS)
                                 }
                             }
+
+                            if (currentRouteSavable != null && currentRouteSavable != tab || HomeTab.BRANDS != tab) {
+                                when (tab) {
+                                    HomeTab.BRANDS -> navActions.navigateToBrands.invoke()
+                                    HomeTab.CATALOG -> navActions.navigateToCatalog.invoke()
+                                    HomeTab.PROFILE -> navActions.navigateToProfile.invoke()
+                                    HomeTab.FAVORITE -> navActions.navigateToFavorite.invoke()
+                                    HomeTab.CART -> navActions.navigateToCart.invoke()
+                                }
+                            }
+
                             currentRouteSavable = tab
                         },
                         selectedContentColor = MaterialTheme.colors.onSurface,

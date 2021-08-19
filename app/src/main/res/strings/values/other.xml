@@ -1,12 +1,15 @@
 <resources>
-    <!-- Start 1 -->
-    <string name="start_1_title">We\'ve updated!</string>
-    <string name="start_1_text">Convenient application - quick access to the catalog, favorites and a new personal account with a loyalty card</string>
-    <string name="start_1_btn">Next</string>
+    <!-- Onboarding 1 -->
+    <string name="onboarding_1_title">We\'ve updated!</string>
+    <string name="onboarding_1_text">Convenient application - quick access to the catalog, favorites and a new personal account with a loyalty card</string>
+    <string name="onboarding_1_btn">Next</string>
 
-    <!-- Start 1 -->
-    <string name="start_2_title">Location</string>
-    <string name="start_2_text">Allow access from your location so that we can show the stores nearby, as well as the availability of goods in the nearest store</string>
-    <string name="start_2_btn_permissions">Next</string>
-    <string name="start_2_btn_select">Select city</string>
+    <!-- Onboarding 2 -->
+    <string name="onboarding_2_title">Location</string>
+    <string name="onboarding_2_text">Allow access from your location so that we can show the stores nearby, as well as the availability of goods in the nearest store</string>
+    <string name="onboarding_2_btn_permissions">Next</string>
+    <string name="onboarding_2_btn_select">Select city</string>
+
+    <!-- Sign In -->
+    <string name="sign_in_title">Sign In</string>
 </resources>

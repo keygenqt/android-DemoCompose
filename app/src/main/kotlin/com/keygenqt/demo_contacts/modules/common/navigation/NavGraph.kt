@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.common.navigation
 
 import androidx.compose.foundation.layout.Box
@@ -47,8 +47,11 @@ import com.keygenqt.demo_contacts.modules.common.navigation.HomeTab.Companion.fi
 import com.keygenqt.demo_contacts.modules.common.ui.compose.components.BottomBar
 import com.keygenqt.demo_contacts.modules.favorite.ui.events.FavoriteEvents
 import com.keygenqt.demo_contacts.modules.favorite.ui.screens.listFavorite.FavoriteScreen
+import com.keygenqt.demo_contacts.modules.other.ui.events.SignInEvents
 import com.keygenqt.demo_contacts.modules.other.ui.events.StartEvents
 import com.keygenqt.demo_contacts.modules.other.ui.screens.onboarding.OnboardingScreen
+import com.keygenqt.demo_contacts.modules.other.ui.screens.signIn.SignInScreen
+import com.keygenqt.demo_contacts.modules.other.ui.viewModels.OtherViewModel
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.screens.ProfileScreen
 
@@ -125,6 +128,7 @@ fun GuestNavGraph(navController: NavHostController) {
                     composable(NavScreen.FavoriteScreen.route) {
                         FavoriteScreen(viewModel = hiltViewModel()) { event ->
                             when (event) {
+                                is FavoriteEvents.NavigateToSignIn -> navActions.navigateToSignIn.invoke()
                                 is FavoriteEvents.NavigateBack -> navActions.navigateToUp.invoke()
                             }
                         }
@@ -133,6 +137,21 @@ fun GuestNavGraph(navController: NavHostController) {
                         CartScreen(viewModel = hiltViewModel()) { event ->
                             when (event) {
                                 is CartEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                            }
+                        }
+                    }
+                    composable(NavScreen.SignInScreen.route) {
+                        val viewModel: OtherViewModel = hiltViewModel()
+                        SignInScreen(viewModel = viewModel) { event ->
+                            when (event) {
+                                is SignInEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                                is SignInEvents.SignIn -> viewModel.signIn(
+                                    event.login,
+                                    event.passw
+                                ) { accessToken, refreshToken ->
+                                    localBaseViewModel.startUser(accessToken, refreshToken)
+                                    navActions.navigateToUp.invoke()
+                                }
                             }
                         }
                     }

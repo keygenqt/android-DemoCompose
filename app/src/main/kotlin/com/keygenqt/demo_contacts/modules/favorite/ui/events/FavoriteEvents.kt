@@ -17,5 +17,6 @@
 package com.keygenqt.demo_contacts.modules.favorite.ui.events
 
 sealed class FavoriteEvents {
+    object NavigateToSignIn : FavoriteEvents()
     object NavigateBack : FavoriteEvents()
 }
