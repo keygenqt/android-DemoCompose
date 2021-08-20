@@ -68,7 +68,8 @@ fun BottomBar(
                                 }
                             }
 
-                            if (currentRouteSavable != null && currentRouteSavable != tab || HomeTab.BRANDS != tab) {
+                            if (currentRouteSavable != null && currentRouteSavable != tab
+                                || currentRouteSavable == null && HomeTab.BRANDS != tab) {
                                 when (tab) {
                                     HomeTab.BRANDS -> navActions.navigateToBrands.invoke()
                                     HomeTab.CATALOG -> navActions.navigateToCatalog.invoke()

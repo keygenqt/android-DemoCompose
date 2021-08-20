@@ -10,8 +10,6 @@ plugins {
 
     // https://dagger.dev/hilt/
     id("dagger.hilt.android.plugin")
-    // https://github.com/Kotlin/kotlinx.serialization
-    kotlin("plugin.serialization")
     // https://github.com/diffplug/spotless
     id("com.diffplug.spotless")
     // https://developers.google.com/android/guides/google-services-plugin
@@ -78,9 +76,10 @@ android {
 }
 
 dependencies {
-
     // base
     implementation("androidx.core:core-ktx:${ex["coreKtxVersion"]}")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:${ex["kotlinVersion"]}")
+    implementation("androidx.startup:startup-runtime:${ex["startupVersion"]}")
 
     // retrofit
     implementation("com.squareup.retrofit2:converter-gson:${ex["retrofitVersion"]}")
@@ -110,14 +109,12 @@ dependencies {
     implementation("com.google.accompanist:accompanist-swiperefresh:${ex["accompanistVersion"]}")
 
     // compose
-    implementation("androidx.compose.ui:ui:${ex["composeVersion"]}")
     implementation("androidx.compose.material:material:${ex["composeVersion"]}")
+    implementation("androidx.compose.ui:ui:${ex["composeVersion"]}")
     implementation("androidx.compose.ui:ui-tooling-preview:${ex["composeVersion"]}")
-    implementation("androidx.constraintlayout:constraintlayout-compose:${ex["constraintLayoutComposeVersion"]}")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:${ex["composeVersion"]}")
-    debugImplementation("androidx.compose.ui:ui-tooling:${ex["composeVersion"]}")
-    implementation("androidx.activity:activity-compose:${ex["activityComposeVersion"]}")
     implementation("androidx.compose.material:material-icons-extended:${ex["composeVersion"]}")
+    implementation("androidx.constraintlayout:constraintlayout-compose:${ex["constraintLayoutComposeVersion"]}")
+    implementation("androidx.activity:activity-compose:${ex["activityComposeVersion"]}")
     implementation("androidx.paging:paging-compose:${ex["pagingComposeVersion"]}")
 
     // lottie
@@ -129,10 +126,7 @@ dependencies {
     implementation("io.coil-kt:coil-compose:${ex["coilVersion"]}")
 
     // other
-    implementation("org.jetbrains.kotlin:kotlin-reflect:${ex["kotlinVersion"]}")
     implementation("com.jakewharton.timber:timber:${ex["timberVersion"]}")
-    implementation("androidx.startup:startup-runtime:${ex["startupVersion"]}")
     implementation("com.google.code.gson:gson:${ex["gsonVersion"]}")
     implementation("androidx.security:security-crypto:${ex["securityCryptoVersion"]}")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${ex["coroutinesPlayServicesVersion"]}")
 }

@@ -18,7 +18,6 @@ pluginManagement {
         id("org.jetbrains.kotlin.android") version kotlinVersion
         id("com.diffplug.spotless") version spotlessVersion
         kotlin("kapt") version kotlinVersion
-        kotlin("plugin.serialization") version kotlinVersion
     }
 }
 dependencyResolutionManagement {
