@@ -13,11 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.base
 
 import androidx.paging.PagingSource
+import com.keygenqt.demo_contacts.base.HTTPResult.*
 import com.keygenqt.demo_contacts.base.interfaces.IModel
+import com.keygenqt.demo_contacts.extensions.parseApiError
+import com.keygenqt.demo_contacts.extensions.toHTTPResult
+import retrofit2.Response
 
 sealed class ResponseResult<out R> {
     data class Success<out T>(val data: T) : ResponseResult<T>()
@@ -94,3 +98,16 @@ fun ResponseResult<*>?.isEndDouble(lastStateId: String?) = this != null
         && data.isNotEmpty()
         && data.last() is IModel
         && (data.last() as IModel).id == lastStateId
+
+
+fun <T> Response<T>.responseCheck(): Response<T> {
+    return when (code().toHTTPResult()) {
+        is Result200 -> this
+        is Result400 -> throw Result400()
+        is Result401 -> throw Result401()
+        is Result403 -> throw this.parseApiError()?.let { Result403(it) } ?: Result403()
+        is Result404 -> throw Result404()
+        is Result500 -> throw Result500()
+        is ResultUnknown -> throw this.parseApiError()?.let { ResultUnknown(code(), it) } ?: ResultUnknown(code())
+    }
+}

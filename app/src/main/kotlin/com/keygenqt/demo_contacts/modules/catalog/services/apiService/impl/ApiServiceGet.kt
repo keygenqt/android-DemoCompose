@@ -19,6 +19,7 @@ package com.keygenqt.demo_contacts.modules.catalog.services.apiService.impl
 import com.keygenqt.demo_contacts.BuildConfig
 import com.keygenqt.demo_contacts.base.ResponseResult
 import com.keygenqt.demo_contacts.base.executeWithResponse
+import com.keygenqt.demo_contacts.base.responseCheck
 import com.keygenqt.demo_contacts.modules.catalog.data.mappers.toModels
 import com.keygenqt.demo_contacts.modules.catalog.data.models.BrandModel
 import com.keygenqt.demo_contacts.modules.catalog.data.models.CategoryModel
@@ -37,6 +38,7 @@ interface ApiServiceGet {
             if (BuildConfig.DEBUG) delay(ConstantsApp.DEBUG_DELAY) // Simulate slow internet
             executeWithResponse {
                 api.getListCatalog(page)
+                    .responseCheck()
                     .body()
                     ?.toModels()
                     ?: emptyList()
@@ -49,6 +51,7 @@ interface ApiServiceGet {
             if (BuildConfig.DEBUG) delay(ConstantsApp.DEBUG_DELAY) // Simulate slow internet
             executeWithResponse {
                 api.getListBrands(page)
+                    .responseCheck()
                     .body()
                     ?.toModels()
                     ?: emptyList()

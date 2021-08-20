@@ -19,6 +19,7 @@ package com.keygenqt.demo_contacts.modules.favorite.services.apiService.impl
 import com.keygenqt.demo_contacts.BuildConfig
 import com.keygenqt.demo_contacts.base.ResponseResult
 import com.keygenqt.demo_contacts.base.executeWithResponse
+import com.keygenqt.demo_contacts.base.responseCheck
 import com.keygenqt.demo_contacts.modules.favorite.data.mappers.toModels
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.services.api.ApiFavorite
@@ -36,6 +37,7 @@ interface ApiServiceGet {
             if (BuildConfig.DEBUG) delay(ConstantsApp.DEBUG_DELAY) // Simulate slow internet
             executeWithResponse {
                 api.getListFavorites(page)
+                    .responseCheck()
                     .body()
                     ?.toModels()
                     ?: emptyList()

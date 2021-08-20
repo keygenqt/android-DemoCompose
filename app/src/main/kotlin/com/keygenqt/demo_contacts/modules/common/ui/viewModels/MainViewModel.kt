@@ -22,6 +22,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.keygenqt.demo_contacts.base.preferences.AppPreferences
 import com.keygenqt.demo_contacts.modules.common.navigation.NavScreen
+import com.keygenqt.demo_contacts.modules.common.services.DataServiceCommon
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,6 +34,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
+    private val data: DataServiceCommon,
     private val analytics: FirebaseAnalytics,
     private val preferences: AppPreferences,
 ) : ViewModel() {
@@ -106,15 +108,17 @@ class MainViewModel @Inject constructor(
 
     fun startUser(accessToken: String, refreshToken: String) {
         _isLogin.value = true
-        // save credentials
-        preferences.accessToken = accessToken
-        preferences.refreshToken = refreshToken
+        // update credentials
+        preferences.setTokens(accessToken, refreshToken)
     }
 
     fun logout() {
         _isLogin.value = false
-        // clear credentials
-        preferences.accessToken = ""
-        preferences.refreshToken = ""
+        // clear preferences
+        preferences.clearAfterLogout()
+        // clear preferences
+        viewModelScope.launch {
+            data.clearAfterLogout()
+        }
     }
 }

@@ -129,6 +129,7 @@ dependencies {
     implementation("io.coil-kt:coil-compose:${ex["coilVersion"]}")
 
     // other
+    implementation("org.jetbrains.kotlin:kotlin-reflect:${ex["kotlinVersion"]}")
     implementation("com.jakewharton.timber:timber:${ex["timberVersion"]}")
     implementation("androidx.startup:startup-runtime:${ex["startupVersion"]}")
     implementation("com.google.code.gson:gson:${ex["gsonVersion"]}")

@@ -19,6 +19,7 @@ package com.keygenqt.demo_contacts.modules.brands.services.apiService.impl
 import com.keygenqt.demo_contacts.BuildConfig
 import com.keygenqt.demo_contacts.base.ResponseResult
 import com.keygenqt.demo_contacts.base.executeWithResponse
+import com.keygenqt.demo_contacts.base.responseCheck
 import com.keygenqt.demo_contacts.modules.brands.data.mappers.toModel
 import com.keygenqt.demo_contacts.modules.brands.data.models.FeedModel
 import com.keygenqt.demo_contacts.modules.brands.services.api.ApiBrands
@@ -36,6 +37,7 @@ interface ApiServiceGet {
             if (BuildConfig.DEBUG) delay(ConstantsApp.DEBUG_DELAY) // Simulate slow internet
             executeWithResponse {
                 api.getFeed()
+                    .responseCheck()
                     .body()
                     ?.toModel()
             }
