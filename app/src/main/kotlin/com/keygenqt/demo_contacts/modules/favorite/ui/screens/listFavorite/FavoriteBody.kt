@@ -64,7 +64,10 @@ fun FavoriteBody(
                     )
                 }
             ) { _, model ->
-                FavoriteItemList(model = model)
+                FavoriteItemList(
+                    model = model,
+                    onEvent = onEvent,
+                )
             }
         } else {
             GuestListScreen(

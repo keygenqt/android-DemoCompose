@@ -70,9 +70,6 @@ fun FeedBody(
         }
     ) {
         LocalBaseViewModel.current.ListenRefresh {
-            Timber.e("--------------------------")
-            Timber.e(it)
-            Timber.e(NavScreen.BrandsScreen.route)
             if (it == NavScreen.BrandsScreen.route) onEvent(BrandsEvents.RefreshFeed)
         }
 

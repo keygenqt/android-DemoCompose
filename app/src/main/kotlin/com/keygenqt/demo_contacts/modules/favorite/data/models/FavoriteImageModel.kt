@@ -13,16 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.favorite.data.models
 
 import androidx.compose.runtime.Immutable
 
 @Immutable
-data class FavoritePriceImageModel(
-    val format: String,
-    val width: Int,
-    val height: Int,
-    val imageType: String,
-    val url: String,
+data class FavoriteImageModel(
+    val imageFormat: String,
+    val imageUrl: String,
 )

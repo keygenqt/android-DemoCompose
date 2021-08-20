@@ -27,6 +27,7 @@ import com.keygenqt.demo_contacts.base.interfaces.IModel
 data class FavoriteModel(
     @PrimaryKey override val id: String,
     val name: String,
-    val description: String?,
+    val subtitle: String?,
+    @Embedded val image: FavoriteImageModel?,
     @Embedded val price: FavoritePriceModel?,
 ) : IModel

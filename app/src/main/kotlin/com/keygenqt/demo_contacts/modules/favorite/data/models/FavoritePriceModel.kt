@@ -22,6 +22,5 @@ import androidx.room.Embedded
 @Immutable
 data class FavoritePriceModel(
     val value: Double = 0.0,
-    val priceGroupCode: String = "",
-    @Embedded val icon: FavoritePriceImageModel? = null,
+    val currencyIso: String = "RUB",
 )
