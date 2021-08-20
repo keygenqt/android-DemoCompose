@@ -47,10 +47,10 @@ import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.ListenRefresh
 import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
 import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
-import com.keygenqt.demo_contacts.modules.common.navigation.NavScreen
-import com.keygenqt.demo_contacts.modules.common.ui.compose.components.MainScaffold
-import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.EmptyListScreen
-import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.LoadingScreen
+import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
+import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
+import com.keygenqt.demo_contacts.modules._common.ui.compose.EmptyListScreen
+import com.keygenqt.demo_contacts.modules._common.ui.compose.LoadingScreen
 import timber.log.Timber
 
 @ExperimentalCoilApi
@@ -109,6 +109,7 @@ fun FeedBody(
                         item {
                             Card(
                                 shape = MaterialTheme.shapes.medium,
+                                elevation = 12.dp,
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(16.dp)
@@ -154,6 +155,8 @@ fun FeedBody(
 
                                     })
                             ) {
+                                Spacer(modifier = Modifier.size(4.dp))
+
                                 Image(
                                     contentScale = ContentScale.FillWidth,
                                     painter = painterResource(R.drawable.ic_new_items),

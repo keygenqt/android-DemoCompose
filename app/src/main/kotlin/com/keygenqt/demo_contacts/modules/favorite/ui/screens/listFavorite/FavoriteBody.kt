@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.modules.favorite.ui.screens.listFavorite
 
 import androidx.compose.runtime.Composable
@@ -26,10 +26,10 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keygenqt.demo_contacts.R
-import com.keygenqt.demo_contacts.modules.common.ui.compose.components.CommonList
-import com.keygenqt.demo_contacts.modules.common.ui.compose.components.MainScaffold
-import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.EmptyListScreen
-import com.keygenqt.demo_contacts.modules.common.ui.compose.screens.GuestListScreen
+import com.keygenqt.demo_contacts.modules._common.ui.compose.CommonList
+import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
+import com.keygenqt.demo_contacts.modules._common.ui.compose.EmptyListScreen
+import com.keygenqt.demo_contacts.modules._common.ui.compose.GuestListScreen
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.ui.events.FavoriteEvents
 

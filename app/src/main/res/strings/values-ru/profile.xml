@@ -1,0 +1,26 @@
+<resources>
+    <!-- Profile -->
+    <string name="profile_title">Мой РИВ ГОШ</string>
+    <string name="profile_card">Активировать карту</string>
+    <string name="profile_details">Мои данные</string>
+
+    <string name="profile_login_title">Авторизуйтесь,</string>
+    <string name="profile_login_text">чтобы совершать покупки, отслеживать заказы и пользоваться программой лояльности РИВ\u00A0ГОШ</string>
+    <string name="profile_login_btn_login">Войти</string>
+    <string name="profile_login_btn_registration">Регистрация</string>
+
+    <string name="profile_menu_list_loyalty">О программе лояльности</string>
+    <string name="profile_menu_list_contacts">Контакты и уведомления</string>
+    <string name="profile_menu_list_orders">Мои заказы</string>
+    <string name="profile_menu_list_purchased">Купленные товары</string>
+    <string name="profile_menu_list_questions">Вопросы и ответы</string>
+    <string name="profile_menu_list_contact_us">Связаться с нами</string>
+    <string name="profile_menu_list_logout">Выход</string>
+
+    <string name="profile_add_card_title">Есть дисконтная карта РИВ\u00A0ГОШ?</string>
+    <string name="profile_add_card_text">Можно проверить доступные бонусы и использовать для покупок</string>
+    <string name="profile_add_card_btn">Добавить карту</string>
+
+    <!-- Contacts -->
+    <string name="contact_settings_title">Контакты</string>
+</resources>

@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules.brands.data.models.FeedBrandModel
 import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
-import com.keygenqt.demo_contacts.modules.common.ui.compose.components.ClickableTextAnimation
+import com.keygenqt.demo_contacts.modules._common.ui.compose.ClickableTextAnimation
 
 @Composable
 fun FeedItemBrands(

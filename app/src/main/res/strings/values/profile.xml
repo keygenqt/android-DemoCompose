@@ -1,7 +1,26 @@
 <resources>
     <!-- Profile -->
     <string name="profile_title">My Rive Gauche</string>
+    <string name="profile_card">Activate card</string>
+    <string name="profile_details">My details</string>
+
+    <string name="profile_login_title">Sign in,</string>
+    <string name="profile_login_text">to make purchases, track orders and use the loyalty program Rive\u00A0Gauche</string>
+    <string name="profile_login_btn_login">Sign In</string>
+    <string name="profile_login_btn_registration">Sign Up</string>
+
+    <string name="profile_menu_list_loyalty">Loyalty program</string>
+    <string name="profile_menu_list_contacts">Contacts and notifications</string>
+    <string name="profile_menu_list_orders">My orders</string>
+    <string name="profile_menu_list_purchased">Purchased items</string>
+    <string name="profile_menu_list_questions">Questions and answers</string>
+    <string name="profile_menu_list_contact_us">Contact us</string>
+    <string name="profile_menu_list_logout">Logout</string>
+
+    <string name="profile_add_card_title">Do you have a discount card Rive\u00A0Gauche?</string>
+    <string name="profile_add_card_text">You can check the available bonuses and use for purchases</string>
+    <string name="profile_add_card_btn">Add a card</string>
 
     <!-- Contacts -->
-    <string name="contacts_title">Contacts</string>
+    <string name="contact_settings_title">Contacts</string>
 </resources>

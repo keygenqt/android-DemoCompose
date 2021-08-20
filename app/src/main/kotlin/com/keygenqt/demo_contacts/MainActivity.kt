@@ -33,9 +33,9 @@ import androidx.paging.ExperimentalPagingApi
 import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
-import com.keygenqt.demo_contacts.modules.common.navigation.GuestNavGraph
-import com.keygenqt.demo_contacts.modules.common.navigation.NavScreen.BrandsScreen
-import com.keygenqt.demo_contacts.modules.common.ui.viewModels.MainViewModel
+import com.keygenqt.demo_contacts.modules._common.navigation.GuestNavGraph
+import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen.BrandsScreen
+import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
 import com.keygenqt.demo_contacts.theme.MyTheme
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -25,9 +25,9 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules.catalog.data.models.BrandModel
 import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
-import com.keygenqt.demo_contacts.modules.common.navigation.NavScreen
-import com.keygenqt.demo_contacts.modules.common.ui.compose.components.CommonList
-import com.keygenqt.demo_contacts.modules.common.ui.compose.components.PlugBlock
+import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
+import com.keygenqt.demo_contacts.modules._common.ui.compose.CommonList
+import com.keygenqt.demo_contacts.modules._common.ui.compose.PlugBlock
 
 @Composable
 fun CatalogListBrands(

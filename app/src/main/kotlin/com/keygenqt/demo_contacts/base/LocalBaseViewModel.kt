@@ -17,6 +17,6 @@
 package com.keygenqt.demo_contacts.base
 
 import androidx.compose.runtime.staticCompositionLocalOf
-import com.keygenqt.demo_contacts.modules.common.ui.viewModels.MainViewModel
+import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
 
 val LocalBaseViewModel = staticCompositionLocalOf<MainViewModel> { error("No MainViewModel found!") }

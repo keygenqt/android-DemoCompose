@@ -13,9 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.events
 
 sealed class ProfileEvents {
-    object NavigateBack : ProfileEvents()
+    object NavigateToContactSettings : ProfileEvents()
+    object NavigateToSignIn : ProfileEvents()
+    object NavigateLogout : ProfileEvents()
 }

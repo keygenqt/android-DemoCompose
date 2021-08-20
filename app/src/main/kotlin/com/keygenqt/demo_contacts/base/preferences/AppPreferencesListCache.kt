@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.base.preferences
 
 import android.content.SharedPreferences
@@ -27,6 +27,10 @@ interface AppPreferencesListCache {
         LAST_UPDATE_LIST_FAVORITE,
         LAST_UPDATE_LIST_BRANDS,
         LAST_UPDATE_LIST_CATEGORIES,
+    }
+
+    fun clearAfterLogout() {
+        lastUpdateListFavorite = 0L
     }
 
     var lastUpdateFeed: Long

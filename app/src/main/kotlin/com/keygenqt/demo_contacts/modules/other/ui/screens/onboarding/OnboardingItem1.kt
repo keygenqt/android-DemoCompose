@@ -30,7 +30,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
-import com.keygenqt.demo_contacts.modules.common.ui.compose.components.PlugBlock
+import com.keygenqt.demo_contacts.modules._common.ui.compose.PlugBlock
 import com.keygenqt.demo_contacts.theme.MyTheme
 
 @Composable

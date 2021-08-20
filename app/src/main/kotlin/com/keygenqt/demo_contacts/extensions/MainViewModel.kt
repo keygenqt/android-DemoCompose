@@ -20,7 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import com.keygenqt.demo_contacts.modules.common.ui.viewModels.MainViewModel
+import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
 
 // Update after the second click on the active bottom navigator
 @Composable

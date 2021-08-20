@@ -37,7 +37,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules.brands.data.models.FeedBannerModel
 import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
-import com.keygenqt.demo_contacts.modules.common.ui.compose.components.CommonLoading
+import com.keygenqt.demo_contacts.modules._common.ui.compose.CommonLoading
 
 @ExperimentalCoilApi
 @ExperimentalPagerApi

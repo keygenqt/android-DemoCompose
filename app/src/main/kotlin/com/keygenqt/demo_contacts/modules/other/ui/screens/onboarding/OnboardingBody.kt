@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-import com.keygenqt.demo_contacts.modules.common.ui.compose.components.MainScaffold
+import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
 import com.keygenqt.demo_contacts.modules.other.ui.events.StartEvents
 import com.keygenqt.demo_contacts.theme.MyTheme
 import kotlinx.coroutines.launch

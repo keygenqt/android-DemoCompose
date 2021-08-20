@@ -13,11 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.base.preferences
 
 import android.content.SharedPreferences
 
 class AppPreferences(override val p: SharedPreferences) :
     AppPreferencesBase,
-    AppPreferencesListCache
+    AppPreferencesListCache {
+
+    override fun clearAfterLogout() {
+        super<AppPreferencesBase>.clearAfterLogout()
+        super<AppPreferencesListCache>.clearAfterLogout()
+    }
+}
