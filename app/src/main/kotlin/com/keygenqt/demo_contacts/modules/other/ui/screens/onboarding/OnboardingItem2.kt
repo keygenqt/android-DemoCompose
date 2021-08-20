@@ -41,7 +41,7 @@ fun OnboardingItem2(onNext: () -> Unit = {}) {
     PlugBlock(
         title = stringResource(id = R.string.onboarding_2_title),
         text = stringResource(id = R.string.onboarding_2_text),
-        painter = painterResource(R.drawable.ic_other_start),
+        painter = painterResource(R.drawable.ic_other_start_location),
         contentBoxScope = {
             Column(
                 modifier = Modifier
