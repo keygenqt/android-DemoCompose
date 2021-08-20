@@ -10,6 +10,7 @@ _(in progress)_
 * [Kotlin](https://kotlinlang.org/) - 100%
 * [Jetpack Compose](https://developer.android.com/jetpack/compose)
 * [Android 12](https://developer.android.com/about/versions/12?authuser=1)
+* [Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
 
 ### Preview
 <p>
