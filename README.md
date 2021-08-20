@@ -1,4 +1,4 @@
-Demo Contacts (РИВ ГОШ)
+Demo РИВ ГОШ (Contacts)
 ===================
 _(in progress)_
 
