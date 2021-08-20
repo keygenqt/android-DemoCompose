@@ -45,7 +45,7 @@ fun ProfileAddCardBody(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
             text = stringResource(id = R.string.profile_add_card_title),
-            style = MaterialTheme.typography.h6,
+            style = MaterialTheme.typography.h5,
         )
 
         Spacer(modifier = Modifier.size(16.dp))

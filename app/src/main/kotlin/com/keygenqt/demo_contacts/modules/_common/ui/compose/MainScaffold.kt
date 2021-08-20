@@ -103,7 +103,7 @@ fun MainScaffold(
                                                     state.positionToEnd()
                                                 }
                                             },
-                                        textStyle = MaterialTheme.typography.h6.merge(TextStyle(color = MaterialTheme.colors.onPrimary)),
+                                        textStyle = MaterialTheme.typography.h5.merge(TextStyle(color = MaterialTheme.colors.onPrimary)),
                                         keyboardOptions = KeyboardOptions.Default.copy(
                                             capitalization = KeyboardCapitalization.Sentences,
                                             imeAction = ImeAction.Search
@@ -136,7 +136,7 @@ fun MainScaffold(
                                         modifier = Modifier.fillMaxWidth(),
                                         textAlign = if (icon == null) TextAlign.Center else TextAlign.Start,
                                         text = title,
-                                        style = MaterialTheme.typography.h6,
+                                        style = MaterialTheme.typography.h5,
                                     )
 
                                     subTitle?.let {
@@ -150,7 +150,7 @@ fun MainScaffold(
                                             textAlign = TextAlign.Center,
                                             color = MaterialThemeCustom.colors.textColorSecondary,
                                             text = subTitle,
-                                            style = MaterialTheme.typography.subtitle2,
+                                            style = MaterialTheme.typography.caption,
                                         )
                                     }
                                 }

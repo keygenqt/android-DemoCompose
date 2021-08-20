@@ -45,7 +45,7 @@ fun ProfileLoginBody(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
             text = stringResource(id = R.string.profile_login_title),
-            style = MaterialTheme.typography.h6,
+            style = MaterialTheme.typography.h5,
         )
 
         Spacer(modifier = Modifier.size(16.dp))

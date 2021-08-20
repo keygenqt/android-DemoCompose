@@ -21,6 +21,13 @@
     <string name="profile_add_card_text">Можно проверить доступные бонусы и использовать для покупок</string>
     <string name="profile_add_card_btn">Добавить карту</string>
 
-    <!-- Contacts -->
-    <string name="contact_settings_title">Контакты</string>
+    <!-- Contacts Settings -->
+    <string name="contact_settings_title">Контакты и уведомления</string>
+    <string name="contact_settings_subtitle_sms">SMS-уведомления</string>
+    <string name="contact_settings_subtitle_email">Email-уведомления</string>
+    <string name="contact_settings_label_phone">Телефон</string>
+    <string name="contact_settings_label_email">Email</string>
+    <string name="contact_settings_label_status">Статус заказа</string>
+    <string name="contact_settings_label_stock">Спецпредложения и акции РИВ\u00A0ГОШ</string>
+    <string name="contact_settings_value_empty">Не указан</string>
 </resources>

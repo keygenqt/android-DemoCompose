@@ -55,7 +55,7 @@ fun CatalogListBrands(
         ) {
             Text(
                 text = model.name.uppercase(),
-                style = MaterialTheme.typography.h6,
+                style = MaterialTheme.typography.h5,
                 color = MaterialTheme.colors.onBackground,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,

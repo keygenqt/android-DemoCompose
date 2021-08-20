@@ -85,7 +85,7 @@ fun PlugBlock(
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
                     text = title.uppercase(),
-                    style = MaterialTheme.typography.h6,
+                    style = MaterialTheme.typography.h5,
                 )
             } ?: run {
                 Spacer(modifier = Modifier.size(16.dp))

@@ -54,7 +54,7 @@ fun CatalogListCategoryItem(
         ) {
             Text(
                 text = model.owner.name.uppercase(),
-                style = MaterialTheme.typography.h6,
+                style = MaterialTheme.typography.h5,
                 color = if (model.subcategories.isNotEmpty()) MaterialTheme.colors.onBackground else Color.Red,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -67,7 +67,7 @@ fun CatalogListCategoryItem(
 
                 Text(
                     text = stringResource(id = R.string.catalog_list_item_subcategories, model.subcategories.size),
-                    style = MaterialTheme.typography.subtitle2,
+                    style = MaterialTheme.typography.caption,
                     color = MaterialThemeCustom.colors.textColorSecondary,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,

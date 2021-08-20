@@ -54,7 +54,7 @@ fun FeedItemBrands(
                 .align(Alignment.CenterStart),
             textAlign = TextAlign.Center,
             text = name,
-            style = MaterialTheme.typography.h6,
+            style = MaterialTheme.typography.h5,
         )
 
         ClickableTextAnimation(

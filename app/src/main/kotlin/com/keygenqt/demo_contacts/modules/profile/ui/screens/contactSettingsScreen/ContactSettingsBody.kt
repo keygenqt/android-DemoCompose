@@ -13,28 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettingsScreen
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
-import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
+import com.keygenqt.demo_contacts.theme.MyTheme
 
 @ExperimentalComposeUiApi
 @Composable
@@ -49,25 +47,26 @@ fun ContactSettingsBody(
         }
     ) {
         Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
-                .background(MaterialTheme.colors.background)
+                .verticalScroll(rememberScrollState())
         ) {
-            Text(
-                style = MaterialTheme.typography.h5,
-                text = stringResource(id = R.string.common_coming_soon),
-            )
-            Text(
-                color = MaterialThemeCustom.colors.customTitle,
-                style = MaterialTheme.typography.subtitle1,
-                text = stringResource(id = R.string.contact_settings_title),
-            )
+            ContactSettingsBodySms()
+            ContactSettingsBodyEmail()
         }
     }
 }
 
+@ExperimentalComposeUiApi
+@Preview("Light")
+@Preview("Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun ContactSettingsBodyPreview() {
+    MyTheme {
+        Surface {
+            ContactSettingsBody()
+        }
+    }
+}
 
 

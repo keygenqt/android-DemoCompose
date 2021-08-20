@@ -90,7 +90,7 @@ fun FavoriteItemList(
                 ) {
                     Text(
                         text = model.name,
-                        style = MaterialTheme.typography.h6,
+                        style = MaterialTheme.typography.h5,
                         color = MaterialTheme.colors.onBackground,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
@@ -103,7 +103,7 @@ fun FavoriteItemList(
 
                         Text(
                             text = stringResource(id = R.string.catalog_list_item_subcategories, model.subtitle),
-                            style = MaterialTheme.typography.subtitle2,
+                            style = MaterialTheme.typography.caption,
                             color = MaterialThemeCustom.colors.textColorSecondary,
                             maxLines = 4,
                             overflow = TextOverflow.Ellipsis,
