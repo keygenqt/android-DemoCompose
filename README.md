@@ -14,8 +14,8 @@ _(in progress)_
 
 ### Preview
 <p>
-<img src="data/vokoscreen-2021-08-20_16-31-54.gif" width="40%"/>
-<img src="data/vokoscreen-2021-08-20_16-33-09.gif" width="40%"/>
+<img src="data/vokoscreen-2021-08-20_17-17-45.gif" width="40%"/>
+<img src="data/vokoscreen-2021-08-20_17-25-43.gif" width="40%"/>
 </p>
 
 ### Plugins

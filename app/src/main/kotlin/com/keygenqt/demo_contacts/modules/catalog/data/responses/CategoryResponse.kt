@@ -22,8 +22,8 @@ import androidx.compose.runtime.Immutable
 data class CategoryResponse(
     val code: String?,
     val rigidCategoryCode: String,
-    val name: String,
-    val url: String,
+    val name: String?,
+    val url: String?,
     val children: List<CategoryChildrenResponse>?,
 )
 
@@ -31,6 +31,6 @@ data class CategoryResponse(
 data class CategoryChildrenResponse(
     val code: String?,
     val rigidCategoryCode: String,
-    val name: String,
-    val url: String,
+    val name: String?,
+    val url: String?,
 )

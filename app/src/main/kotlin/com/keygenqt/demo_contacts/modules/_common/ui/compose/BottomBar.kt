@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules._common.ui.compose
 
 import android.content.res.Configuration
@@ -39,7 +39,7 @@ fun BottomBar(
     doubleClick: (HomeTab) -> Unit = {},
 ) {
 
-    var currentRouteSavable: HomeTab? by remember { mutableStateOf(null) }
+    var currentRouteSavable: HomeTab? by remember { mutableStateOf(HomeTab.BRANDS) }
 
     if (HomeTab.values().any { it.route == currentRoute.route }) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -68,8 +68,7 @@ fun BottomBar(
                                 }
                             }
 
-                            if (currentRouteSavable != null && currentRouteSavable != tab
-                                || currentRouteSavable == null && HomeTab.BRANDS != tab) {
+                            if (currentRouteSavable != tab) {
                                 when (tab) {
                                     HomeTab.BRANDS -> navActions.navigateToBrands.invoke()
                                     HomeTab.CATALOG -> navActions.navigateToCatalog.invoke()

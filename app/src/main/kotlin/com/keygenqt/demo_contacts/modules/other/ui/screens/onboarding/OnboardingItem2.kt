@@ -39,8 +39,8 @@ fun OnboardingItem2(onNext: () -> Unit = {}) {
     val context = LocalContext.current
 
     PlugBlock(
-        title = stringResource(id = R.string.onboarding_1_title),
-        text = stringResource(id = R.string.onboarding_1_text),
+        title = stringResource(id = R.string.onboarding_2_title),
+        text = stringResource(id = R.string.onboarding_2_text),
         painter = painterResource(R.drawable.ic_other_start),
         contentBoxScope = {
             Column(

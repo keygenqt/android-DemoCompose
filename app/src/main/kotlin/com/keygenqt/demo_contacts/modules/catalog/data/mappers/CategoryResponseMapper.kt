@@ -22,15 +22,15 @@ import com.keygenqt.demo_contacts.modules.catalog.data.responses.CategoryRespons
 import java.util.*
 
 fun CategoryResponse.toModel(): CategoryModel {
-    val rootId = code ?: UUID.randomUUID().toString()
+    val rootId = url ?: UUID.randomUUID().toString()
     return CategoryModel(
-        id = url,
-        name = name,
+        id = rootId,
+        name = name ?: "",
         subCategories = children?.map { sub ->
             SubCategoryModel(
-                ownerId = url,
-                id = sub.url,
-                name = sub.name,
+                ownerId = rootId,
+                id = sub.url ?: UUID.randomUUID().toString(),
+                name = sub.name ?: "",
             )
         } ?: listOf(),
     )
