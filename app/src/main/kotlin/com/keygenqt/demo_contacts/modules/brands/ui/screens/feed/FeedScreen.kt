@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.brands.ui.screens.feed
 
 import androidx.compose.runtime.Composable
@@ -22,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
 import com.keygenqt.demo_contacts.modules.brands.ui.viewModels.BrandsViewModel
 

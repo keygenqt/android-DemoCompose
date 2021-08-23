@@ -21,7 +21,7 @@ import com.keygenqt.demo_contacts.base.NavActions
 
 class NavActions(controller: NavHostController) : NavActions(controller) {
     val navigateToStart: () -> Unit = {
-        controller.navigate(NavScreen.StartScreen.route)
+        controller.navigate(NavScreen.OnboardingScreen.route)
     }
     val navigateToBrands: () -> Unit = {
         controller.navigate(NavScreen.BrandsScreen.route)

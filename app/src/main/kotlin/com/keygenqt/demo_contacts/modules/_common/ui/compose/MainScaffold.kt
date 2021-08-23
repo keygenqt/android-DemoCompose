@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules._common.ui.compose
 
 import android.content.res.Configuration
@@ -47,6 +47,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
+import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.modules._common.ui.form.states.StateSimpleEditText
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 import com.keygenqt.demo_contacts.theme.MyTheme
@@ -69,6 +70,7 @@ fun MainScaffold(
 ) {
 
     val softwareKeyboardController = LocalSoftwareKeyboardController.current
+    val showSnackBar: Boolean by LocalBaseViewModel.current.showSnackBar.collectAsState()
     var isShowSearch by remember { mutableStateOf(false) }
     val state = remember { StateSimpleEditText() }
     val requester = remember { FocusRequester() }
@@ -220,6 +222,12 @@ fun MainScaffold(
                     ) {
                         contentFloatingActionButton.invoke()
                     }
+                }
+                if (showSnackBar) {
+                    SnackbarInfo(
+                        modifier = Modifier
+                            .align(Alignment.TopStart)
+                    )
                 }
             }
         },

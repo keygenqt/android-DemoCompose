@@ -13,16 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-package com.keygenqt.demo_contacts.modules._common.navigation
 
-sealed class NavScreen(val route: String) {
-    object OnboardingScreen : NavScreen("OnboardingScreen")
-    object BrandsScreen : NavScreen("BrandsScreen")
-    object CatalogScreen : NavScreen("CatalogScreen")
-    object ProfileScreen : NavScreen("ProfileScreen")
-    object FavoriteScreen : NavScreen("FavoriteScreen")
-    object CartScreen : NavScreen("CartScreen")
-    object SignInScreen : NavScreen("SignInScreen")
-    object ContactSettingsScreen : NavScreen("ContactSettingsScreen")
+package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmailScreen
+
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
+import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
+import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
+
+@ExperimentalComposeUiApi
+@Composable
+fun ContactChangeEmailScreen(
+    viewModel: ProfileViewModel,
+    onEvent: (ContactSettingsEvents) -> Unit = {},
+) {
+    ContactChangeEmailBody(
+        onEvent = onEvent,
+    )
 }
+
+

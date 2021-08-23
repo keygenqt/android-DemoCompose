@@ -33,7 +33,7 @@ import androidx.paging.ExperimentalPagingApi
 import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
-import com.keygenqt.demo_contacts.modules._common.navigation.GuestNavGraph
+import com.keygenqt.demo_contacts.modules._common.navigation.NavGraph
 import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen.BrandsScreen
 import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
 import com.keygenqt.demo_contacts.theme.MyTheme
@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
                     // change status bar color
                     this@MainActivity.window.statusBarColor = MaterialTheme.colors.primaryVariant.toArgb()
                     // select graph
-                    GuestNavGraph(navController)
+                    NavGraph(navController)
                 }
             }
         }

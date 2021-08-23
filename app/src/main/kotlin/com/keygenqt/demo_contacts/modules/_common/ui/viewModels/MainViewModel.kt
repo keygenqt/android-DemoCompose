@@ -96,7 +96,7 @@ class MainViewModel @Inject constructor(
 
     fun getStartRoute(): String {
         return if (preferences.isStartPage) {
-            NavScreen.StartScreen.route
+            NavScreen.OnboardingScreen.route
         } else {
             NavScreen.BrandsScreen.route
         }
