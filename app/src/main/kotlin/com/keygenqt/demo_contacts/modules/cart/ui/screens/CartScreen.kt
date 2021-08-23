@@ -24,10 +24,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.keygenqt.demo_contacts.R
+import com.keygenqt.demo_contacts.modules._common.ui.compose.EmptyListScreen
+import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
 import com.keygenqt.demo_contacts.modules.cart.ui.events.CartEvents
 import com.keygenqt.demo_contacts.modules.cart.ui.viewModels.CartViewModel
-import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
-import com.keygenqt.demo_contacts.modules._common.ui.compose.EmptyListScreen
 import com.keygenqt.demo_contacts.theme.MyTheme
 
 @ExperimentalComposeUiApi

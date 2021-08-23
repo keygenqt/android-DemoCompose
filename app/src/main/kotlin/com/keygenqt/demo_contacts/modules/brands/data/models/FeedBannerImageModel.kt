@@ -17,10 +17,6 @@
 package com.keygenqt.demo_contacts.modules.brands.data.models
 
 import androidx.compose.runtime.Immutable
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.keygenqt.demo_contacts.base.interfaces.IModelRelation
-import com.keygenqt.demo_contacts.modules.brands.data.responses.BannerImageResponse
 
 @Immutable
 data class FeedBannerImageModel(

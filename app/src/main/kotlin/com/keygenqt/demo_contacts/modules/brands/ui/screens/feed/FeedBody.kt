@@ -45,12 +45,12 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.ListenRefresh
-import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
-import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
 import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
-import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
 import com.keygenqt.demo_contacts.modules._common.ui.compose.EmptyListScreen
 import com.keygenqt.demo_contacts.modules._common.ui.compose.LoadingScreen
+import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
+import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
+import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
 import timber.log.Timber
 
 @ExperimentalCoilApi

@@ -32,9 +32,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
+import com.keygenqt.demo_contacts.modules._common.ui.compose.ClickableTextAnimation
 import com.keygenqt.demo_contacts.modules.brands.data.models.FeedBrandModel
 import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
-import com.keygenqt.demo_contacts.modules._common.ui.compose.ClickableTextAnimation
 
 @Composable
 fun FeedItemBrands(

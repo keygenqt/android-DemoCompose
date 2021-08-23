@@ -35,9 +35,9 @@ import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.R
+import com.keygenqt.demo_contacts.modules._common.ui.compose.CommonLoading
 import com.keygenqt.demo_contacts.modules.brands.data.models.FeedBannerModel
 import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
-import com.keygenqt.demo_contacts.modules._common.ui.compose.CommonLoading
 
 @ExperimentalCoilApi
 @ExperimentalPagerApi
@@ -76,7 +76,9 @@ fun FeedItemBanner(
                         interactionSource = remember { MutableInteractionSource() },
                         indication = rememberRipple(bounded = true),
                         onClick = {
-                            Toast.makeText(context, R.string.common_coming_soon, Toast.LENGTH_SHORT).show()
+                            Toast
+                                .makeText(context, R.string.common_coming_soon, Toast.LENGTH_SHORT)
+                                .show()
                         }
                     )
             )

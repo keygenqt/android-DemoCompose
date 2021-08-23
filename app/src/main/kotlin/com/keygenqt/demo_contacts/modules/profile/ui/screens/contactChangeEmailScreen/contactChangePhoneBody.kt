@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmailScreen
 
 import android.content.res.Configuration
@@ -22,13 +22,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailEvents
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
 import com.keygenqt.demo_contacts.theme.MyTheme
 
 @ExperimentalComposeUiApi
