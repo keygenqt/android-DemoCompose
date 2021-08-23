@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules._common.navigation
 
 import androidx.navigation.NavHostController
@@ -40,5 +40,11 @@ class NavActions(controller: NavHostController) : NavActions(controller) {
     }
     val navigateToContactSettings: () -> Unit = {
         controller.navigate(NavScreen.ContactSettingsScreen.route)
+    }
+    val navigateToContactChangeEmail: () -> Unit = {
+        controller.navigate(NavScreen.ContactChangeEmailScreen.route)
+    }
+    val navigateToContactChangePhone: () -> Unit = {
+        controller.navigate(NavScreen.ContactChangePhoneScreen.route)
     }
 }

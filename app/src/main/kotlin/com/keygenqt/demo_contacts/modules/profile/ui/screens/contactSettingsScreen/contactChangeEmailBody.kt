@@ -51,8 +51,12 @@ fun ContactSettingsBody(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-            ContactSettingsBodySms()
-            ContactSettingsBodyEmail()
+            ContactSettingsBodySms(
+                onEvent = onEvent
+            )
+            ContactSettingsBodyEmail(
+                onEvent = onEvent
+            )
         }
     }
 }

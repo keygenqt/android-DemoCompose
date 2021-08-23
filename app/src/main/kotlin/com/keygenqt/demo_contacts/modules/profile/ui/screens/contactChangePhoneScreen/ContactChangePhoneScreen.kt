@@ -18,6 +18,7 @@ package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangePhone
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
+import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangePhoneEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
 
@@ -25,7 +26,7 @@ import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
 @Composable
 fun ContactChangePhoneScreen(
     viewModel: ProfileViewModel,
-    onEvent: (ContactSettingsEvents) -> Unit = {},
+    onEvent: (ContactChangePhoneEvents) -> Unit = {},
 ) {
     ContactChangePhoneBody(
         onEvent = onEvent,

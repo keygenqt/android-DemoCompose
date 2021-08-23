@@ -24,21 +24,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
+import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangePhoneEvents
 import com.keygenqt.demo_contacts.theme.MyTheme
 
 @ExperimentalComposeUiApi
 @Composable
 fun ContactChangePhoneBody(
-    onEvent: (ContactSettingsEvents) -> Unit = {},
+    onEvent: (ContactChangePhoneEvents) -> Unit = {},
 ) {
     MainScaffold(
-        title = stringResource(id = R.string.contact_settings_title),
+        title = "",
+        elevation = 0.dp,
         icon = Icons.Filled.ArrowBack,
         navigationIconOnClick = {
-            onEvent(ContactSettingsEvents.NavigateBack)
+            onEvent(ContactChangePhoneEvents.NavigateBack)
         }
     ) {
 

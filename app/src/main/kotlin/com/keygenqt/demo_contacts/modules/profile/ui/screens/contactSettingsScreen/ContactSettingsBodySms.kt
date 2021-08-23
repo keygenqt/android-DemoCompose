@@ -44,7 +44,7 @@ fun ContactSettingsBodySms(
             .fillMaxWidth()
             .padding(bottom = 5.dp)
             .clickable(onClick = {
-
+                onEvent(ContactSettingsEvents.NavigateToContactChangePhone)
             })
     ) {
         ConstraintLayout(

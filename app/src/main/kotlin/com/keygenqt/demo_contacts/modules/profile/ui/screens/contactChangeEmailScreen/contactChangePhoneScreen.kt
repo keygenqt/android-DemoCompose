@@ -18,6 +18,7 @@ package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmail
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
+import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
 
@@ -25,7 +26,7 @@ import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
 @Composable
 fun ContactChangeEmailScreen(
     viewModel: ProfileViewModel,
-    onEvent: (ContactSettingsEvents) -> Unit = {},
+    onEvent: (ContactChangeEmailEvents) -> Unit = {},
 ) {
     ContactChangeEmailBody(
         onEvent = onEvent,

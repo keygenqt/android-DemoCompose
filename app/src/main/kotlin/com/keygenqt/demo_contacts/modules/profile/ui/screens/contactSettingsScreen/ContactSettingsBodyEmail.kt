@@ -44,7 +44,7 @@ fun ContactSettingsBodyEmail(
             .fillMaxWidth()
             .padding(bottom = 5.dp)
             .clickable(onClick = {
-
+                onEvent(ContactSettingsEvents.NavigateToContactChangeEmail)
             })
     ) {
         ConstraintLayout(

@@ -13,16 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules._common.navigation
 
 sealed class NavScreen(val route: String) {
-    object OnboardingScreen : NavScreen("OnboardingScreen")
+    // brands
     object BrandsScreen : NavScreen("BrandsScreen")
-    object CatalogScreen : NavScreen("CatalogScreen")
-    object ProfileScreen : NavScreen("ProfileScreen")
-    object FavoriteScreen : NavScreen("FavoriteScreen")
+
+    // cart
     object CartScreen : NavScreen("CartScreen")
+
+    // catalog
+    object CatalogScreen : NavScreen("CatalogScreen")
+
+    // favorite
+    object FavoriteScreen : NavScreen("FavoriteScreen")
+
+    // other
+    object OnboardingScreen : NavScreen("OnboardingScreen")
     object SignInScreen : NavScreen("SignInScreen")
+
+    // profile
+    object ProfileScreen : NavScreen("ProfileScreen")
     object ContactSettingsScreen : NavScreen("ContactSettingsScreen")
+    object ContactChangeEmailScreen : NavScreen("ContactChangeEmailScreen")
+    object ContactChangePhoneScreen : NavScreen("ContactChangePhoneScreen")
 }
