@@ -39,12 +39,34 @@ class NavActions(controller: NavHostController) : NavActions(controller) {
         controller.navigate(NavScreen.CartScreen.route)
     }
     val navigateToContactSettings: () -> Unit = {
-        controller.navigate(NavScreen.ContactSettingsScreen.route)
+        NavScreen.ContactSettingsScreen.apply {
+            controller.navigate(routeWithArgument)
+        }
+    }
+    val navigateToContactSettingsUpdatedEmail: (String) -> Unit = { email: String ->
+        NavScreen.ContactSettingsScreen.apply {
+            controller.navigate(routeWithArgument
+                .replace("{$argument0}", email)
+            ) {
+                popUpTo(routeWithArgument) { inclusive = true }
+            }
+        }
+    }
+    val navigateToContactSettingsUpdatedPhone: (String) -> Unit = { phone: String ->
+        NavScreen.ContactSettingsScreen.apply {
+            controller.navigate(routeWithArgument
+                .replace("{$argument1}", phone)
+            ) {
+                popUpTo(routeWithArgument) { inclusive = true }
+            }
+        }
     }
     val navigateToContactChangeEmail: () -> Unit = {
         controller.navigate(NavScreen.ContactChangeEmailScreen.route)
     }
-    val navigateToContactChangePhone: () -> Unit = {
-        controller.navigate(NavScreen.ContactChangePhoneScreen.route)
+    val navigateToContactChangeCodeEmail: (String) -> Unit = { email: String ->
+        NavScreen.ContactChangeEmailCodeScreen.apply {
+            controller.navigate(routeWithArgument.replace("{$argument0}", email))
+        }
     }
 }

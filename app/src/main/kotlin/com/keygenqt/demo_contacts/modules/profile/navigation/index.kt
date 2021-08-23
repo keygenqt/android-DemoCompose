@@ -16,6 +16,7 @@
  
 package com.keygenqt.demo_contacts.modules.profile.navigation
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
@@ -26,6 +27,7 @@ import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.screens.profileScreen.ProfileScreen
 
+@ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 fun NavGraphBuilder.indexNavGraph(
     navActions: NavActions,

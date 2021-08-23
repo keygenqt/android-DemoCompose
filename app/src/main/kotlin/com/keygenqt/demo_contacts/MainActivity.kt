@@ -23,6 +23,7 @@ import android.view.ViewTreeObserver
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -39,6 +40,7 @@ import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
 import com.keygenqt.demo_contacts.theme.MyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
@@ -46,6 +48,7 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController
 
+    @ExperimentalMaterialApi
     @ExperimentalCoilApi
     @ExperimentalPagingApi
     @ExperimentalPagerApi

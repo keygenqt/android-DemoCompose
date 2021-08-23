@@ -25,6 +25,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -33,7 +34,7 @@ import com.keygenqt.demo_contacts.theme.MyTheme
 @Composable
 fun FormError(
     modifier: Modifier = Modifier,
-    textError: String = "Box Text Field Error Preview",
+    textError: String = "Box Text Field Error Preview, Box Text Field Error Preview, Box Text Field Error Preview, Box Text Field Error Preview,Box Text Field Error Preview",
 ) {
     Card(
         elevation = 4.dp,
@@ -46,6 +47,8 @@ fun FormError(
         ) {
             Text(
                 text = textError,
+                maxLines = 5,
+                overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp),

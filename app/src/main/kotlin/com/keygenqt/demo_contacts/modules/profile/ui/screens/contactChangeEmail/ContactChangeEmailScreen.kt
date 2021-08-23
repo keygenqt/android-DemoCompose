@@ -14,12 +14,13 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmailScreen
+package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmail
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailEvents
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
 
 @ExperimentalComposeUiApi
@@ -28,7 +29,13 @@ fun ContactChangeEmailScreen(
     viewModel: ProfileViewModel,
     onEvent: (ContactChangeEmailEvents) -> Unit = {},
 ) {
+
+    val loading: Boolean by viewModel.loading.collectAsState()
+    val commonError: String? by viewModel.commonError.collectAsState(null)
+
     ContactChangeEmailBody(
+        loading = loading,
+        commonError = commonError,
         onEvent = onEvent,
     )
 }

@@ -19,7 +19,7 @@ package com.keygenqt.demo_contacts.modules._common.ui.compose
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,6 +31,7 @@ import com.keygenqt.demo_contacts.modules._common.navigation.HomeTab
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 import com.keygenqt.demo_contacts.theme.MyTheme
+import timber.log.Timber
 
 @Composable
 fun BottomBar(
@@ -38,9 +39,6 @@ fun BottomBar(
     currentRoute: HomeTab = HomeTab.BRANDS,
     doubleClick: (HomeTab) -> Unit = {},
 ) {
-
-    var currentRouteSavable: HomeTab? by remember { mutableStateOf(HomeTab.BRANDS) }
-
     if (HomeTab.values().any { it.route == currentRoute.route }) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             BottomNavigation(
@@ -57,18 +55,9 @@ fun BottomBar(
                         },
                         selected = tab.route == currentRoute.route,
                         onClick = {
-
-                            currentRouteSavable?.let {
-                                if (currentRouteSavable == tab) {
-                                    doubleClick.invoke(it)
-                                }
-                            } ?: run {
-                                if (HomeTab.BRANDS == tab) {
-                                    doubleClick.invoke(HomeTab.BRANDS)
-                                }
-                            }
-
-                            if (currentRouteSavable != tab) {
+                            if (currentRoute == tab) {
+                                doubleClick.invoke(tab)
+                            } else {
                                 when (tab) {
                                     HomeTab.BRANDS -> navActions.navigateToBrands.invoke()
                                     HomeTab.CATALOG -> navActions.navigateToCatalog.invoke()
@@ -77,8 +66,6 @@ fun BottomBar(
                                     HomeTab.CART -> navActions.navigateToCart.invoke()
                                 }
                             }
-
-                            currentRouteSavable = tab
                         },
                         selectedContentColor = MaterialTheme.colors.onSurface,
                         unselectedContentColor = MaterialTheme.colors.onSurface,

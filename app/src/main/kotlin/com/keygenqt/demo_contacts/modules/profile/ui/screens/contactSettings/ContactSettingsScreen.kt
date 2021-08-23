@@ -14,25 +14,27 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettingsScreen
+package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettings
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
-import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
 
+@ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 @Composable
 fun ContactSettingsScreen(
     viewModel: ProfileViewModel,
     onEvent: (ContactSettingsEvents) -> Unit = {},
+    argumentUpdatedEmail: String? = null,
+    argumentUpdatedPhone: String? = null,
 ) {
     ContactSettingsBody(
         onEvent = onEvent,
+        argumentUpdatedEmail = argumentUpdatedEmail,
+        argumentUpdatedPhone = argumentUpdatedPhone,
     )
 }
 

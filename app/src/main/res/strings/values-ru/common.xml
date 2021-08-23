@@ -7,4 +7,6 @@
     <string name="common_go_to_catalog">Перейти в каталог</string>
     <string name="common_sign_in">Войти</string>
     <string name="common_sign_up">Зарегистрироваться</string>
+    <string name="common_btn_cancel">Закрыть</string>
+
 </resources>

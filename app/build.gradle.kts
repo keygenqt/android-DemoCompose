@@ -107,6 +107,7 @@ dependencies {
     implementation("com.google.accompanist:accompanist-pager:${ex["accompanistVersion"]}")
     implementation("com.google.accompanist:accompanist-pager-indicators:${ex["accompanistVersion"]}")
     implementation("com.google.accompanist:accompanist-swiperefresh:${ex["accompanistVersion"]}")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:${ex["accompanistVersion"]}")
 
     // compose
     implementation("androidx.compose.material:material:${ex["composeVersion"]}")

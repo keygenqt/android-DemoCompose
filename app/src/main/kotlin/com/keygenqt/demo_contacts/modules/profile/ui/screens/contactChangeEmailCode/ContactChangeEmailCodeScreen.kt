@@ -14,21 +14,33 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangePhoneScreen
+package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmailCode
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangePhoneEvents
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
+import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailCodeEvents
+import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
 
 @ExperimentalComposeUiApi
 @Composable
-fun ContactChangePhoneScreen(
+fun ContactChangeEmailCodeScreen(
+    email: String,
     viewModel: ProfileViewModel,
-    onEvent: (ContactChangePhoneEvents) -> Unit = {},
+    onEvent: (ContactChangeEmailCodeEvents) -> Unit = {},
 ) {
-    ContactChangePhoneBody(
+
+    val loading: Boolean by viewModel.loading.collectAsState()
+    val loadingRefresh: Int by viewModel.loadingRefresh.collectAsState()
+    val commonError: String? by viewModel.commonError.collectAsState(null)
+
+    ContactChangeEmailCodeBody(
+        email = email,
+        loading = loading,
+        loadingRefresh = loadingRefresh,
+        commonError = commonError,
         onEvent = onEvent,
     )
 }

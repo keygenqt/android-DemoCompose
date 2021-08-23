@@ -14,13 +14,15 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettingsScreen
+package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettings
 
 import android.content.res.Configuration
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -34,33 +36,43 @@ import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
 import com.keygenqt.demo_contacts.theme.MyTheme
 
+@ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 @Composable
 fun ContactSettingsBody(
     onEvent: (ContactSettingsEvents) -> Unit = {},
+    argumentUpdatedEmail: String? = null,
+    argumentUpdatedPhone: String? = null,
 ) {
-    MainScaffold(
-        title = stringResource(id = R.string.contact_settings_title),
-        icon = Icons.Filled.ArrowBack,
-        navigationIconOnClick = {
-            onEvent(ContactSettingsEvents.NavigateBack)
-        }
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
+    Box {
+        MainScaffold(
+            title = stringResource(id = R.string.contact_settings_title),
+            icon = Icons.Filled.ArrowBack,
+            navigationIconOnClick = {
+                onEvent(ContactSettingsEvents.NavigateBack)
+            }
         ) {
-            ContactSettingsBodySms(
-                onEvent = onEvent
-            )
-            ContactSettingsBodyEmail(
-                onEvent = onEvent
-            )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+            ) {
+                ContactSettingsBodySms(
+                    onEvent = onEvent,
+                    argumentUpdatedPhone = argumentUpdatedPhone,
+                )
+                ContactSettingsBodyEmail(
+                    onEvent = onEvent,
+                    argumentUpdatedEmail = argumentUpdatedEmail,
+                )
+            }
         }
+
+        UpdatedEmailInfo(isShow = argumentUpdatedEmail != null)
     }
 }
 
+@ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 @Preview("Light")
 @Preview("Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)

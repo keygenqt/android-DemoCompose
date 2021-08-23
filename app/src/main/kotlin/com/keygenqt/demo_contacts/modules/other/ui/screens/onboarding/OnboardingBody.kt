@@ -37,7 +37,7 @@ fun OnboardingBody(
     onEvent: (StartEvents) -> Unit = {},
 ) {
     val scope = rememberCoroutineScope()
-    val pagerState = rememberPagerState(pageCount = 4)
+    val pagerState = rememberPagerState(pageCount = 2)
 
     MainScaffold {
         HorizontalPager(

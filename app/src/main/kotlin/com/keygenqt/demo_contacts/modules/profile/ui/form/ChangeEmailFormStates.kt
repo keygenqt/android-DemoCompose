@@ -14,9 +14,12 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.ui.events
+package com.keygenqt.demo_contacts.modules.profile.ui.form
 
-sealed class ContactSettingsEvents {
-    object NavigateBack : ContactSettingsEvents()
-    object NavigateToContactChangeEmail : ContactSettingsEvents()
+import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldState
+import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormStates
+import com.keygenqt.demo_contacts.modules._common.ui.form.states.EmailStateRequired
+
+enum class ChangeEmailFormStates(val state: FormFieldState) : FormStates {
+    ChangeEmail(EmailStateRequired()),
 }

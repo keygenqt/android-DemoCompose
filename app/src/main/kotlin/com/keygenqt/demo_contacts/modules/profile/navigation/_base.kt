@@ -16,11 +16,13 @@
  
 package com.keygenqt.demo_contacts.modules.profile.navigation
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.navigation.NavGraphBuilder
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
 import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
 
+@ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 @Suppress("UNUSED_PARAMETER")
 fun NavGraphBuilder.profileNavGraph(

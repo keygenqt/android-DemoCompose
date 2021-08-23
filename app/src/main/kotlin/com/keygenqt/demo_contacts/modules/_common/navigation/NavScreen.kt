@@ -35,7 +35,17 @@ sealed class NavScreen(val route: String) {
 
     // profile
     object ProfileScreen : NavScreen("ProfileScreen")
-    object ContactSettingsScreen : NavScreen("ContactSettingsScreen")
+
+    object ContactSettingsScreen : NavScreen("ContactSettingsScreen") {
+        const val routeWithArgument: String = "ContactSettingsScreen?email={email}&phone={phone}"
+        const val argument0: String = "email"
+        const val argument1: String = "phone"
+    }
+
     object ContactChangeEmailScreen : NavScreen("ContactChangeEmailScreen")
-    object ContactChangePhoneScreen : NavScreen("ContactChangePhoneScreen")
+
+    object ContactChangeEmailCodeScreen : NavScreen("ContactChangeEmailCodeScreen") {
+        const val routeWithArgument: String = "ContactChangeEmailCodeScreen/{email}"
+        const val argument0: String = "email"
+    }
 }

@@ -18,6 +18,7 @@ package com.keygenqt.demo_contacts.modules._common.navigation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
@@ -44,6 +45,7 @@ import com.keygenqt.demo_contacts.modules.other.navigation.otherNavGraph
 import com.keygenqt.demo_contacts.modules.profile.navigation.profileNavGraph
 
 
+@ExperimentalMaterialApi
 @ExperimentalCoilApi
 @ExperimentalPagingApi
 @ExperimentalPagerApi

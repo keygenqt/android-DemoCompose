@@ -14,7 +14,7 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettingsScreen
+package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettings
 
 import android.content.res.Configuration
 import androidx.compose.foundation.clickable
@@ -41,6 +41,7 @@ import com.keygenqt.demo_contacts.theme.MyTheme
 @Composable
 fun ContactSettingsBodyEmail(
     onEvent: (ContactSettingsEvents) -> Unit = {},
+    argumentUpdatedEmail: String? = null,
 ) {
     val checkedStateEmailStateOrder = remember { mutableStateOf(true) }
     val checkedStateEmailStock = remember { mutableStateOf(true) }
@@ -95,7 +96,7 @@ fun ContactSettingsBodyEmail(
             ) {
                 Text(
                     style = MaterialTheme.typography.body2,
-                    text = "+7 961 188 34 02",
+                    text = argumentUpdatedEmail ?: stringResource(id = R.string.contact_settings_value_empty),
                     modifier = Modifier
                         .align(Alignment.CenterEnd)
                 )

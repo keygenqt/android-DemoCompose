@@ -14,7 +14,7 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.other.ui.form.states
+package com.keygenqt.demo_contacts.modules.other.ui.form
 
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldState
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormStates

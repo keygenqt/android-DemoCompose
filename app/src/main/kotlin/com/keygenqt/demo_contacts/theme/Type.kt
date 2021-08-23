@@ -36,6 +36,11 @@ val montserratFamily = FontFamily(
 
 // Set of Material typography styles to start with
 val Typography = Typography(
+    h4 = TextStyle(
+        fontFamily = montserratFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 28.sp
+    ),
     h5 = TextStyle(
         fontFamily = montserratFamily,
         fontWeight = FontWeight.Bold,

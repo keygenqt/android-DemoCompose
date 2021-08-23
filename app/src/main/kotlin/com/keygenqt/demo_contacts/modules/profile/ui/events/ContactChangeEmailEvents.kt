@@ -17,5 +17,6 @@
 package com.keygenqt.demo_contacts.modules.profile.ui.events
 
 sealed class ContactChangeEmailEvents {
+    data class ContactChangeEmail(val email: String) : ContactChangeEmailEvents()
     object NavigateBack : ContactChangeEmailEvents()
 }

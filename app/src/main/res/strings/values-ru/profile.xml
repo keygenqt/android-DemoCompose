@@ -30,4 +30,20 @@
     <string name="contact_settings_label_status">Статус заказа</string>
     <string name="contact_settings_label_stock">Спецпредложения и акции РИВ\u00A0ГОШ</string>
     <string name="contact_settings_value_empty">Не указан</string>
+    <string name="contact_settings_added_email">Добавлен новый Email. Теперь вы можете входить в РИВ ГОШ используя его как логин при авторизации.</string>
+
+    <!-- Contact Change Email -->
+    <string name="contact_change_email_title">Изменить E-mail</string>
+    <string name="contact_change_email_label">Email</string>
+    <string name="contact_change_email_text">Смена E-mail повлечет за собой смену логина для входа в РИВ\u00A0ГОШ</string>
+    <string name="contact_change_email_btn">Получить код</string>
+
+    <!-- Contact Change Email Code -->
+    <string name="contact_change_email_code_title">Изменить E-mail</string>
+    <string name="contact_change_email_code_text">Мы отправили код из 5 символов на %s</string>
+    <string name="contact_change_email_code_label">Код из Email</string>
+    <string name="contact_change_email_code_time">Получить новый код можно через %s</string>
+    <string name="contact_change_email_code_btn">Получить новый код</string>
+    <string name="contact_change_email_code_error_validate">Код должен содержать %s символов</string>
+
 </resources>
