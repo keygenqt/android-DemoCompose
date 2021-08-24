@@ -13,11 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.events
 
 sealed class ContactSettingsEvents {
     object NavigateBack : ContactSettingsEvents()
     object NavigateToContactChangeEmail : ContactSettingsEvents()
     object NavigateToContactChangePhone : ContactSettingsEvents()
+    object UpdateUserContacts : ContactSettingsEvents()
+    data class UpdateStatusSmall(val statusEmail: Boolean, val statusPhone: Boolean) : ContactSettingsEvents()
+    data class UpdateStatusFull(val statusEmail: Boolean, val statusPhone: Boolean) : ContactSettingsEvents()
 }

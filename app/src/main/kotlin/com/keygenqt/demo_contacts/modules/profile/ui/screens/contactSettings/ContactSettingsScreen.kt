@@ -18,21 +18,32 @@ package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettings
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
+import com.keygenqt.demo_contacts.modules.profile.data.models.UserContactsModel
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
-import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
+import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileContactsViewModel
+import timber.log.Timber
 
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 @Composable
 fun ContactSettingsScreen(
-    viewModel: ProfileViewModel,
+    viewModel: ProfileContactsViewModel,
     onEvent: (ContactSettingsEvents) -> Unit = {},
     argumentUpdatedEmail: String? = null,
     argumentUpdatedPhone: String? = null,
 ) {
+    val userContacts by viewModel.getUserContacts().collectAsState(false)
+    val loadingActionBar: Boolean by viewModel.loadingActionBar.collectAsState()
+    val loading: Boolean by viewModel.loading.collectAsState()
+
     ContactSettingsBody(
+        loadingActionBar = loadingActionBar,
+        loading = loading,
         onEvent = onEvent,
+        userContacts = userContacts,
         argumentUpdatedEmail = argumentUpdatedEmail,
         argumentUpdatedPhone = argumentUpdatedPhone,
     )

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.modules.profile.services.apiService.impl
 
 import com.keygenqt.demo_contacts.BuildConfig
@@ -21,6 +21,7 @@ import com.keygenqt.demo_contacts.base.ResponseResult
 import com.keygenqt.demo_contacts.base.executeWithResponse
 import com.keygenqt.demo_contacts.base.responseCheck
 import com.keygenqt.demo_contacts.modules.profile.data.mappers.toModel
+import com.keygenqt.demo_contacts.modules.profile.data.models.UserContactsModel
 import com.keygenqt.demo_contacts.modules.profile.data.models.UserModel
 import com.keygenqt.demo_contacts.modules.profile.services.api.ApiProfile
 import com.keygenqt.demo_contacts.utils.ConstantsApp
@@ -37,6 +38,18 @@ interface ApiServiceGet {
             if (BuildConfig.DEBUG) delay(ConstantsApp.DEBUG_DELAY) // Simulate slow internet
             executeWithResponse {
                 api.getUser()
+                    .responseCheck()
+                    .body()
+                    ?.toModel()!!
+            }
+        }
+    }
+
+    suspend fun getUserContacts(): ResponseResult<UserContactsModel> {
+        return withContext(Dispatchers.IO) {
+            if (BuildConfig.DEBUG) delay(ConstantsApp.DEBUG_DELAY) // Simulate slow internet
+            executeWithResponse {
+                api.getUserContacts()
                     .responseCheck()
                     .body()
                     ?.toModel()!!

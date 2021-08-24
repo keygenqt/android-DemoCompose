@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.viewModels
 
 import androidx.lifecycle.ViewModel
@@ -22,7 +22,7 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.keygenqt.demo_contacts.base.done
 import com.keygenqt.demo_contacts.base.error
 import com.keygenqt.demo_contacts.base.success
-import com.keygenqt.demo_contacts.modules.profile.data.models.UserModel
+import com.keygenqt.demo_contacts.modules.profile.data.models.UserContactsModel
 import com.keygenqt.demo_contacts.modules.profile.services.apiService.ApiServiceProfile
 import com.keygenqt.demo_contacts.modules.profile.services.data.DataServiceProfile
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,21 +33,56 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(
+class ProfileContactsViewModel @Inject constructor(
     private val data: DataServiceProfile,
     private val apiService: ApiServiceProfile,
     private val crashlytics: FirebaseCrashlytics,
 ) : ViewModel() {
 
+    private val _loadingActionBar: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    val loadingActionBar: StateFlow<Boolean> get() = _loadingActionBar.asStateFlow()
+
     private val _loading: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val loading: StateFlow<Boolean> get() = _loading.asStateFlow()
 
-    fun userUpdate() {
+    init {
+        userUpdateContacts()
+    }
+
+    fun updateStatusSmall(statusEmail: Boolean, statusPhone: Boolean) {
+        _loadingActionBar.value = true
+        viewModelScope.launch {
+            delay(1000)
+            data.getUserContacts()?.let {
+                data.updateUserContacts(it.copy(
+                    phone = it.phone.copy(notifySmsShort = statusPhone),
+                    email = it.email.copy(notifyMailShort = statusEmail)
+                ))
+            }
+            _loadingActionBar.value = false
+        }
+    }
+
+    fun updateStatusFull(statusEmail: Boolean, statusPhone: Boolean) {
+        _loadingActionBar.value = true
+        viewModelScope.launch {
+            delay(1000)
+            data.getUserContacts()?.let {
+                data.updateUserContacts(it.copy(
+                    phone = it.phone.copy(notifySmsFull = statusPhone),
+                    email = it.email.copy(notifyMailFull = statusEmail)
+                ))
+            }
+            _loadingActionBar.value = false
+        }
+    }
+
+    fun userUpdateContacts() {
         _loading.value = true
         viewModelScope.launch {
-            apiService.getUser()
+            apiService.getUserContacts()
                 .success { response ->
-                    data.updateUser(response)
+                    data.updateUserContacts(response)
                 }
                 .error {
                     Timber.e(it)
@@ -60,7 +95,7 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
-    fun getUser(): Flow<UserModel?> {
-        return data.getUser().distinctUntilChanged()
+    fun getUserContacts(): Flow<UserContactsModel?> {
+        return data.getUserContactsFlow().distinctUntilChanged()
     }
 }

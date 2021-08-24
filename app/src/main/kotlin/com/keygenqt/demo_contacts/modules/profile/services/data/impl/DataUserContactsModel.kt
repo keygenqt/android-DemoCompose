@@ -14,27 +14,30 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules._common.services
+package com.keygenqt.demo_contacts.modules.profile.services.data.impl
 
 import com.keygenqt.demo_contacts.base.AppDatabase
-import com.keygenqt.demo_contacts.base.BaseDataService
 import com.keygenqt.demo_contacts.base.preferences.AppPreferences
-import com.keygenqt.demo_contacts.modules.favorite.data.dao.DaoFavoriteModel
 import com.keygenqt.demo_contacts.modules.profile.data.dao.DaoUserContactsModel
-import com.keygenqt.demo_contacts.modules.profile.data.dao.DaoUserModel
+import com.keygenqt.demo_contacts.modules.profile.data.models.UserContactsModel
+import kotlinx.coroutines.flow.Flow
 
-class DataServiceCommon(
-    override val db: AppDatabase,
-    override val preferences: AppPreferences,
-) : BaseDataService<DataServiceCommon> {
+interface DataUserContactsModel {
+    val db: AppDatabase
+    val preferences: AppPreferences
 
-    private val daoFavorite: DaoFavoriteModel get() = db.daoFavorite()
-    private val daoUser: DaoUserModel get() = db.daoUserModel()
-    private val daoUserContacts: DaoUserContactsModel get() = db.daoUserContactsModel()
+    private val dao: DaoUserContactsModel get() = db.daoUserContactsModel()
 
-    suspend fun clearAfterLogout() {
-        daoUserContacts.clear()
-        daoFavorite.clear()
-        daoUser.clear()
+    suspend fun updateUserContacts(model: UserContactsModel) {
+        dao.clear()
+        dao.insertModels(*listOf(model).toTypedArray())
+    }
+
+    suspend fun getUserContacts(): UserContactsModel? {
+        return dao.getModel()
+    }
+
+    fun getUserContactsFlow(): Flow<UserContactsModel?> {
+        return dao.getModelFlow()
     }
 }

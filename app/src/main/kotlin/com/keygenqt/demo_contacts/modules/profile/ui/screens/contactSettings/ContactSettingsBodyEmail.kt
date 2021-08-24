@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettings
 
 import android.content.res.Configuration
@@ -23,6 +23,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForwardIos
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -34,17 +35,35 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.keygenqt.demo_contacts.R
+import com.keygenqt.demo_contacts.modules.profile.data.mock.mockUserContactsModel
+import com.keygenqt.demo_contacts.modules.profile.data.models.UserContactsModel
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
 import com.keygenqt.demo_contacts.theme.MyTheme
 
 @ExperimentalComposeUiApi
 @Composable
 fun ContactSettingsBodyEmail(
+    model: UserContactsModel,
     onEvent: (ContactSettingsEvents) -> Unit = {},
     argumentUpdatedEmail: String? = null,
+    errorEmail: () -> Unit = {},
+    channelEmail: () -> Unit = {},
 ) {
-    val checkedStateEmailStateOrder = remember { mutableStateOf(true) }
-    val checkedStateEmailStock = remember { mutableStateOf(true) }
+    val checkedStateStateOrder = remember { mutableStateOf(model.email.notifyMailShort) }
+    val checkedStateStock = remember { mutableStateOf(model.email.notifyMailFull) }
+
+    LaunchedEffect(model.email.notifyMailShort) {
+        checkedStateStateOrder.value = model.email.notifyMailShort
+    }
+
+    LaunchedEffect(model.email.notifyMailFull) {
+        checkedStateStock.value = model.email.notifyMailFull
+    }
+
+    var data = argumentUpdatedEmail ?: model.email.contactEmail
+    if (data.isEmpty()) {
+        data = stringResource(id = R.string.contact_settings_value_empty)
+    }
 
     Text(
         color = MaterialTheme.colors.onSurface,
@@ -96,7 +115,7 @@ fun ContactSettingsBodyEmail(
             ) {
                 Text(
                     style = MaterialTheme.typography.body2,
-                    text = argumentUpdatedEmail ?: stringResource(id = R.string.contact_settings_value_empty),
+                    text = data,
                     modifier = Modifier
                         .align(Alignment.CenterEnd)
                 )
@@ -117,15 +136,25 @@ fun ContactSettingsBodyEmail(
         }
     }
 
+    val short: () -> Unit = {
+        if (model.phone.contactPhone.isEmpty() || !model.phone.notifySmsShort) {
+            errorEmail.invoke()
+        } else {
+            checkedStateStateOrder.value = !checkedStateStateOrder.value
+            onEvent(ContactSettingsEvents.UpdateStatusSmall(
+                statusEmail = checkedStateStateOrder.value,
+                statusPhone = model.phone.notifySmsShort
+            ))
+        }
+    }
+
     Card(
         shape = MaterialTheme.shapes.large,
         elevation = 0.dp,
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = 5.dp)
-            .clickable(onClick = {
-                checkedStateEmailStateOrder.value = !checkedStateEmailStateOrder.value
-            })
+            .clickable(onClick = short)
     ) {
         ConstraintLayout(
             modifier = Modifier
@@ -153,8 +182,8 @@ fun ContactSettingsBodyEmail(
             }
 
             Switch(
-                checked = checkedStateEmailStateOrder.value,
-                onCheckedChange = { checkedStateEmailStateOrder.value = it },
+                checked = checkedStateStateOrder.value,
+                onCheckedChange = { short.invoke() },
                 colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colors.secondary),
                 modifier = Modifier
                     .constrainAs(switch) {
@@ -166,15 +195,25 @@ fun ContactSettingsBodyEmail(
         }
     }
 
+    val full: () -> Unit = {
+        if (checkedStateStock.value && model.phone.contactPhone.isEmpty()) {
+            channelEmail.invoke()
+        } else {
+            checkedStateStock.value = !checkedStateStock.value
+            onEvent(ContactSettingsEvents.UpdateStatusFull(
+                statusEmail = checkedStateStock.value,
+                statusPhone = model.phone.notifySmsFull
+            ))
+        }
+    }
+
     Card(
         shape = MaterialTheme.shapes.large,
         elevation = 0.dp,
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = 5.dp)
-            .clickable(onClick = {
-                checkedStateEmailStock.value = !checkedStateEmailStock.value
-            })
+            .clickable(onClick = full)
     ) {
         ConstraintLayout(
             modifier = Modifier
@@ -202,8 +241,8 @@ fun ContactSettingsBodyEmail(
             }
 
             Switch(
-                checked = checkedStateEmailStock.value,
-                onCheckedChange = { checkedStateEmailStock.value = it },
+                checked = checkedStateStock.value,
+                onCheckedChange = { full.invoke() },
                 colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colors.secondary),
                 modifier = Modifier
                     .constrainAs(switch) {
@@ -224,7 +263,7 @@ fun ContactSettingsBodyEmailPreview() {
     MyTheme {
         Surface {
             Column {
-                ContactSettingsBodyEmail()
+                ContactSettingsBodyEmail(model = mockUserContactsModel())
             }
         }
     }

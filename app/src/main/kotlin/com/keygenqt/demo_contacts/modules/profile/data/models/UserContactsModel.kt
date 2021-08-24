@@ -14,20 +14,18 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.services.api.impl
+package com.keygenqt.demo_contacts.modules.profile.data.models
 
-import com.keygenqt.demo_contacts.modules.profile.data.responses.UserContactsResponse
-import com.keygenqt.demo_contacts.modules.profile.data.responses.UserCustomerResponse
-import retrofit2.Response
-import retrofit2.http.GET
+import androidx.compose.runtime.Immutable
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.keygenqt.demo_contacts.base.interfaces.IModel
 
-interface ApiGet {
-    @GET("customers/current/profile")
-    suspend fun getUser(): Response<UserCustomerResponse>
-
-    @GET("customers/current/contacts")
-    suspend fun getUserContacts(): Response<UserContactsResponse>
-}
-
-
-
+@Entity
+@Immutable
+data class UserContactsModel(
+    @PrimaryKey override val id: String,
+    @Embedded val email: UserContactEmailModel,
+    @Embedded val phone: UserContactPhoneModel,
+) : IModel

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.base
 
 import androidx.room.Database
@@ -32,7 +32,9 @@ import com.keygenqt.demo_contacts.modules.catalog.data.models.CategoryModel
 import com.keygenqt.demo_contacts.modules.catalog.data.models.SubCategoryModel
 import com.keygenqt.demo_contacts.modules.favorite.data.dao.DaoFavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
+import com.keygenqt.demo_contacts.modules.profile.data.dao.DaoUserContactsModel
 import com.keygenqt.demo_contacts.modules.profile.data.dao.DaoUserModel
+import com.keygenqt.demo_contacts.modules.profile.data.models.UserContactsModel
 import com.keygenqt.demo_contacts.modules.profile.data.models.UserModel
 
 @Database(
@@ -45,8 +47,9 @@ import com.keygenqt.demo_contacts.modules.profile.data.models.UserModel
         CategoryModel::class,
         SubCategoryModel::class,
         UserModel::class,
+        UserContactsModel::class,
     ],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -58,4 +61,5 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun daoCategoryModel(): DaoCategoryModel
     abstract fun daoSubCategoryModel(): DaoSubCategoryModel
     abstract fun daoUserModel(): DaoUserModel
+    abstract fun daoUserContactsModel(): DaoUserContactsModel
 }

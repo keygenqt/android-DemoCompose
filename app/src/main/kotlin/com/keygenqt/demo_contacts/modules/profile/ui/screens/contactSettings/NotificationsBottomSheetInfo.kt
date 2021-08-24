@@ -20,8 +20,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -32,7 +32,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.BottomSheetScaffoldInfo
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -43,15 +42,15 @@ fun NotificationsBottomSheetInfo(
     title: String,
     text: String,
     btn: String,
-    onBtn: () -> Unit,
+    onBtn1: () -> Unit,
+    onBtn2: () -> Unit,
     isShow: Boolean = false,
 ) {
     val scope = rememberCoroutineScope()
-    var isShowInfo: Boolean by rememberSaveable { mutableStateOf(isShow) }
 
     BottomSheetScaffoldInfo(
         height = 450.dp,
-        isShow = isShowInfo
+        isShow = isShow
     ) { state: BottomSheetScaffoldState ->
 
         Column(
@@ -104,8 +103,7 @@ fun NotificationsBottomSheetInfo(
                     }
                     scope.launch {
                         delay(100L)
-                        isShowInfo = false
-                        onBtn.invoke()
+                        onBtn1.invoke()
                     }
                 },
                 modifier = Modifier
@@ -127,7 +125,7 @@ fun NotificationsBottomSheetInfo(
                     }
                     scope.launch {
                         delay(100L)
-                        isShowInfo = false
+                        onBtn2.invoke()
                     }
                 },
                 modifier = Modifier

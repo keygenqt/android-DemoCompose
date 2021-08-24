@@ -31,7 +31,8 @@ import com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmailC
 import com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangePhone.ContactChangePhoneScreen
 import com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangePhoneCode.ContactChangePhoneCodeScreen
 import com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettings.ContactSettingsScreen
-import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
+import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileChangeContactsViewModel
+import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileContactsViewModel
 
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi
@@ -49,21 +50,31 @@ fun NavGraphBuilder.contactsScreenGraph(
             }
         )
     ) { backStackEntry ->
+        val viewModel: ProfileContactsViewModel = hiltViewModel()
         ContactSettingsScreen(
             argumentUpdatedEmail = backStackEntry.arguments?.getString(ProfileNav.ContactsNav.ContactSettingsScreen.argument0),
             argumentUpdatedPhone = backStackEntry.arguments?.getString(ProfileNav.ContactsNav.ContactSettingsScreen.argument1),
-            viewModel = hiltViewModel(),
+            viewModel = viewModel,
             onEvent = { event: ContactSettingsEvents ->
                 when (event) {
                     is ContactSettingsEvents.NavigateBack -> navActions.navigateToUp()
                     is ContactSettingsEvents.NavigateToContactChangeEmail -> navActions.navigateToContactChangeEmail()
                     is ContactSettingsEvents.NavigateToContactChangePhone -> navActions.navigateToContactChangePhone()
+                    is ContactSettingsEvents.UpdateUserContacts -> viewModel.userUpdateContacts()
+                    is ContactSettingsEvents.UpdateStatusSmall -> viewModel.updateStatusSmall(
+                        event.statusEmail,
+                        event.statusPhone
+                    )
+                    is ContactSettingsEvents.UpdateStatusFull -> viewModel.updateStatusFull(
+                        event.statusEmail,
+                        event.statusPhone
+                    )
                 }
             },
         )
     }
     composable(ProfileNav.ContactsNav.ContactChangeEmailScreen.route) {
-        val viewModel: ProfileViewModel = hiltViewModel()
+        val viewModel: ProfileChangeContactsViewModel = hiltViewModel()
         ContactChangeEmailScreen(viewModel = viewModel) { event ->
             when (event) {
                 is ContactChangeEmailEvents.ContactChangeEmail -> viewModel.changeEmail(event.email) {
@@ -80,7 +91,7 @@ fun NavGraphBuilder.contactsScreenGraph(
         })
     ) { backStackEntry ->
         backStackEntry.arguments?.let {
-            val viewModel: ProfileViewModel = hiltViewModel()
+            val viewModel: ProfileChangeContactsViewModel = hiltViewModel()
             val email = it.getString(ProfileNav.ContactsNav.ContactChangeEmailCodeScreen.argument0)!!
             viewModel.runTimer()
             ContactChangeEmailCodeScreen(
@@ -98,7 +109,7 @@ fun NavGraphBuilder.contactsScreenGraph(
         }
     }
     composable(ProfileNav.ContactsNav.ContactChangePhoneScreen.route) {
-        val viewModel: ProfileViewModel = hiltViewModel()
+        val viewModel: ProfileChangeContactsViewModel = hiltViewModel()
         ContactChangePhoneScreen(viewModel = viewModel) { event ->
             when (event) {
                 is ContactChangePhoneEvents.ContactChangePhone -> viewModel.changePhone(event.phone) {
@@ -115,7 +126,7 @@ fun NavGraphBuilder.contactsScreenGraph(
         })
     ) { backStackEntry ->
         backStackEntry.arguments?.let {
-            val viewModel: ProfileViewModel = hiltViewModel()
+            val viewModel: ProfileChangeContactsViewModel = hiltViewModel()
             val phone = it.getString(ProfileNav.ContactsNav.ContactChangePhoneCodeScreen.argument0)!!
             viewModel.runTimer()
             ContactChangePhoneCodeScreen(

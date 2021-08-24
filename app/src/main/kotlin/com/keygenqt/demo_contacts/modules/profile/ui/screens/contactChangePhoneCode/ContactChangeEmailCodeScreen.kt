@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangePhoneCode
 
 import androidx.compose.runtime.Composable
@@ -21,13 +21,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangePhoneCodeEvents
+import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileChangeContactsViewModel
+import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileContactsViewModel
 import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
 
 @ExperimentalComposeUiApi
 @Composable
 fun ContactChangePhoneCodeScreen(
     phone: String,
-    viewModel: ProfileViewModel,
+    viewModel: ProfileChangeContactsViewModel,
     onEvent: (ContactChangePhoneCodeEvents) -> Unit = {},
 ) {
 

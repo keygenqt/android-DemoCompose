@@ -22,7 +22,7 @@ object ConstantsApp {
 
     const val REFRESH_DELAY = 30000L
 
-    const val DEBUG_DELAY = 2000L
+    const val DEBUG_DELAY = 1000L
 
     val API_URL_BASE
         get() =

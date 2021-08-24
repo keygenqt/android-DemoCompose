@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.modules.profile.data.models
 
 import androidx.compose.runtime.Immutable
@@ -22,4 +22,6 @@ import androidx.compose.runtime.Immutable
 data class UserContactPhoneModel(
     val confirmedContactPhone: Boolean,
     val contactPhone: String,
+    val notifySmsShort: Boolean,
+    val notifySmsFull: Boolean,
 )

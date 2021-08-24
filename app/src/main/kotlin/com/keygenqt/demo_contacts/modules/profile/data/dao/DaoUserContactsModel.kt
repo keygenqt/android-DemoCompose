@@ -13,27 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.data.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.keygenqt.demo_contacts.modules.profile.data.models.UserModel
+import com.keygenqt.demo_contacts.modules.profile.data.models.UserContactsModel
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface DaoUserModel {
-    @Query("SELECT * FROM UserModel LIMIT 1")
-    fun getModel(): Flow<UserModel?>
+interface DaoUserContactsModel {
+
+    @Query("SELECT * FROM UserContactsModel LIMIT 1")
+    suspend fun getModel(): UserContactsModel?
+
+    @Query("SELECT * FROM UserContactsModel LIMIT 1")
+    fun getModelFlow(): Flow<UserContactsModel?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertModels(vararg models: UserModel)
+    suspend fun insertModels(vararg models: UserContactsModel)
 
-    @Query("DELETE FROM UserModel")
+    @Query("DELETE FROM UserContactsModel")
     suspend fun clear()
 
-    @Query("SELECT COUNT(*) FROM UserModel")
+    @Query("SELECT COUNT(*) FROM UserContactsModel")
     suspend fun count(): Int
 }

@@ -21,12 +21,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangePhoneEvents
+import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileChangeContactsViewModel
+import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileContactsViewModel
 import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
 
 @ExperimentalComposeUiApi
 @Composable
 fun ContactChangePhoneScreen(
-    viewModel: ProfileViewModel,
+    viewModel: ProfileChangeContactsViewModel,
     onEvent: (ContactChangePhoneEvents) -> Unit = {},
 ) {
 

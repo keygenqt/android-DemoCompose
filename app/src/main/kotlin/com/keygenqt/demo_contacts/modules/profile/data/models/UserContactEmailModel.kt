@@ -17,13 +17,11 @@
 package com.keygenqt.demo_contacts.modules.profile.data.models
 
 import androidx.compose.runtime.Immutable
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.keygenqt.demo_contacts.base.interfaces.IModel
 
 @Immutable
 data class UserContactEmailModel(
     val confirmedContactEmail: Boolean,
     val contactEmail: String,
+    val notifyMailShort: Boolean,
+    val notifyMailFull: Boolean,
 )
