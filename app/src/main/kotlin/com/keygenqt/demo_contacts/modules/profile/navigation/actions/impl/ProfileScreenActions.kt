@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.navigation.actions.impl
 
 import androidx.navigation.NavHostController
@@ -58,6 +58,16 @@ interface ProfileScreenActions {
     fun navigateToContactChangeCodeEmail(email: String) {
         ProfileNav.ContactsNav.ContactChangeEmailCodeScreen.apply {
             controller.navigate(getRoute(email))
+        }
+    }
+
+    fun navigateToContactChangePhone() {
+        controller.navigate(ProfileNav.ContactsNav.ContactChangePhoneScreen.route)
+    }
+
+    fun navigateToContactChangeCodePhone(phone: String) {
+        ProfileNav.ContactsNav.ContactChangePhoneCodeScreen.apply {
+            controller.navigate(getRoute(phone))
         }
     }
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.base
 
 interface NavScreen {
@@ -57,7 +57,7 @@ interface NavScreenWithArgument4 : NavScreenWithArgument3 {
         argument2: String?,
         argument3: String?,
     ): String {
-        return getRoute(argument0, argument1)
+        return getRoute(argument0, argument1, argument2)
             .replace("{${this.argument3}}", argument3 ?: "")
     }
 }
@@ -71,7 +71,7 @@ interface NavScreenWithArgument5 : NavScreenWithArgument4 {
         argument3: String?,
         argument4: String?,
     ): String {
-        return getRoute(argument0, argument1)
+        return getRoute(argument0, argument1, argument2, argument3)
             .replace("{${this.argument4}}", argument4 ?: "")
     }
 }

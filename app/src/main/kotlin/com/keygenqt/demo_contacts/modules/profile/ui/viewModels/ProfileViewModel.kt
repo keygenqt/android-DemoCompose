@@ -49,7 +49,7 @@ class ProfileViewModel @Inject constructor(
     private val _loading: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val loading: StateFlow<Boolean> get() = _loading.asStateFlow()
 
-    fun refreshEmailCode() {
+    fun refreshCode() {
         _commonError.value = null
         _loading.value = true
 
@@ -84,6 +84,39 @@ class ProfileViewModel @Inject constructor(
     }
 
     fun changeEmailCode(
+        code: String,
+        success: () -> Unit,
+    ) {
+        _commonError.value = null
+        _loading.value = true
+
+        viewModelScope.launch {
+            // Simulate a request
+            delay(2000L)
+            _loading.value = false
+            success.invoke()
+
+            // cancel timer
+            timerJob?.cancel()
+        }
+    }
+
+    fun changePhone(
+        email: String,
+        success: () -> Unit,
+    ) {
+        _commonError.value = null
+        _loading.value = true
+
+        viewModelScope.launch {
+            // Simulate a request
+            delay(2000L)
+            _loading.value = false
+            success.invoke()
+        }
+    }
+
+    fun changePhoneCode(
         code: String,
         success: () -> Unit,
     ) {

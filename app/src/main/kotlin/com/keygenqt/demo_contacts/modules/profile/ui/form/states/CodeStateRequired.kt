@@ -31,7 +31,7 @@ private fun checkValid(target: String) = listOfNotNull(
 private fun getErrorSize(target: String) =
     when {
         target.length != 5 -> { it: Context ->
-            it.getString(R.string.contact_change_email_code_error_validate, "5")
+            it.getString(R.string.contact_change_common_code_error_validate, "5")
         }
         else -> null
     }

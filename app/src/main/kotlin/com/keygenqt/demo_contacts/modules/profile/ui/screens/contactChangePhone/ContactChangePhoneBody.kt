@@ -14,7 +14,7 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmailCode
+package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangePhone
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
@@ -24,7 +24,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -33,18 +32,15 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.FormError
 import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailCodeEvents
-import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
+import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangePhoneEvents
 import com.keygenqt.demo_contacts.theme.MyTheme
 
 @ExperimentalComposeUiApi
 @Composable
-fun ContactChangeEmailCodeBody(
-    email: String,
+fun ContactChangePhoneBody(
     loading: Boolean = false,
-    loadingRefresh: Int = 0,
     commonError: String? = null,
-    onEvent: (ContactChangeEmailCodeEvents) -> Unit = {},
+    onEvent: (ContactChangePhoneEvents) -> Unit = {},
 ) {
     MainScaffold(
         title = "",
@@ -52,7 +48,7 @@ fun ContactChangeEmailCodeBody(
         isLoaderShow = loading,
         icon = Icons.Filled.ArrowBack,
         navigationIconOnClick = {
-            onEvent(ContactChangeEmailCodeEvents.NavigateBack)
+            onEvent(ContactChangePhoneEvents.NavigateBack)
         }
     ) {
 
@@ -64,7 +60,7 @@ fun ContactChangeEmailCodeBody(
             Text(
                 modifier = Modifier
                     .fillMaxWidth(),
-                text = stringResource(id = R.string.contact_change_email_title),
+                text = stringResource(id = R.string.contact_change_phone_title),
                 style = MaterialTheme.typography.h4,
             )
 
@@ -73,7 +69,7 @@ fun ContactChangeEmailCodeBody(
             Text(
                 color = MaterialTheme.colors.onPrimary,
                 style = MaterialTheme.typography.body1,
-                text = stringResource(id = R.string.contact_change_common_code_text, email),
+                text = stringResource(id = R.string.contact_change_phone_text),
                 modifier = Modifier
                     .fillMaxWidth(),
             )
@@ -88,11 +84,11 @@ fun ContactChangeEmailCodeBody(
 
             Spacer(modifier = Modifier.size(16.dp))
 
-            ContactChangeEmailCodeForm(
+            ContactChangePhoneForm(
                 loading = loading,
-                onEvent = onEvent,
-                loadingRefresh = loadingRefresh,
+                onEvent = onEvent
             )
+
         }
     }
 }
@@ -101,10 +97,10 @@ fun ContactChangeEmailCodeBody(
 @Preview("Light")
 @Preview("Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun ContactChangeEmailBodyPreview() {
+fun ContactChangePhoneBodyPreview() {
     MyTheme {
         Surface {
-            ContactChangeEmailCodeBody("test@gmail.com")
+            ContactChangePhoneBody()
         }
     }
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmail
+package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangePhone
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
@@ -38,17 +38,17 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldsState
-import com.keygenqt.demo_contacts.modules._common.ui.form.fields.FieldEmail
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailEvents
-import com.keygenqt.demo_contacts.modules.profile.ui.form.ChangeEmailFieldsForm
+import com.keygenqt.demo_contacts.modules._common.ui.form.fields.FieldPhone
+import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangePhoneEvents
+import com.keygenqt.demo_contacts.modules.profile.ui.form.ChangePhoneFieldsForm
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @ExperimentalComposeUiApi
 @Composable
-fun ContactChangeEmailForm(
+fun ContactChangePhoneForm(
     loading: Boolean = false,
-    onEvent: (ContactChangeEmailEvents) -> Unit = {},
+    onEvent: (ContactChangePhoneEvents) -> Unit = {},
 ) {
     val softwareKeyboardController = LocalSoftwareKeyboardController.current
     val localFocusManager = LocalFocusManager.current
@@ -56,7 +56,7 @@ fun ContactChangeEmailForm(
     val padding = 16.dp
 
     val formFields = FormFieldsState().apply {
-        add(ChangeEmailFieldsForm.ChangeEmail, remember { ChangeEmailFieldsForm.ChangeEmail.state.default("") })
+        add(ChangePhoneFieldsForm.ChangePhone, remember { ChangePhoneFieldsForm.ChangePhone.state.default("") })
     }
 
     val requesterField = remember { FocusRequester() }
@@ -69,8 +69,8 @@ fun ContactChangeEmailForm(
         if (!formFields.hasErrors()) {
             // submit query
             onEvent(
-                ContactChangeEmailEvents.ContactChangeEmail(
-                    email = formFields.get(ChangeEmailFieldsForm.ChangeEmail).getValue(),
+                ContactChangePhoneEvents.ContactChangePhone(
+                    phone = formFields.get(ChangePhoneFieldsForm.ChangePhone).getValue(),
                 )
             )
             // hide keyboard
@@ -84,11 +84,11 @@ fun ContactChangeEmailForm(
             .fillMaxSize(),
     ) {
         Column {
-            FieldEmail(
+            FieldPhone(
                 modifier = Modifier.focusRequester(requesterField),
-                labelText = stringResource(id = R.string.contact_change_email_label),
+                labelText = stringResource(id = R.string.contact_change_phone_label),
                 enabled = !loading,
-                state = formFields.get(ChangeEmailFieldsForm.ChangeEmail),
+                state = formFields.get(ChangePhoneFieldsForm.ChangePhone),
                 imeAction = ImeAction.Next,
                 keyboardActions = KeyboardActions(onNext = { submitClick.invoke() })
             )
@@ -106,7 +106,7 @@ fun ContactChangeEmailForm(
             colors = ButtonDefaults.textButtonColors(backgroundColor = MaterialTheme.colors.secondary),
         ) {
             Text(
-                text = stringResource(id = R.string.contact_change_email_btn).uppercase(),
+                text = stringResource(id = R.string.contact_change_common_btn).uppercase(),
             )
         }
     }

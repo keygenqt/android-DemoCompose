@@ -14,14 +14,12 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.other.ui.form
+package com.keygenqt.demo_contacts.modules.profile.ui.form
 
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldState
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormStates
-import com.keygenqt.demo_contacts.modules._common.ui.form.states.StateEmailRequired
-import com.keygenqt.demo_contacts.modules._common.ui.form.states.StatePassword
+import com.keygenqt.demo_contacts.modules.profile.ui.form.states.CodeStateRequired
 
-enum class SignInFieldsForm(val state: FormFieldState) : FormStates {
-    SignInEmail(StateEmailRequired()),
-    SignInPassword(StatePassword()),
+enum class ChangePhoneCodeFieldsForm(val state: FormFieldState) : FormStates {
+    Code(CodeStateRequired()),
 }

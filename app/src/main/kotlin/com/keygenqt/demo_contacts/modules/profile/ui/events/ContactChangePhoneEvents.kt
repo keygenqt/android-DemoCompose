@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.events
 
 sealed class ContactChangePhoneEvents {
+    data class ContactChangePhone(val phone: String) : ContactChangePhoneEvents()
     object NavigateBack : ContactChangePhoneEvents()
 }

@@ -19,4 +19,5 @@ package com.keygenqt.demo_contacts.modules.profile.ui.events
 sealed class ContactSettingsEvents {
     object NavigateBack : ContactSettingsEvents()
     object NavigateToContactChangeEmail : ContactSettingsEvents()
+    object NavigateToContactChangePhone : ContactSettingsEvents()
 }

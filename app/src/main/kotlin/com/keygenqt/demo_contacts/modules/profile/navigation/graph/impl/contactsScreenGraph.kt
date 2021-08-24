@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.navigation.graph.impl
 
 import androidx.compose.material.ExperimentalMaterialApi
@@ -25,11 +25,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
 import com.keygenqt.demo_contacts.modules.profile.navigation.nav.ProfileNav
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailCodeEvents
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailEvents
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
+import com.keygenqt.demo_contacts.modules.profile.ui.events.*
 import com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmail.ContactChangeEmailScreen
 import com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmailCode.ContactChangeEmailCodeScreen
+import com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangePhone.ContactChangePhoneScreen
+import com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangePhoneCode.ContactChangePhoneCodeScreen
 import com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettings.ContactSettingsScreen
 import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
 
@@ -44,7 +44,9 @@ fun NavGraphBuilder.contactsScreenGraph(
             navArgument(ProfileNav.ContactsNav.ContactSettingsScreen.argument0) {
                 type = NavType.StringType; nullable = true
             },
-            navArgument(ProfileNav.ContactsNav.ContactSettingsScreen.argument1) { type = NavType.StringType; nullable = true }
+            navArgument(ProfileNav.ContactsNav.ContactSettingsScreen.argument1) {
+                type = NavType.StringType; nullable = true
+            }
         )
     ) { backStackEntry ->
         ContactSettingsScreen(
@@ -55,6 +57,7 @@ fun NavGraphBuilder.contactsScreenGraph(
                 when (event) {
                     is ContactSettingsEvents.NavigateBack -> navActions.navigateToUp()
                     is ContactSettingsEvents.NavigateToContactChangeEmail -> navActions.navigateToContactChangeEmail()
+                    is ContactSettingsEvents.NavigateToContactChangePhone -> navActions.navigateToContactChangePhone()
                 }
             },
         )
@@ -88,8 +91,43 @@ fun NavGraphBuilder.contactsScreenGraph(
                     is ContactChangeEmailCodeEvents.ContactChangeEmailCode -> viewModel.changeEmailCode(event.code) {
                         navActions.navigateToContactSettingsUpdatedEmail(email)
                     }
-                    is ContactChangeEmailCodeEvents.ContactChangeEmailCodeRefresh -> viewModel.refreshEmailCode()
+                    is ContactChangeEmailCodeEvents.ContactChangeEmailCodeRefresh -> viewModel.refreshCode()
                     is ContactChangeEmailCodeEvents.NavigateBack -> navActions.navigateToUp()
+                }
+            }
+        }
+    }
+    composable(ProfileNav.ContactsNav.ContactChangePhoneScreen.route) {
+        val viewModel: ProfileViewModel = hiltViewModel()
+        ContactChangePhoneScreen(viewModel = viewModel) { event ->
+            when (event) {
+                is ContactChangePhoneEvents.ContactChangePhone -> viewModel.changePhone(event.phone) {
+                    navActions.navigateToContactChangeCodePhone(event.phone)
+                }
+                is ContactChangePhoneEvents.NavigateBack -> navActions.navigateToUp()
+            }
+        }
+    }
+    composable(
+        route = ProfileNav.ContactsNav.ContactChangePhoneCodeScreen.routeWithArgument,
+        arguments = listOf(navArgument(ProfileNav.ContactsNav.ContactChangePhoneCodeScreen.argument0) {
+            type = NavType.StringType
+        })
+    ) { backStackEntry ->
+        backStackEntry.arguments?.let {
+            val viewModel: ProfileViewModel = hiltViewModel()
+            val phone = it.getString(ProfileNav.ContactsNav.ContactChangePhoneCodeScreen.argument0)!!
+            viewModel.runTimer()
+            ContactChangePhoneCodeScreen(
+                phone = phone,
+                viewModel = viewModel
+            ) { event ->
+                when (event) {
+                    is ContactChangePhoneCodeEvents.ContactChangePhoneCode -> viewModel.changePhoneCode(event.code) {
+                        navActions.navigateToContactSettingsUpdatedPhone(phone)
+                    }
+                    is ContactChangePhoneCodeEvents.ContactChangePhoneCodeRefresh -> viewModel.refreshCode()
+                    is ContactChangePhoneCodeEvents.NavigateBack -> navActions.navigateToUp()
                 }
             }
         }

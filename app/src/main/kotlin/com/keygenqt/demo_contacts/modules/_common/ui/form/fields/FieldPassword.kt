@@ -31,13 +31,14 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.TextFieldError
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldState
-import com.keygenqt.demo_contacts.modules._common.ui.form.states.PasswordState
+import com.keygenqt.demo_contacts.modules._common.ui.form.states.StatePassword
 import com.keygenqt.demo_contacts.theme.MyTheme
 import com.keygenqt.demo_contacts.theme.customTextFieldColors
 
@@ -45,7 +46,7 @@ import com.keygenqt.demo_contacts.theme.customTextFieldColors
 fun FieldPassword(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    state: FormFieldState = remember { PasswordState() },
+    state: FormFieldState = remember { StatePassword() },
     imeAction: ImeAction = ImeAction.Next,
     keyboardActions: KeyboardActions = KeyboardActions(),
 ) {
@@ -73,7 +74,7 @@ fun FieldPassword(
             },
         textStyle = MaterialTheme.typography.body2,
         isError = state.hasErrors,
-        keyboardOptions = KeyboardOptions.Default.copy(imeAction = imeAction),
+        keyboardOptions = KeyboardOptions.Default.copy(imeAction = imeAction, keyboardType = KeyboardType.Password),
         keyboardActions = keyboardActions,
         colors = customTextFieldColors()
     )

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules._common.ui.form.fields
 
 import android.content.res.Configuration
@@ -38,18 +38,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.TextFieldError
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldState
-import com.keygenqt.demo_contacts.modules._common.ui.form.states.StateEmailRequired
+import com.keygenqt.demo_contacts.modules._common.ui.form.states.StatePhoneRequired
 import com.keygenqt.demo_contacts.theme.MyTheme
 import com.keygenqt.demo_contacts.theme.customTextFieldColors
 
 
 @ExperimentalComposeUiApi
 @Composable
-fun FieldEmail(
+fun FieldPhone(
     modifier: Modifier = Modifier,
-    labelText: String = stringResource(id = R.string.form_email),
+    labelText: String = stringResource(id = R.string.form_phone),
     enabled: Boolean = true,
-    state: FormFieldState = remember { StateEmailRequired() },
+    state: FormFieldState = remember { StatePhoneRequired() },
     imeAction: ImeAction = ImeAction.Next,
     keyboardActions: KeyboardActions = KeyboardActions(),
 ) {
@@ -69,7 +69,7 @@ fun FieldEmail(
                 }
             },
         isError = state.hasErrors,
-        keyboardOptions = KeyboardOptions.Default.copy(imeAction = imeAction, keyboardType = KeyboardType.Email),
+        keyboardOptions = KeyboardOptions.Default.copy(imeAction = imeAction, keyboardType = KeyboardType.Phone),
         keyboardActions = keyboardActions,
         colors = customTextFieldColors()
     )
@@ -83,10 +83,10 @@ fun FieldEmail(
 @Preview("Light")
 @Preview("Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun PreviewFieldEmail() {
+fun FieldPhonePreview() {
     MyTheme {
         Surface {
-            FieldEmail()
+            FieldPhone()
         }
     }
 }

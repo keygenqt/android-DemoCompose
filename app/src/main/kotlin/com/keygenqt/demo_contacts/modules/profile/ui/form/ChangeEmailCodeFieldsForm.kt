@@ -18,8 +18,6 @@ package com.keygenqt.demo_contacts.modules.profile.ui.form
 
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldState
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormStates
-import com.keygenqt.demo_contacts.modules._common.ui.form.states.EmailStateRequired
-import com.keygenqt.demo_contacts.modules._common.ui.form.states.PasswordState
 import com.keygenqt.demo_contacts.modules.profile.ui.form.states.CodeStateRequired
 
 enum class ChangeEmailCodeFieldsForm(val state: FormFieldState) : FormStates {

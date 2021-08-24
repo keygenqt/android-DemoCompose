@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettings
 
 import android.content.res.Configuration
@@ -68,7 +68,15 @@ fun ContactSettingsBody(
             }
         }
 
-        UpdatedEmailInfo(isShow = argumentUpdatedEmail != null)
+        UpdatedBottomSheetInfo(
+            isShow = argumentUpdatedEmail != null,
+            text = stringResource(id = R.string.contact_settings_added_email)
+        )
+
+        UpdatedBottomSheetInfo(
+            isShow = argumentUpdatedPhone != null,
+            text = stringResource(id = R.string.contact_settings_added_phone)
+        )
     }
 }
 

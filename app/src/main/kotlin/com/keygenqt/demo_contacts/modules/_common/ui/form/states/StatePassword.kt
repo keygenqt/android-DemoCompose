@@ -24,7 +24,7 @@ import java.util.regex.Pattern
 
 private const val PASSWORD_VALIDATION_REGEX = """^[0-9_A-z]+$"""
 
-class PasswordState : FormFieldState(checkValid = ::checkValid)
+class StatePassword : FormFieldState(checkValid = ::checkValid)
 
 private fun checkValid(target: String) = listOfNotNull(
     getErrorIsBlank(target),

@@ -13,15 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-package com.keygenqt.demo_contacts.modules.other.ui.form
 
+package com.keygenqt.demo_contacts.modules._common.ui.form.states
+
+import android.content.Context
+import android.util.Patterns.PHONE
+import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldState
-import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormStates
-import com.keygenqt.demo_contacts.modules._common.ui.form.states.StateEmailRequired
-import com.keygenqt.demo_contacts.modules._common.ui.form.states.StatePassword
+import com.keygenqt.demo_contacts.modules._common.ui.form.validation.getErrorIsBlank
 
-enum class SignInFieldsForm(val state: FormFieldState) : FormStates {
-    SignInEmail(StateEmailRequired()),
-    SignInPassword(StatePassword()),
+class StatePhoneRequired : FormFieldState(checkValid = ::checkValid)
+
+private fun checkValid(target: String) = listOfNotNull(
+    getErrorIsBlank(target),
+    getErrorIsNotPhone(target),
+)
+
+private fun getErrorIsNotPhone(target: String) = when {
+    !PHONE.matcher(target).matches() -> { it: Context ->
+        it.getString(R.string.is_incorrect)
+    }
+    else -> null
 }

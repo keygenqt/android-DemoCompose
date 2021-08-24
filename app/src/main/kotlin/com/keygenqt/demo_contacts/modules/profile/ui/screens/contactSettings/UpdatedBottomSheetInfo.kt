@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettings
 
 import androidx.compose.foundation.Image
@@ -37,7 +37,8 @@ import kotlinx.coroutines.launch
 
 @ExperimentalMaterialApi
 @Composable
-fun UpdatedEmailInfo(
+fun UpdatedBottomSheetInfo(
+    text: String,
     isShow: Boolean = false,
 ) {
     val scope = rememberCoroutineScope()
@@ -73,7 +74,7 @@ fun UpdatedEmailInfo(
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 color = MaterialThemeCustom.colors.textColorSecondary,
-                text = stringResource(id = R.string.contact_settings_added_email),
+                text = text,
                 style = MaterialTheme.typography.subtitle1,
             )
 

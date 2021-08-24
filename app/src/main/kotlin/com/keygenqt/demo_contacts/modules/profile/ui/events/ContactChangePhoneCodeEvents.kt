@@ -13,15 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-package com.keygenqt.demo_contacts.modules.other.ui.form
 
-import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldState
-import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormStates
-import com.keygenqt.demo_contacts.modules._common.ui.form.states.StateEmailRequired
-import com.keygenqt.demo_contacts.modules._common.ui.form.states.StatePassword
+package com.keygenqt.demo_contacts.modules.profile.ui.events
 
-enum class SignInFieldsForm(val state: FormFieldState) : FormStates {
-    SignInEmail(StateEmailRequired()),
-    SignInPassword(StatePassword()),
+sealed class ContactChangePhoneCodeEvents {
+    data class ContactChangePhoneCode(val code: String) : ContactChangePhoneCodeEvents()
+    object ContactChangePhoneCodeRefresh : ContactChangePhoneCodeEvents()
+    object NavigateBack : ContactChangePhoneCodeEvents()
 }

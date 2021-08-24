@@ -13,6 +13,7 @@
     <string name="form_edit_text">Edit Text</string>
     <string name="form_name">Name</string>
     <string name="form_email">Email</string>
+    <string name="form_phone">Phone</string>
     <string name="form_password">Password</string>
     <string name="form_button_submit">Submit</string>
 

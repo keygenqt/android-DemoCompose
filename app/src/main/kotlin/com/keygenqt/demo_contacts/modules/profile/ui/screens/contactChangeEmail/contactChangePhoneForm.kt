@@ -14,11 +14,9 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmailCode
+package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmail
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -37,28 +35,28 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldsState
-import com.keygenqt.demo_contacts.modules._common.ui.form.fields.FieldSimpleEditText
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailCodeEvents
-import com.keygenqt.demo_contacts.modules.profile.ui.form.ChangeEmailCodeFieldsForm.Code
-import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
+import com.keygenqt.demo_contacts.modules._common.ui.form.fields.FieldEmail
+import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailEvents
+import com.keygenqt.demo_contacts.modules.profile.ui.form.ChangeEmailFieldsForm
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @ExperimentalComposeUiApi
 @Composable
-fun ContactChangeEmailCodeForm(
-    loadingRefresh: Int = 0,
+fun ContactChangeEmailForm(
     loading: Boolean = false,
-    onEvent: (ContactChangeEmailCodeEvents) -> Unit = {},
+    onEvent: (ContactChangeEmailEvents) -> Unit = {},
 ) {
     val softwareKeyboardController = LocalSoftwareKeyboardController.current
     val localFocusManager = LocalFocusManager.current
     val scope = rememberCoroutineScope()
+    val padding = 16.dp
 
     val formFields = FormFieldsState().apply {
-        add(Code, remember { Code.state.default("") })
+        add(ChangeEmailFieldsForm.ChangeEmail, remember { ChangeEmailFieldsForm.ChangeEmail.state.default("") })
     }
 
     val requesterField = remember { FocusRequester() }
@@ -71,53 +69,45 @@ fun ContactChangeEmailCodeForm(
         if (!formFields.hasErrors()) {
             // submit query
             onEvent(
-                ContactChangeEmailCodeEvents.ContactChangeEmailCode(
-                    code = formFields.get(Code).getValue(),
+                ContactChangeEmailEvents.ContactChangeEmail(
+                    email = formFields.get(ChangeEmailFieldsForm.ChangeEmail).getValue(),
                 )
             )
+            // hide keyboard
             localFocusManager.clearFocus()
             softwareKeyboardController?.hide()
         }
     }
 
-    FieldSimpleEditText(
-        modifier = Modifier.focusRequester(requesterField),
-        labelText = stringResource(id = R.string.contact_change_email_code_label),
-        enabled = !loading,
-        state = formFields.get(Code),
-        imeAction = ImeAction.Done,
-        keyboardActions = KeyboardActions(onDone = { submitClick.invoke() })
-    )
-
     Box(
         modifier = Modifier
             .fillMaxSize(),
     ) {
-        if (loadingRefresh != 0) {
-            Text(
-                color = MaterialThemeCustom.colors.textColorSecondary,
-                style = MaterialTheme.typography.caption,
-                text = stringResource(id = R.string.contact_change_common_code_time, loadingRefresh.toString()),
-                modifier = Modifier
-                    .align(Alignment.BottomStart)
-                    .fillMaxWidth(),
-            )
-        } else {
-            Button(
+        Column {
+            FieldEmail(
+                modifier = Modifier.focusRequester(requesterField),
+                labelText = stringResource(id = R.string.contact_change_email_label),
                 enabled = !loading,
-                onClick = {
-                    onEvent(ContactChangeEmailCodeEvents.ContactChangeEmailCodeRefresh)
-                },
-                modifier = Modifier
-                    .align(Alignment.BottomStart)
-                    .fillMaxWidth(),
-                shape = MaterialTheme.shapes.large,
-                colors = ButtonDefaults.textButtonColors(backgroundColor = MaterialTheme.colors.secondary),
-            ) {
-                Text(
-                    text = stringResource(id = R.string.contact_change_common_code_btn).uppercase(),
-                )
-            }
+                state = formFields.get(ChangeEmailFieldsForm.ChangeEmail),
+                imeAction = ImeAction.Next,
+                keyboardActions = KeyboardActions(onNext = { submitClick.invoke() })
+            )
+
+            Spacer(modifier = Modifier.size(padding))
+        }
+
+        Button(
+            enabled = !loading,
+            onClick = { submitClick.invoke() },
+            modifier = Modifier
+                .align(Alignment.BottomStart)
+                .fillMaxWidth(),
+            shape = MaterialTheme.shapes.large,
+            colors = ButtonDefaults.textButtonColors(backgroundColor = MaterialTheme.colors.secondary),
+        ) {
+            Text(
+                text = stringResource(id = R.string.contact_change_common_btn).uppercase(),
+            )
         }
     }
 

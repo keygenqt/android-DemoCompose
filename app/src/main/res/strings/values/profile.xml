@@ -32,19 +32,32 @@
     <string name="contact_settings_label_stock">Special offers and promotions &appName;?</string>
     <string name="contact_settings_value_empty">Not specified</string>
     <string name="contact_settings_added_email">Added new Email. Now you can log into &appName; using it as a login for authorization.</string>
+    <string name="contact_settings_added_phone">Added a new phone number. Now you can log into &appName; using it as a login for authorization.</string>
 
     <!-- Contact Change Email -->
-    <string name="contact_change_email_title">Change E-mail</string>
+    <string name="contact_change_email_title">Change Email</string>
     <string name="contact_change_email_label">Email</string>
     <string name="contact_change_email_text">Change of E-mail will entail change of login for entering &appName;</string>
-    <string name="contact_change_email_btn">To get the code</string>
 
     <!-- Contact Change Email Code -->
-    <string name="contact_change_email_code_title">Change E-mail</string>
-    <string name="contact_change_email_code_text">We sent a 5 character code to %s</string>
+    <string name="contact_change_email_code_title">Change Email</string>
     <string name="contact_change_email_code_label">Code from Email</string>
-    <string name="contact_change_email_code_time">You can get a new code in %s</string>
-    <string name="contact_change_email_code_btn">Refresh code</string>
-    <string name="contact_change_email_code_error_validate">The code must contain %s characters</string>
+
+    <!-- Contact Change Common -->
+    <string name="contact_change_common_btn">To get the code</string>
+    <string name="contact_change_common_code_text">We sent a 5 character code to %s</string>
+    <string name="contact_change_common_code_time">You can get a new code in %s</string>
+    <string name="contact_change_common_code_btn">Refresh code</string>
+    <string name="contact_change_common_code_error_validate">The code must contain %s characters</string>
+
+    <!-- Contact Change Phone -->
+    <string name="contact_change_phone_title">Change phone number</string>
+    <string name="contact_change_phone_label">Phone number</string>
+    <string name="contact_change_phone_text">Changing the phone number will entail a change in the login to enter &appName;</string>
+
+    <!-- Contact Change Phone Code -->
+    <string name="contact_change_phone_code_title">Change phone number</string>
+    <string name="contact_change_phone_code_label">SMS code</string>
+
 
 </resources>

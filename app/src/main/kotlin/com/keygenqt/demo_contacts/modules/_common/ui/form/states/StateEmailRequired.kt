@@ -22,7 +22,7 @@ import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldState
 import com.keygenqt.demo_contacts.modules._common.ui.form.validation.getErrorIsBlank
 
-class EmailStateRequired : FormFieldState(checkValid = ::checkValid)
+class StateEmailRequired : FormFieldState(checkValid = ::checkValid)
 
 private fun checkValid(target: String) = listOfNotNull(
     getErrorIsBlank(target),
