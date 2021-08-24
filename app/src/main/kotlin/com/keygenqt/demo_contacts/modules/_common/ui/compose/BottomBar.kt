@@ -27,18 +27,19 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.navigationBarsHeight
 import com.google.accompanist.insets.navigationBarsPadding
+import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.modules._common.navigation.HomeTab
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 import com.keygenqt.demo_contacts.theme.MyTheme
-import timber.log.Timber
 
 @Composable
 fun BottomBar(
     navActions: NavActions,
     currentRoute: HomeTab = HomeTab.BRANDS,
-    doubleClick: (HomeTab) -> Unit = {},
 ) {
+    val baseViewModel = LocalBaseViewModel.current
+
     if (HomeTab.values().any { it.route == currentRoute.route }) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             BottomNavigation(
@@ -56,14 +57,14 @@ fun BottomBar(
                         selected = tab.route == currentRoute.route,
                         onClick = {
                             if (currentRoute == tab) {
-                                doubleClick.invoke(tab)
+                                baseViewModel.listRefresh()
                             } else {
                                 when (tab) {
-                                    HomeTab.BRANDS -> navActions.navigateToBrands.invoke()
-                                    HomeTab.CATALOG -> navActions.navigateToCatalog.invoke()
-                                    HomeTab.PROFILE -> navActions.navigateToProfile.invoke()
-                                    HomeTab.FAVORITE -> navActions.navigateToFavorite.invoke()
-                                    HomeTab.CART -> navActions.navigateToCart.invoke()
+                                    HomeTab.BRANDS -> navActions.navigateToBrands()
+                                    HomeTab.CATALOG -> navActions.navigateToCatalog()
+                                    HomeTab.PROFILE -> navActions.navigateToProfile()
+                                    HomeTab.FAVORITE -> navActions.navigateToFavorite()
+                                    HomeTab.CART -> navActions.navigateToCart()
                                 }
                             }
                         },

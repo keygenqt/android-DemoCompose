@@ -17,56 +17,23 @@
 package com.keygenqt.demo_contacts.modules._common.navigation
 
 import androidx.navigation.NavHostController
-import com.keygenqt.demo_contacts.base.NavActions
+import com.keygenqt.demo_contacts.modules.brands.navigation.actions.BrandsNavActions
+import com.keygenqt.demo_contacts.modules.cart.navigation.actions.CartNavActions
+import com.keygenqt.demo_contacts.modules.catalog.navigation.actions.CatalogNavActions
+import com.keygenqt.demo_contacts.modules.favorite.navigation.actions.FavoriteNavActions
+import com.keygenqt.demo_contacts.modules.other.navigation.actions.OtherNavActions
+import com.keygenqt.demo_contacts.modules.profile.navigation.actions.ProfileNavActions
 
-class NavActions(controller: NavHostController) : NavActions(controller) {
-    val navigateToStart: () -> Unit = {
-        controller.navigate(NavScreen.OnboardingScreen.route)
-    }
-    val navigateToBrands: () -> Unit = {
-        controller.navigate(NavScreen.BrandsScreen.route)
-    }
-    val navigateToCatalog: () -> Unit = {
-        controller.navigate(NavScreen.CatalogScreen.route)
-    }
-    val navigateToProfile: () -> Unit = {
-        controller.navigate(NavScreen.ProfileScreen.route)
-    }
-    val navigateToFavorite: () -> Unit = {
-        controller.navigate(NavScreen.FavoriteScreen.route)
-    }
-    val navigateToCart: () -> Unit = {
-        controller.navigate(NavScreen.CartScreen.route)
-    }
-    val navigateToContactSettings: () -> Unit = {
-        NavScreen.ContactSettingsScreen.apply {
-            controller.navigate(routeWithArgument)
-        }
-    }
-    val navigateToContactSettingsUpdatedEmail: (String) -> Unit = { email: String ->
-        NavScreen.ContactSettingsScreen.apply {
-            controller.navigate(routeWithArgument
-                .replace("{$argument0}", email)
-            ) {
-                popUpTo(routeWithArgument) { inclusive = true }
-            }
-        }
-    }
-    val navigateToContactSettingsUpdatedPhone: (String) -> Unit = { phone: String ->
-        NavScreen.ContactSettingsScreen.apply {
-            controller.navigate(routeWithArgument
-                .replace("{$argument1}", phone)
-            ) {
-                popUpTo(routeWithArgument) { inclusive = true }
-            }
-        }
-    }
-    val navigateToContactChangeEmail: () -> Unit = {
-        controller.navigate(NavScreen.ContactChangeEmailScreen.route)
-    }
-    val navigateToContactChangeCodeEmail: (String) -> Unit = { email: String ->
-        NavScreen.ContactChangeEmailCodeScreen.apply {
-            controller.navigate(routeWithArgument.replace("{$argument0}", email))
-        }
+class NavActions(
+    override val controller: NavHostController,
+) : BrandsNavActions,
+    CartNavActions,
+    CatalogNavActions,
+    FavoriteNavActions,
+    OtherNavActions,
+    ProfileNavActions {
+
+    val navigateToUp: () -> Unit = {
+        controller.navigateUp()
     }
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.other.navigation
+package com.keygenqt.demo_contacts.modules.other.navigation.graph.impl
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -22,9 +22,9 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
-import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
-import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
+import com.keygenqt.demo_contacts.modules.other.navigation.nav.OtherNav
 import com.keygenqt.demo_contacts.modules.other.ui.events.SignInEvents
 import com.keygenqt.demo_contacts.modules.other.ui.screens.signIn.SignInScreen
 import com.keygenqt.demo_contacts.modules.other.ui.viewModels.OtherViewModel
@@ -32,11 +32,11 @@ import com.keygenqt.demo_contacts.modules.other.ui.viewModels.OtherViewModel
 @ExperimentalCoilApi
 @ExperimentalComposeUiApi
 @ExperimentalPagerApi
-fun NavGraphBuilder.authNavGraph(
+fun NavGraphBuilder.onboardingScreenGraph(
     navActions: NavActions,
-    baseViewModel: MainViewModel,
 ) {
-    composable(NavScreen.SignInScreen.route) {
+    composable(OtherNav.OnboardingNav.OnboardingScreen.route) {
+        val baseViewModel = LocalBaseViewModel.current
         val viewModel: OtherViewModel = hiltViewModel()
         SignInScreen(viewModel = viewModel) { event ->
             when (event) {

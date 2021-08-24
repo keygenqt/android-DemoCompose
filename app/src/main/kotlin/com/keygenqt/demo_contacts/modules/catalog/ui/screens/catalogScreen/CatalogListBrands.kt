@@ -23,11 +23,11 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keygenqt.demo_contacts.R
-import com.keygenqt.demo_contacts.modules.catalog.data.models.BrandModel
-import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
-import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
 import com.keygenqt.demo_contacts.modules._common.ui.compose.CommonList
 import com.keygenqt.demo_contacts.modules._common.ui.compose.PlugBlock
+import com.keygenqt.demo_contacts.modules.catalog.data.models.BrandModel
+import com.keygenqt.demo_contacts.modules.catalog.navigation.nav.CatalogNav
+import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
 
 @Composable
 fun CatalogListBrands(
@@ -35,7 +35,7 @@ fun CatalogListBrands(
     onEvent: (CatalogEvents) -> Unit = {},
 ) {
     CommonList(
-        refreshRoute = NavScreen.CatalogScreen.route,
+        refreshRoute = CatalogNav.MainNav.CatalogScreen.route,
         modifier = Modifier,
         items = items,
         state = rememberSwipeRefreshState(items.loadState.refresh is LoadState.Loading),

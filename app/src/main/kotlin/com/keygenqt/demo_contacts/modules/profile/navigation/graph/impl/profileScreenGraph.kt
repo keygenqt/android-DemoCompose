@@ -14,35 +14,31 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.favorite.navigation
+package com.keygenqt.demo_contacts.modules.profile.navigation.graph.impl
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import androidx.paging.ExperimentalPagingApi
-import coil.annotation.ExperimentalCoilApi
-import com.google.accompanist.pager.ExperimentalPagerApi
+import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
-import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
-import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
-import com.keygenqt.demo_contacts.modules.favorite.ui.events.FavoriteEvents
-import com.keygenqt.demo_contacts.modules.favorite.ui.screens.listFavorite.FavoriteScreen
+import com.keygenqt.demo_contacts.modules.profile.navigation.nav.ProfileNav
+import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
+import com.keygenqt.demo_contacts.modules.profile.ui.screens.profileScreen.ProfileScreen
 
-@ExperimentalPagingApi
-@ExperimentalCoilApi
+@ExperimentalMaterialApi
 @ExperimentalComposeUiApi
-@ExperimentalPagerApi
-@Suppress("UNUSED_PARAMETER")
-fun NavGraphBuilder.favoriteNavGraph(
+fun NavGraphBuilder.profileScreenGraph(
     navActions: NavActions,
-    baseViewModel: MainViewModel,
 ) {
-    composable(NavScreen.FavoriteScreen.route) {
-        FavoriteScreen(viewModel = hiltViewModel()) { event ->
+    composable(ProfileNav.ProfileNav.ProfileScreen.route) {
+        val baseViewModel = LocalBaseViewModel.current
+        ProfileScreen(viewModel = hiltViewModel()) { event ->
             when (event) {
-                is FavoriteEvents.NavigateToSignIn -> navActions.navigateToSignIn.invoke()
-                is FavoriteEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                is ProfileEvents.NavigateToContactSettings -> navActions.navigateToContactSettings()
+                is ProfileEvents.NavigateToSignIn -> navActions.navigateToSignIn()
+                is ProfileEvents.NavigateLogout -> baseViewModel.logout()
             }
         }
     }

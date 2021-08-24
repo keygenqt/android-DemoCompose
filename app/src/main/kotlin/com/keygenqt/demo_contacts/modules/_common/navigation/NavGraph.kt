@@ -37,12 +37,13 @@ import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.AddChangeRouteListener
 import com.keygenqt.demo_contacts.modules._common.navigation.HomeTab.Companion.findByRoute
 import com.keygenqt.demo_contacts.modules._common.ui.compose.BottomBar
-import com.keygenqt.demo_contacts.modules.brands.navigation.brandsNavGraph
-import com.keygenqt.demo_contacts.modules.cart.navigation.cartNavGraph
-import com.keygenqt.demo_contacts.modules.catalog.navigation.catalogNavGraph
-import com.keygenqt.demo_contacts.modules.favorite.navigation.favoriteNavGraph
-import com.keygenqt.demo_contacts.modules.other.navigation.otherNavGraph
-import com.keygenqt.demo_contacts.modules.profile.navigation.profileNavGraph
+import com.keygenqt.demo_contacts.modules.brands.navigation.graph.brandsNavGraph
+import com.keygenqt.demo_contacts.modules.brands.navigation.nav.BrandsNav
+import com.keygenqt.demo_contacts.modules.cart.navigation.graph.cartNavGraph
+import com.keygenqt.demo_contacts.modules.catalog.navigation.graph.catalogNavGraph
+import com.keygenqt.demo_contacts.modules.favorite.navigation.graph.favoriteNavGraph
+import com.keygenqt.demo_contacts.modules.other.navigation.graph.otherNavGraph
+import com.keygenqt.demo_contacts.modules.profile.navigation.graph.profileNavGraph
 
 
 @ExperimentalMaterialApi
@@ -52,8 +53,6 @@ import com.keygenqt.demo_contacts.modules.profile.navigation.profileNavGraph
 @ExperimentalComposeUiApi
 @Composable
 fun NavGraph(navController: NavHostController) {
-
-    val baseViewModel = LocalBaseViewModel.current
 
     navController.AddChangeRouteListener()
 
@@ -65,7 +64,7 @@ fun NavGraph(navController: NavHostController) {
 
         val scaffoldState = rememberScaffoldState()
         val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route ?: NavScreen.BrandsScreen.route
+        val currentRoute = navBackStackEntry?.destination?.route ?: BrandsNav.MainNav.FeedScreen.route
 
         Scaffold(
             scaffoldState = scaffoldState,
@@ -74,39 +73,31 @@ fun NavGraph(navController: NavHostController) {
                     BottomBar(
                         currentRoute = homeTab,
                         navActions = navActions
-                    ) {
-                        baseViewModel.listRefresh()
-                    }
+                    )
                 }
             } ?: run { {} },
         ) {
             Box(
                 modifier = Modifier.padding(it)
             ) {
-                NavHost(navController = navController, startDestination = baseViewModel.getStartRoute()) {
+                NavHost(navController = navController, startDestination = LocalBaseViewModel.current.getStartRoute()) {
                     brandsNavGraph(
                         navActions = navActions,
-                        baseViewModel = baseViewModel,
                     )
                     cartNavGraph(
                         navActions = navActions,
-                        baseViewModel = baseViewModel,
                     )
                     catalogNavGraph(
                         navActions = navActions,
-                        baseViewModel = baseViewModel,
                     )
                     favoriteNavGraph(
                         navActions = navActions,
-                        baseViewModel = baseViewModel,
                     )
                     otherNavGraph(
                         navActions = navActions,
-                        baseViewModel = baseViewModel,
                     )
                     profileNavGraph(
                         navActions = navActions,
-                        baseViewModel = baseViewModel,
                     )
                 }
             }

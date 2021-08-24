@@ -35,8 +35,8 @@ import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.modules._common.navigation.NavGraph
-import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen.BrandsScreen
 import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
+import com.keygenqt.demo_contacts.modules.brands.navigation.nav.BrandsNav
 import com.keygenqt.demo_contacts.theme.MyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -88,7 +88,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onBackPressed() {
         when (navController.currentDestination?.route) {
-            BrandsScreen.route -> viewModel.apply { if (showSnackBar.value) finishAffinity() else toggleSnackBar() }
+            BrandsNav.MainNav.FeedScreen.route ->
+                viewModel.apply { if (showSnackBar.value) finishAffinity() else toggleSnackBar() }
             else -> super.onBackPressed()
         }
     }

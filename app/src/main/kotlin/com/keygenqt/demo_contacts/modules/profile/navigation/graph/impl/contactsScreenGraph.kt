@@ -14,7 +14,7 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.navigation
+package com.keygenqt.demo_contacts.modules.profile.navigation.graph.impl
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -24,7 +24,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
-import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
+import com.keygenqt.demo_contacts.modules.profile.navigation.nav.ProfileNav
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailCodeEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
@@ -35,19 +35,21 @@ import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
 
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi
-fun NavGraphBuilder.contactsNavGraph(
+fun NavGraphBuilder.contactsScreenGraph(
     navActions: NavActions,
 ) {
     composable(
-        route = NavScreen.ContactSettingsScreen.routeWithArgument,
+        route = ProfileNav.ContactsNav.ContactSettingsScreen.routeWithArgument,
         arguments = listOf(
-            navArgument(NavScreen.ContactSettingsScreen.argument0) { type = NavType.StringType; nullable = true },
-            navArgument(NavScreen.ContactSettingsScreen.argument1) { type = NavType.StringType; nullable = true }
+            navArgument(ProfileNav.ContactsNav.ContactSettingsScreen.argument0) {
+                type = NavType.StringType; nullable = true
+            },
+            navArgument(ProfileNav.ContactsNav.ContactSettingsScreen.argument1) { type = NavType.StringType; nullable = true }
         )
     ) { backStackEntry ->
         ContactSettingsScreen(
-            argumentUpdatedEmail = backStackEntry.arguments?.getString(NavScreen.ContactSettingsScreen.argument0),
-            argumentUpdatedPhone = backStackEntry.arguments?.getString(NavScreen.ContactSettingsScreen.argument1),
+            argumentUpdatedEmail = backStackEntry.arguments?.getString(ProfileNav.ContactsNav.ContactSettingsScreen.argument0),
+            argumentUpdatedPhone = backStackEntry.arguments?.getString(ProfileNav.ContactsNav.ContactSettingsScreen.argument1),
             viewModel = hiltViewModel(),
             onEvent = { event: ContactSettingsEvents ->
                 when (event) {
@@ -57,24 +59,26 @@ fun NavGraphBuilder.contactsNavGraph(
             },
         )
     }
-    composable(NavScreen.ContactChangeEmailScreen.route) {
+    composable(ProfileNav.ContactsNav.ContactChangeEmailScreen.route) {
         val viewModel: ProfileViewModel = hiltViewModel()
         ContactChangeEmailScreen(viewModel = viewModel) { event ->
             when (event) {
                 is ContactChangeEmailEvents.ContactChangeEmail -> viewModel.changeEmail(event.email) {
-                    navActions.navigateToContactChangeCodeEmail.invoke(event.email)
+                    navActions.navigateToContactChangeCodeEmail(event.email)
                 }
                 is ContactChangeEmailEvents.NavigateBack -> navActions.navigateToUp()
             }
         }
     }
     composable(
-        route = NavScreen.ContactChangeEmailCodeScreen.routeWithArgument,
-        arguments = listOf(navArgument(NavScreen.ContactChangeEmailCodeScreen.argument0) { type = NavType.StringType })
+        route = ProfileNav.ContactsNav.ContactChangeEmailCodeScreen.routeWithArgument,
+        arguments = listOf(navArgument(ProfileNav.ContactsNav.ContactChangeEmailCodeScreen.argument0) {
+            type = NavType.StringType
+        })
     ) { backStackEntry ->
         backStackEntry.arguments?.let {
             val viewModel: ProfileViewModel = hiltViewModel()
-            val email = it.getString(NavScreen.ContactChangeEmailCodeScreen.argument0)!!
+            val email = it.getString(ProfileNav.ContactsNav.ContactChangeEmailCodeScreen.argument0)!!
             viewModel.runTimer()
             ContactChangeEmailCodeScreen(
                 email = email,

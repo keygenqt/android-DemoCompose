@@ -14,35 +14,22 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.other.navigation
+package com.keygenqt.demo_contacts.modules.favorite.navigation.graph
 
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
+import androidx.paging.ExperimentalPagingApi
 import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
-import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
-import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
-import com.keygenqt.demo_contacts.modules.other.ui.events.StartEvents
-import com.keygenqt.demo_contacts.modules.other.ui.screens.onboarding.OnboardingScreen
+import com.keygenqt.demo_contacts.modules.favorite.navigation.graph.impl.favoriteScreenGraph
 
+@ExperimentalPagingApi
 @ExperimentalCoilApi
 @ExperimentalComposeUiApi
 @ExperimentalPagerApi
-fun NavGraphBuilder.onboardingNavGraph(
+fun NavGraphBuilder.favoriteNavGraph(
     navActions: NavActions,
-    baseViewModel: MainViewModel,
 ) {
-    composable(NavScreen.OnboardingScreen.route) {
-        OnboardingScreen(viewModel = hiltViewModel()) { event ->
-            when (event) {
-                is StartEvents.NavigateToBrands -> {
-                    baseViewModel.startPageCompleted()
-                    navActions.navigateToBrands.invoke()
-                }
-            }
-        }
-    }
+    favoriteScreenGraph(navActions)
 }

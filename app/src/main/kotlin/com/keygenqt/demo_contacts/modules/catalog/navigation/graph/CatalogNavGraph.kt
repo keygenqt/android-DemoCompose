@@ -14,35 +14,22 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.brands.navigation
+package com.keygenqt.demo_contacts.modules.catalog.navigation.graph
 
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
+import androidx.paging.ExperimentalPagingApi
 import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
-import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
-import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
-import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
-import com.keygenqt.demo_contacts.modules.brands.ui.screens.feed.FeedScreen
-import com.keygenqt.demo_contacts.modules.brands.ui.viewModels.BrandsViewModel
+import com.keygenqt.demo_contacts.modules.catalog.navigation.graph.impl.catalogScreenGraph
 
+@ExperimentalPagingApi
 @ExperimentalCoilApi
 @ExperimentalComposeUiApi
 @ExperimentalPagerApi
-@Suppress("UNUSED_PARAMETER")
-fun NavGraphBuilder.brandsNavGraph(
+fun NavGraphBuilder.catalogNavGraph(
     navActions: NavActions,
-    baseViewModel: MainViewModel,
 ) {
-    composable(NavScreen.BrandsScreen.route) {
-        val viewModel: BrandsViewModel = hiltViewModel()
-        FeedScreen(viewModel = viewModel) { event ->
-            when (event) {
-                is BrandsEvents.RefreshFeed -> viewModel.updateFeed()
-            }
-        }
-    }
+    catalogScreenGraph(navActions)
 }

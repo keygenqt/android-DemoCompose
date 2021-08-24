@@ -38,8 +38,8 @@ import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.ListenRefresh
 import com.keygenqt.demo_contacts.extensions.toColor
-import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
 import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
+import com.keygenqt.demo_contacts.modules.profile.navigation.nav.ProfileNav
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -64,7 +64,7 @@ fun ProfileBody(
     }
 
     LocalBaseViewModel.current.ListenRefresh {
-        if (it == NavScreen.ProfileScreen.route) refreshAction.invoke()
+        if (it == ProfileNav.ProfileNav.ProfileScreen.route) refreshAction.invoke()
     }
 
     MainScaffold(

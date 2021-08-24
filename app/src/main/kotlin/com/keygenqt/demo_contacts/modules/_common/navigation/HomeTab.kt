@@ -19,17 +19,22 @@ package com.keygenqt.demo_contacts.modules._common.navigation
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.keygenqt.demo_contacts.modules.brands.navigation.nav.BrandsNav
+import com.keygenqt.demo_contacts.modules.cart.navigation.nav.CartNav
+import com.keygenqt.demo_contacts.modules.catalog.navigation.nav.CatalogNav
+import com.keygenqt.demo_contacts.modules.favorite.navigation.nav.FavoriteNav
+import com.keygenqt.demo_contacts.modules.profile.navigation.nav.ProfileNav
 
 enum class HomeTab(
     val route: String,
     val icon: ImageVector,
 ) {
 
-    BRANDS(NavScreen.BrandsScreen.route, Icons.Filled.Dashboard),
-    CATALOG(NavScreen.CatalogScreen.route, Icons.Filled.ViewList),
-    PROFILE(NavScreen.ProfileScreen.route, Icons.Filled.CreditCard),
-    FAVORITE(NavScreen.FavoriteScreen.route, Icons.Filled.Favorite),
-    CART(NavScreen.CartScreen.route, Icons.Filled.ShoppingCart);
+    BRANDS(BrandsNav.MainNav.FeedScreen.route, Icons.Filled.Dashboard),
+    CATALOG(CatalogNav.MainNav.CatalogScreen.route, Icons.Filled.ViewList),
+    PROFILE(ProfileNav.ProfileNav.ProfileScreen.route, Icons.Filled.CreditCard),
+    FAVORITE(FavoriteNav.MainNav.FavoriteScreen.route, Icons.Filled.Favorite),
+    CART(CartNav.MainNav.CartScreen.route, Icons.Filled.ShoppingCart);
 
     companion object {
         fun String.findByRoute(): HomeTab? {

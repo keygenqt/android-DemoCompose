@@ -14,16 +14,16 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.base
+package com.keygenqt.demo_contacts.modules.favorite.navigation.actions.impl
 
 import androidx.navigation.NavHostController
-import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
+import com.keygenqt.demo_contacts.modules.favorite.navigation.nav.FavoriteNav
 
-open class NavActions(controller: NavHostController) {
-    val navigateToUp: () -> Unit = {
-        controller.navigateUp()
-    }
-    val navigateToSignIn: () -> Unit = {
-        controller.navigate(NavScreen.SignInScreen.route)
+interface FavoriteScreenActions {
+
+    val controller: NavHostController
+
+    fun navigateToFavorite() {
+        controller.navigate(FavoriteNav.MainNav.FavoriteScreen.route)
     }
 }

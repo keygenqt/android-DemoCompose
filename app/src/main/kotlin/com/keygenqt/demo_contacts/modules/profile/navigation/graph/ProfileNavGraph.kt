@@ -14,29 +14,20 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.other.navigation
+package com.keygenqt.demo_contacts.modules.profile.navigation.graph
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.navigation.NavGraphBuilder
-import coil.annotation.ExperimentalCoilApi
-import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
-import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
+import com.keygenqt.demo_contacts.modules.profile.navigation.graph.impl.contactsScreenGraph
+import com.keygenqt.demo_contacts.modules.profile.navigation.graph.impl.profileScreenGraph
 
-@ExperimentalCoilApi
+@ExperimentalMaterialApi
 @ExperimentalComposeUiApi
-@ExperimentalPagerApi
-@Suppress("UNUSED_PARAMETER")
-fun NavGraphBuilder.otherNavGraph(
+fun NavGraphBuilder.profileNavGraph(
     navActions: NavActions,
-    baseViewModel: MainViewModel,
 ) {
-    onboardingNavGraph(
-        navActions = navActions,
-        baseViewModel = baseViewModel,
-    )
-    authNavGraph(
-        navActions = navActions,
-        baseViewModel = baseViewModel,
-    )
+    profileScreenGraph(navActions)
+    contactsScreenGraph(navActions)
 }

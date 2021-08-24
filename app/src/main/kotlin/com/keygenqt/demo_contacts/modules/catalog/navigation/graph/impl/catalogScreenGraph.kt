@@ -14,32 +14,31 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.cart.navigation
+package com.keygenqt.demo_contacts.modules.catalog.navigation.graph.impl
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import androidx.paging.ExperimentalPagingApi
 import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
-import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
-import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
-import com.keygenqt.demo_contacts.modules.cart.ui.events.CartEvents
-import com.keygenqt.demo_contacts.modules.cart.ui.screens.CartScreen
+import com.keygenqt.demo_contacts.modules.catalog.navigation.nav.CatalogNav
+import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
+import com.keygenqt.demo_contacts.modules.catalog.ui.screens.catalogScreen.CatalogScreen
 
+@ExperimentalPagingApi
 @ExperimentalCoilApi
 @ExperimentalComposeUiApi
 @ExperimentalPagerApi
-@Suppress("UNUSED_PARAMETER")
-fun NavGraphBuilder.cartNavGraph(
+fun NavGraphBuilder.catalogScreenGraph(
     navActions: NavActions,
-    baseViewModel: MainViewModel,
 ) {
-    composable(NavScreen.CartScreen.route) {
-        CartScreen(viewModel = hiltViewModel()) { event ->
+    composable(CatalogNav.MainNav.CatalogScreen.route) {
+        CatalogScreen(viewModel = hiltViewModel()) { event ->
             when (event) {
-                is CartEvents.NavigateBack -> navActions.navigateToUp.invoke()
+                is CatalogEvents.NavigateBack -> navActions.navigateToUp.invoke()
             }
         }
     }

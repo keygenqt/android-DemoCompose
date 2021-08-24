@@ -21,8 +21,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.keygenqt.demo_contacts.base.preferences.AppPreferences
-import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
 import com.keygenqt.demo_contacts.modules._common.services.DataServiceCommon
+import com.keygenqt.demo_contacts.modules.brands.navigation.nav.BrandsNav
+import com.keygenqt.demo_contacts.modules.other.navigation.nav.OtherNav
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -96,9 +97,9 @@ class MainViewModel @Inject constructor(
 
     fun getStartRoute(): String {
         return if (preferences.isStartPage) {
-            NavScreen.OnboardingScreen.route
+            OtherNav.OnboardingNav.OnboardingScreen.route
         } else {
-            NavScreen.BrandsScreen.route
+            BrandsNav.MainNav.FeedScreen.route
         }
     }
 

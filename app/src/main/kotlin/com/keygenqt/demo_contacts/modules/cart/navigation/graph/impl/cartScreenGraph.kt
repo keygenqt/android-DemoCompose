@@ -14,31 +14,30 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.navigation
+package com.keygenqt.demo_contacts.modules.cart.navigation.graph.impl
 
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import coil.annotation.ExperimentalCoilApi
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
-import com.keygenqt.demo_contacts.modules._common.navigation.NavScreen
-import com.keygenqt.demo_contacts.modules._common.ui.viewModels.MainViewModel
-import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
-import com.keygenqt.demo_contacts.modules.profile.ui.screens.profileScreen.ProfileScreen
+import com.keygenqt.demo_contacts.modules.cart.navigation.nav.CartNav
+import com.keygenqt.demo_contacts.modules.cart.ui.events.CartEvents
+import com.keygenqt.demo_contacts.modules.cart.ui.screens.CartScreen
 
-@ExperimentalMaterialApi
+@ExperimentalCoilApi
 @ExperimentalComposeUiApi
-fun NavGraphBuilder.indexNavGraph(
+@ExperimentalPagerApi
+@Suppress("UNUSED_PARAMETER")
+fun NavGraphBuilder.cartScreenGraph(
     navActions: NavActions,
-    baseViewModel: MainViewModel,
 ) {
-    composable(NavScreen.ProfileScreen.route) {
-        ProfileScreen(viewModel = hiltViewModel()) { event ->
+    composable(CartNav.MainNav.CartScreen.route) {
+        CartScreen(viewModel = hiltViewModel()) { event ->
             when (event) {
-                is ProfileEvents.NavigateToContactSettings -> navActions.navigateToContactSettings.invoke()
-                is ProfileEvents.NavigateToSignIn -> navActions.navigateToSignIn.invoke()
-                is ProfileEvents.NavigateLogout -> baseViewModel.logout()
+                is CartEvents.NavigateBack -> navActions.navigateToUp.invoke()
             }
         }
     }
