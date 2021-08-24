@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -33,6 +34,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 @Composable
 fun BottomSheetScaffoldInfo(
     isShow: Boolean = false,
+    height: Dp = 350.dp,
     content: @Composable ColumnScope.(BottomSheetScaffoldState) -> Unit,
 ) {
     rememberSystemUiController().setStatusBarColor(
@@ -54,7 +56,7 @@ fun BottomSheetScaffoldInfo(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .heightIn(max = 350.dp)
+                        .heightIn(max = height)
                         .padding(16.dp)
                 ) {
                     Column(

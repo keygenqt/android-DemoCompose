@@ -68,14 +68,10 @@ fun ContactSettingsBody(
             }
         }
 
-        UpdatedBottomSheetInfo(
-            isShow = argumentUpdatedEmail != null,
-            text = stringResource(id = R.string.contact_settings_added_email)
-        )
-
-        UpdatedBottomSheetInfo(
-            isShow = argumentUpdatedPhone != null,
-            text = stringResource(id = R.string.contact_settings_added_phone)
+        ContactSettingsNotifications(
+            onEvent = onEvent,
+            argumentUpdatedEmail = argumentUpdatedEmail,
+            argumentUpdatedPhone = argumentUpdatedPhone,
         )
     }
 }

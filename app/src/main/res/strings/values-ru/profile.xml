@@ -32,6 +32,20 @@
     <string name="contact_settings_value_empty">Не указан</string>
     <string name="contact_settings_added_email">Добавлен новый Email. Теперь вы можете входить в РИВ ГОШ используя его как логин при авторизации.</string>
     <string name="contact_settings_added_phone">Добавлен новый номер телефона. Теперь вы можете входить в РИВ ГОШ используя его как логин при авторизации.</string>
+    <!--  errors notifications -->
+    <string name="contact_settings_error_notifications_title">Отключить все уведомления о статусе заказа невозможно</string>
+    <string name="contact_settings_error_notifications_text_phone">Для отключения SMS-уведомлений о статусе включите уведомления по email в качестве альтернативного канала связи</string>
+    <string name="contact_settings_error_notifications_text_email">Для отключения email-уведомлений о статусе включите уведомления по SMS в качестве альтернативного канала связи</string>
+    <string name="contact_settings_error_notifications_btn_email">Включить email-уведомления</string>
+    <string name="contact_settings_error_notifications_btn_phone">Включить SMS-уведомления</string>
+    <!--  channel email notifications -->
+    <string name="contact_settings_channels_title_email">Добавить резервный канал связи?</string>
+    <string name="contact_settings_channels_text_email">Для отключения email-уведомлений о статусе заказа добавьте ваш номер телефона в качестве альтернативного канала связи</string>
+    <string name="contact_settings_channels_btn_email">Добавить номер телефона</string>
+    <!--  channel phone notifications -->
+    <string name="contact_settings_channels_title_phone">Добавить резервный канал связи?</string>
+    <string name="contact_settings_channels_text_phone">Для отключения SMS-уведомлений о статусе заказа добавьте ваш email в качестве альтернативного канала связи</string>
+    <string name="contact_settings_channels_btn_phone">Добавить Email</string>
 
     <!-- Contact Change Email -->
     <string name="contact_change_email_title">Изменить E-mail</string>

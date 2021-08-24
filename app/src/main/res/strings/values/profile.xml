@@ -33,6 +33,21 @@
     <string name="contact_settings_value_empty">Not specified</string>
     <string name="contact_settings_added_email">Added new Email. Now you can log into &appName; using it as a login for authorization.</string>
     <string name="contact_settings_added_phone">Added a new phone number. Now you can log into &appName; using it as a login for authorization.</string>
+    <!--  errors notifications -->
+    <string name="contact_settings_error_notifications_title">It is impossible to disable all notifications about the order status</string>
+    <string name="contact_settings_error_notifications_text_phone">To disable SMS status notifications, enable email notifications as an alternative communication channel</string>
+    <string name="contact_settings_error_notifications_text_email">To disable status email notifications, enable SMS notifications as an alternative communication channel</string>
+    <string name="contact_settings_error_notifications_btn_email">Enable email notifications</string>
+    <string name="contact_settings_error_notifications_btn_phone">Enable SMS notifications</string>
+    <!--  channel email notifications -->
+    <string name="contact_settings_channels_title_email">Add a backup link?</string>
+    <string name="contact_settings_channels_text_email">To disable email notifications about order status, add your phone number as an alternative communication channel</string>
+    <string name="contact_settings_channels_btn_email">Add phone number</string>
+    <!--  channel phone notifications -->
+    <string name="contact_settings_channels_title_phone">Add a backup link?</string>
+    <string name="contact_settings_channels_text_phone">To disable SMS notifications about the order status, add your email as an alternative communication channel</string>
+    <string name="contact_settings_channels_btn_phone">Add Email</string>
+
 
     <!-- Contact Change Email -->
     <string name="contact_change_email_title">Change Email</string>
