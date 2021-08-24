@@ -42,8 +42,8 @@ import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldsState
 import com.keygenqt.demo_contacts.modules._common.ui.form.fields.FieldEmail
 import com.keygenqt.demo_contacts.modules._common.ui.form.fields.FieldPassword
 import com.keygenqt.demo_contacts.modules.other.ui.events.SignInEvents
-import com.keygenqt.demo_contacts.modules.other.ui.form.SignInFormStates.SignInEmail
-import com.keygenqt.demo_contacts.modules.other.ui.form.SignInFormStates.SignInPassword
+import com.keygenqt.demo_contacts.modules.other.ui.form.SignInFieldsForm.SignInEmail
+import com.keygenqt.demo_contacts.modules.other.ui.form.SignInFieldsForm.SignInPassword
 import com.keygenqt.demo_contacts.utils.ConstantsApp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

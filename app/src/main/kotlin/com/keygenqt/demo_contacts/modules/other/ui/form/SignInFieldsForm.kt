@@ -21,7 +21,7 @@ import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormStates
 import com.keygenqt.demo_contacts.modules._common.ui.form.states.EmailStateRequired
 import com.keygenqt.demo_contacts.modules._common.ui.form.states.PasswordState
 
-enum class SignInFormStates(val state: FormFieldState) : FormStates {
+enum class SignInFieldsForm(val state: FormFieldState) : FormStates {
     SignInEmail(EmailStateRequired()),
     SignInPassword(PasswordState()),
 }

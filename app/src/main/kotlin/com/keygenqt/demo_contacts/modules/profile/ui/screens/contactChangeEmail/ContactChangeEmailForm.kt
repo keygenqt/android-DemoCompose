@@ -40,7 +40,7 @@ import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldsState
 import com.keygenqt.demo_contacts.modules._common.ui.form.fields.FieldEmail
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailEvents
-import com.keygenqt.demo_contacts.modules.profile.ui.form.ChangeEmailFormStates
+import com.keygenqt.demo_contacts.modules.profile.ui.form.ChangeEmailFieldsForm
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -56,7 +56,7 @@ fun ContactChangeEmailForm(
     val padding = 16.dp
 
     val formFields = FormFieldsState().apply {
-        add(ChangeEmailFormStates.ChangeEmail, remember { ChangeEmailFormStates.ChangeEmail.state.default("") })
+        add(ChangeEmailFieldsForm.ChangeEmail, remember { ChangeEmailFieldsForm.ChangeEmail.state.default("") })
     }
 
     val requesterField = remember { FocusRequester() }
@@ -70,7 +70,7 @@ fun ContactChangeEmailForm(
             // submit query
             onEvent(
                 ContactChangeEmailEvents.ContactChangeEmail(
-                    email = formFields.get(ChangeEmailFormStates.ChangeEmail).getValue(),
+                    email = formFields.get(ChangeEmailFieldsForm.ChangeEmail).getValue(),
                 )
             )
             // hide keyboard
@@ -88,7 +88,7 @@ fun ContactChangeEmailForm(
                 modifier = Modifier.focusRequester(requesterField),
                 labelText = stringResource(id = R.string.contact_change_email_label),
                 enabled = !loading,
-                state = formFields.get(ChangeEmailFormStates.ChangeEmail),
+                state = formFields.get(ChangeEmailFieldsForm.ChangeEmail),
                 imeAction = ImeAction.Next,
                 keyboardActions = KeyboardActions(onNext = { submitClick.invoke() })
             )

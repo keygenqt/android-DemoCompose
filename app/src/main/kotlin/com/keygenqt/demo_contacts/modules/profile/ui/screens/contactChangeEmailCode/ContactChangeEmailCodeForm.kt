@@ -41,7 +41,7 @@ import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldsState
 import com.keygenqt.demo_contacts.modules._common.ui.form.fields.FieldSimpleEditText
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailCodeEvents
-import com.keygenqt.demo_contacts.modules.profile.ui.form.ChangeEmailCodeFormStates.Code
+import com.keygenqt.demo_contacts.modules.profile.ui.form.ChangeEmailCodeFieldsForm.Code
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
