@@ -13,21 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.keygenqt.demo_contacts.base.done
+import com.keygenqt.demo_contacts.base.error
+import com.keygenqt.demo_contacts.base.preferences.AppPreferences
+import com.keygenqt.demo_contacts.base.success
 import com.keygenqt.demo_contacts.extensions.timer
+import com.keygenqt.demo_contacts.modules.profile.data.models.UserModel
 import com.keygenqt.demo_contacts.modules.profile.services.apiService.ApiServiceProfile
 import com.keygenqt.demo_contacts.modules.profile.services.data.DataServiceProfile
 import com.keygenqt.demo_contacts.utils.ConstantsApp.REFRESH_DELAY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -36,6 +40,8 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val data: DataServiceProfile,
     private val apiService: ApiServiceProfile,
+    private val crashlytics: FirebaseCrashlytics,
+    private val preferences: AppPreferences,
 ) : ViewModel() {
 
     private var timerJob: Job? = null
@@ -48,6 +54,29 @@ class ProfileViewModel @Inject constructor(
 
     private val _loading: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val loading: StateFlow<Boolean> get() = _loading.asStateFlow()
+
+    fun userUpdate() {
+        _loading.value = true
+        viewModelScope.launch {
+            apiService.getUser()
+                .success { response ->
+                    data.updateUser(response)
+                }
+                .error {
+                    Timber.e(it)
+                    crashlytics.recordException(it)
+                    _commonError.value = it.message ?: "Error update feed"
+                }
+                .done {
+                    delay(500) // disable loading after insert
+                    _loading.value = false
+                }
+        }
+    }
+
+    fun getUser(): Flow<UserModel?> {
+        return data.getUser().distinctUntilChanged()
+    }
 
     fun refreshCode() {
         _commonError.value = null

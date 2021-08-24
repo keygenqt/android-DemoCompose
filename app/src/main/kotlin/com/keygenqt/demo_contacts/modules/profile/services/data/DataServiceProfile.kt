@@ -19,10 +19,10 @@ package com.keygenqt.demo_contacts.modules.profile.services.data
 import com.keygenqt.demo_contacts.base.AppDatabase
 import com.keygenqt.demo_contacts.base.BaseDataService
 import com.keygenqt.demo_contacts.base.preferences.AppPreferences
-import com.keygenqt.demo_contacts.modules.profile.services.data.impl.DataProfileModel
+import com.keygenqt.demo_contacts.modules.profile.services.data.impl.DataUserModel
 
 class DataServiceProfile(
     override val db: AppDatabase,
     override val preferences: AppPreferences,
 ) : BaseDataService<DataServiceProfile>,
-    DataProfileModel
+    DataUserModel

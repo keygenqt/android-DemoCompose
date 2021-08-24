@@ -13,22 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules._common.services
 
 import com.keygenqt.demo_contacts.base.AppDatabase
 import com.keygenqt.demo_contacts.base.BaseDataService
 import com.keygenqt.demo_contacts.base.preferences.AppPreferences
 import com.keygenqt.demo_contacts.modules.favorite.data.dao.DaoFavoriteModel
+import com.keygenqt.demo_contacts.modules.profile.data.dao.DaoUserModel
 
 class DataServiceCommon(
     override val db: AppDatabase,
     override val preferences: AppPreferences,
 ) : BaseDataService<DataServiceCommon> {
 
-    private val dao: DaoFavoriteModel get() = db.daoFavorite()
+    private val daoFavorite: DaoFavoriteModel get() = db.daoFavorite()
+    private val daoUser: DaoUserModel get() = db.daoUserModel()
 
     suspend fun clearAfterLogout() {
-        dao.clear()
+        daoFavorite.clear()
+        daoUser.clear()
     }
 }

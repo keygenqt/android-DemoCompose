@@ -46,7 +46,7 @@ class MainViewModel @Inject constructor(
     private val _isReady: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val isReady: StateFlow<Boolean> get() = _isReady.asStateFlow()
 
-    private val _isLogin: MutableStateFlow<Boolean> = MutableStateFlow(preferences.accessToken.isNotBlank())
+    private val _isLogin: MutableStateFlow<Boolean> = MutableStateFlow(preferences.isLogin())
     val isLogin: StateFlow<Boolean> get() = _isLogin.asStateFlow()
 
     private val _showSnackBar: MutableStateFlow<Boolean> = MutableStateFlow(false)

@@ -13,7 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.services.api.impl
 
-interface ApiGet
+import com.keygenqt.demo_contacts.modules.profile.data.responses.UserContactsResponse
+import com.keygenqt.demo_contacts.modules.profile.data.responses.UserCustomerResponse
+import retrofit2.Response
+import retrofit2.http.GET
+
+interface ApiGet {
+    @GET("customers/current/profile")
+    suspend fun getUser(): Response<UserCustomerResponse>
+
+    @GET("customers/current/contacts")
+    suspend fun getUserContacts(): Response<UserContactsResponse>
+}
+
+
+

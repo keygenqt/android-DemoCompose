@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.screens.profileScreen
 
 import androidx.compose.material.ExperimentalMaterialApi
@@ -32,11 +32,14 @@ fun ProfileScreen(
     viewModel: ProfileViewModel,
     onEvent: (ProfileEvents) -> Unit = {},
 ) {
-    val localBaseViewModel = LocalBaseViewModel.current
 
-    val isLogin by localBaseViewModel.isLogin.collectAsState()
+    val user by viewModel.getUser().collectAsState(false)
+    val loading: Boolean by viewModel.loading.collectAsState()
+    val isLogin by LocalBaseViewModel.current.isLogin.collectAsState()
 
     ProfileBody(
+        user = user,
+        loading = loading,
         isLogin = isLogin,
         onEvent = onEvent,
     )

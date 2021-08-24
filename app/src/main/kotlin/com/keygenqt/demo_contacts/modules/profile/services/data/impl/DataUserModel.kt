@@ -13,13 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.services.data.impl
 
 import com.keygenqt.demo_contacts.base.AppDatabase
 import com.keygenqt.demo_contacts.base.preferences.AppPreferences
+import com.keygenqt.demo_contacts.modules.profile.data.dao.DaoUserModel
+import com.keygenqt.demo_contacts.modules.profile.data.models.UserModel
+import kotlinx.coroutines.flow.Flow
 
-interface DataProfileModel {
+interface DataUserModel {
     val db: AppDatabase
     val preferences: AppPreferences
+
+    private val dao: DaoUserModel get() = db.daoUserModel()
+
+    suspend fun updateUser(model: UserModel) {
+        dao.clear()
+        dao.insertModels(*listOf(model).toTypedArray())
+    }
+
+    fun getUser(): Flow<UserModel?> {
+        return dao.getModel()
+    }
+
+    suspend fun isEmpty(): Boolean {
+        return dao.count() == 0
+    }
 }

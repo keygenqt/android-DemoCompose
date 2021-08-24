@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.screens.profileScreen
 
 import androidx.compose.foundation.*
@@ -23,7 +23,8 @@ import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -38,42 +39,38 @@ import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.ListenRefresh
 import com.keygenqt.demo_contacts.extensions.toColor
+import com.keygenqt.demo_contacts.modules._common.ui.compose.LoadingScreen
 import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
+import com.keygenqt.demo_contacts.modules.profile.data.models.UserModel
 import com.keygenqt.demo_contacts.modules.profile.navigation.nav.ProfileNav
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 @Composable
 fun ProfileBody(
+    user: Any?,
     isLogin: Boolean,
+    loading: Boolean,
     onEvent: (ProfileEvents) -> Unit = {},
 ) {
 
-    val scope = rememberCoroutineScope()
-    var refresh: Boolean by remember { mutableStateOf(false) }
-
-    val refreshAction = {
-        refresh = true
-        scope.launch {
-            delay(1000L)
-            refresh = false
-        }
+    LocalBaseViewModel.current.ListenRefresh {
+        if (it == ProfileNav.ProfileNav.ProfileScreen.route && isLogin) onEvent(ProfileEvents.UpdateUser)
     }
 
-    LocalBaseViewModel.current.ListenRefresh {
-        if (it == ProfileNav.ProfileNav.ProfileScreen.route) refreshAction.invoke()
+    LaunchedEffect(user) {
+        if (isLogin && user == null) onEvent(ProfileEvents.UpdateUser)
     }
 
     MainScaffold(
         title = stringResource(id = R.string.profile_title)
     ) {
         SwipeRefresh(
-            state = rememberSwipeRefreshState(refresh),
+            swipeEnabled = isLogin,
+            state = rememberSwipeRefreshState(loading),
             onRefresh = {
-                refreshAction.invoke()
+                onEvent(ProfileEvents.UpdateUser)
             },
             indicator = { st, tr ->
                 SwipeRefreshIndicator(
@@ -130,7 +127,7 @@ fun ProfileBody(
                             Column {
                                 Text(
                                     color = MaterialTheme.colors.onBackground,
-                                    text = stringResource(id = R.string.profile_details),
+                                    text = if (user is UserModel) user.name else "",
                                     modifier = Modifier
                                         .padding(start = 16.dp, end = 16.dp)
                                 )
@@ -185,6 +182,15 @@ fun ProfileBody(
                     isLogin = isLogin,
                     onEvent = onEvent
                 )
+            }
+
+            if (loading) {
+                Box(modifier = Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colors.background)
+                ) {
+                    LoadingScreen(loading)
+                }
             }
         }
     }

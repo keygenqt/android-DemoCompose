@@ -14,11 +14,16 @@
  * limitations under the License.
  */
  
-package com.keygenqt.demo_contacts.modules.profile.ui.events
+package com.keygenqt.demo_contacts.modules.profile.data.models
 
-sealed class ProfileEvents {
-    object UpdateUser : ProfileEvents()
-    object NavigateToContactSettings : ProfileEvents()
-    object NavigateToSignIn : ProfileEvents()
-    object NavigateLogout : ProfileEvents()
-}
+import androidx.compose.runtime.Immutable
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.keygenqt.demo_contacts.base.interfaces.IModel
+
+@Immutable
+data class UserContactEmailModel(
+    val confirmedContactEmail: Boolean,
+    val contactEmail: String,
+)

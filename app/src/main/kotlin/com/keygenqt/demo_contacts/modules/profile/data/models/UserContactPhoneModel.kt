@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-package com.keygenqt.demo_contacts.modules.profile.ui.events
 
-sealed class ProfileEvents {
-    object UpdateUser : ProfileEvents()
-    object NavigateToContactSettings : ProfileEvents()
-    object NavigateToSignIn : ProfileEvents()
-    object NavigateLogout : ProfileEvents()
-}
+package com.keygenqt.demo_contacts.modules.profile.data.models
+
+import androidx.compose.runtime.Immutable
+
+@Immutable
+data class UserContactPhoneModel(
+    val confirmedContactPhone: Boolean,
+    val contactPhone: String,
+)

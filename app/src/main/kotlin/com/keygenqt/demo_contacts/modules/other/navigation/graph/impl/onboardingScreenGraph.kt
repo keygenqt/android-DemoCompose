@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.other.navigation.graph.impl
 
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -25,9 +25,8 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
 import com.keygenqt.demo_contacts.modules.other.navigation.nav.OtherNav
-import com.keygenqt.demo_contacts.modules.other.ui.events.SignInEvents
-import com.keygenqt.demo_contacts.modules.other.ui.screens.signIn.SignInScreen
-import com.keygenqt.demo_contacts.modules.other.ui.viewModels.OtherViewModel
+import com.keygenqt.demo_contacts.modules.other.ui.events.StartEvents
+import com.keygenqt.demo_contacts.modules.other.ui.screens.onboarding.OnboardingScreen
 
 @ExperimentalCoilApi
 @ExperimentalComposeUiApi
@@ -37,16 +36,11 @@ fun NavGraphBuilder.onboardingScreenGraph(
 ) {
     composable(OtherNav.OnboardingNav.OnboardingScreen.route) {
         val baseViewModel = LocalBaseViewModel.current
-        val viewModel: OtherViewModel = hiltViewModel()
-        SignInScreen(viewModel = viewModel) { event ->
+        OnboardingScreen(viewModel = hiltViewModel()) { event ->
             when (event) {
-                is SignInEvents.NavigateBack -> navActions.navigateToUp.invoke()
-                is SignInEvents.SignIn -> viewModel.signIn(
-                    event.login,
-                    event.passw
-                ) { accessToken, refreshToken ->
-                    baseViewModel.startUser(accessToken, refreshToken)
-                    navActions.navigateToUp.invoke()
+                is StartEvents.NavigateToBrands -> {
+                    baseViewModel.startPageCompleted()
+                    navActions.navigateToBrands()
                 }
             }
         }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.navigation.graph.impl
 
 import androidx.compose.material.ExperimentalMaterialApi
@@ -26,6 +26,7 @@ import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
 import com.keygenqt.demo_contacts.modules.profile.navigation.nav.ProfileNav
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.screens.profileScreen.ProfileScreen
+import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
 
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi
@@ -34,8 +35,10 @@ fun NavGraphBuilder.profileScreenGraph(
 ) {
     composable(ProfileNav.ProfileNav.ProfileScreen.route) {
         val baseViewModel = LocalBaseViewModel.current
+        val viewModel: ProfileViewModel = hiltViewModel()
         ProfileScreen(viewModel = hiltViewModel()) { event ->
             when (event) {
+                is ProfileEvents.UpdateUser -> viewModel.userUpdate()
                 is ProfileEvents.NavigateToContactSettings -> navActions.navigateToContactSettings()
                 is ProfileEvents.NavigateToSignIn -> navActions.navigateToSignIn()
                 is ProfileEvents.NavigateLogout -> baseViewModel.logout()
