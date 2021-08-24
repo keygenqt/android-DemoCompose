@@ -76,7 +76,7 @@ fun ContactSettingsNotifications(
 
     // channel phone
     NotificationsBottomSheetInfo(
-        isShow = true,
+        isShow = false,
         title = stringResource(id = R.string.contact_settings_channels_title_phone),
         text = stringResource(id = R.string.contact_settings_channels_text_phone),
         btn = stringResource(id = R.string.contact_settings_channels_btn_phone),
