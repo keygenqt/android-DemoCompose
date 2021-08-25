@@ -136,7 +136,7 @@ fun ContactSettingsBodyEmail(
         }
     }
 
-    if (model.email.contactEmail.isNotEmpty()) {
+    if (model.email.contactEmail.isNotEmpty() || argumentUpdatedEmail != null) {
         val short: () -> Unit = {
             if (model.phone.contactPhone.isEmpty() || !model.phone.notifySmsShort) {
                 errorEmail.invoke()

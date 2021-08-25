@@ -77,7 +77,7 @@ fun NavGraphBuilder.contactsScreenGraph(
         val viewModel: ProfileChangeContactsViewModel = hiltViewModel()
         ContactChangeEmailScreen(viewModel = viewModel) { event ->
             when (event) {
-                is ContactChangeEmailEvents.ContactChangeEmail -> viewModel.changeEmail(event.email) {
+                is ContactChangeEmailEvents.ContactChangeEmail -> viewModel.changeEmailOrPhone(event.email) {
                     navActions.navigateToContactChangeCodeEmail(event.email)
                 }
                 is ContactChangeEmailEvents.NavigateBack -> navActions.navigateToUp()
@@ -99,10 +99,13 @@ fun NavGraphBuilder.contactsScreenGraph(
                 viewModel = viewModel
             ) { event ->
                 when (event) {
-                    is ContactChangeEmailCodeEvents.ContactChangeEmailCode -> viewModel.changeEmailCode(event.code) {
+                    is ContactChangeEmailCodeEvents.ContactChangeEmailCode -> viewModel.checkEmailOrPhone(email,
+                        event.code) {
                         navActions.navigateToContactSettingsUpdatedEmail(email)
                     }
-                    is ContactChangeEmailCodeEvents.ContactChangeEmailCodeRefresh -> viewModel.refreshCode()
+                    is ContactChangeEmailCodeEvents.ContactChangeEmailCodeRefresh -> viewModel.changeEmailOrPhone(email) {
+                        viewModel.runTimer()
+                    }
                     is ContactChangeEmailCodeEvents.NavigateBack -> navActions.navigateToUp()
                 }
             }
@@ -112,7 +115,7 @@ fun NavGraphBuilder.contactsScreenGraph(
         val viewModel: ProfileChangeContactsViewModel = hiltViewModel()
         ContactChangePhoneScreen(viewModel = viewModel) { event ->
             when (event) {
-                is ContactChangePhoneEvents.ContactChangePhone -> viewModel.changePhone(event.phone) {
+                is ContactChangePhoneEvents.ContactChangePhone -> viewModel.changeEmailOrPhone(event.phone) {
                     navActions.navigateToContactChangeCodePhone(event.phone)
                 }
                 is ContactChangePhoneEvents.NavigateBack -> navActions.navigateToUp()
@@ -134,10 +137,13 @@ fun NavGraphBuilder.contactsScreenGraph(
                 viewModel = viewModel
             ) { event ->
                 when (event) {
-                    is ContactChangePhoneCodeEvents.ContactChangePhoneCode -> viewModel.changePhoneCode(event.code) {
+                    is ContactChangePhoneCodeEvents.ContactChangePhoneCode -> viewModel.checkEmailOrPhone(phone,
+                        event.code) {
                         navActions.navigateToContactSettingsUpdatedPhone(phone)
                     }
-                    is ContactChangePhoneCodeEvents.ContactChangePhoneCodeRefresh -> viewModel.refreshCode()
+                    is ContactChangePhoneCodeEvents.ContactChangePhoneCodeRefresh -> viewModel.changeEmailOrPhone(phone) {
+                        viewModel.runTimer()
+                    }
                     is ContactChangePhoneCodeEvents.NavigateBack -> navActions.navigateToUp()
                 }
             }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.base
 
 import androidx.paging.PagingSource
@@ -100,9 +100,9 @@ fun ResponseResult<*>?.isEndDouble(lastStateId: String?) = this != null
         && (data.last() as IModel).id == lastStateId
 
 
-fun <T> Response<T>.responseCheck(): Response<T> {
+fun <T> Response<T>.responseCheck(check200: (Response<T>) -> Response<T> = { it }): Response<T> {
     return when (code().toHTTPResult()) {
-        is Result200 -> this
+        is Result200 -> check200.invoke(this)
         is Result400 -> throw Result400()
         is Result401 -> throw Result401()
         is Result403 -> throw this.parseApiError()?.let { Result403(it) } ?: Result403()

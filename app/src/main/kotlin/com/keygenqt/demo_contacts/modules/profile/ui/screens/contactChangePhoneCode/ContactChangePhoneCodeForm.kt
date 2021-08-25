@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangePhoneCode
 
 import androidx.compose.foundation.layout.Box
@@ -49,6 +49,7 @@ import kotlinx.coroutines.launch
 @ExperimentalComposeUiApi
 @Composable
 fun ContactChangePhoneCodeForm(
+    isError: Boolean = false,
     loadingRefresh: Int = 0,
     loading: Boolean = false,
     onEvent: (ContactChangePhoneCodeEvents) -> Unit = {},
@@ -119,6 +120,10 @@ fun ContactChangePhoneCodeForm(
                 )
             }
         }
+    }
+
+    if (isError) {
+        requesterField.requestFocus()
     }
 
     LaunchedEffect(Unit) {

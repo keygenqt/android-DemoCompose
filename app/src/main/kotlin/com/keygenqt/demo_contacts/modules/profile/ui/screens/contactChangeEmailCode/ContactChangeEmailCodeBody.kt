@@ -82,13 +82,12 @@ fun ContactChangeEmailCodeBody(
 
             // common error
             commonError?.let {
-                FormError(textError = it)
+                FormError(textError = stringResource(id = R.string.common_check_failed))
                 Spacer(Modifier.size(16.dp))
             }
 
-            Spacer(modifier = Modifier.size(16.dp))
-
             ContactChangeEmailCodeForm(
+                isError = commonError != null,
                 loading = loading,
                 onEvent = onEvent,
                 loadingRefresh = loadingRefresh,

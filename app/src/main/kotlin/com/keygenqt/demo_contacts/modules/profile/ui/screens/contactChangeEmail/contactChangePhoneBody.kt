@@ -82,8 +82,6 @@ fun ContactChangeEmailBody(
                 Spacer(Modifier.size(16.dp))
             }
 
-            Spacer(modifier = Modifier.size(16.dp))
-
             ContactChangeEmailForm(
                 loading = loading,
                 onEvent = onEvent

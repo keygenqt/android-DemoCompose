@@ -52,6 +52,7 @@ fun FieldPhone(
     state: FormFieldState = remember { StatePhoneRequired() },
     imeAction: ImeAction = ImeAction.Next,
     keyboardActions: KeyboardActions = KeyboardActions(),
+    placeholder: String = "8 967 300 20 10"
 ) {
     TextField(
         maxLines = 1,
@@ -61,6 +62,7 @@ fun FieldPhone(
         textStyle = MaterialTheme.typography.body2.merge(TextStyle(color = MaterialTheme.colors.onPrimary)),
         onValueChange = { state.text = it },
         label = { Text(labelText) },
+        placeholder = { Text(placeholder) },
         modifier = modifier
             .fillMaxWidth()
             .onFocusChanged { focusState ->

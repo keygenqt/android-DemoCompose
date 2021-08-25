@@ -20,7 +20,7 @@ import com.keygenqt.demo_contacts.BuildConfig
 
 object ConstantsApp {
 
-    const val REFRESH_DELAY = 30000L
+    const val REFRESH_DELAY = 60000L
 
     const val DEBUG_DELAY = 1000L
 

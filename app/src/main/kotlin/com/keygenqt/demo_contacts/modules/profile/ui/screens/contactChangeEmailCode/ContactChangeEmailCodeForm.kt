@@ -49,6 +49,7 @@ import kotlinx.coroutines.launch
 @ExperimentalComposeUiApi
 @Composable
 fun ContactChangeEmailCodeForm(
+    isError: Boolean = false,
     loadingRefresh: Int = 0,
     loading: Boolean = false,
     onEvent: (ContactChangeEmailCodeEvents) -> Unit = {},
@@ -119,6 +120,10 @@ fun ContactChangeEmailCodeForm(
                 )
             }
         }
+    }
+
+    if (isError) {
+        requesterField.requestFocus()
     }
 
     LaunchedEffect(Unit) {

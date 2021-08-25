@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.base
 
 sealed class HTTPResult(val code: Int, error: String) : RuntimeException(error) {
@@ -25,3 +25,5 @@ sealed class HTTPResult(val code: Int, error: String) : RuntimeException(error) 
     class Result500(error: String = "Internal Server Error") : HTTPResult(500, error)
     class ResultUnknown(code: Int = -1, error: String = "HTTP Version Not Supported") : HTTPResult(code, error)
 }
+
+class Result422(error: String = "Data validation failed") : RuntimeException(error)

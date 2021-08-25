@@ -17,6 +17,7 @@
 package com.keygenqt.demo_contacts.modules.profile.services.apiService.impl
 
 import com.keygenqt.demo_contacts.base.ResponseResult
+import com.keygenqt.demo_contacts.base.Result422
 import com.keygenqt.demo_contacts.base.executeWithResponse
 import com.keygenqt.demo_contacts.base.responseCheck
 import com.keygenqt.demo_contacts.modules.profile.data.models.UserContactsModel
@@ -50,6 +51,42 @@ interface ApiServicePost {
                 ))
                     .responseCheck()
                     .body() != null
+            }
+        }
+    }
+
+    suspend fun checkCode(emailOrPhone: String, code: String): ResponseResult<Boolean> {
+        return withContext(Dispatchers.IO) {
+            executeWithResponse {
+                api.checkCode(
+                    configGroupCode = "update",
+                    contact = emailOrPhone.replace(" ", ""),
+                    code = code
+                )
+                    .responseCheck()
+                    .body()
+                    ?.getAsJsonPrimitive("confirmedSuccess")?.asBoolean ?: false
+            }
+        }
+    }
+
+    suspend fun sendCode(emailOrPhone: String): ResponseResult<Boolean> {
+        return withContext(Dispatchers.IO) {
+            executeWithResponse {
+                api.sendCode(
+                    configGroupCode = "update",
+                    contact = emailOrPhone.replace(" ", ""),
+                )
+                    .responseCheck {
+                        it.body()?.let { obj ->
+                            if (obj.getAsJsonPrimitive("sentSuccess")?.asBoolean == false) {
+                                throw Result422(obj.getAsJsonPrimitive("errorMsg").asString)
+                            }
+                        }
+                        it
+                    }
+                    .body()
+                    ?.getAsJsonPrimitive("sentSuccess")?.asBoolean ?: false
             }
         }
     }

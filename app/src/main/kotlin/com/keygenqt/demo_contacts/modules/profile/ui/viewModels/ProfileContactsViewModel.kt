@@ -95,7 +95,6 @@ class ProfileContactsViewModel @Inject constructor(
                         }
                     }
                     .error {
-                        Timber.e(it)
                         crashlytics.recordException(it)
                     }
                     .done {

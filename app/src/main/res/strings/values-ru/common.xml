@@ -3,6 +3,7 @@
     <string name="app_name">РИВ ГОШ</string>
 
     <!-- Common-->
+    <string name="common_check_failed">Проверка не пройдена</string>
     <string name="common_state_empty_title">Ничего не найдено</string>
     <string name="common_go_to_catalog">Перейти в каталог</string>
     <string name="common_sign_in">Войти</string>

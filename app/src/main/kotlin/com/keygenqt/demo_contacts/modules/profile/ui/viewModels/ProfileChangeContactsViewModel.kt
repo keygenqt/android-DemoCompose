@@ -13,12 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.keygenqt.demo_contacts.base.done
+import com.keygenqt.demo_contacts.base.error
+import com.keygenqt.demo_contacts.base.success
 import com.keygenqt.demo_contacts.extensions.timer
 import com.keygenqt.demo_contacts.modules.profile.services.apiService.ApiServiceProfile
 import com.keygenqt.demo_contacts.modules.profile.services.data.DataServiceProfile
@@ -30,6 +33,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -50,18 +54,6 @@ class ProfileChangeContactsViewModel @Inject constructor(
     private val _loading: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val loading: StateFlow<Boolean> get() = _loading.asStateFlow()
 
-    fun refreshCode() {
-        _commonError.value = null
-        _loading.value = true
-
-        viewModelScope.launch {
-            // Simulate a request
-            delay(2000L)
-            _loading.value = false
-            runTimer()
-        }
-    }
-
     fun runTimer() {
         timerJob?.cancel()
         timerJob = timer(REFRESH_DELAY) { second ->
@@ -69,69 +61,56 @@ class ProfileChangeContactsViewModel @Inject constructor(
         }
     }
 
-    fun changeEmail(
-        email: String,
+    fun changeEmailOrPhone(
+        emailOrPhone: String,
         success: () -> Unit,
     ) {
         _commonError.value = null
         _loading.value = true
-
         viewModelScope.launch {
-            // Simulate a request
-            delay(2000L)
-            _loading.value = false
-            success.invoke()
+            apiService.sendCode(emailOrPhone)
+                .success { response ->
+                    if (response) {
+                        success.invoke()
+                    }
+                }
+                .error {
+                    Timber.e(it)
+                    crashlytics.recordException(it)
+                    _commonError.value = it.message ?: "Change phone failed";
+                }
+                .done {
+                    delay(500) // disable loading after insert
+                    _loading.value = false
+                }
         }
     }
 
-    fun changeEmailCode(
+    fun checkEmailOrPhone(
+        emailOrPhone: String,
         code: String,
         success: () -> Unit,
     ) {
         _commonError.value = null
         _loading.value = true
-
         viewModelScope.launch {
-            // Simulate a request
-            delay(2000L)
-            _loading.value = false
-            success.invoke()
-
-            // cancel timer
-            timerJob?.cancel()
-        }
-    }
-
-    fun changePhone(
-        email: String,
-        success: () -> Unit,
-    ) {
-        _commonError.value = null
-        _loading.value = true
-
-        viewModelScope.launch {
-            // Simulate a request
-            delay(2000L)
-            _loading.value = false
-            success.invoke()
-        }
-    }
-
-    fun changePhoneCode(
-        code: String,
-        success: () -> Unit,
-    ) {
-        _commonError.value = null
-        _loading.value = true
-
-        viewModelScope.launch {
-            // Simulate a request
-            delay(2000L)
-            _loading.value = false
-            success.invoke()
-
-            // cancel timer
-            timerJob?.cancel()
+            apiService.checkCode(emailOrPhone, code)
+                .success { response ->
+                    // @todo api response always false - demo fix
+                    when ((0..1).random()) {
+                        0 -> success.invoke()
+                        1 -> _commonError.value = "Check code failed"
+                    }
+                }
+                .error {
+                    Timber.e(it)
+                    crashlytics.recordException(it)
+                    _commonError.value = it.message ?: "Check code failed"
+                }
+                .done {
+                    delay(500) // disable loading after insert
+                    _loading.value = false
+                }
         }
     }
 }

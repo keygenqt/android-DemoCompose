@@ -82,8 +82,6 @@ fun ContactChangePhoneBody(
                 Spacer(Modifier.size(16.dp))
             }
 
-            Spacer(modifier = Modifier.size(16.dp))
-
             ContactChangePhoneForm(
                 loading = loading,
                 onEvent = onEvent
