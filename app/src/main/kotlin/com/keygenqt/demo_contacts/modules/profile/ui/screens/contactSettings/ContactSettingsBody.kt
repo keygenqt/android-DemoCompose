@@ -123,10 +123,11 @@ fun ContactSettingsBody(
 
         // error phone
         NotificationsBottomSheetInfo(
+            isShowBtn1 = if (userContacts is UserContactsModel) userContacts.email.contactEmail.isNotBlank() else false,
             isShow = errorPhone,
             title = stringResource(id = R.string.contact_settings_error_notifications_title),
             text = stringResource(id = R.string.contact_settings_error_notifications_text_phone),
-            btn = stringResource(id = R.string.contact_settings_error_notifications_btn_email),
+            btn1 = stringResource(id = R.string.contact_settings_error_notifications_btn_email),
             onBtn1 = {
                 errorPhone = false
                 onEvent(ContactSettingsEvents.UpdateStatusSmall(statusEmail = true, statusPhone = false))
@@ -138,10 +139,11 @@ fun ContactSettingsBody(
 
         // error email
         NotificationsBottomSheetInfo(
+            isShowBtn1 = if (userContacts is UserContactsModel) userContacts.phone.contactPhone.isNotBlank() else false,
             isShow = errorEmail,
             title = stringResource(id = R.string.contact_settings_error_notifications_title),
             text = stringResource(id = R.string.contact_settings_error_notifications_text_email),
-            btn = stringResource(id = R.string.contact_settings_error_notifications_btn_phone),
+            btn1 = stringResource(id = R.string.contact_settings_error_notifications_btn_phone),
             onBtn1 = {
                 errorEmail = false
                 onEvent(ContactSettingsEvents.UpdateStatusSmall(statusEmail = false, statusPhone = true))
@@ -156,7 +158,7 @@ fun ContactSettingsBody(
             isShow = channelPhone,
             title = stringResource(id = R.string.contact_settings_channels_title_phone),
             text = stringResource(id = R.string.contact_settings_channels_text_phone),
-            btn = stringResource(id = R.string.contact_settings_channels_btn_phone),
+            btn1 = stringResource(id = R.string.contact_settings_channels_btn_phone),
             onBtn1 = {
                 channelPhone = false
                 onEvent(ContactSettingsEvents.NavigateToContactChangeEmail)
@@ -171,7 +173,7 @@ fun ContactSettingsBody(
             isShow = channelEmail,
             title = stringResource(id = R.string.contact_settings_channels_title_email),
             text = stringResource(id = R.string.contact_settings_channels_text_email),
-            btn = stringResource(id = R.string.contact_settings_channels_btn_email),
+            btn1 = stringResource(id = R.string.contact_settings_channels_btn_email),
             onBtn1 = {
                 channelEmail = false
                 onEvent(ContactSettingsEvents.NavigateToContactChangePhone)

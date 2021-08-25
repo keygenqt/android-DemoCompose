@@ -14,14 +14,23 @@
  * limitations under the License.
  */
 
-package com.keygenqt.demo_contacts.modules.profile.services.api.impl
+package com.keygenqt.demo_contacts.modules.profile.data.requests
 
-import com.keygenqt.demo_contacts.modules.profile.data.requests.UserContactRequest
-import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.POST
+data class UserContactRequest(
+    val email: UserContactEmailRequest,
+    val phone: UserContactPhoneRequest,
+)
 
-interface ApiPost {
-    @POST("customers/current/contacts")
-    suspend fun updateUserContacts(@Body request: UserContactRequest): Response<Any>
-}
+data class UserContactEmailRequest(
+    val confirmed: Boolean,
+    val email: String,
+    val notifyMailFull: Boolean,
+    val notifyMailShort: Boolean,
+)
+
+data class UserContactPhoneRequest(
+    val confirmed: Boolean,
+    val phone: String,
+    val notifySmsFull: Boolean,
+    val notifySmsShort: Boolean,
+)

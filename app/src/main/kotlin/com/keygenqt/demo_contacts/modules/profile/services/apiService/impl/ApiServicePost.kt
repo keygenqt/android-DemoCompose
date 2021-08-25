@@ -13,11 +13,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.services.apiService.impl
 
+import com.keygenqt.demo_contacts.base.ResponseResult
+import com.keygenqt.demo_contacts.base.executeWithResponse
+import com.keygenqt.demo_contacts.base.responseCheck
+import com.keygenqt.demo_contacts.modules.profile.data.models.UserContactsModel
+import com.keygenqt.demo_contacts.modules.profile.data.requests.UserContactEmailRequest
+import com.keygenqt.demo_contacts.modules.profile.data.requests.UserContactPhoneRequest
+import com.keygenqt.demo_contacts.modules.profile.data.requests.UserContactRequest
 import com.keygenqt.demo_contacts.modules.profile.services.api.ApiProfile
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 interface ApiServicePost {
+
     val api: ApiProfile
+
+    suspend fun updateUserContacts(userContact: UserContactsModel): ResponseResult<Boolean> {
+        return withContext(Dispatchers.IO) {
+            executeWithResponse {
+                api.updateUserContacts(UserContactRequest(
+                    email = UserContactEmailRequest(
+                        confirmed = userContact.email.confirmedContactEmail,
+                        email = userContact.email.contactEmail,
+                        notifyMailFull = userContact.email.notifyMailFull,
+                        notifyMailShort = userContact.email.notifyMailShort,
+                    ),
+                    phone = UserContactPhoneRequest(
+                        confirmed = userContact.phone.confirmedContactPhone,
+                        phone = userContact.phone.contactPhone,
+                        notifySmsFull = userContact.phone.notifySmsFull,
+                        notifySmsShort = userContact.phone.notifySmsShort,
+                    ),
+                ))
+                    .responseCheck()
+                    .body() != null
+            }
+        }
+    }
 }

@@ -52,12 +52,27 @@ class ProfileContactsViewModel @Inject constructor(
     fun updateStatusSmall(statusEmail: Boolean, statusPhone: Boolean) {
         _loadingActionBar.value = true
         viewModelScope.launch {
-            delay(1000)
-            data.getUserContacts()?.let {
-                data.updateUserContacts(it.copy(
-                    phone = it.phone.copy(notifySmsShort = statusPhone),
-                    email = it.email.copy(notifyMailShort = statusEmail)
-                ))
+            data.getUserContacts()?.let { model ->
+
+                val newModel = model.copy(
+                    phone = model.phone.copy(notifySmsShort = statusPhone),
+                    email = model.email.copy(notifyMailShort = statusEmail)
+                )
+
+                apiService.updateUserContacts(newModel)
+                    .success { response ->
+                        if (response) {
+                            data.updateUserContacts(newModel)
+                        }
+                    }
+                    .error {
+                        Timber.e(it)
+                        crashlytics.recordException(it)
+                    }
+                    .done {
+                        delay(500) // disable loading after insert
+                        _loading.value = false
+                    }
             }
             _loadingActionBar.value = false
         }
@@ -66,12 +81,27 @@ class ProfileContactsViewModel @Inject constructor(
     fun updateStatusFull(statusEmail: Boolean, statusPhone: Boolean) {
         _loadingActionBar.value = true
         viewModelScope.launch {
-            delay(1000)
-            data.getUserContacts()?.let {
-                data.updateUserContacts(it.copy(
-                    phone = it.phone.copy(notifySmsFull = statusPhone),
-                    email = it.email.copy(notifyMailFull = statusEmail)
-                ))
+            data.getUserContacts()?.let { model ->
+
+                val newModel = model.copy(
+                    phone = model.phone.copy(notifySmsFull = statusPhone),
+                    email = model.email.copy(notifyMailFull = statusEmail)
+                )
+
+                apiService.updateUserContacts(newModel)
+                    .success { response ->
+                        if (response) {
+                            data.updateUserContacts(newModel)
+                        }
+                    }
+                    .error {
+                        Timber.e(it)
+                        crashlytics.recordException(it)
+                    }
+                    .done {
+                        delay(500) // disable loading after insert
+                        _loading.value = false
+                    }
             }
             _loadingActionBar.value = false
         }

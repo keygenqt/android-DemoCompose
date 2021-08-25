@@ -41,9 +41,10 @@ import kotlinx.coroutines.launch
 fun NotificationsBottomSheetInfo(
     title: String,
     text: String,
-    btn: String,
+    btn1: String,
     onBtn1: () -> Unit,
     onBtn2: () -> Unit,
+    isShowBtn1: Boolean = true,
     isShow: Boolean = false,
 ) {
     val scope = rememberCoroutineScope()
@@ -82,37 +83,40 @@ fun NotificationsBottomSheetInfo(
                 style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Bold),
             )
 
-            Spacer(modifier = Modifier.size(16.dp))
+            if (isShowBtn1) {
 
-            Text(
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center,
-                color = MaterialThemeCustom.colors.textColorSecondary,
-                text = text,
-                style = MaterialTheme.typography.subtitle1,
-            )
+                Spacer(modifier = Modifier.size(16.dp))
 
-            Spacer(modifier = Modifier.size(24.dp))
-
-            Button(
-                shape = MaterialTheme.shapes.large,
-                colors = ButtonDefaults.textButtonColors(backgroundColor = MaterialTheme.colors.secondary),
-                onClick = {
-                    scope.launch {
-                        state.bottomSheetState.collapse()
-                    }
-                    scope.launch {
-                        delay(100L)
-                        onBtn1.invoke()
-                    }
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
                 Text(
-                    color = MaterialTheme.colors.onSecondary,
-                    text = btn,
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center,
+                    color = MaterialThemeCustom.colors.textColorSecondary,
+                    text = text,
+                    style = MaterialTheme.typography.subtitle1,
                 )
+
+                Spacer(modifier = Modifier.size(24.dp))
+
+                Button(
+                    shape = MaterialTheme.shapes.large,
+                    colors = ButtonDefaults.textButtonColors(backgroundColor = MaterialTheme.colors.secondary),
+                    onClick = {
+                        scope.launch {
+                            state.bottomSheetState.collapse()
+                        }
+                        scope.launch {
+                            delay(100L)
+                            onBtn1.invoke()
+                        }
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Text(
+                        color = MaterialTheme.colors.onSecondary,
+                        text = btn1,
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.size(24.dp))

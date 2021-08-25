@@ -136,121 +136,122 @@ fun ContactSettingsBodyEmail(
         }
     }
 
-    val short: () -> Unit = {
-        if (model.phone.contactPhone.isEmpty() || !model.phone.notifySmsShort) {
-            errorEmail.invoke()
-        } else {
-            checkedStateStateOrder.value = !checkedStateStateOrder.value
-            onEvent(ContactSettingsEvents.UpdateStatusSmall(
-                statusEmail = checkedStateStateOrder.value,
-                statusPhone = model.phone.notifySmsShort
-            ))
+    if (model.email.contactEmail.isNotEmpty()) {
+        val short: () -> Unit = {
+            if (model.phone.contactPhone.isEmpty() || !model.phone.notifySmsShort) {
+                errorEmail.invoke()
+            } else {
+                checkedStateStateOrder.value = !checkedStateStateOrder.value
+                onEvent(ContactSettingsEvents.UpdateStatusSmall(
+                    statusEmail = checkedStateStateOrder.value,
+                    statusPhone = model.phone.notifySmsShort
+                ))
+            }
         }
-    }
 
-    Card(
-        shape = MaterialTheme.shapes.large,
-        elevation = 0.dp,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(bottom = 5.dp)
-            .clickable(onClick = short)
-    ) {
-        ConstraintLayout(
+        Card(
+            shape = MaterialTheme.shapes.large,
+            elevation = 0.dp,
             modifier = Modifier
-                .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp)
+                .fillMaxWidth()
+                .padding(bottom = 5.dp)
+                .clickable(onClick = short)
         ) {
-            val (text, switch) = createRefs()
-
-            Box(
+            ConstraintLayout(
                 modifier = Modifier
-                    .constrainAs(text) {
-                        top.linkTo(parent.top)
-                        start.linkTo(parent.start)
-                        end.linkTo(switch.start)
-                        bottom.linkTo(parent.bottom)
-                        width = Dimension.fillToConstraints
-                    }
+                    .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp)
             ) {
-                Text(
-                    color = MaterialTheme.colors.onPrimary,
-                    style = MaterialTheme.typography.body1,
-                    text = stringResource(id = R.string.contact_settings_label_status),
+                val (text, switch) = createRefs()
+
+                Box(
                     modifier = Modifier
-                        .align(Alignment.CenterStart)
+                        .constrainAs(text) {
+                            top.linkTo(parent.top)
+                            start.linkTo(parent.start)
+                            end.linkTo(switch.start)
+                            bottom.linkTo(parent.bottom)
+                            width = Dimension.fillToConstraints
+                        }
+                ) {
+                    Text(
+                        color = MaterialTheme.colors.onPrimary,
+                        style = MaterialTheme.typography.body1,
+                        text = stringResource(id = R.string.contact_settings_label_status),
+                        modifier = Modifier
+                            .align(Alignment.CenterStart)
+                    )
+                }
+
+                Switch(
+                    checked = checkedStateStateOrder.value,
+                    onCheckedChange = { short.invoke() },
+                    colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colors.secondary),
+                    modifier = Modifier
+                        .constrainAs(switch) {
+                            top.linkTo(parent.top)
+                            end.linkTo(parent.end)
+                            bottom.linkTo(parent.bottom)
+                        }
                 )
             }
-
-            Switch(
-                checked = checkedStateStateOrder.value,
-                onCheckedChange = { short.invoke() },
-                colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colors.secondary),
-                modifier = Modifier
-                    .constrainAs(switch) {
-                        top.linkTo(parent.top)
-                        end.linkTo(parent.end)
-                        bottom.linkTo(parent.bottom)
-                    }
-            )
         }
-    }
 
-    val full: () -> Unit = {
-        if (checkedStateStock.value && model.phone.contactPhone.isEmpty()) {
-            channelEmail.invoke()
-        } else {
+        val full: () -> Unit = {
+            if (checkedStateStock.value && model.phone.contactPhone.isEmpty()) {
+                channelEmail.invoke()
+            }
             checkedStateStock.value = !checkedStateStock.value
             onEvent(ContactSettingsEvents.UpdateStatusFull(
                 statusEmail = checkedStateStock.value,
                 statusPhone = model.phone.notifySmsFull
             ))
         }
-    }
 
-    Card(
-        shape = MaterialTheme.shapes.large,
-        elevation = 0.dp,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(bottom = 5.dp)
-            .clickable(onClick = full)
-    ) {
-        ConstraintLayout(
+        Card(
+            shape = MaterialTheme.shapes.large,
+            elevation = 0.dp,
             modifier = Modifier
-                .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp)
+                .fillMaxWidth()
+                .padding(bottom = 5.dp)
+                .clickable(onClick = full)
         ) {
-            val (text, switch) = createRefs()
-
-            Box(
+            ConstraintLayout(
                 modifier = Modifier
-                    .constrainAs(text) {
-                        top.linkTo(parent.top)
-                        start.linkTo(parent.start)
-                        end.linkTo(switch.start)
-                        bottom.linkTo(parent.bottom)
-                        width = Dimension.fillToConstraints
-                    }
+                    .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp)
             ) {
-                Text(
-                    color = MaterialTheme.colors.onPrimary,
-                    style = MaterialTheme.typography.body1,
-                    text = stringResource(id = R.string.contact_settings_label_stock),
+                val (text, switch) = createRefs()
+
+                Box(
                     modifier = Modifier
-                        .align(Alignment.CenterStart)
+                        .constrainAs(text) {
+                            top.linkTo(parent.top)
+                            start.linkTo(parent.start)
+                            end.linkTo(switch.start)
+                            bottom.linkTo(parent.bottom)
+                            width = Dimension.fillToConstraints
+                        }
+                ) {
+                    Text(
+                        color = MaterialTheme.colors.onPrimary,
+                        style = MaterialTheme.typography.body1,
+                        text = stringResource(id = R.string.contact_settings_label_stock),
+                        modifier = Modifier
+                            .align(Alignment.CenterStart)
+                    )
+                }
+
+                Switch(
+                    checked = checkedStateStock.value,
+                    onCheckedChange = { full.invoke() },
+                    colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colors.secondary),
+                    modifier = Modifier
+                        .constrainAs(switch) {
+                            top.linkTo(parent.top)
+                            end.linkTo(parent.end)
+                            bottom.linkTo(parent.bottom)
+                        }
                 )
             }
-
-            Switch(
-                checked = checkedStateStock.value,
-                onCheckedChange = { full.invoke() },
-                colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colors.secondary),
-                modifier = Modifier
-                    .constrainAs(switch) {
-                        top.linkTo(parent.top)
-                        end.linkTo(parent.end)
-                        bottom.linkTo(parent.bottom)
-                    }
-            )
         }
     }
 }
