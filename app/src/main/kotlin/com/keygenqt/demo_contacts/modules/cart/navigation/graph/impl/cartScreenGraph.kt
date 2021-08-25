@@ -26,6 +26,7 @@ import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
 import com.keygenqt.demo_contacts.modules.cart.navigation.nav.CartNav
 import com.keygenqt.demo_contacts.modules.cart.ui.events.CartEvents
 import com.keygenqt.demo_contacts.modules.cart.ui.screens.CartScreen
+import com.keygenqt.demo_contacts.modules.cart.ui.viewModels.CartViewModel
 
 @ExperimentalCoilApi
 @ExperimentalComposeUiApi
@@ -35,7 +36,8 @@ fun NavGraphBuilder.cartScreenGraph(
     navActions: NavActions,
 ) {
     composable(CartNav.MainNav.CartScreen.route) {
-        CartScreen(viewModel = hiltViewModel()) { event ->
+        val viewModel: CartViewModel = hiltViewModel()
+        CartScreen(viewModel = viewModel) { event ->
             when (event) {
                 is CartEvents.NavigateBack -> navActions.navigateToUp.invoke()
             }

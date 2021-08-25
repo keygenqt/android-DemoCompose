@@ -32,6 +32,7 @@ import com.keygenqt.demo_contacts.modules._common.navigation.HomeTab
 import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 import com.keygenqt.demo_contacts.theme.MyTheme
+import timber.log.Timber
 
 @Composable
 fun BottomBar(

@@ -54,6 +54,8 @@ import com.keygenqt.demo_contacts.modules.profile.navigation.graph.profileNavGra
 @Composable
 fun NavGraph(navController: NavHostController) {
 
+    val baseViewModel = LocalBaseViewModel.current
+
     navController.AddChangeRouteListener()
 
     val navActions = remember(navController) {
@@ -80,7 +82,8 @@ fun NavGraph(navController: NavHostController) {
             Box(
                 modifier = Modifier.padding(it)
             ) {
-                NavHost(navController = navController, startDestination = LocalBaseViewModel.current.getStartRoute()) {
+                NavHost(navController = navController,
+                    startDestination = baseViewModel.getStartRoute()) {
                     brandsNavGraph(
                         navActions = navActions,
                     )

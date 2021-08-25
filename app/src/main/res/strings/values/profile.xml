@@ -48,7 +48,6 @@
     <string name="contact_settings_channels_text_phone">To disable SMS notifications about the order status, add your email as an alternative communication channel</string>
     <string name="contact_settings_channels_btn_phone">Add Email</string>
 
-
     <!-- Contact Change Email -->
     <string name="contact_change_email_title">Change Email</string>
     <string name="contact_change_email_label">Email</string>
@@ -73,6 +72,4 @@
     <!-- Contact Change Phone Code -->
     <string name="contact_change_phone_code_title">Change phone number</string>
     <string name="contact_change_phone_code_label">SMS code</string>
-
-
 </resources>

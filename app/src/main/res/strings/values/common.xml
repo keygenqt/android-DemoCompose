@@ -18,17 +18,20 @@
     <string name="form_button_submit">Submit</string>
 
     <!-- Common-->
-    <string name="common_check_failed">Check failed</string>
-    <string name="common_state_empty_title">Nothing found</string>
-    <string name="common_go_to_catalog">Go to catalog</string>
-    <string name="common_sign_in">Sign In</string>
-    <string name="common_sign_up">Sign Up</string>
     <string name="common_search">Search…</string>
     <string name="common_not_available">Not Available</string>
     <string name="common_coming_soon">Coming soon…</string>
     <string name="common_navigate_up">Navigate up</string>
     <string name="common_btn_confirm">Confirm</string>
-    <string name="common_btn_cancel">Cancel</string>
     <string name="common_exit">Please click back again to exit</string>
+    <string name="common_error_network_title">No connection</string>
+    <string name="common_error_network_text">Check your internet connection and try again later</string>
+    <string name="common_error_network_btn">Repeat</string>
+    <string name="common_check_failed">Check failed</string>
+    <string name="common_state_empty_title">Nothing found</string>
+    <string name="common_go_to_catalog">Go to catalog</string>
+    <string name="common_sign_in">Sign In</string>
+    <string name="common_sign_up">Sign Up</string>
+    <string name="common_btn_cancel">Cancel</string>
 
 </resources>

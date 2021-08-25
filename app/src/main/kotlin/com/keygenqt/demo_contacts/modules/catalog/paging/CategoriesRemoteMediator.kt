@@ -32,6 +32,7 @@ import kotlin.math.roundToInt
 class CategoriesRemoteMediator(
     private val data: DataServiceCatalog,
     private val apiService: ApiServiceCatalog,
+    private val onErrorUnknownHost: (Boolean) -> Unit,
 ) : RemoteMediator<Int, CategoryRelation>() {
 
     override suspend fun initialize(): InitializeAction {
@@ -72,6 +73,10 @@ class CategoriesRemoteMediator(
                 }
             }.error {
                 Timber.e(it)
+            }.done {
+                onErrorUnknownHost.invoke(false)
+            }.errorUnknownHost {
+                onErrorUnknownHost.invoke(true)
             }
 
             MediatorResult.Success(

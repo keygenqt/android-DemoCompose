@@ -32,6 +32,7 @@ import kotlin.math.roundToInt
 class FavoriteRemoteMediator(
     private val data: DataServiceFavorite,
     private val apiService: ApiServiceFavorite,
+    private val onErrorUnknownHost: (Boolean) -> Unit,
 ) : RemoteMediator<Int, FavoriteModel>() {
 
     override suspend fun initialize(): InitializeAction {
@@ -72,6 +73,10 @@ class FavoriteRemoteMediator(
                 }
             }.error {
                 Timber.e(it)
+            }.done {
+                onErrorUnknownHost.invoke(false)
+            }.errorUnknownHost {
+                onErrorUnknownHost.invoke(true)
             }
 
             MediatorResult.Success(

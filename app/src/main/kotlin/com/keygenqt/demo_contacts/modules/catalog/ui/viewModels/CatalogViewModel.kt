@@ -30,6 +30,9 @@ import com.keygenqt.demo_contacts.modules.catalog.services.data.DataServiceCatal
 import com.keygenqt.demo_contacts.utils.ConstantsPaging
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
@@ -38,10 +41,15 @@ class CatalogViewModel @Inject constructor(
     apiService: ApiServiceCatalog,
 ) : ViewModel() {
 
+    private val _errorConnection: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    val errorConnection: StateFlow<Boolean> get() = _errorConnection.asStateFlow()
+
     @ExperimentalPagingApi
     val listBrands: Flow<PagingData<BrandModel>> = Pager(
         config = PagingConfig(pageSize = ConstantsPaging.PER_PAGE),
-        remoteMediator = BrandsRemoteMediator(data, apiService)
+        remoteMediator = BrandsRemoteMediator(data, apiService) { status ->
+            _errorConnection.value = status
+        }
     ) {
         data.pagingListBrandModel()
     }.flow
@@ -49,7 +57,9 @@ class CatalogViewModel @Inject constructor(
     @ExperimentalPagingApi
     val listCategories: Flow<PagingData<CategoryRelation>> = Pager(
         config = PagingConfig(pageSize = ConstantsPaging.PER_PAGE),
-        remoteMediator = CategoriesRemoteMediator(data, apiService)
+        remoteMediator = CategoriesRemoteMediator(data, apiService) { status ->
+            _errorConnection.value = status
+        }
     ) {
         data.pagingListCategoryModel()
     }.flow

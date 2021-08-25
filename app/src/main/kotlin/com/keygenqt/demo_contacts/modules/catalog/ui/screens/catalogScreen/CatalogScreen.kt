@@ -17,11 +17,14 @@
 package com.keygenqt.demo_contacts.modules.catalog.ui.screens.catalogScreen
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.paging.ExperimentalPagingApi
+import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.keygenqt.demo_contacts.modules._common.ui.compose.ErrorNetworkScreen
 import com.keygenqt.demo_contacts.modules.catalog.data.models.BrandModel
 import com.keygenqt.demo_contacts.modules.catalog.data.relations.CategoryRelation
 import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
@@ -44,4 +47,11 @@ fun CatalogScreen(
         listBrands = listBrands,
         listCategories = listCategories,
     )
+
+    if (viewModel.errorConnection.collectAsState().value) {
+        ErrorNetworkScreen(
+            listBrands.loadState.refresh is LoadState.Loading
+                    || listCategories.loadState.refresh is LoadState.Loading
+        )
+    }
 }

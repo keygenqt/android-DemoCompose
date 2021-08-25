@@ -22,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.keygenqt.demo_contacts.modules._common.ui.compose.ErrorNetworkScreen
 import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
 import com.keygenqt.demo_contacts.modules.brands.ui.viewModels.BrandsViewModel
 
@@ -43,4 +44,8 @@ fun FeedScreen(
         loading = loading,
         commonError = commonError,
     )
+
+    if (viewModel.errorConnection.collectAsState().value) {
+        ErrorNetworkScreen(loading)
+    }
 }

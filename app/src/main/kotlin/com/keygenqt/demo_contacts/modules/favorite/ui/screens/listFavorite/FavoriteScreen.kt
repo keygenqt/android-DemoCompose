@@ -21,9 +21,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.paging.ExperimentalPagingApi
+import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
+import com.keygenqt.demo_contacts.modules._common.ui.compose.ErrorNetworkScreen
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.ui.events.FavoriteEvents
 import com.keygenqt.demo_contacts.modules.favorite.ui.viewModels.FavoriteViewModel
@@ -46,4 +48,8 @@ fun FavoriteScreen(
         isLogin = isLogin,
         onEvent = onEvent,
     )
+
+    if (viewModel.errorConnection.collectAsState().value) {
+        ErrorNetworkScreen(items.loadState.refresh is LoadState.Loading)
+    }
 }

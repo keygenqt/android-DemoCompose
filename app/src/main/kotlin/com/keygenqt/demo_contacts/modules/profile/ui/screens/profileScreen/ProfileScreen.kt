@@ -22,6 +22,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
+import com.keygenqt.demo_contacts.modules._common.ui.compose.ErrorNetworkScreen
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.viewModels.ProfileViewModel
 
@@ -43,6 +44,10 @@ fun ProfileScreen(
         isLogin = isLogin,
         onEvent = onEvent,
     )
+
+    if (viewModel.errorConnection.collectAsState().value) {
+        ErrorNetworkScreen(loading)
+    }
 }
 
 

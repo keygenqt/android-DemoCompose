@@ -21,6 +21,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.keygenqt.demo_contacts.base.done
 import com.keygenqt.demo_contacts.base.error
+import com.keygenqt.demo_contacts.base.errorUnknownHost
 import com.keygenqt.demo_contacts.base.success
 import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
 import com.keygenqt.demo_contacts.modules.brands.services.apiService.ApiServiceBrands
@@ -39,6 +40,9 @@ class BrandsViewModel @Inject constructor(
     private val apiService: ApiServiceBrands,
     private val crashlytics: FirebaseCrashlytics,
 ) : ViewModel() {
+
+    private val _errorConnection: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    val errorConnection: StateFlow<Boolean> get() = _errorConnection.asStateFlow()
 
     private val _commonError: MutableStateFlow<String?> = MutableStateFlow(null)
     val commonError: StateFlow<String?> get() = _commonError.asStateFlow()
@@ -76,6 +80,10 @@ class BrandsViewModel @Inject constructor(
                 .done {
                     delay(500) // disable loading after insert
                     _loading.value = false
+                    _errorConnection.value = false
+                }
+                .errorUnknownHost {
+                    _errorConnection.value = true
                 }
         }
     }

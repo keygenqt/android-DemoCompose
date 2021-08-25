@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.base
 
 import androidx.paging.PagingSource
@@ -22,6 +22,7 @@ import com.keygenqt.demo_contacts.base.interfaces.IModel
 import com.keygenqt.demo_contacts.extensions.parseApiError
 import com.keygenqt.demo_contacts.extensions.toHTTPResult
 import retrofit2.Response
+import java.net.UnknownHostException
 
 sealed class ResponseResult<out R> {
     data class Success<out T>(val data: T) : ResponseResult<T>()
@@ -82,7 +83,18 @@ inline infix fun <T> ResponseResult<T>.success(predicate: (data: T) -> Unit): Re
 
 inline infix fun <T> ResponseResult<T>.error(predicate: (data: Exception) -> Unit): ResponseResult<T> {
     if (this is ResponseResult.Error) {
-        predicate.invoke(this.exception)
+        if (this.exception !is UnknownHostException) {
+            predicate.invoke(this.exception)
+        }
+    }
+    return this
+}
+
+inline infix fun <T> ResponseResult<T>.errorUnknownHost(predicate: (data: Exception) -> Unit): ResponseResult<T> {
+    if (this is ResponseResult.Error) {
+        if (this.exception is UnknownHostException) {
+            predicate.invoke(this.exception)
+        }
     }
     return this
 }

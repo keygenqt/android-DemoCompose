@@ -27,6 +27,7 @@ import com.keygenqt.demo_contacts.modules._common.navigation.NavActions
 import com.keygenqt.demo_contacts.modules.catalog.navigation.nav.CatalogNav
 import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
 import com.keygenqt.demo_contacts.modules.catalog.ui.screens.catalogScreen.CatalogScreen
+import com.keygenqt.demo_contacts.modules.catalog.ui.viewModels.CatalogViewModel
 
 @ExperimentalPagingApi
 @ExperimentalCoilApi
@@ -36,7 +37,8 @@ fun NavGraphBuilder.catalogScreenGraph(
     navActions: NavActions,
 ) {
     composable(CatalogNav.MainNav.CatalogScreen.route) {
-        CatalogScreen(viewModel = hiltViewModel()) { event ->
+        val viewModel: CatalogViewModel = hiltViewModel()
+        CatalogScreen(viewModel = viewModel) { event ->
             when (event) {
                 is CatalogEvents.NavigateBack -> navActions.navigateToUp.invoke()
             }
