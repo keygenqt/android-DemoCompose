@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 package com.keygenqt.demo_contacts.base
 
 sealed class HTTPResult(val code: Int, error: String) : RuntimeException(error) {
