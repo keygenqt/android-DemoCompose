@@ -17,6 +17,10 @@ _(in progress)_
 <img src="data/vokoscreen-2021-08-20_17-52-53.gif" width="40%"/>
 <img src="data/vokoscreen-2021-08-20_17-54-37.gif" width="40%"/>
 </p>
+<p>
+<img src="data/vokoscreen-2021-08-26_13-22-11.gif" width="40%"/>
+<img src="data/vokoscreen-2021-08-26_13-19-26.gif" width="40%"/>
+</p>
 
 ### Plugins
 * [Spotless: Keep your code spotless](https://github.com/diffplug/spotless)
