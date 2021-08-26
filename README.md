@@ -1,6 +1,5 @@
 Demo РИВ ГОШ (Contacts)
 ===================
-_(in progress)_
 
 ![picture](data/preview.png)
 
