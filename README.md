@@ -1,4 +1,4 @@
-Demo РИВ ГОШ (Contacts)
+Demo РИВ ГОШ
 ===================
 
 ![picture](data/preview.png)
