@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.brands.data.models
 
 import androidx.compose.runtime.Immutable
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import com.keygenqt.demo_contacts.base.interfaces.IModel
+import com.keygenqt.response.interfaces.ResponseModel
 
 @Entity
 @Immutable
@@ -29,7 +29,7 @@ data class FeedModel(
     val brandName: String,
     @Ignore private val banners: List<FeedBannerModel>,
     @Ignore private val brands: List<FeedBrandModel>,
-) : IModel {
+) : ResponseModel {
 
     constructor(id: String, brandName: String) : this(id, brandName, listOf(), listOf())
 

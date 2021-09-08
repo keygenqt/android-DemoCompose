@@ -28,13 +28,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.keygenqt.demo_contacts.theme.MyTheme
+import com.keygenqt.modifier.sizeLarge
 
 @Composable
 fun TextFieldError(
     textError: String = "Text Field Error Preview",
 ) {
     Row(modifier = Modifier.fillMaxWidth()) {
-        Spacer(modifier = Modifier.width(16.dp))
+        Spacer(modifier = Modifier.sizeLarge())
         Text(
             text = textError,
             modifier = Modifier

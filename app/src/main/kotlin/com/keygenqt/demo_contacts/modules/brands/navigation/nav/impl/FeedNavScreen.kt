@@ -16,7 +16,7 @@
  
 package com.keygenqt.demo_contacts.modules.brands.navigation.nav.impl
 
-import com.keygenqt.demo_contacts.base.NavScreen
+import com.keygenqt.routing.NavScreen
 
 object FeedNavScreen {
     val FeedScreen = object : NavScreen {

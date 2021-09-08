@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.PlugBlock
 import com.keygenqt.demo_contacts.theme.MyTheme
+import com.keygenqt.modifier.sizeLarge
 
 @Composable
 fun OnboardingItem1(onNext: () -> Unit = {}) {
@@ -54,7 +55,7 @@ fun OnboardingItem1(onNext: () -> Unit = {}) {
                 )
             }
 
-            Spacer(modifier = Modifier.size(16.dp))
+            Spacer(modifier = Modifier.sizeLarge())
         }
     )
 }

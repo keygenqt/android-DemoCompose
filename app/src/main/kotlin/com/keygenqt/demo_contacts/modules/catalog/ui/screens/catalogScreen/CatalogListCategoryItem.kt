@@ -31,6 +31,7 @@ import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules.catalog.data.relations.CategoryRelation
 import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
+import com.keygenqt.modifier.sizeSmall
 
 
 @Composable
@@ -63,7 +64,7 @@ fun CatalogListCategoryItem(
             )
             if (model.subcategories.isNotEmpty()) {
 
-                Spacer(modifier = Modifier.size(4.dp))
+                Spacer(modifier = Modifier.sizeSmall())
 
                 Text(
                     text = stringResource(id = R.string.catalog_list_item_subcategories, model.subcategories.size),

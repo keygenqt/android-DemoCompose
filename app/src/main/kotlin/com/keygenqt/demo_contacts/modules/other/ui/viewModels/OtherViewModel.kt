@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.other.ui.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.keygenqt.demo_contacts.base.done
-import com.keygenqt.demo_contacts.base.error
-import com.keygenqt.demo_contacts.base.success
 import com.keygenqt.demo_contacts.modules.other.services.apiService.ApiServiceOther
 import com.keygenqt.demo_contacts.modules.other.services.data.DataServiceOther
+import com.keygenqt.response.done
+import com.keygenqt.response.error
+import com.keygenqt.response.success
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

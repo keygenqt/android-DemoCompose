@@ -32,6 +32,7 @@ import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.ClickableTextAnimation
 import com.keygenqt.demo_contacts.modules._common.ui.compose.PlugBlock
 import com.keygenqt.demo_contacts.theme.MyTheme
+import com.keygenqt.modifier.sizeLarge
 
 @Composable
 fun OnboardingItem2(onNext: () -> Unit = {}) {
@@ -63,7 +64,7 @@ fun OnboardingItem2(onNext: () -> Unit = {}) {
                     )
                 }
 
-                Spacer(modifier = Modifier.size(16.dp))
+                Spacer(modifier = Modifier.sizeLarge())
 
                 ClickableTextAnimation(
                     text = stringResource(id = R.string.onboarding_2_btn_select)

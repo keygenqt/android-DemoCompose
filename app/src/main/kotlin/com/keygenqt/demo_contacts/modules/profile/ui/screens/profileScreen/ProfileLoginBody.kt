@@ -30,6 +30,8 @@ import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 import com.keygenqt.demo_contacts.theme.MyTheme
+import com.keygenqt.modifier.sizeLarge
+import com.keygenqt.modifier.sizeXLarge
 
 @Composable
 fun ProfileLoginBody(
@@ -48,7 +50,7 @@ fun ProfileLoginBody(
             style = MaterialTheme.typography.h5,
         )
 
-        Spacer(modifier = Modifier.size(16.dp))
+        Spacer(modifier = Modifier.sizeLarge())
 
         Text(
             modifier = Modifier.fillMaxWidth(),
@@ -58,7 +60,7 @@ fun ProfileLoginBody(
             style = MaterialTheme.typography.subtitle1,
         )
 
-        Spacer(modifier = Modifier.size(24.dp))
+        Spacer(modifier = Modifier.sizeXLarge())
 
         Button(
             shape = MaterialTheme.shapes.large,
@@ -75,7 +77,7 @@ fun ProfileLoginBody(
             )
         }
 
-        Spacer(modifier = Modifier.size(16.dp))
+        Spacer(modifier = Modifier.sizeLarge())
 
         OutlinedButton(
             shape = MaterialTheme.shapes.large,

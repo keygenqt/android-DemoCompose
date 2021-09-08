@@ -36,6 +36,7 @@ import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.FormError
 import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
 import com.keygenqt.demo_contacts.modules.other.ui.events.SignInEvents
+import com.keygenqt.modifier.sizeLarge
 
 @ExperimentalComposeUiApi
 @Composable
@@ -63,7 +64,7 @@ fun SignInBody(
                 .verticalScroll(listState)
         ) {
 
-            Spacer(modifier = Modifier.size(16.dp))
+            Spacer(modifier = Modifier.sizeLarge())
 
             // common error
             commonError?.let {
@@ -77,7 +78,7 @@ fun SignInBody(
                 onNavigationEvent = onEvent
             )
 
-            Spacer(modifier = Modifier.size(16.dp))
+            Spacer(modifier = Modifier.sizeLarge())
         }
     }
 }

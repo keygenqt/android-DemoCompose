@@ -13,20 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.brands.ui.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.keygenqt.demo_contacts.base.done
-import com.keygenqt.demo_contacts.base.error
-import com.keygenqt.demo_contacts.base.errorUnknownHost
-import com.keygenqt.demo_contacts.base.success
 import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
 import com.keygenqt.demo_contacts.modules.brands.services.apiService.ApiServiceBrands
 import com.keygenqt.demo_contacts.modules.brands.services.data.DataServiceBrands
 import com.keygenqt.demo_contacts.utils.ConstantsPaging
+import com.keygenqt.response.done
+import com.keygenqt.response.error
+import com.keygenqt.response.errorUnknownHost
+import com.keygenqt.response.success
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*

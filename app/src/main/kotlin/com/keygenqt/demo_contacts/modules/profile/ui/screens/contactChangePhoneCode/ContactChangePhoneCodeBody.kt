@@ -34,6 +34,7 @@ import com.keygenqt.demo_contacts.modules._common.ui.compose.FormError
 import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangePhoneCodeEvents
 import com.keygenqt.demo_contacts.theme.MyTheme
+import com.keygenqt.modifier.sizeLarge
 
 @ExperimentalComposeUiApi
 @Composable
@@ -66,7 +67,7 @@ fun ContactChangePhoneCodeBody(
                 style = MaterialTheme.typography.h4,
             )
 
-            Spacer(modifier = Modifier.size(16.dp))
+            Spacer(modifier = Modifier.sizeLarge())
 
             Text(
                 color = MaterialTheme.colors.onPrimary,
@@ -76,12 +77,12 @@ fun ContactChangePhoneCodeBody(
                     .fillMaxWidth(),
             )
 
-            Spacer(modifier = Modifier.size(16.dp))
+            Spacer(modifier = Modifier.sizeLarge())
 
             // common error
             commonError?.let {
                 FormError(textError = stringResource(id = R.string.common_check_failed))
-                Spacer(Modifier.size(16.dp))
+                Spacer(modifier = Modifier.sizeLarge())
             }
 
             ContactChangePhoneCodeForm(

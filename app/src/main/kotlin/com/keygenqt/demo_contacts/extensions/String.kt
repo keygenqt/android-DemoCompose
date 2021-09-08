@@ -29,28 +29,3 @@ fun String.toColor(): Color {
         }
     )
 }
-
-fun String.parseApiError(): String? {
-    return try {
-        // fix for app
-        val body = if (startsWith("{") && JSONObject(this).has("errors")) {
-            JSONObject(this).getJSONArray("errors").toString()
-        } else {
-            this
-        }
-        // get json object
-        val obj = if (body.startsWith("[")) {
-            val arr = JSONArray(body)
-            if (arr.length() == 0) throw Exception()
-            arr.getJSONObject(0)
-        } else {
-            JSONObject(body)
-        }
-        // get message
-        return if (obj.has("message")) {
-            obj.getString("message")
-        } else throw Exception()
-    } catch (ex: Exception) {
-        null
-    }
-}

@@ -32,7 +32,7 @@ import com.keygenqt.demo_contacts.modules.catalog.data.models.BrandModel
 import com.keygenqt.demo_contacts.modules.catalog.data.relations.CategoryRelation
 import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
-
+import androidx.compose.foundation.layout.padding
 
 @Composable
 fun CatalogListBrands(

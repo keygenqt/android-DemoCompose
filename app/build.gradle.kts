@@ -10,14 +10,14 @@ plugins {
 
     // https://dagger.dev/hilt/
     id("dagger.hilt.android.plugin")
-    // https://github.com/diffplug/spotless
-    id("com.diffplug.spotless")
     // https://developers.google.com/android/guides/google-services-plugin
     id("com.google.gms.google-services")
     // https://firebase.google.com/products/crashlytics
     id("com.google.firebase.crashlytics")
     // https://github.com/ben-manes/gradle-versions-plugin
     id("com.github.ben-manes.versions") version "0.39.0"
+    // https://github.com/diffplug/spotless
+    id("com.diffplug.spotless")
 }
 
 spotless {
@@ -76,6 +76,16 @@ android {
 }
 
 dependencies {
+
+//    implementation(project(":compose-modifier-ext"))
+
+    // opensource
+    implementation("com.keygenqt.modifier:compose-modifier-ext:0.0.4")
+    implementation("com.keygenqt.response:android-response-result:0.0.2")
+    implementation("com.keygenqt.routing:compose-routing:0.0.1")
+    implementation("com.keygenqt.accompanist:surf-accompanist:0.0.2")
+    implementation("com.keygenqt.forms:compose-forms:0.0.1")
+
     // base
     implementation("androidx.core:core-ktx:${ex["coreKtxVersion"]}")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${ex["kotlinVersion"]}")

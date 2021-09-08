@@ -38,6 +38,9 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.theme.MyTheme
+import com.keygenqt.modifier.sizeLarge
+import com.keygenqt.modifier.sizeSmall
+import com.keygenqt.modifier.sizeXLarge
 
 @Composable
 fun ErrorNetworkScreen(
@@ -57,10 +60,10 @@ fun ErrorNetworkScreen(
         ) {
 
             if (loading) {
-                Spacer(modifier = Modifier.size(4.dp))
+                Spacer(modifier = Modifier.sizeSmall())
                 Loader()
             } else {
-                Spacer(modifier = Modifier.size(24.dp))
+                Spacer(modifier = Modifier.sizeXLarge())
 
                 Box(
                     modifier = Modifier

@@ -44,6 +44,7 @@ import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
 import com.keygenqt.demo_contacts.modules.profile.data.models.UserModel
 import com.keygenqt.demo_contacts.modules.profile.navigation.nav.ProfileNav
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
+import com.keygenqt.modifier.sizeSmall
 
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi
@@ -99,7 +100,7 @@ fun ProfileBody(
                     )
                 }
 
-                Spacer(modifier = Modifier.size(4.dp))
+                Spacer(modifier = Modifier.sizeSmall())
 
                 if (isLogin) {
                     Card(
@@ -176,7 +177,7 @@ fun ProfileBody(
                     }
                 }
 
-                Spacer(modifier = Modifier.size(4.dp))
+                Spacer(modifier = Modifier.sizeSmall())
 
                 ProfileListBody(
                     isLogin = isLogin,

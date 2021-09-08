@@ -42,6 +42,7 @@ import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.ui.events.FavoriteEvents
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 import com.keygenqt.demo_contacts.theme.MyTheme
+import com.keygenqt.modifier.sizeSmall
 
 @Composable
 fun FavoriteItemList(
@@ -99,7 +100,7 @@ fun FavoriteItemList(
                     )
                     if (!model.subtitle.isNullOrEmpty()) {
 
-                        Spacer(modifier = Modifier.size(4.dp))
+                        Spacer(modifier = Modifier.sizeSmall())
 
                         Text(
                             text = stringResource(id = R.string.catalog_list_item_subcategories, model.subtitle),

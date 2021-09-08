@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettings
 
 import androidx.compose.foundation.Image
@@ -33,6 +33,8 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.BottomSheetScaffoldInfo
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
+import com.keygenqt.modifier.sizeLarge
+import com.keygenqt.modifier.sizeXLarge
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -58,7 +60,7 @@ fun NotificationsBottomSheetInfo(
             modifier = Modifier
                 .padding(top = 24.dp, bottom = 24.dp, start = 16.dp, end = 16.dp)
         ) {
-            Spacer(modifier = Modifier.size(24.dp))
+            Spacer(modifier = Modifier.sizeXLarge())
 
             Box(
                 modifier = Modifier
@@ -74,7 +76,7 @@ fun NotificationsBottomSheetInfo(
                 )
             }
 
-            Spacer(modifier = Modifier.size(24.dp))
+            Spacer(modifier = Modifier.sizeXLarge())
 
             Text(
                 modifier = Modifier.fillMaxWidth(),
@@ -85,7 +87,7 @@ fun NotificationsBottomSheetInfo(
 
             if (isShowBtn1) {
 
-                Spacer(modifier = Modifier.size(16.dp))
+                Spacer(modifier = Modifier.sizeLarge())
 
                 Text(
                     modifier = Modifier.fillMaxWidth(),
@@ -95,7 +97,7 @@ fun NotificationsBottomSheetInfo(
                     style = MaterialTheme.typography.subtitle1,
                 )
 
-                Spacer(modifier = Modifier.size(24.dp))
+                Spacer(modifier = Modifier.sizeXLarge())
 
                 Button(
                     shape = MaterialTheme.shapes.large,
@@ -119,7 +121,7 @@ fun NotificationsBottomSheetInfo(
                 }
             }
 
-            Spacer(modifier = Modifier.size(24.dp))
+            Spacer(modifier = Modifier.sizeXLarge())
 
             OutlinedButton(
                 shape = MaterialTheme.shapes.large,

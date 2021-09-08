@@ -41,6 +41,10 @@
             <meta-data
                 android:name="com.keygenqt.demo_contacts.initializer.CrashlyticsInitializer"
                 android:value="androidx.startup" />
+
+            <meta-data
+                android:name="com.keygenqt.demo_contacts.initializer.ModifierInitializer"
+                android:value="androidx.startup" />
         </provider>
     </application>
 

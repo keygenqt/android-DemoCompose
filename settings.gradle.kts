@@ -16,8 +16,9 @@ pluginManagement {
         id("com.android.application") version gradleVersion
         id("com.android.library") version gradleVersion
         id("org.jetbrains.kotlin.android") version kotlinVersion
-        id("com.diffplug.spotless") version spotlessVersion
         kotlin("kapt") version kotlinVersion
+        id("com.diffplug.spotless") version spotlessVersion
+        id("com.jfrog.artifactory") version "4.24.16"
     }
 }
 dependencyResolutionManagement {
@@ -25,7 +26,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://artifactory.keygenqt.com/artifactory/open-source")
     }
 }
 rootProject.name = "DemoContacts"
 include(":app")
+
+//include(":compose-modifier-ext")
+//project(":compose-modifier-ext").projectDir = File(settingsDir, "../../Surf/libs/compose-modifier-ext")

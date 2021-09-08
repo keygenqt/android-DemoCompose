@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.BottomSheetScaffoldInfo
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
+import com.keygenqt.modifier.sizeXLarge
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -52,7 +53,7 @@ fun UpdatedBottomSheetInfo(
             modifier = Modifier
                 .padding(top = 24.dp, bottom = 24.dp, start = 16.dp, end = 16.dp)
         ) {
-            Spacer(modifier = Modifier.size(24.dp))
+            Spacer(modifier = Modifier.sizeXLarge())
 
             Box(
                 modifier = Modifier
@@ -68,7 +69,7 @@ fun UpdatedBottomSheetInfo(
                 )
             }
 
-            Spacer(modifier = Modifier.size(24.dp))
+            Spacer(modifier = Modifier.sizeXLarge())
 
             Text(
                 modifier = Modifier.fillMaxWidth(),
@@ -78,7 +79,7 @@ fun UpdatedBottomSheetInfo(
                 style = MaterialTheme.typography.subtitle1,
             )
 
-            Spacer(modifier = Modifier.size(24.dp))
+            Spacer(modifier = Modifier.sizeXLarge())
 
             OutlinedButton(
                 shape = MaterialTheme.shapes.large,

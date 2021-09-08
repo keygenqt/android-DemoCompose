@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.favorite.data.models
 
 import androidx.compose.runtime.Immutable
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.keygenqt.demo_contacts.base.interfaces.IModel
+import com.keygenqt.response.interfaces.ResponseModel
 
 @Entity
 @Immutable
@@ -30,4 +30,4 @@ data class FavoriteModel(
     val subtitle: String?,
     @Embedded val image: FavoriteImageModel?,
     @Embedded val price: FavoritePriceModel?,
-) : IModel
+) : ResponseModel

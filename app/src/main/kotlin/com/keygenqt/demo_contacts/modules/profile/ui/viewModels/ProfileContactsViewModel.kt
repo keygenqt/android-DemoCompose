@@ -19,12 +19,12 @@ package com.keygenqt.demo_contacts.modules.profile.ui.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.keygenqt.demo_contacts.base.done
-import com.keygenqt.demo_contacts.base.error
-import com.keygenqt.demo_contacts.base.success
 import com.keygenqt.demo_contacts.modules.profile.data.models.UserContactsModel
 import com.keygenqt.demo_contacts.modules.profile.services.apiService.ApiServiceProfile
 import com.keygenqt.demo_contacts.modules.profile.services.data.DataServiceProfile
+import com.keygenqt.response.done
+import com.keygenqt.response.error
+import com.keygenqt.response.success
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*

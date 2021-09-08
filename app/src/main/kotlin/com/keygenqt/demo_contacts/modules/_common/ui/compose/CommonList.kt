@@ -37,7 +37,7 @@ import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
 import com.google.accompanist.swiperefresh.SwipeRefreshState
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.ListenRefresh
-import com.keygenqt.demo_contacts.extensions.visible
+import com.keygenqt.modifier.visible
 import timber.log.Timber
 
 @Composable

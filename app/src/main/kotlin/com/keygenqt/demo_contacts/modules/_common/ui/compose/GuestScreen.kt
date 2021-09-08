@@ -31,6 +31,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.theme.MyTheme
+import com.keygenqt.modifier.sizeLarge
+import com.keygenqt.modifier.sizeXLarge
 
 @Composable
 fun GuestListScreen(
@@ -43,7 +45,7 @@ fun GuestListScreen(
         text = text,
         painter = painter
     ) {
-        Spacer(modifier = Modifier.size(24.dp))
+        Spacer(modifier = Modifier.sizeXLarge())
 
         Button(
             shape = MaterialTheme.shapes.large,
@@ -58,7 +60,7 @@ fun GuestListScreen(
             )
         }
 
-        Spacer(modifier = Modifier.size(24.dp))
+        Spacer(modifier = Modifier.sizeXLarge())
 
         ClickableTextAnimation(
             text = stringResource(id = R.string.common_sign_up),

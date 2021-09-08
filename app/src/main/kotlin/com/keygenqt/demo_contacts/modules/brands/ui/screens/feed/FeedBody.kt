@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.brands.ui.screens.feed
 
 import androidx.compose.foundation.Image
@@ -51,6 +51,8 @@ import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
 import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
 import com.keygenqt.demo_contacts.modules.brands.navigation.nav.BrandsNav
 import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
+import com.keygenqt.modifier.sizeLarge
+import com.keygenqt.modifier.sizeSmall
 import timber.log.Timber
 
 @ExperimentalCoilApi
@@ -155,7 +157,7 @@ fun FeedBody(
 
                                     })
                             ) {
-                                Spacer(modifier = Modifier.size(4.dp))
+                                Spacer(modifier = Modifier.sizeSmall())
 
                                 Image(
                                     contentScale = ContentScale.FillWidth,
@@ -164,8 +166,7 @@ fun FeedBody(
                                     modifier = Modifier
                                         .fillMaxWidth()
                                 )
-
-                                Spacer(modifier = Modifier.size(16.dp))
+                                Spacer(modifier = Modifier.sizeLarge())
                             }
                         }
                     }

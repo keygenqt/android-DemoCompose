@@ -36,6 +36,9 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 import com.keygenqt.demo_contacts.theme.MyTheme
+import com.keygenqt.modifier.sizeLarge
+import com.keygenqt.modifier.sizeMedium
+import com.keygenqt.modifier.sizeXLarge
 
 @Composable
 fun PlugBlock(
@@ -79,7 +82,7 @@ fun PlugBlock(
             }
 
             title?.let {
-                Spacer(modifier = Modifier.size(24.dp))
+                Spacer(modifier = Modifier.sizeXLarge())
 
                 Text(
                     modifier = Modifier.fillMaxWidth(),
@@ -88,11 +91,11 @@ fun PlugBlock(
                     style = MaterialTheme.typography.h5,
                 )
             } ?: run {
-                Spacer(modifier = Modifier.size(16.dp))
+                Spacer(modifier = Modifier.sizeLarge())
             }
 
             text?.let {
-                Spacer(modifier = Modifier.size(8.dp))
+                Spacer(modifier = Modifier.sizeMedium())
 
                 Text(
                     modifier = Modifier.fillMaxWidth(),

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.favorite.paging
 
 import androidx.paging.ExperimentalPagingApi
@@ -25,6 +25,7 @@ import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.services.apiService.ApiServiceFavorite
 import com.keygenqt.demo_contacts.modules.favorite.services.data.DataServiceFavorite
 import com.keygenqt.demo_contacts.utils.ConstantsPaging.CACHE_TIMEOUT
+import com.keygenqt.response.*
 import timber.log.Timber
 import kotlin.math.roundToInt
 
@@ -67,7 +68,7 @@ class FavoriteRemoteMediator(
                         preferences.lastUpdateListFavorite = System.currentTimeMillis()
                         clear()
                     }
-                    if (!response.isEndDouble(state.lastItemOrNull()?.id) || loadType != LoadType.APPEND) {
+                    if (!response.isEndYii2(state.lastItemOrNull()?.id) || loadType != LoadType.APPEND) {
                         insert(*models.toTypedArray())
                     }
                 }
@@ -82,7 +83,7 @@ class FavoriteRemoteMediator(
             MediatorResult.Success(
                 endOfPaginationReached = response.isError
                         || response.isEmpty
-                        || response.isEndDouble(state.lastItemOrNull()?.id)
+                        || response.isEndYii2(state.lastItemOrNull()?.id)
             )
 
         } catch (e: Exception) {

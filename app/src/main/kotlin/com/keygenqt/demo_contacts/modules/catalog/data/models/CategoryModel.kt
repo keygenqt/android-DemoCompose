@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.catalog.data.models
 
 import androidx.compose.runtime.Immutable
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import com.keygenqt.demo_contacts.base.interfaces.IModel
+import com.keygenqt.response.interfaces.ResponseModel
 
 @Entity
 @Immutable
@@ -28,7 +28,7 @@ data class CategoryModel(
     @PrimaryKey override val id: String,
     val name: String,
     @Ignore private val subCategories: List<SubCategoryModel>,
-) : IModel {
+) : ResponseModel {
 
     constructor(id: String, name: String) : this(id, name, listOf())
 

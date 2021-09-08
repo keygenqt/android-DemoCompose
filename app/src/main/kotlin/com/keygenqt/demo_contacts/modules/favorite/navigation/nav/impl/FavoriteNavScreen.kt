@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.favorite.navigation.nav.impl
 
-import com.keygenqt.demo_contacts.base.NavScreen
+import com.keygenqt.routing.NavScreen
 
 object FavoriteNavScreen {
     val FavoriteScreen = object : NavScreen {

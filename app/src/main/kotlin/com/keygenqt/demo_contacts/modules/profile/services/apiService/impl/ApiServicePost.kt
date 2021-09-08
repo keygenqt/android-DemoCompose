@@ -13,20 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.services.apiService.impl
 
-import com.keygenqt.demo_contacts.base.ResponseResult
-import com.keygenqt.demo_contacts.base.Result422
-import com.keygenqt.demo_contacts.base.executeWithResponse
-import com.keygenqt.demo_contacts.base.responseCheck
 import com.keygenqt.demo_contacts.modules.profile.data.models.UserContactsModel
 import com.keygenqt.demo_contacts.modules.profile.data.requests.UserContactEmailRequest
 import com.keygenqt.demo_contacts.modules.profile.data.requests.UserContactPhoneRequest
 import com.keygenqt.demo_contacts.modules.profile.data.requests.UserContactRequest
 import com.keygenqt.demo_contacts.modules.profile.services.api.ApiProfile
+import com.keygenqt.response.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
+import timber.log.Timber
 
 interface ApiServicePost {
 
@@ -35,20 +34,22 @@ interface ApiServicePost {
     suspend fun updateUserContacts(userContact: UserContactsModel): ResponseResult<Boolean> {
         return withContext(Dispatchers.IO) {
             executeWithResponse {
-                api.updateUserContacts(UserContactRequest(
-                    email = UserContactEmailRequest(
-                        confirmed = userContact.email.confirmedContactEmail,
-                        email = userContact.email.contactEmail,
-                        notifyMailFull = userContact.email.notifyMailFull,
-                        notifyMailShort = userContact.email.notifyMailShort,
-                    ),
-                    phone = UserContactPhoneRequest(
-                        confirmed = userContact.phone.confirmedContactPhone,
-                        phone = userContact.phone.contactPhone,
-                        notifySmsFull = userContact.phone.notifySmsFull,
-                        notifySmsShort = userContact.phone.notifySmsShort,
-                    ),
-                ))
+                api.updateUserContacts(
+                    UserContactRequest(
+                        email = UserContactEmailRequest(
+                            confirmed = userContact.email.confirmedContactEmail,
+                            email = userContact.email.contactEmail,
+                            notifyMailFull = userContact.email.notifyMailFull,
+                            notifyMailShort = userContact.email.notifyMailShort,
+                        ),
+                        phone = UserContactPhoneRequest(
+                            confirmed = userContact.phone.confirmedContactPhone,
+                            phone = userContact.phone.contactPhone,
+                            notifySmsFull = userContact.phone.notifySmsFull,
+                            notifySmsShort = userContact.phone.notifySmsShort,
+                        ),
+                    )
+                )
                     .responseCheck()
                     .body() != null
             }
@@ -77,13 +78,10 @@ interface ApiServicePost {
                     configGroupCode = "update",
                     contact = emailOrPhone.replace(" ", ""),
                 )
-                    .responseCheck {
-                        it.body()?.let { obj ->
-                            if (obj.getAsJsonPrimitive("sentSuccess")?.asBoolean == false) {
-                                throw Result422(obj.getAsJsonPrimitive("errorMsg").asString)
-                            }
+                    .responseCheck { _, body ->
+                        JSONObject(body).apply {
+                            if (!getBoolean("sentSuccess")) throw Result422(getString("errorMsg"))
                         }
-                        it
                     }
                     .body()
                     ?.getAsJsonPrimitive("sentSuccess")?.asBoolean ?: false

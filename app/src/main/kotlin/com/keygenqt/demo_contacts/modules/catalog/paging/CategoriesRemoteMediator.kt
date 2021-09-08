@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.catalog.paging
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import com.keygenqt.demo_contacts.base.*
 import com.keygenqt.demo_contacts.modules.catalog.data.relations.CategoryRelation
 import com.keygenqt.demo_contacts.modules.catalog.services.apiService.ApiServiceCatalog
 import com.keygenqt.demo_contacts.modules.catalog.services.data.DataServiceCatalog
 import com.keygenqt.demo_contacts.utils.ConstantsPaging.CACHE_TIMEOUT
+import com.keygenqt.response.*
 import timber.log.Timber
 import kotlin.math.roundToInt
 
@@ -67,7 +67,7 @@ class CategoriesRemoteMediator(
                         preferences.lastUpdateListCategories = System.currentTimeMillis()
                         clearCategoryModel()
                     }
-                    if (!response.isEndDouble(state.lastItemOrNull()?.owner?.id) || loadType != LoadType.APPEND) {
+                    if (!response.isEndYii2(state.lastItemOrNull()?.owner?.id) || loadType != LoadType.APPEND) {
                         insertCategoryModel(*models.toTypedArray())
                     }
                 }
@@ -82,7 +82,7 @@ class CategoriesRemoteMediator(
             MediatorResult.Success(
                 endOfPaginationReached = response.isError
                         || response.isEmpty
-                        || response.isEndDouble(state.lastItemOrNull()?.owner?.id)
+                        || response.isEndYii2(state.lastItemOrNull()?.owner?.id)
             )
 
         } catch (e: Exception) {

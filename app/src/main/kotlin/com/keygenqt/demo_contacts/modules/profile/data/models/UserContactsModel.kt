@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.data.models
 
 import androidx.compose.runtime.Immutable
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.keygenqt.demo_contacts.base.interfaces.IModel
+import com.keygenqt.response.interfaces.ResponseModel
 
 @Entity
 @Immutable
@@ -28,4 +28,4 @@ data class UserContactsModel(
     @PrimaryKey override val id: String,
     @Embedded val email: UserContactEmailModel,
     @Embedded val phone: UserContactPhoneModel,
-) : IModel
+) : ResponseModel

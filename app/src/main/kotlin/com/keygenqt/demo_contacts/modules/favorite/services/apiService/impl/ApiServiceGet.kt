@@ -17,13 +17,13 @@
 package com.keygenqt.demo_contacts.modules.favorite.services.apiService.impl
 
 import com.keygenqt.demo_contacts.BuildConfig
-import com.keygenqt.demo_contacts.base.ResponseResult
-import com.keygenqt.demo_contacts.base.executeWithResponse
-import com.keygenqt.demo_contacts.base.responseCheck
 import com.keygenqt.demo_contacts.modules.favorite.data.mappers.toModels
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.services.api.ApiFavorite
 import com.keygenqt.demo_contacts.utils.ConstantsApp
+import com.keygenqt.response.ResponseResult
+import com.keygenqt.response.executeWithResponse
+import com.keygenqt.response.responseCheck
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
