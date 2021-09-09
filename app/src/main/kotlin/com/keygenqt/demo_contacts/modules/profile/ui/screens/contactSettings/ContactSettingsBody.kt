@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactSettings
 
 import androidx.compose.foundation.background
@@ -33,9 +33,10 @@ import androidx.compose.ui.res.stringResource
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import com.keygenqt.accompanist.MainScaffoldSearch
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.LoadingScreen
-import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
+import com.keygenqt.demo_contacts.modules._common.ui.compose.TopBarContentTitle
 import com.keygenqt.demo_contacts.modules.profile.data.models.UserContactsModel
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactSettingsEvents
 
@@ -57,10 +58,12 @@ fun ContactSettingsBody(
     var channelPhone: Boolean by remember { mutableStateOf(false) }
 
     Box {
-        MainScaffold(
-            isLoaderShow = loadingActionBar,
-            title = stringResource(id = R.string.contact_settings_title),
-            icon = Icons.Filled.ArrowBack,
+        MainScaffoldSearch(
+            contentTitle = {
+                TopBarContentTitle(stringResource(id = R.string.contact_settings_title))
+            },
+            contentLoadState = loadingActionBar,
+            navigationIcon = Icons.Filled.ArrowBack,
             navigationIconOnClick = {
                 onEvent(ContactSettingsEvents.NavigateBack)
             }
@@ -104,9 +107,10 @@ fun ContactSettingsBody(
                 }
 
                 if (userContacts !is UserContactsModel) {
-                    Box(modifier = Modifier
-                        .fillMaxSize()
-                        .background(MaterialTheme.colors.background)
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(MaterialTheme.colors.background)
                     ) {
                         if (userContacts == null) {
                             LoadingScreen(loading)

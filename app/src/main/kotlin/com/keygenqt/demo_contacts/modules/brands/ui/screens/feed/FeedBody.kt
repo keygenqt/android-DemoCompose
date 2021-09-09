@@ -42,12 +42,13 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import com.keygenqt.accompanist.MainScaffoldSearch
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.ListenRefresh
 import com.keygenqt.demo_contacts.modules._common.ui.compose.EmptyListScreen
 import com.keygenqt.demo_contacts.modules._common.ui.compose.LoadingScreen
-import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
+import com.keygenqt.demo_contacts.modules._common.ui.compose.TopBarContentTitle
 import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
 import com.keygenqt.demo_contacts.modules.brands.navigation.nav.BrandsNav
 import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
@@ -65,10 +66,17 @@ fun FeedBody(
     loading: Boolean = true,
     onEvent: (BrandsEvents) -> Unit = {},
 ) {
-    MainScaffold(
-        title = stringResource(id = R.string.app_name),
+    MainScaffoldSearch(
+        searchDescription = stringResource(id = R.string.common_search),
+        navigationIconDescription = stringResource(R.string.common_navigate_up),
+        contentTitle = {
+            TopBarContentTitle(stringResource(id = R.string.app_name))
+        },
         searchListener = { search ->
-
+            Timber.e(search)
+        },
+        closeSearchListener = {
+            Timber.e("Close")
         }
     ) {
         LocalBaseViewModel.current.ListenRefresh {

@@ -38,11 +38,12 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import com.keygenqt.demo_contacts.R
-import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldsState
-import com.keygenqt.demo_contacts.modules._common.ui.form.fields.FieldSimpleEditText
+import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailCodeEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.form.ChangeEmailCodeFieldsForm.Code
 import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
+import com.keygenqt.demo_contacts.theme.customTextFieldColors
+import com.keygenqt.forms.fields.FormField
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -81,12 +82,13 @@ fun ContactChangeEmailCodeForm(
         }
     }
 
-    FieldSimpleEditText(
+    FormField(
         modifier = Modifier.focusRequester(requesterField),
-        labelText = stringResource(id = R.string.contact_change_email_code_label),
+        label = stringResource(id = R.string.contact_change_email_code_label),
         enabled = !loading,
         state = formFields.get(Code),
         imeAction = ImeAction.Done,
+        colors = customTextFieldColors(),
         keyboardActions = KeyboardActions(onDone = { submitClick.invoke() })
     )
 

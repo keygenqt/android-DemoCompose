@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.other.ui.screens.onboarding
 
 import android.content.res.Configuration
@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
+import com.keygenqt.accompanist.MainScaffoldSearch
 import com.keygenqt.demo_contacts.modules.other.ui.events.StartEvents
 import com.keygenqt.demo_contacts.theme.MyTheme
 import kotlinx.coroutines.launch
@@ -39,7 +39,7 @@ fun OnboardingBody(
     val scope = rememberCoroutineScope()
     val pagerState = rememberPagerState(pageCount = 2)
 
-    MainScaffold {
+    MainScaffoldSearch {
         HorizontalPager(
             dragEnabled = false,
             state = pagerState,

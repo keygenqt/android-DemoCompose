@@ -77,14 +77,12 @@ android {
 
 dependencies {
 
-//    implementation(project(":compose-modifier-ext"))
-
     // opensource
     implementation("com.keygenqt.modifier:compose-modifier-ext:0.0.4")
     implementation("com.keygenqt.response:android-response-result:0.0.2")
     implementation("com.keygenqt.routing:compose-routing:0.0.1")
-    implementation("com.keygenqt.accompanist:surf-accompanist:0.0.2")
-    implementation("com.keygenqt.forms:compose-forms:0.0.1")
+    implementation("com.keygenqt.accompanist:surf-accompanist:0.0.4")
+    implementation("com.keygenqt.forms:compose-forms:0.0.2")
 
     // base
     implementation("androidx.core:core-ktx:${ex["coreKtxVersion"]}")

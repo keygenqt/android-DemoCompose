@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.screens.contactChangeEmailCode
 
 import android.content.res.Configuration
@@ -24,17 +24,15 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.keygenqt.accompanist.MainScaffoldSearch
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.FormError
-import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailCodeEvents
-import com.keygenqt.demo_contacts.theme.MaterialThemeCustom
 import com.keygenqt.demo_contacts.theme.MyTheme
 import com.keygenqt.modifier.sizeLarge
 
@@ -47,11 +45,11 @@ fun ContactChangeEmailCodeBody(
     commonError: String? = null,
     onEvent: (ContactChangeEmailCodeEvents) -> Unit = {},
 ) {
-    MainScaffold(
-        title = "",
-        elevation = 0.dp,
-        isLoaderShow = loading,
-        icon = Icons.Filled.ArrowBack,
+    MainScaffoldSearch(
+        contentTitle = {},
+        topBarElevation = 0.dp,
+        contentLoadState = loading,
+        navigationIcon = Icons.Filled.ArrowBack,
         navigationIconOnClick = {
             onEvent(ContactChangeEmailCodeEvents.NavigateBack)
         }

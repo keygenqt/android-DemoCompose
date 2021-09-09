@@ -16,23 +16,30 @@
  
 package com.keygenqt.demo_contacts.modules.favorite.ui.screens.listFavorite
 
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import com.keygenqt.accompanist.MainScaffoldSearch
+import com.keygenqt.accompanist.SwipeRefreshList
 import com.keygenqt.demo_contacts.R
-import com.keygenqt.demo_contacts.modules._common.ui.compose.CommonList
-import com.keygenqt.demo_contacts.modules._common.ui.compose.EmptyListScreen
-import com.keygenqt.demo_contacts.modules._common.ui.compose.GuestListScreen
-import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
+import com.keygenqt.demo_contacts.base.LocalBaseViewModel
+import com.keygenqt.demo_contacts.extensions.ListenRefresh
+import com.keygenqt.demo_contacts.modules._common.ui.compose.*
+import com.keygenqt.demo_contacts.modules.catalog.navigation.nav.CatalogNav
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.navigation.nav.FavoriteNav
 import com.keygenqt.demo_contacts.modules.favorite.ui.events.FavoriteEvents
+import com.keygenqt.modifier.paddingLarge
+import com.keygenqt.modifier.sizeXSmall
+import timber.log.Timber
 
 @ExperimentalComposeUiApi
 @Composable
@@ -43,19 +50,22 @@ fun FavoriteBody(
 ) {
     val resources = LocalContext.current.resources
 
-    MainScaffold(
-        title = stringResource(id = R.string.favorite_title).uppercase(),
-        subTitle = items.itemCount.let { count ->
-            if (count == 0) {
-                null
-            } else {
-                resources.getQuantityString(R.plurals.favorite_subtitle, count, count)
+    MainScaffoldSearch(
+        contentTitle = {
+            TopBarContentTitle(stringResource(id = R.string.favorite_title).uppercase(), TextAlign.Center)
+            if (items.itemCount != 0) {
+                Spacer(modifier = Modifier.sizeXSmall())
+                TopBarContentSubtitle(resources.getQuantityString(R.plurals.favorite_subtitle, items.itemCount, items.itemCount))
             }
         }
     ) {
         if (isLogin) {
-            CommonList(
-                refreshRoute = FavoriteNav.MainNav.FavoriteScreen.route,
+
+            LocalBaseViewModel.current.ListenRefresh {
+                if (it == FavoriteNav.MainNav.FavoriteScreen.route) items.refresh()
+            }
+
+            SwipeRefreshList(
                 modifier = Modifier,
                 items = items,
                 state = rememberSwipeRefreshState(items.loadState.refresh is LoadState.Loading),
@@ -64,6 +74,11 @@ fun FavoriteBody(
                         text = stringResource(id = R.string.favorite_empty_list),
                         painter = painterResource(id = R.drawable.ic_favorite_placeholder)
                     )
+                },
+                contentLoadState = {
+                    if (it is LoadState.Loading) {
+                        Loader(Modifier.paddingLarge())
+                    }
                 }
             ) { _, model ->
                 FavoriteItemList(

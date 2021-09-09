@@ -37,10 +37,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
-import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldsState
-import com.keygenqt.demo_contacts.modules._common.ui.form.fields.FieldEmail
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangeEmailEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.form.ChangeEmailFieldsForm
+import com.keygenqt.demo_contacts.theme.customTextFieldColors
+import com.keygenqt.forms.base.FormFieldsState
+import com.keygenqt.forms.fields.FormFieldEmail
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -84,12 +85,13 @@ fun ContactChangeEmailForm(
             .fillMaxSize(),
     ) {
         Column {
-            FieldEmail(
+            FormFieldEmail(
                 modifier = Modifier.focusRequester(requesterField),
-                labelText = stringResource(id = R.string.contact_change_email_label),
+                label = stringResource(id = R.string.contact_change_email_label),
                 enabled = !loading,
                 state = formFields.get(ChangeEmailFieldsForm.ChangeEmail),
                 imeAction = ImeAction.Next,
+                colors = customTextFieldColors(),
                 keyboardActions = KeyboardActions(onNext = { submitClick.invoke() })
             )
 

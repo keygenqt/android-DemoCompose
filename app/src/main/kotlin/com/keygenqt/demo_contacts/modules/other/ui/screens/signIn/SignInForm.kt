@@ -38,17 +38,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
-import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldsState
-import com.keygenqt.demo_contacts.modules._common.ui.form.fields.FieldEmail
-import com.keygenqt.demo_contacts.modules._common.ui.form.fields.FieldPassword
 import com.keygenqt.demo_contacts.modules.other.ui.events.SignInEvents
 import com.keygenqt.demo_contacts.modules.other.ui.form.SignInFieldsForm.SignInEmail
 import com.keygenqt.demo_contacts.modules.other.ui.form.SignInFieldsForm.SignInPassword
+import com.keygenqt.demo_contacts.theme.customTextFieldColors
 import com.keygenqt.demo_contacts.utils.ConstantsApp
+import com.keygenqt.forms.base.FormFieldsState
+import com.keygenqt.forms.fields.FormFieldEmail
+import com.keygenqt.forms.fields.FormFieldPassword
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-@ExperimentalComposeUiApi
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SignInForm(
     loading: Boolean = false,
@@ -59,11 +60,13 @@ fun SignInForm(
     val scope = rememberCoroutineScope()
     val padding = 16.dp
 
+    // Create from state
     val formFields = FormFieldsState().apply {
         add(SignInEmail, remember { SignInEmail.state.default(ConstantsApp.DEBUG_CREDENTIAL_LOGIN) })
         add(SignInPassword, remember { SignInPassword.state.default(ConstantsApp.DEBUG_CREDENTIAL_PASSW) })
     }
 
+    // For focus to field
     val requesterFieldEmail = remember { FocusRequester() }
     val requesterFieldPassword = remember { FocusRequester() }
 
@@ -86,27 +89,33 @@ fun SignInForm(
         }
     }
 
-    FieldEmail(
+    // Create field email
+    FormFieldEmail(
         modifier = Modifier.focusRequester(requesterFieldEmail),
-        labelText = stringResource(id = R.string.form_email),
+        label = stringResource(id = R.string.form_email),
         enabled = !loading,
         state = formFields.get(SignInEmail),
         imeAction = ImeAction.Next,
+        colors = customTextFieldColors(),
         keyboardActions = KeyboardActions(onNext = { requesterFieldPassword.requestFocus() })
     )
 
     Spacer(modifier = Modifier.size(padding))
 
-    FieldPassword(
+    // Create field password
+    FormFieldPassword(
         modifier = Modifier.focusRequester(requesterFieldPassword),
         enabled = !loading,
         state = formFields.get(SignInPassword),
         imeAction = ImeAction.Done,
+        colors = customTextFieldColors(),
+        tintIcon = MaterialTheme.colors.onPrimary,
         keyboardActions = KeyboardActions(onDone = { submitClick.invoke() })
     )
 
     Spacer(modifier = Modifier.size(padding))
 
+    // Submit button
     Button(
         enabled = !loading,
         onClick = { submitClick.invoke() },
@@ -119,6 +128,7 @@ fun SignInForm(
         )
     }
 
+    // Clear focus after end
     LaunchedEffect(Unit) {
         scope.launch {
             delay(10)

@@ -31,8 +31,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.keygenqt.accompanist.ClickableTextColorAnimation
 import com.keygenqt.demo_contacts.R
-import com.keygenqt.demo_contacts.modules._common.ui.compose.ClickableTextAnimation
 import com.keygenqt.demo_contacts.modules.brands.data.models.FeedBrandModel
 import com.keygenqt.demo_contacts.modules.brands.ui.events.BrandsEvents
 
@@ -57,9 +57,10 @@ fun FeedItemBrands(
             style = MaterialTheme.typography.h5,
         )
 
-        ClickableTextAnimation(
-            modifier = Modifier
-                .align(Alignment.CenterEnd),
+        ClickableTextColorAnimation(
+            modifier = Modifier.align(Alignment.CenterEnd),
+            colorDefault = MaterialTheme.colors.onBackground,
+            colorAction = MaterialTheme.colors.onSurface,
             text = stringResource(id = R.string.brands_btn_all)
         ) {
             Toast.makeText(context, R.string.common_coming_soon, Toast.LENGTH_SHORT).show()

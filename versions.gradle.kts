@@ -8,7 +8,7 @@ extra["minSdk"] = 23
 extra["targetSdk"] = 31
 
 // base
-extra["kotlinVersion"] = "1.5.10"
+extra["kotlinVersion"] = "1.5.21"
 extra["gradleVersion"] = "7.0.1"
 extra["coreKtxVersion"] = "1.6.0"
 extra["startupVersion"] = "1.1.0"
@@ -34,7 +34,7 @@ extra["hiltComposeNavigationVersion"] = "1.0.0-alpha03"
 extra["accompanistVersion"] = "0.16.1"
 
 // compose
-extra["composeVersion"] = "1.0.0"
+extra["composeVersion"] = "1.0.2"
 extra["activityComposeVersion"] = "1.3.0"
 extra["constraintLayoutComposeVersion"] = "1.0.0-beta02"
 extra["pagingComposeVersion"] = "1.0.0-alpha12"

@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.other.ui.form
 
-import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldState
-import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormStates
-import com.keygenqt.demo_contacts.modules._common.ui.form.states.StateEmailRequired
-import com.keygenqt.demo_contacts.modules._common.ui.form.states.StatePassword
+import com.keygenqt.demo_contacts.modules._common.ui.forms.PasswordStateValidateRequired
+import com.keygenqt.forms.base.FormFieldState
+import com.keygenqt.forms.base.FormStates
+import com.keygenqt.forms.states.EmailStateValidateRequired
 
 enum class SignInFieldsForm(val state: FormFieldState) : FormStates {
-    SignInEmail(StateEmailRequired()),
-    SignInPassword(StatePassword()),
+    SignInEmail(EmailStateValidateRequired()),
+    SignInPassword(PasswordStateValidateRequired()),
 }

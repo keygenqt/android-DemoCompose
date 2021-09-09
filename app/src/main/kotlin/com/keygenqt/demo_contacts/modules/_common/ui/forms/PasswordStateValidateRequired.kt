@@ -13,25 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-package com.keygenqt.demo_contacts.modules._common.ui.form.states
+
+package com.keygenqt.demo_contacts.modules._common.ui.forms
 
 import android.content.Context
 import com.keygenqt.demo_contacts.R
-import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldState
-import com.keygenqt.demo_contacts.modules._common.ui.form.validation.getErrorIsBlank
+import com.keygenqt.forms.base.FormFieldState
+import com.keygenqt.forms.validation.getErrorIsBlank
+import com.keygenqt.forms.validation.getErrorIsNotDomain
 import java.util.regex.Pattern
 
 private const val PASSWORD_VALIDATION_REGEX = """^[0-9_A-z]+$"""
 
-class StatePassword : FormFieldState(checkValid = ::checkValid)
-
-private fun checkValid(target: String) = listOfNotNull(
-    getErrorIsBlank(target),
-    getErrorIsSmall(target),
-    getErrorIsLong(target),
-    getErrorIsNotMatches(target),
-)
+class PasswordStateValidateRequired : FormFieldState(checkValid = { target: String ->
+    listOfNotNull(
+        getErrorIsBlank(target),
+        getErrorIsSmall(target),
+        getErrorIsLong(target),
+        getErrorIsNotMatches(target),
+    )
+})
 
 private fun getErrorIsSmall(target: String) =
     when {

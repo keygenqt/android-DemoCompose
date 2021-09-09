@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.catalog.ui.screens.catalogScreen
 
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -31,12 +31,14 @@ import androidx.paging.compose.LazyPagingItems
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import com.keygenqt.accompanist.MainScaffoldSearch
 import com.keygenqt.demo_contacts.R
+import com.keygenqt.demo_contacts.modules._common.ui.compose.TopBarContentTitle
 import com.keygenqt.demo_contacts.modules.catalog.data.models.BrandModel
 import com.keygenqt.demo_contacts.modules.catalog.data.relations.CategoryRelation
 import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
-import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @ExperimentalPagerApi
 @ExperimentalComposeUiApi
@@ -52,13 +54,21 @@ fun CatalogBody(
         stringResource(id = R.string.catalog_tab_1),
         stringResource(id = R.string.catalog_tab_2)
     )
+
     val pagerState = rememberPagerState(pageCount = titles.size)
 
-    MainScaffold(
-        elevation = 0.dp,
-        title = stringResource(id = R.string.catalog_title),
+    MainScaffoldSearch(
+        topBarElevation = 0.dp,
+        searchDescription = stringResource(id = R.string.common_search),
+        navigationIconDescription = stringResource(R.string.common_navigate_up),
+        contentTitle = {
+            TopBarContentTitle(stringResource(id = R.string.catalog_title))
+        },
         searchListener = { search ->
-
+            Timber.e(search)
+        },
+        closeSearchListener = {
+            Timber.e("Close")
         }
     ) {
         Column {

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.other.ui.screens.onboarding
 
 import android.content.res.Configuration
@@ -28,8 +28,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.keygenqt.accompanist.ClickableTextColorAnimation
 import com.keygenqt.demo_contacts.R
-import com.keygenqt.demo_contacts.modules._common.ui.compose.ClickableTextAnimation
 import com.keygenqt.demo_contacts.modules._common.ui.compose.PlugBlock
 import com.keygenqt.demo_contacts.theme.MyTheme
 import com.keygenqt.modifier.sizeLarge
@@ -66,8 +66,11 @@ fun OnboardingItem2(onNext: () -> Unit = {}) {
 
                 Spacer(modifier = Modifier.sizeLarge())
 
-                ClickableTextAnimation(
-                    text = stringResource(id = R.string.onboarding_2_btn_select)
+                ClickableTextColorAnimation(
+                    colorDefault = MaterialTheme.colors.onBackground,
+                    colorAction = MaterialTheme.colors.onSurface,
+                    text = stringResource(id = R.string.onboarding_2_btn_select),
+                    underline = true
                 ) {
                     Toast.makeText(context, R.string.common_coming_soon, Toast.LENGTH_SHORT).show()
                 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.catalog.ui.screens.catalogScreen
 
 import androidx.compose.runtime.Composable
@@ -22,12 +22,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import com.keygenqt.accompanist.SwipeRefreshList
 import com.keygenqt.demo_contacts.R
-import com.keygenqt.demo_contacts.modules._common.ui.compose.CommonList
+import com.keygenqt.demo_contacts.base.LocalBaseViewModel
+import com.keygenqt.demo_contacts.extensions.ListenRefresh
+import com.keygenqt.demo_contacts.modules._common.ui.compose.Loader
 import com.keygenqt.demo_contacts.modules._common.ui.compose.PlugBlock
 import com.keygenqt.demo_contacts.modules.catalog.data.relations.CategoryRelation
 import com.keygenqt.demo_contacts.modules.catalog.navigation.nav.CatalogNav
 import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
+import com.keygenqt.modifier.paddingLarge
 
 
 @Composable
@@ -35,8 +39,12 @@ fun CatalogListCategories(
     items: LazyPagingItems<CategoryRelation>,
     onEvent: (CatalogEvents) -> Unit = {},
 ) {
-    CommonList(
-        refreshRoute = CatalogNav.MainNav.CatalogScreen.route,
+
+    LocalBaseViewModel.current.ListenRefresh {
+        if (it == CatalogNav.MainNav.CatalogScreen.route) items.refresh()
+    }
+
+    SwipeRefreshList(
         modifier = Modifier,
         items = items,
         state = rememberSwipeRefreshState(items.loadState.refresh is LoadState.Loading),
@@ -45,6 +53,11 @@ fun CatalogListCategories(
                 title = stringResource(id = R.string.common_state_empty_title),
                 text = stringResource(id = R.string.catalog_state_empty_text_categories),
             )
+        },
+        contentLoadState = {
+            if (it is LoadState.Loading) {
+                Loader(Modifier.paddingLarge())
+            }
         }
     ) { _, model ->
         CatalogListCategoryItem(model = model)

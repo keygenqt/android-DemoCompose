@@ -31,6 +31,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "DemoContacts"
 include(":app")
-
-//include(":compose-modifier-ext")
-//project(":compose-modifier-ext").projectDir = File(settingsDir, "../../Surf/libs/compose-modifier-ext")

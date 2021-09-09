@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.form
 
-import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormFieldState
-import com.keygenqt.demo_contacts.modules._common.ui.form.base.FormStates
-import com.keygenqt.demo_contacts.modules.profile.ui.form.states.CodeStateRequired
+import com.keygenqt.demo_contacts.modules.profile.ui.form.states.CodeStateValidateRequired
+import com.keygenqt.forms.base.FormFieldState
+import com.keygenqt.forms.base.FormStates
 
 enum class ChangeEmailCodeFieldsForm(val state: FormFieldState) : FormStates {
-    Code(CodeStateRequired()),
+    Code(CodeStateValidateRequired()),
 }

@@ -19,7 +19,6 @@ package com.keygenqt.demo_contacts.modules._common.ui.compose
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -28,10 +27,9 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.keygenqt.accompanist.ClickableTextColorAnimation
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.theme.MyTheme
-import com.keygenqt.modifier.sizeLarge
 import com.keygenqt.modifier.sizeXLarge
 
 @Composable
@@ -62,7 +60,9 @@ fun GuestListScreen(
 
         Spacer(modifier = Modifier.sizeXLarge())
 
-        ClickableTextAnimation(
+        ClickableTextColorAnimation(
+            colorDefault = MaterialTheme.colors.onBackground,
+            colorAction = MaterialTheme.colors.onSurface,
             text = stringResource(id = R.string.common_sign_up),
             onClick = onSignUp
         )

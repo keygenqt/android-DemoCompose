@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.other.ui.screens.signIn
 
 import androidx.compose.foundation.background
@@ -32,9 +32,10 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.keygenqt.accompanist.MainScaffoldSearch
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.FormError
-import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
+import com.keygenqt.demo_contacts.modules._common.ui.compose.TopBarContentTitle
 import com.keygenqt.demo_contacts.modules.other.ui.events.SignInEvents
 import com.keygenqt.modifier.sizeLarge
 
@@ -45,10 +46,12 @@ fun SignInBody(
     commonError: String? = null,
     onEvent: (SignInEvents) -> Unit = {},
 ) {
-    MainScaffold(
-        icon = Icons.Filled.ArrowBack,
-        isLoaderShow = loading,
-        title = stringResource(id = R.string.sign_in_title),
+    MainScaffoldSearch(
+        contentLoadState = loading,
+        contentTitle = {
+            TopBarContentTitle(stringResource(id = R.string.sign_in_title))
+        },
+        navigationIcon = Icons.Filled.ArrowBack,
         navigationIconOnClick = {
             onEvent(SignInEvents.NavigateBack)
         }

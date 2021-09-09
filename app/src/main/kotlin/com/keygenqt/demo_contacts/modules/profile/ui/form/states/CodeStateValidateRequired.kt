@@ -13,16 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-package com.keygenqt.demo_contacts.modules._common.ui.form.validation
+
+package com.keygenqt.demo_contacts.modules.profile.ui.form.states
 
 import android.content.Context
 import com.keygenqt.demo_contacts.R
+import com.keygenqt.forms.base.FormFieldState
+import com.keygenqt.forms.validation.getErrorIsBlank
 
-fun getErrorIsBlank(target: String) =
+class CodeStateValidateRequired : FormFieldState(checkValid = ::checkValid)
+
+private fun checkValid(target: String) = listOfNotNull(
+    getErrorIsBlank(target),
+    getErrorSize(target),
+)
+
+private fun getErrorSize(target: String) =
     when {
-        target.isBlank() -> { it: Context ->
-            it.getString(R.string.is_required)
+        target.length != 5 -> { it: Context ->
+            it.getString(R.string.contact_change_common_code_error_validate, "5")
         }
         else -> null
     }

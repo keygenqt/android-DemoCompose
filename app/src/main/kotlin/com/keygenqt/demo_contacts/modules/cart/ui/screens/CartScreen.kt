@@ -13,22 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.cart.ui.screens
 
 import android.content.res.Configuration
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import com.keygenqt.accompanist.MainScaffoldSearch
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules._common.ui.compose.EmptyListScreen
-import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
+import com.keygenqt.demo_contacts.modules._common.ui.compose.TopBarContentSubtitle
+import com.keygenqt.demo_contacts.modules._common.ui.compose.TopBarContentTitle
 import com.keygenqt.demo_contacts.modules.cart.ui.events.CartEvents
 import com.keygenqt.demo_contacts.modules.cart.ui.viewModels.CartViewModel
 import com.keygenqt.demo_contacts.theme.MyTheme
+import com.keygenqt.modifier.sizeXSmall
 
 @ExperimentalComposeUiApi
 @Composable
@@ -46,9 +52,12 @@ fun CartScreen(
 fun CartBody(
     onEvent: (CartEvents) -> Unit = {},
 ) {
-    MainScaffold(
-        title = stringResource(id = R.string.cart_title).uppercase(),
-        subTitle = stringResource(id = R.string.cart_subtitle, (12345678..87654321).random()),
+    MainScaffoldSearch(
+        contentTitle = {
+            TopBarContentTitle(stringResource(id = R.string.cart_title).uppercase(), TextAlign.Center)
+            Spacer(modifier = Modifier.sizeXSmall())
+            TopBarContentSubtitle(stringResource(id = R.string.cart_subtitle, (12345678..87654321).random()))
+        },
     ) {
         EmptyListScreen(
             title = stringResource(id = R.string.cart_empty_title),

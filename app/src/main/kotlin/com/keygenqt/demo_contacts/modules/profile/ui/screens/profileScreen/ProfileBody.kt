@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.profile.ui.screens.profileScreen
 
 import androidx.compose.foundation.*
@@ -23,6 +23,8 @@ import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -35,14 +37,16 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import com.keygenqt.accompanist.MainScaffoldSearch
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.base.LocalBaseViewModel
 import com.keygenqt.demo_contacts.extensions.ListenRefresh
 import com.keygenqt.demo_contacts.extensions.toColor
 import com.keygenqt.demo_contacts.modules._common.ui.compose.LoadingScreen
-import com.keygenqt.demo_contacts.modules._common.ui.compose.MainScaffold
+import com.keygenqt.demo_contacts.modules._common.ui.compose.TopBarContentTitle
 import com.keygenqt.demo_contacts.modules.profile.data.models.UserModel
 import com.keygenqt.demo_contacts.modules.profile.navigation.nav.ProfileNav
+import com.keygenqt.demo_contacts.modules.profile.ui.events.ContactChangePhoneEvents
 import com.keygenqt.demo_contacts.modules.profile.ui.events.ProfileEvents
 import com.keygenqt.modifier.sizeSmall
 
@@ -64,8 +68,10 @@ fun ProfileBody(
         if (isLogin && user == null) onEvent(ProfileEvents.UpdateUser)
     }
 
-    MainScaffold(
-        title = stringResource(id = R.string.profile_title)
+    MainScaffoldSearch(
+        contentTitle = {
+            TopBarContentTitle(stringResource(id = R.string.profile_title))
+        },
     ) {
         SwipeRefresh(
             swipeEnabled = isLogin,
@@ -186,9 +192,10 @@ fun ProfileBody(
             }
 
             if (loading) {
-                Box(modifier = Modifier
-                    .fillMaxSize()
-                    .background(MaterialTheme.colors.background)
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colors.background)
                 ) {
                     LoadingScreen(loading)
                 }
