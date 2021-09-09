@@ -1,4 +1,4 @@
-Demo РИВ ГОШ
+Demo Rive Gauche
 ===================
 
 ![picture](data/preview.png)
