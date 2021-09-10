@@ -27,13 +27,13 @@ class ModifierInitializer : Initializer<Unit> {
 
     override fun create(context: Context) {
         ModifierConfiguration.init(
-            XSmall = 2.dp,
+            xSmall = 2.dp,
             small = 4.dp,
             medium = 8.dp,
             large = 16.dp,
-            XLarge = 24.dp,
-            XLarge2 = 48.dp,
-            XLarge3 = 96.dp,
+            xLarge = 24.dp,
+            xLarge2 = 48.dp,
+            xLarge3 = 96.dp,
         )
     }
 
