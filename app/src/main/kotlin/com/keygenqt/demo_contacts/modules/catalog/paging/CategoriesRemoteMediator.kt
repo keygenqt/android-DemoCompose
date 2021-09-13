@@ -25,6 +25,7 @@ import com.keygenqt.demo_contacts.modules.catalog.services.apiService.ApiService
 import com.keygenqt.demo_contacts.modules.catalog.services.data.DataServiceCatalog
 import com.keygenqt.demo_contacts.utils.ConstantsPaging.CACHE_TIMEOUT
 import com.keygenqt.response.*
+import com.keygenqt.response.extensions.*
 import timber.log.Timber
 import kotlin.math.roundToInt
 
@@ -67,7 +68,7 @@ class CategoriesRemoteMediator(
                         preferences.lastUpdateListCategories = System.currentTimeMillis()
                         clearCategoryModel()
                     }
-                    if (!response.isEndYii2(state.lastItemOrNull()?.owner?.id) || loadType != LoadType.APPEND) {
+                    if (!response.isEmpty || loadType != LoadType.APPEND) {
                         insertCategoryModel(*models.toTypedArray())
                     }
                 }
@@ -80,9 +81,7 @@ class CategoriesRemoteMediator(
             }
 
             MediatorResult.Success(
-                endOfPaginationReached = response.isError
-                        || response.isEmpty
-                        || response.isEndYii2(state.lastItemOrNull()?.owner?.id)
+                endOfPaginationReached = response.isError || response.isEmpty
             )
 
         } catch (e: Exception) {

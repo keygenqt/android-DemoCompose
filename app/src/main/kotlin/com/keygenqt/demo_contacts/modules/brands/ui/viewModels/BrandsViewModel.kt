@@ -23,10 +23,10 @@ import com.keygenqt.demo_contacts.modules.brands.data.relations.FeedRelation
 import com.keygenqt.demo_contacts.modules.brands.services.apiService.ApiServiceBrands
 import com.keygenqt.demo_contacts.modules.brands.services.data.DataServiceBrands
 import com.keygenqt.demo_contacts.utils.ConstantsPaging
-import com.keygenqt.response.done
-import com.keygenqt.response.error
-import com.keygenqt.response.errorUnknownHost
-import com.keygenqt.response.success
+import com.keygenqt.response.extensions.done
+import com.keygenqt.response.extensions.error
+import com.keygenqt.response.extensions.errorUnknownHost
+import com.keygenqt.response.extensions.success
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*

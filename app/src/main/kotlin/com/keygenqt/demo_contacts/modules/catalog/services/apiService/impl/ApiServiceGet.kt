@@ -22,8 +22,8 @@ import com.keygenqt.demo_contacts.modules.catalog.data.models.BrandModel
 import com.keygenqt.demo_contacts.modules.catalog.data.models.CategoryModel
 import com.keygenqt.demo_contacts.modules.catalog.services.api.ApiCatalog
 import com.keygenqt.demo_contacts.utils.ConstantsApp
+import com.keygenqt.response.LocalTryExecuteWithResponse.executeWithResponse
 import com.keygenqt.response.ResponseResult
-import com.keygenqt.response.executeWithResponse
 import com.keygenqt.response.responseCheck
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

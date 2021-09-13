@@ -20,7 +20,7 @@ import androidx.compose.runtime.Immutable
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.keygenqt.response.interfaces.ResponseModelRelation
+import com.keygenqt.demo_contacts.base.interfaces.IModelRelation
 
 @Entity
 @Immutable
@@ -32,4 +32,4 @@ data class FeedBrandModel(
     val name: String,
     val url: String,
     @Embedded val logo: FeedBrandLogoModel,
-) : ResponseModelRelation
+) : IModelRelation

@@ -13,21 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ 
+package com.keygenqt.demo_contacts.base.interfaces
 
-package com.keygenqt.demo_contacts.modules.favorite.data.models
-
-import androidx.compose.runtime.Immutable
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.keygenqt.demo_contacts.base.interfaces.IModel
-
-@Entity
-@Immutable
-data class FavoriteModel(
-    @PrimaryKey override val id: String,
-    val name: String,
-    val subtitle: String?,
-    @Embedded val image: FavoriteImageModel?,
-    @Embedded val price: FavoritePriceModel?,
-) : IModel
+interface IModelRelation {
+    val id: String
+    val ownerId: String
+}

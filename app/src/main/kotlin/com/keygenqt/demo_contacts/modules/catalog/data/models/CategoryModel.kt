@@ -20,7 +20,7 @@ import androidx.compose.runtime.Immutable
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import com.keygenqt.response.interfaces.ResponseModel
+import com.keygenqt.demo_contacts.base.interfaces.IModel
 
 @Entity
 @Immutable
@@ -28,7 +28,7 @@ data class CategoryModel(
     @PrimaryKey override val id: String,
     val name: String,
     @Ignore private val subCategories: List<SubCategoryModel>,
-) : ResponseModel {
+) : IModel {
 
     constructor(id: String, name: String) : this(id, name, listOf())
 

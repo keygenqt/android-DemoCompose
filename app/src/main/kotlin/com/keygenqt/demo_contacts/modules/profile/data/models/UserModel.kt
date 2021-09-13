@@ -19,7 +19,7 @@ package com.keygenqt.demo_contacts.modules.profile.data.models
 import androidx.compose.runtime.Immutable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.keygenqt.response.interfaces.ResponseModel
+import com.keygenqt.demo_contacts.base.interfaces.IModel
 
 @Entity
 @Immutable
@@ -27,4 +27,4 @@ data class UserModel(
     @PrimaryKey override val id: String,
     val name: String,
     val email: String,
-) : ResponseModel
+) : IModel

@@ -26,6 +26,7 @@ import com.keygenqt.demo_contacts.modules.catalog.services.apiService.ApiService
 import com.keygenqt.demo_contacts.modules.catalog.services.data.DataServiceCatalog
 import com.keygenqt.demo_contacts.utils.ConstantsPaging.CACHE_TIMEOUT
 import com.keygenqt.response.*
+import com.keygenqt.response.extensions.*
 import timber.log.Timber
 import kotlin.math.roundToInt
 
@@ -68,7 +69,7 @@ class BrandsRemoteMediator(
                         preferences.lastUpdateListBrands = System.currentTimeMillis()
                         clearBrandModel()
                     }
-                    if (!response.isEndYii2(state.lastItemOrNull()?.id) || loadType != LoadType.APPEND) {
+                    if (!response.isEmpty || loadType != LoadType.APPEND) {
                         insertBrandModel(*models.toTypedArray())
                     }
                 }
@@ -81,9 +82,7 @@ class BrandsRemoteMediator(
             }
 
             MediatorResult.Success(
-                endOfPaginationReached = response.isError
-                        || response.isEmpty
-                        || response.isEndYii2(state.lastItemOrNull()?.id)
+                endOfPaginationReached = response.isError || response.isEmpty
             )
 
         } catch (e: Exception) {

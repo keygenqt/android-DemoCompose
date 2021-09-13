@@ -21,8 +21,8 @@ import com.keygenqt.demo_contacts.modules.favorite.data.mappers.toModels
 import com.keygenqt.demo_contacts.modules.favorite.data.models.FavoriteModel
 import com.keygenqt.demo_contacts.modules.favorite.services.api.ApiFavorite
 import com.keygenqt.demo_contacts.utils.ConstantsApp
+import com.keygenqt.response.LocalTryExecuteWithResponse.executeWithResponse
 import com.keygenqt.response.ResponseResult
-import com.keygenqt.response.executeWithResponse
 import com.keygenqt.response.responseCheck
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

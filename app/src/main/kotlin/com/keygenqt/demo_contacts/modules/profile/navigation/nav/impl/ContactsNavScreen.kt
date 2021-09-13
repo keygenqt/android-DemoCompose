@@ -22,23 +22,23 @@ import com.keygenqt.routing.NavScreenWithArgument2
 
 
 object ContactsNavScreen {
-    val ContactSettingsScreen = object : NavScreenWithArgument2 {
-        override val routeWithArgument: String = "ContactSettingsScreen?email={email}&phone={phone}"
-        override val argument0: String = "email"
-        override val argument1: String = "phone"
+    val ContactChangePhoneScreen = object : NavScreen {
+        override val route: String = "ContactChangePhoneScreen"
     }
     val ContactChangeEmailScreen = object : NavScreen {
         override val route: String = "ContactChangeEmailScreen"
+    }
+    val ContactChangePhoneCodeScreen = object : NavScreenWithArgument {
+        override val routeWithArgument: String = "ContactChangePhoneCodeScreen/{phone}"
+        override val argument0: String = "phone"
     }
     val ContactChangeEmailCodeScreen = object : NavScreenWithArgument {
         override val routeWithArgument: String = "ContactChangeEmailCodeScreen/{email}"
         override val argument0: String = "email"
     }
-    val ContactChangePhoneScreen = object : NavScreen {
-        override val route: String = "ContactChangePhoneScreen"
-    }
-    val ContactChangePhoneCodeScreen = object : NavScreenWithArgument {
-        override val routeWithArgument: String = "ContactChangePhoneCodeScreen/{phone}"
-        override val argument0: String = "phone"
+    val ContactSettingsScreen = object : NavScreenWithArgument2 {
+        override val routeWithArgument: String = "ContactSettingsScreen?email={email}&phone={phone}"
+        override val argument0: String = "email"
+        override val argument1: String = "phone"
     }
 }

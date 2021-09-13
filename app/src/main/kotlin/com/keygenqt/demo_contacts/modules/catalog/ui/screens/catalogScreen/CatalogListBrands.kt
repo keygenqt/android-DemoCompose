@@ -17,6 +17,9 @@
 package com.keygenqt.demo_contacts.modules.catalog.ui.screens.catalogScreen
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.paging.LoadState
@@ -32,12 +35,23 @@ import com.keygenqt.demo_contacts.modules.catalog.data.models.BrandModel
 import com.keygenqt.demo_contacts.modules.catalog.navigation.nav.CatalogNav
 import com.keygenqt.demo_contacts.modules.catalog.ui.events.CatalogEvents
 import com.keygenqt.modifier.paddingLarge
+import com.keygenqt.response.LocalTryExecuteWithResponse
+import timber.log.Timber
 
 @Composable
 fun CatalogListBrands(
     items: LazyPagingItems<BrandModel>,
     onEvent: (CatalogEvents) -> Unit = {},
 ) {
+
+    val error by LocalTryExecuteWithResponse.current.collectAsState(null)
+    LaunchedEffect(error) {
+        error?.let {
+            Timber.e("------------------- Common error listener")
+            Timber.e(it)
+            Timber.e("------------------- ")
+        }
+    }
 
     LocalBaseViewModel.current.ListenRefresh {
         if (it == CatalogNav.MainNav.CatalogScreen.route) items.refresh()

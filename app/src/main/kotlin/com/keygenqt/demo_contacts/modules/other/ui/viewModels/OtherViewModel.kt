@@ -20,9 +20,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keygenqt.demo_contacts.modules.other.services.apiService.ApiServiceOther
 import com.keygenqt.demo_contacts.modules.other.services.data.DataServiceOther
-import com.keygenqt.response.done
-import com.keygenqt.response.error
-import com.keygenqt.response.success
+import com.keygenqt.response.extensions.done
+import com.keygenqt.response.extensions.error
+import com.keygenqt.response.extensions.success
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -31,3 +31,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "DemoContacts"
 include(":app")
+
+//include(":android-response-result")
+//project(":android-response-result").projectDir = File(settingsDir, "../../Surf/libs/android-response-result")

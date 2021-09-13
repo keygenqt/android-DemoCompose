@@ -23,9 +23,9 @@ import com.keygenqt.demo_contacts.extensions.timer
 import com.keygenqt.demo_contacts.modules.profile.services.apiService.ApiServiceProfile
 import com.keygenqt.demo_contacts.modules.profile.services.data.DataServiceProfile
 import com.keygenqt.demo_contacts.utils.ConstantsApp.REFRESH_DELAY
-import com.keygenqt.response.done
-import com.keygenqt.response.error
-import com.keygenqt.response.success
+import com.keygenqt.response.extensions.done
+import com.keygenqt.response.extensions.error
+import com.keygenqt.response.extensions.success
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay

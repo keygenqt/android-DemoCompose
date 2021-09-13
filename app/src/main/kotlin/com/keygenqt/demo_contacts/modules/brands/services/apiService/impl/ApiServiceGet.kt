@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.keygenqt.demo_contacts.modules.brands.services.apiService.impl
 
 import com.keygenqt.demo_contacts.BuildConfig
@@ -21,8 +21,8 @@ import com.keygenqt.demo_contacts.modules.brands.data.mappers.toModel
 import com.keygenqt.demo_contacts.modules.brands.data.models.FeedModel
 import com.keygenqt.demo_contacts.modules.brands.services.api.ApiBrands
 import com.keygenqt.demo_contacts.utils.ConstantsApp
+import com.keygenqt.response.LocalTryExecuteWithResponse.executeWithResponse
 import com.keygenqt.response.ResponseResult
-import com.keygenqt.response.executeWithResponse
 import com.keygenqt.response.responseCheck
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
