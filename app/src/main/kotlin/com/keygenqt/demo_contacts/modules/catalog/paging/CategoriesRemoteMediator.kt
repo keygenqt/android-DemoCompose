@@ -81,7 +81,7 @@ class CategoriesRemoteMediator(
             }
 
             MediatorResult.Success(
-                endOfPaginationReached = response.isError || response.isEmpty
+                endOfPaginationReached = true
             )
 
         } catch (e: Exception) {
