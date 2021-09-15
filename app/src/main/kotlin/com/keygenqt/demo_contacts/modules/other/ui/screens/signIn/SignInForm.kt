@@ -35,9 +35,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules.other.ui.events.SignInEvents
@@ -51,7 +49,6 @@ import com.keygenqt.forms.fields.FormFieldPassword
 import com.keygenqt.forms.fields.FormFieldPhone
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -166,6 +163,7 @@ fun SignInForm(
         keyboardActions = KeyboardActions(onNext = { requesterFieldPassword.requestFocus() }),
         mask = "####-####-####-####",
         placeholder = "0000-0000-0000-0000",
+        filter = "123456789"
     )
 
     Spacer(modifier = Modifier.size(padding))
@@ -175,6 +173,7 @@ fun SignInForm(
         modifier = Modifier.focusRequester(requesterFieldPassword),
         enabled = !loading,
         state = formFields.get(SignInPassword),
+        filter = "123456789",
         maxLength = 10,
         imeAction = ImeAction.Done,
         colors = customTextFieldColors(),
