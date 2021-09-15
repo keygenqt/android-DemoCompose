@@ -88,7 +88,8 @@ dependencies {
     implementation("com.keygenqt.response:android-response-result:0.0.4")
     implementation("com.keygenqt.routing:compose-routing:0.0.1")
     implementation("com.keygenqt.accompanist:surf-accompanist:0.0.4")
-    implementation("com.keygenqt.forms:compose-forms:0.0.7")
+    implementation("com.keygenqt.forms:compose-forms:0.0.8")
+    implementation("com.vdurmont:emoji-java:5.1.1")
 
     // base
     implementation("androidx.core:core-ktx:${ex["coreKtxVersion"]}")

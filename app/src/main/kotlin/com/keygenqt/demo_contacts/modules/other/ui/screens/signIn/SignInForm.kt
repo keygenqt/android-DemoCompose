@@ -36,6 +36,7 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.keygenqt.demo_contacts.R
 import com.keygenqt.demo_contacts.modules.other.ui.events.SignInEvents
@@ -43,10 +44,7 @@ import com.keygenqt.demo_contacts.modules.other.ui.form.SignInFieldsForm.*
 import com.keygenqt.demo_contacts.theme.customTextFieldColors
 import com.keygenqt.demo_contacts.utils.ConstantsApp
 import com.keygenqt.forms.base.FormFieldsState
-import com.keygenqt.forms.fields.FormFieldEmail
-import com.keygenqt.forms.fields.FormFieldNumber
-import com.keygenqt.forms.fields.FormFieldPassword
-import com.keygenqt.forms.fields.FormFieldPhone
+import com.keygenqt.forms.fields.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -65,6 +63,7 @@ fun SignInForm(
     val formFields = FormFieldsState().apply {
         add(SignInEmail, remember { SignInEmail.state.default(ConstantsApp.DEBUG_CREDENTIAL_LOGIN) })
         add(SignInPassword, remember { SignInPassword.state.default(ConstantsApp.DEBUG_CREDENTIAL_PASSW) })
+        add(SignInPhoneEmoji, remember { SignInPhoneEmoji.state.default("") })
         add(SignInPhoneUA, remember { SignInPhoneUA.state.default("") })
         add(SignInPhoneRU, remember { SignInPhoneRU.state.default("") })
         add(SignInPhoneCustom, remember { SignInPhoneCustom.state.default("") })
@@ -73,6 +72,7 @@ fun SignInForm(
 
     // For focus to field
     val requesterFieldEmail = remember { FocusRequester() }
+    val requesterFieldEmoji = remember { FocusRequester() }
     val requesterFieldPhoneUA = remember { FocusRequester() }
     val requesterFieldPhoneRU = remember { FocusRequester() }
     val requesterFieldPhoneCustom = remember { FocusRequester() }
@@ -106,7 +106,21 @@ fun SignInForm(
         state = formFields.get(SignInEmail),
         imeAction = ImeAction.Next,
         colors = customTextFieldColors(),
-        keyboardActions = KeyboardActions(onNext = { requesterFieldPhoneUA.requestFocus() })
+        keyboardActions = KeyboardActions(onNext = { requesterFieldEmoji.requestFocus() })
+    )
+
+    Spacer(modifier = Modifier.size(padding))
+
+    FormField(
+        modifier = Modifier.focusRequester(requesterFieldEmoji),
+        label = stringResource(id = R.string.form_name),
+        enabled = !loading,
+        state = formFields.get(SignInPhoneEmoji),
+        imeAction = ImeAction.Next,
+        keyboardType = KeyboardType.Ascii,
+        colors = customTextFieldColors(),
+        keyboardActions = KeyboardActions(onNext = { requesterFieldPhoneUA.requestFocus() }),
+        filterEmoji = true
     )
 
     Spacer(modifier = Modifier.size(padding))
