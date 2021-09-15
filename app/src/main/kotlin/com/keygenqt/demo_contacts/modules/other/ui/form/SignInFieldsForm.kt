@@ -24,4 +24,8 @@ import com.keygenqt.forms.states.EmailStateValidateRequired
 enum class SignInFieldsForm(val state: FormFieldState) : FormStates {
     SignInEmail(EmailStateValidateRequired()),
     SignInPassword(PasswordStateValidateRequired()),
+    SignInPhoneUA(FormFieldState()),
+    SignInPhoneRU(FormFieldState()),
+    SignInPhoneCustom(FormFieldState()),
+    SignInCard(FormFieldState()),
 }

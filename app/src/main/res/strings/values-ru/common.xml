@@ -14,6 +14,7 @@
     <string name="form_name">Имя</string>
     <string name="form_email">Email</string>
     <string name="form_phone">Телефон</string>
+    <string name="form_card">Карта</string>
     <string name="form_password">Пароль</string>
     <string name="form_button_submit">Отправить</string>
 
