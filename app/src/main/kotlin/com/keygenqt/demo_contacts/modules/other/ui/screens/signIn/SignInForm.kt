@@ -102,17 +102,17 @@ fun SignInForm(
     }
 
     // Create field email
-//    FormFieldEmail(
-//        modifier = Modifier.focusRequester(requesterFieldEmail),
-//        label = stringResource(id = R.string.form_email),
-//        enabled = !loading,
-//        state = formFields.get(SignInEmail),
-//        imeAction = ImeAction.Next,
-//        colors = customTextFieldColors(),
-//        keyboardActions = KeyboardActions(onNext = { requesterFieldPhoneUA.requestFocus() })
-//    )
-//
-//    Spacer(modifier = Modifier.size(padding))
+    FormFieldEmail(
+        modifier = Modifier.focusRequester(requesterFieldEmail),
+        label = stringResource(id = R.string.form_email),
+        enabled = !loading,
+        state = formFields.get(SignInEmail),
+        imeAction = ImeAction.Next,
+        colors = customTextFieldColors(),
+        keyboardActions = KeyboardActions(onNext = { requesterFieldPhoneUA.requestFocus() })
+    )
+
+    Spacer(modifier = Modifier.size(padding))
 
     FormFieldPhone(
         modifier = Modifier.focusRequester(requesterFieldPhoneUA),
@@ -175,6 +175,7 @@ fun SignInForm(
         modifier = Modifier.focusRequester(requesterFieldPassword),
         enabled = !loading,
         state = formFields.get(SignInPassword),
+        maxLength = 10,
         imeAction = ImeAction.Done,
         colors = customTextFieldColors(),
         tintIcon = MaterialTheme.colors.onPrimary,
@@ -200,7 +201,7 @@ fun SignInForm(
     LaunchedEffect(Unit) {
         scope.launch {
             delay(10)
-            requesterFieldPhoneUA.requestFocus()
+            requesterFieldEmail.requestFocus()
         }
     }
 }
